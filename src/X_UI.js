@@ -1,0 +1,50 @@
+/* global TigerJS, T */
+
+/*   This file is part of the TigerJS Javascript Library 
+ * <https://sourceforge.net/p/tigerjs> <https://github.com/solutionstack/tigerjs> */
+/* copyright 2014-2016 Olubodun Agbalaya. <s.stackng@gmail.com>, <agbalaya@users.sourceforge.net> */
+
+/** LOG: started work here Monday, Dec 26, 2016 **/
+/**
+ * @class
+ * This class serves as a base object for all XUI widgets. So you do not use it directly.
+ * Use one of the TigerJS.xui.xxx... sub-objects instead
+ * @description After been fasicated for years by various futuristic GUI concepts, decided to see if
+ * i could recreate such using web technology, well currently (DEC,2016). The web is actually ripe for such
+ * and technologies like WebGL holds a lot of promise in that direction but for now i'll be starting majorly
+ * with SVG and see how things flow from there, while this is defineitely an experimental module,
+ * i'll try and keep all features stable so it doesnt break from version to version. :)
+ * 
+ * @param {Object} configObj An object contaning configuration parameters for the base object
+ 
+ */
+
+TigerJS.xui = function (configObj) {
+    this.configObj = T.clone(configObj);
+    
+    this.xui_dom_container = configObj.container ? T.$(configObj.container) : null;
+
+    if (!this.xui_dom_container) {
+        err_str = " BadArgumentError<> Configuration for an xui instance doesn't have a valid DOM container referenced";
+        throw new Error(err_str);
+    }
+    this.xui_dom_container.className += " xui_default";//give a little styling to the container
+
+    this.xui_theme = configObj.xui_theme || "";
+
+    this.xui_dom_container_dimensions = this.xui_dom_container.rect();//the dimensions of the container element
+    this.animateRender = !configObj.animateRender ? false : true;//default to render the xui element wth nice animations
+
+
+
+    //create the base SVG DOM Object for this xui instance
+    this.SVGDOM = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    this.SVGDOM.id = T.Hash.sha1(this.xui_dom_container.id)
+           
+    this.xui_dom_container.appendChild(this.SVGDOM);
+
+   
+ return this;
+   
+};
+

@@ -1,0 +1,2875 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Source: crypt.js</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html"></a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="String">
+            <span class="title">
+                <a href="String.html">String</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="String#count_ch"><a href="String.html#count_ch">count_ch</a></li>
+            
+                <li data-name="String#delete_ch"><a href="String.html#delete_ch">delete_ch</a></li>
+            
+                <li data-name="String#drizzle"><a href="String.html#drizzle">drizzle</a></li>
+            
+                <li data-name="String#endsWith"><a href="String.html#endsWith">endsWith</a></li>
+            
+                <li data-name="String#escQuote"><a href="String.html#escQuote">escQuote</a></li>
+            
+                <li data-name="String#explode"><a href="String.html#explode">explode</a></li>
+            
+                <li data-name="String#find_first_not_of"><a href="String.html#find_first_not_of">find_first_not_of</a></li>
+            
+                <li data-name="String#find_first_of"><a href="String.html#find_first_of">find_first_of</a></li>
+            
+                <li data-name="String#find_last_not_of"><a href="String.html#find_last_not_of">find_last_not_of</a></li>
+            
+                <li data-name="String#find_last_of"><a href="String.html#find_last_of">find_last_of</a></li>
+            
+                <li data-name="String#html_chars"><a href="String.html#html_chars">html_chars</a></li>
+            
+                <li data-name="String#implode"><a href="String.html#implode">implode</a></li>
+            
+                <li data-name="String#insert_ch"><a href="String.html#insert_ch">insert_ch</a></li>
+            
+                <li data-name="String#insert_n"><a href="String.html#insert_n">insert_n</a></li>
+            
+                <li data-name="String#interpolate"><a href="String.html#interpolate">interpolate</a></li>
+            
+                <li data-name="String#quotemeta"><a href="String.html#quotemeta">quotemeta</a></li>
+            
+                <li data-name="String#rotX"><a href="String.html#rotX">rotX</a></li>
+            
+                <li data-name="String#sprintf"><a href="String.html#sprintf">sprintf</a></li>
+            
+                <li data-name="String#startsWith"><a href="String.html#startsWith">startsWith</a></li>
+            
+                <li data-name="String#str_pad"><a href="String.html#str_pad">str_pad</a></li>
+            
+                <li data-name="String#str_repeat"><a href="String.html#str_repeat">str_repeat</a></li>
+            
+                <li data-name="String#str_replace"><a href="String.html#str_replace">str_replace</a></li>
+            
+                <li data-name="String#stripos"><a href="String.html#stripos">stripos</a></li>
+            
+                <li data-name="String#stristr"><a href="String.html#stristr">stristr</a></li>
+            
+                <li data-name="String#strpos"><a href="String.html#strpos">strpos</a></li>
+            
+                <li data-name="String#strripos"><a href="String.html#strripos">strripos</a></li>
+            
+                <li data-name="String#strrpos"><a href="String.html#strrpos">strrpos</a></li>
+            
+                <li data-name="String#strstr"><a href="String.html#strstr">strstr</a></li>
+            
+                <li data-name="String#substr_count"><a href="String.html#substr_count">substr_count</a></li>
+            
+                <li data-name="String#toCase"><a href="String.html#toCase">toCase</a></li>
+            
+                <li data-name="String#trim"><a href="String.html#trim">trim</a></li>
+            
+                <li data-name="String#truncate"><a href="String.html#truncate">truncate</a></li>
+            
+                <li data-name="String#unEscQuote"><a href="String.html#unEscQuote">unEscQuote</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="T">
+            <span class="title">
+                <a href="T.html">T</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="T.xui.xuiText">
+            <span class="title">
+                <a href="T.xui.xuiText.html">T.xui.xuiText</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS">
+            <span class="title">
+                <a href="TigerJS.html">TigerJS</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.NETWORK_STATE"><a href="TigerJS.html#.NETWORK_STATE">NETWORK_STATE</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.addCSSBlob"><a href="TigerJS.html#.addCSSBlob">addCSSBlob</a></li>
+            
+                <li data-name="TigerJS.addCSSRules"><a href="TigerJS.html#.addCSSRules">addCSSRules</a></li>
+            
+                <li data-name="TigerJS.createXML"><a href="TigerJS.html#.createXML">createXML</a></li>
+            
+                <li data-name="TigerJS.parseXML"><a href="TigerJS.html#.parseXML">parseXML</a></li>
+            
+                <li data-name="TigerJS.saveXML"><a href="TigerJS.html#.saveXML">saveXML</a></li>
+            
+                <li data-name="TigerJS#$c"><a href="TigerJS.html#$c">$c</a></li>
+            
+                <li data-name="TigerJS#aggregate"><a href="TigerJS.html#aggregate">aggregate</a></li>
+            
+                <li data-name="TigerJS#and"><a href="TigerJS.html#and">and</a></li>
+            
+                <li data-name="TigerJS#chain"><a href="TigerJS.html#chain">chain</a></li>
+            
+                <li data-name="TigerJS#clone"><a href="TigerJS.html#clone">clone</a></li>
+            
+                <li data-name="TigerJS#compose"><a href="TigerJS.html#compose">compose</a></li>
+            
+                <li data-name="TigerJS#constant"><a href="TigerJS.html#constant">constant</a></li>
+            
+                <li data-name="TigerJS#create"><a href="TigerJS.html#create">create</a></li>
+            
+                <li data-name="TigerJS#delay"><a href="TigerJS.html#delay">delay</a></li>
+            
+                <li data-name="TigerJS#delCK"><a href="TigerJS.html#delCK">delCK</a></li>
+            
+                <li data-name="TigerJS#dim"><a href="TigerJS.html#dim">dim</a></li>
+            
+                <li data-name="TigerJS#domReady"><a href="TigerJS.html#domReady">domReady</a></li>
+            
+                <li data-name="TigerJS#dump"><a href="TigerJS.html#dump">dump</a></li>
+            
+                <li data-name="TigerJS#each"><a href="TigerJS.html#each">each</a></li>
+            
+                <li data-name="TigerJS#extend"><a href="TigerJS.html#extend">extend</a></li>
+            
+                <li data-name="TigerJS#getCK"><a href="TigerJS.html#getCK">getCK</a></li>
+            
+                <li data-name="TigerJS#hash"><a href="TigerJS.html#hash">hash</a></li>
+            
+                <li data-name="TigerJS#hasKey"><a href="TigerJS.html#hasKey">hasKey</a></li>
+            
+                <li data-name="TigerJS#hasValue"><a href="TigerJS.html#hasValue">hasValue</a></li>
+            
+                <li data-name="TigerJS#http_build_query"><a href="TigerJS.html#http_build_query">http_build_query</a></li>
+            
+                <li data-name="TigerJS#include"><a href="TigerJS.html#include">include</a></li>
+            
+                <li data-name="TigerJS#isArray"><a href="TigerJS.html#isArray">isArray</a></li>
+            
+                <li data-name="TigerJS#isBoolean"><a href="TigerJS.html#isBoolean">isBoolean</a></li>
+            
+                <li data-name="TigerJS#isDate"><a href="TigerJS.html#isDate">isDate</a></li>
+            
+                <li data-name="TigerJS#isEmail"><a href="TigerJS.html#isEmail">isEmail</a></li>
+            
+                <li data-name="TigerJS#isEmpty"><a href="TigerJS.html#isEmpty">isEmpty</a></li>
+            
+                <li data-name="TigerJS#isEnumerable"><a href="TigerJS.html#isEnumerable">isEnumerable</a></li>
+            
+                <li data-name="TigerJS#isFunction"><a href="TigerJS.html#isFunction">isFunction</a></li>
+            
+                <li data-name="TigerJS#isIP"><a href="TigerJS.html#isIP">isIP</a></li>
+            
+                <li data-name="TigerJS#isNumber"><a href="TigerJS.html#isNumber">isNumber</a></li>
+            
+                <li data-name="TigerJS#isObject"><a href="TigerJS.html#isObject">isObject</a></li>
+            
+                <li data-name="TigerJS#isRegExp"><a href="TigerJS.html#isRegExp">isRegExp</a></li>
+            
+                <li data-name="TigerJS#isString"><a href="TigerJS.html#isString">isString</a></li>
+            
+                <li data-name="TigerJS#isurl"><a href="TigerJS.html#isurl">isurl</a></li>
+            
+                <li data-name="TigerJS#keys"><a href="TigerJS.html#keys">keys</a></li>
+            
+                <li data-name="TigerJS#mix"><a href="TigerJS.html#mix">mix</a></li>
+            
+                <li data-name="TigerJS#periodic"><a href="TigerJS.html#periodic">periodic</a></li>
+            
+                <li data-name="TigerJS#poll"><a href="TigerJS.html#poll">poll</a></li>
+            
+                <li data-name="TigerJS#registerStartupFunctions"><a href="TigerJS.html#registerStartupFunctions">registerStartupFunctions</a></li>
+            
+                <li data-name="TigerJS#sequence"><a href="TigerJS.html#sequence">sequence</a></li>
+            
+                <li data-name="TigerJS#type"><a href="TigerJS.html#type">type</a></li>
+            
+                <li data-name="TigerJS#values"><a href="TigerJS.html#values">values</a></li>
+            
+                <li data-name="TigerJS#writeCK"><a href="TigerJS.html#writeCK">writeCK</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.$">
+            <span class="title">
+                <a href="TigerJS.$.html">TigerJS.$</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.$#appendChild"><a href="TigerJS.$.html#appendChild">appendChild</a></li>
+            
+                <li data-name="TigerJS.$#scrollX"><a href="TigerJS.$.html#scrollX">scrollX</a></li>
+            
+                <li data-name="TigerJS.$#scrollY"><a href="TigerJS.$.html#scrollY">scrollY</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.$#_clone"><a href="TigerJS.$.html#_clone">_clone</a></li>
+            
+                <li data-name="TigerJS.$#_dataset"><a href="TigerJS.$.html#_dataset">_dataset</a></li>
+            
+                <li data-name="TigerJS.$#_elementChildren"><a href="TigerJS.$.html#_elementChildren">_elementChildren</a></li>
+            
+                <li data-name="TigerJS.$#_firstElementChild"><a href="TigerJS.$.html#_firstElementChild">_firstElementChild</a></li>
+            
+                <li data-name="TigerJS.$#_lastElementChild"><a href="TigerJS.$.html#_lastElementChild">_lastElementChild</a></li>
+            
+                <li data-name="TigerJS.$#_nextElementSibling"><a href="TigerJS.$.html#_nextElementSibling">_nextElementSibling</a></li>
+            
+                <li data-name="TigerJS.$#_outerHTML"><a href="TigerJS.$.html#_outerHTML">_outerHTML</a></li>
+            
+                <li data-name="TigerJS.$#_prevElementSibling"><a href="TigerJS.$.html#_prevElementSibling">_prevElementSibling</a></li>
+            
+                <li data-name="TigerJS.$#addClass"><a href="TigerJS.$.html#addClass">addClass</a></li>
+            
+                <li data-name="TigerJS.$#addHtml"><a href="TigerJS.$.html#addHtml">addHtml</a></li>
+            
+                <li data-name="TigerJS.$#classOff"><a href="TigerJS.$.html#classOff">classOff</a></li>
+            
+                <li data-name="TigerJS.$#classOn"><a href="TigerJS.$.html#classOn">classOn</a></li>
+            
+                <li data-name="TigerJS.$#containsNode"><a href="TigerJS.$.html#containsNode">containsNode</a></li>
+            
+                <li data-name="TigerJS.$#copyAttributes"><a href="TigerJS.$.html#copyAttributes">copyAttributes</a></li>
+            
+                <li data-name="TigerJS.$#descendants"><a href="TigerJS.$.html#descendants">descendants</a></li>
+            
+                <li data-name="TigerJS.$#destroy"><a href="TigerJS.$.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.$#eachChild"><a href="TigerJS.$.html#eachChild">eachChild</a></li>
+            
+                <li data-name="TigerJS.$#eachSibling"><a href="TigerJS.$.html#eachSibling">eachSibling</a></li>
+            
+                <li data-name="TigerJS.$#elementSiblings"><a href="TigerJS.$.html#elementSiblings">elementSiblings</a></li>
+            
+                <li data-name="TigerJS.$#fire"><a href="TigerJS.$.html#fire">fire</a></li>
+            
+                <li data-name="TigerJS.$#getAttr"><a href="TigerJS.$.html#getAttr">getAttr</a></li>
+            
+                <li data-name="TigerJS.$#getBorderExtents"><a href="TigerJS.$.html#getBorderExtents">getBorderExtents</a></li>
+            
+                <li data-name="TigerJS.$#getData"><a href="TigerJS.$.html#getData">getData</a></li>
+            
+                <li data-name="TigerJS.$#getHtml"><a href="TigerJS.$.html#getHtml">getHtml</a></li>
+            
+                <li data-name="TigerJS.$#getMarginExtents"><a href="TigerJS.$.html#getMarginExtents">getMarginExtents</a></li>
+            
+                <li data-name="TigerJS.$#getOpacity"><a href="TigerJS.$.html#getOpacity">getOpacity</a></li>
+            
+                <li data-name="TigerJS.$#getPadBorderExtents"><a href="TigerJS.$.html#getPadBorderExtents">getPadBorderExtents</a></li>
+            
+                <li data-name="TigerJS.$#getPadExtents"><a href="TigerJS.$.html#getPadExtents">getPadExtents</a></li>
+            
+                <li data-name="TigerJS.$#getStyle"><a href="TigerJS.$.html#getStyle">getStyle</a></li>
+            
+                <li data-name="TigerJS.$#getText"><a href="TigerJS.$.html#getText">getText</a></li>
+            
+                <li data-name="TigerJS.$#hasClass"><a href="TigerJS.$.html#hasClass">hasClass</a></li>
+            
+                <li data-name="TigerJS.$#inRegion"><a href="TigerJS.$.html#inRegion">inRegion</a></li>
+            
+                <li data-name="TigerJS.$#isChild"><a href="TigerJS.$.html#isChild">isChild</a></li>
+            
+                <li data-name="TigerJS.$#isChildOf"><a href="TigerJS.$.html#isChildOf">isChildOf</a></li>
+            
+                <li data-name="TigerJS.$#isFirst"><a href="TigerJS.$.html#isFirst">isFirst</a></li>
+            
+                <li data-name="TigerJS.$#isLast"><a href="TigerJS.$.html#isLast">isLast</a></li>
+            
+                <li data-name="TigerJS.$#moveElementChildNodes"><a href="TigerJS.$.html#moveElementChildNodes">moveElementChildNodes</a></li>
+            
+                <li data-name="TigerJS.$#nextElementSiblings"><a href="TigerJS.$.html#nextElementSiblings">nextElementSiblings</a></li>
+            
+                <li data-name="TigerJS.$#off"><a href="TigerJS.$.html#off">off</a></li>
+            
+                <li data-name="TigerJS.$#on"><a href="TigerJS.$.html#on">on</a></li>
+            
+                <li data-name="TigerJS.$#onKey"><a href="TigerJS.$.html#onKey">onKey</a></li>
+            
+                <li data-name="TigerJS.$#onWheel"><a href="TigerJS.$.html#onWheel">onWheel</a></li>
+            
+                <li data-name="TigerJS.$#prevElementSiblings"><a href="TigerJS.$.html#prevElementSiblings">prevElementSiblings</a></li>
+            
+                <li data-name="TigerJS.$#rect"><a href="TigerJS.$.html#rect">rect</a></li>
+            
+                <li data-name="TigerJS.$#region"><a href="TigerJS.$.html#region">region</a></li>
+            
+                <li data-name="TigerJS.$#removeAttr"><a href="TigerJS.$.html#removeAttr">removeAttr</a></li>
+            
+                <li data-name="TigerJS.$#removeAttributes"><a href="TigerJS.$.html#removeAttributes">removeAttributes</a></li>
+            
+                <li data-name="TigerJS.$#removeChildNodes"><a href="TigerJS.$.html#removeChildNodes">removeChildNodes</a></li>
+            
+                <li data-name="TigerJS.$#removeClass"><a href="TigerJS.$.html#removeClass">removeClass</a></li>
+            
+                <li data-name="TigerJS.$#replaceClass"><a href="TigerJS.$.html#replaceClass">replaceClass</a></li>
+            
+                <li data-name="TigerJS.$#replaceNode"><a href="TigerJS.$.html#replaceNode">replaceNode</a></li>
+            
+                <li data-name="TigerJS.$#reverseChildNodes"><a href="TigerJS.$.html#reverseChildNodes">reverseChildNodes</a></li>
+            
+                <li data-name="TigerJS.$#selectable"><a href="TigerJS.$.html#selectable">selectable</a></li>
+            
+                <li data-name="TigerJS.$#setAttr"><a href="TigerJS.$.html#setAttr">setAttr</a></li>
+            
+                <li data-name="TigerJS.$#setData"><a href="TigerJS.$.html#setData">setData</a></li>
+            
+                <li data-name="TigerJS.$#setheight"><a href="TigerJS.$.html#setheight">setheight</a></li>
+            
+                <li data-name="TigerJS.$#setHtml"><a href="TigerJS.$.html#setHtml">setHtml</a></li>
+            
+                <li data-name="TigerJS.$#setOpacity"><a href="TigerJS.$.html#setOpacity">setOpacity</a></li>
+            
+                <li data-name="TigerJS.$#setStyle"><a href="TigerJS.$.html#setStyle">setStyle</a></li>
+            
+                <li data-name="TigerJS.$#setText"><a href="TigerJS.$.html#setText">setText</a></li>
+            
+                <li data-name="TigerJS.$#setWidth"><a href="TigerJS.$.html#setWidth">setWidth</a></li>
+            
+                <li data-name="TigerJS.$#setX"><a href="TigerJS.$.html#setX">setX</a></li>
+            
+                <li data-name="TigerJS.$#setXY"><a href="TigerJS.$.html#setXY">setXY</a></li>
+            
+                <li data-name="TigerJS.$#setY"><a href="TigerJS.$.html#setY">setY</a></li>
+            
+                <li data-name="TigerJS.$#swapAttributes"><a href="TigerJS.$.html#swapAttributes">swapAttributes</a></li>
+            
+                <li data-name="TigerJS.$#swapSiblingPositions"><a href="TigerJS.$.html#swapSiblingPositions">swapSiblingPositions</a></li>
+            
+                <li data-name="TigerJS.$#swapXY"><a href="TigerJS.$.html#swapXY">swapXY</a></li>
+            
+                <li data-name="TigerJS.$#toggleClass"><a href="TigerJS.$.html#toggleClass">toggleClass</a></li>
+            
+                <li data-name="TigerJS.$#toggleDisabled"><a href="TigerJS.$.html#toggleDisabled">toggleDisabled</a></li>
+            
+                <li data-name="TigerJS.$#toggleVisibility"><a href="TigerJS.$.html#toggleVisibility">toggleVisibility</a></li>
+            
+                <li data-name="TigerJS.$#wrapNode"><a href="TigerJS.$.html#wrapNode">wrapNode</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.Conn">
+            <span class="title">
+                <a href="TigerJS.Conn.html">TigerJS.Conn</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.Conn.state"><a href="TigerJS.Conn.html#.state">state</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.Conn.subscribe"><a href="TigerJS.Conn.html#.subscribe">subscribe</a></li>
+            
+                <li data-name="TigerJS.Conn.unSubscribe"><a href="TigerJS.Conn.html#.unSubscribe">unSubscribe</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.Crypto">
+            <span class="title">
+                <a href="TigerJS.Crypto.html">TigerJS.Crypto</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.Crypto.decrypt"><a href="TigerJS.Crypto.html#.decrypt">decrypt</a></li>
+            
+                <li data-name="TigerJS.Crypto.encrypt"><a href="TigerJS.Crypto.html#.encrypt">encrypt</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.Date">
+            <span class="title">
+                <a href="TigerJS.Date.html">TigerJS.Date</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.Date.between"><a href="TigerJS.Date.html#.between">between</a></li>
+            
+                <li data-name="TigerJS.Date.clearTime"><a href="TigerJS.Date.html#.clearTime">clearTime</a></li>
+            
+                <li data-name="TigerJS.Date.clone"><a href="TigerJS.Date.html#.clone">clone</a></li>
+            
+                <li data-name="TigerJS.Date.compareTo"><a href="TigerJS.Date.html#.compareTo">compareTo</a></li>
+            
+                <li data-name="TigerJS.Date.daysBetween"><a href="TigerJS.Date.html#.daysBetween">daysBetween</a></li>
+            
+                <li data-name="TigerJS.Date.daysInMonth"><a href="TigerJS.Date.html#.daysInMonth">daysInMonth</a></li>
+            
+                <li data-name="TigerJS.Date.equals"><a href="TigerJS.Date.html#.equals">equals</a></li>
+            
+                <li data-name="TigerJS.Date.format"><a href="TigerJS.Date.html#.format">format</a></li>
+            
+                <li data-name="TigerJS.Date.getDate"><a href="TigerJS.Date.html#.getDate">getDate</a></li>
+            
+                <li data-name="TigerJS.Date.getDay"><a href="TigerJS.Date.html#.getDay">getDay</a></li>
+            
+                <li data-name="TigerJS.Date.getDayNames"><a href="TigerJS.Date.html#.getDayNames">getDayNames</a></li>
+            
+                <li data-name="TigerJS.Date.getFullYear"><a href="TigerJS.Date.html#.getFullYear">getFullYear</a></li>
+            
+                <li data-name="TigerJS.Date.getHours"><a href="TigerJS.Date.html#.getHours">getHours</a></li>
+            
+                <li data-name="TigerJS.Date.getLocale"><a href="TigerJS.Date.html#.getLocale">getLocale</a></li>
+            
+                <li data-name="TigerJS.Date.getMinutes"><a href="TigerJS.Date.html#.getMinutes">getMinutes</a></li>
+            
+                <li data-name="TigerJS.Date.getMonth"><a href="TigerJS.Date.html#.getMonth">getMonth</a></li>
+            
+                <li data-name="TigerJS.Date.getSeconds"><a href="TigerJS.Date.html#.getSeconds">getSeconds</a></li>
+            
+                <li data-name="TigerJS.Date.getTime"><a href="TigerJS.Date.html#.getTime">getTime</a></li>
+            
+                <li data-name="TigerJS.Date.getWeek"><a href="TigerJS.Date.html#.getWeek">getWeek</a></li>
+            
+                <li data-name="TigerJS.Date.monthsBetween"><a href="TigerJS.Date.html#.monthsBetween">monthsBetween</a></li>
+            
+                <li data-name="TigerJS.Date.now"><a href="TigerJS.Date.html#.now">now</a></li>
+            
+                <li data-name="TigerJS.Date.setDate"><a href="TigerJS.Date.html#.setDate">setDate</a></li>
+            
+                <li data-name="TigerJS.Date.setFullYear"><a href="TigerJS.Date.html#.setFullYear">setFullYear</a></li>
+            
+                <li data-name="TigerJS.Date.setHour"><a href="TigerJS.Date.html#.setHour">setHour</a></li>
+            
+                <li data-name="TigerJS.Date.setLocale"><a href="TigerJS.Date.html#.setLocale">setLocale</a></li>
+            
+                <li data-name="TigerJS.Date.setMilliSeconds"><a href="TigerJS.Date.html#.setMilliSeconds">setMilliSeconds</a></li>
+            
+                <li data-name="TigerJS.Date.setMinutes"><a href="TigerJS.Date.html#.setMinutes">setMinutes</a></li>
+            
+                <li data-name="TigerJS.Date.setMonth"><a href="TigerJS.Date.html#.setMonth">setMonth</a></li>
+            
+                <li data-name="TigerJS.Date.setSeconds"><a href="TigerJS.Date.html#.setSeconds">setSeconds</a></li>
+            
+                <li data-name="TigerJS.Date.setTime"><a href="TigerJS.Date.html#.setTime">setTime</a></li>
+            
+                <li data-name="TigerJS.Date.weeksBetween"><a href="TigerJS.Date.html#.weeksBetween">weeksBetween</a></li>
+            
+                <li data-name="TigerJS.Date.yearsBetween"><a href="TigerJS.Date.html#.yearsBetween">yearsBetween</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.Hash">
+            <span class="title">
+                <a href="TigerJS.Hash.html">TigerJS.Hash</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.Hash#CRC32"><a href="TigerJS.Hash.html#CRC32">CRC32</a></li>
+            
+                <li data-name="TigerJS.Hash#sha1"><a href="TigerJS.Hash.html#sha1">sha1</a></li>
+            
+                <li data-name="TigerJS.Hash#sha224"><a href="TigerJS.Hash.html#sha224">sha224</a></li>
+            
+                <li data-name="TigerJS.Hash#sha256"><a href="TigerJS.Hash.html#sha256">sha256</a></li>
+            
+                <li data-name="TigerJS.Hash#sha384"><a href="TigerJS.Hash.html#sha384">sha384</a></li>
+            
+                <li data-name="TigerJS.Hash#sha512"><a href="TigerJS.Hash.html#sha512">sha512</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.io">
+            <span class="title">
+                <a href="TigerJS.io.html">TigerJS.io</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.io#abort"><a href="TigerJS.io.html#abort">abort</a></li>
+            
+                <li data-name="TigerJS.io#addDataFeilds"><a href="TigerJS.io.html#addDataFeilds">addDataFeilds</a></li>
+            
+                <li data-name="TigerJS.io#addQueryData"><a href="TigerJS.io.html#addQueryData">addQueryData</a></li>
+            
+                <li data-name="TigerJS.io#getQueryData"><a href="TigerJS.io.html#getQueryData">getQueryData</a></li>
+            
+                <li data-name="TigerJS.io#getRequestMethod"><a href="TigerJS.io.html#getRequestMethod">getRequestMethod</a></li>
+            
+                <li data-name="TigerJS.io#getTimeout"><a href="TigerJS.io.html#getTimeout">getTimeout</a></li>
+            
+                <li data-name="TigerJS.io#send"><a href="TigerJS.io.html#send">send</a></li>
+            
+                <li data-name="TigerJS.io#setDataFeilds"><a href="TigerJS.io.html#setDataFeilds">setDataFeilds</a></li>
+            
+                <li data-name="TigerJS.io#setQueryData"><a href="TigerJS.io.html#setQueryData">setQueryData</a></li>
+            
+                <li data-name="TigerJS.io#setRequestMethod"><a href="TigerJS.io.html#setRequestMethod">setRequestMethod</a></li>
+            
+                <li data-name="TigerJS.io#setTimeout"><a href="TigerJS.io.html#setTimeout">setTimeout</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.io.CompositeRequest">
+            <span class="title">
+                <a href="TigerJS.io.CompositeRequest.html">TigerJS.io.CompositeRequest</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.io.CompositeRequest#abort"><a href="TigerJS.io.CompositeRequest.html#abort">abort</a></li>
+            
+                <li data-name="TigerJS.io.CompositeRequest#loopRequest"><a href="TigerJS.io.CompositeRequest.html#loopRequest">loopRequest</a></li>
+            
+                <li data-name="TigerJS.io.CompositeRequest#send"><a href="TigerJS.io.CompositeRequest.html#send">send</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.io.SerialRequestQueue">
+            <span class="title">
+                <a href="TigerJS.io.SerialRequestQueue.html">TigerJS.io.SerialRequestQueue</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.io.SerialRequestQueue#abortQueue"><a href="TigerJS.io.SerialRequestQueue.html#abortQueue">abortQueue</a></li>
+            
+                <li data-name="TigerJS.io.SerialRequestQueue#appendRequest"><a href="TigerJS.io.SerialRequestQueue.html#appendRequest">appendRequest</a></li>
+            
+                <li data-name="TigerJS.io.SerialRequestQueue#send"><a href="TigerJS.io.SerialRequestQueue.html#send">send</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.Iterator">
+            <span class="title">
+                <a href="TigerJS.Iterator.html">TigerJS.Iterator</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.Iterator#add"><a href="TigerJS.Iterator.html#add">add</a></li>
+            
+                <li data-name="TigerJS.Iterator#add_r"><a href="TigerJS.Iterator.html#add_r">add_r</a></li>
+            
+                <li data-name="TigerJS.Iterator#addAll"><a href="TigerJS.Iterator.html#addAll">addAll</a></li>
+            
+                <li data-name="TigerJS.Iterator#advance"><a href="TigerJS.Iterator.html#advance">advance</a></li>
+            
+                <li data-name="TigerJS.Iterator#at"><a href="TigerJS.Iterator.html#at">at</a></li>
+            
+                <li data-name="TigerJS.Iterator#clone"><a href="TigerJS.Iterator.html#clone">clone</a></li>
+            
+                <li data-name="TigerJS.Iterator#compact"><a href="TigerJS.Iterator.html#compact">compact</a></li>
+            
+                <li data-name="TigerJS.Iterator#concat"><a href="TigerJS.Iterator.html#concat">concat</a></li>
+            
+                <li data-name="TigerJS.Iterator#contains"><a href="TigerJS.Iterator.html#contains">contains</a></li>
+            
+                <li data-name="TigerJS.Iterator#current"><a href="TigerJS.Iterator.html#current">current</a></li>
+            
+                <li data-name="TigerJS.Iterator#diff"><a href="TigerJS.Iterator.html#diff">diff</a></li>
+            
+                <li data-name="TigerJS.Iterator#duplicate"><a href="TigerJS.Iterator.html#duplicate">duplicate</a></li>
+            
+                <li data-name="TigerJS.Iterator#empty"><a href="TigerJS.Iterator.html#empty">empty</a></li>
+            
+                <li data-name="TigerJS.Iterator#equal"><a href="TigerJS.Iterator.html#equal">equal</a></li>
+            
+                <li data-name="TigerJS.Iterator#even"><a href="TigerJS.Iterator.html#even">even</a></li>
+            
+                <li data-name="TigerJS.Iterator#every"><a href="TigerJS.Iterator.html#every">every</a></li>
+            
+                <li data-name="TigerJS.Iterator#fill"><a href="TigerJS.Iterator.html#fill">fill</a></li>
+            
+                <li data-name="TigerJS.Iterator#filter"><a href="TigerJS.Iterator.html#filter">filter</a></li>
+            
+                <li data-name="TigerJS.Iterator#flatten"><a href="TigerJS.Iterator.html#flatten">flatten</a></li>
+            
+                <li data-name="TigerJS.Iterator#foward_iterator"><a href="TigerJS.Iterator.html#foward_iterator">foward_iterator</a></li>
+            
+                <li data-name="TigerJS.Iterator#indexOf"><a href="TigerJS.Iterator.html#indexOf">indexOf</a></li>
+            
+                <li data-name="TigerJS.Iterator#insertAt"><a href="TigerJS.Iterator.html#insertAt">insertAt</a></li>
+            
+                <li data-name="TigerJS.Iterator#intersect"><a href="TigerJS.Iterator.html#intersect">intersect</a></li>
+            
+                <li data-name="TigerJS.Iterator#ipos"><a href="TigerJS.Iterator.html#ipos">ipos</a></li>
+            
+                <li data-name="TigerJS.Iterator#isEmpty"><a href="TigerJS.Iterator.html#isEmpty">isEmpty</a></li>
+            
+                <li data-name="TigerJS.Iterator#isIndex"><a href="TigerJS.Iterator.html#isIndex">isIndex</a></li>
+            
+                <li data-name="TigerJS.Iterator#isSubset"><a href="TigerJS.Iterator.html#isSubset">isSubset</a></li>
+            
+                <li data-name="TigerJS.Iterator#isSuperset"><a href="TigerJS.Iterator.html#isSuperset">isSuperset</a></li>
+            
+                <li data-name="TigerJS.Iterator#join"><a href="TigerJS.Iterator.html#join">join</a></li>
+            
+                <li data-name="TigerJS.Iterator#last"><a href="TigerJS.Iterator.html#last">last</a></li>
+            
+                <li data-name="TigerJS.Iterator#lastIndexOf"><a href="TigerJS.Iterator.html#lastIndexOf">lastIndexOf</a></li>
+            
+                <li data-name="TigerJS.Iterator#map"><a href="TigerJS.Iterator.html#map">map</a></li>
+            
+                <li data-name="TigerJS.Iterator#merge"><a href="TigerJS.Iterator.html#merge">merge</a></li>
+            
+                <li data-name="TigerJS.Iterator#next"><a href="TigerJS.Iterator.html#next">next</a></li>
+            
+                <li data-name="TigerJS.Iterator#nextAll"><a href="TigerJS.Iterator.html#nextAll">nextAll</a></li>
+            
+                <li data-name="TigerJS.Iterator#odd"><a href="TigerJS.Iterator.html#odd">odd</a></li>
+            
+                <li data-name="TigerJS.Iterator#partition"><a href="TigerJS.Iterator.html#partition">partition</a></li>
+            
+                <li data-name="TigerJS.Iterator#peek"><a href="TigerJS.Iterator.html#peek">peek</a></li>
+            
+                <li data-name="TigerJS.Iterator#pop"><a href="TigerJS.Iterator.html#pop">pop</a></li>
+            
+                <li data-name="TigerJS.Iterator#prev"><a href="TigerJS.Iterator.html#prev">prev</a></li>
+            
+                <li data-name="TigerJS.Iterator#prevAll"><a href="TigerJS.Iterator.html#prevAll">prevAll</a></li>
+            
+                <li data-name="TigerJS.Iterator#product"><a href="TigerJS.Iterator.html#product">product</a></li>
+            
+                <li data-name="TigerJS.Iterator#push"><a href="TigerJS.Iterator.html#push">push</a></li>
+            
+                <li data-name="TigerJS.Iterator#rand"><a href="TigerJS.Iterator.html#rand">rand</a></li>
+            
+                <li data-name="TigerJS.Iterator#random_access_iterator"><a href="TigerJS.Iterator.html#random_access_iterator">random_access_iterator</a></li>
+            
+                <li data-name="TigerJS.Iterator#random_access_iterator"><a href="TigerJS.Iterator.html#random_access_iterator">random_access_iterator</a></li>
+            
+                <li data-name="TigerJS.Iterator#range"><a href="TigerJS.Iterator.html#range">range</a></li>
+            
+                <li data-name="TigerJS.Iterator#reject"><a href="TigerJS.Iterator.html#reject">reject</a></li>
+            
+                <li data-name="TigerJS.Iterator#replace"><a href="TigerJS.Iterator.html#replace">replace</a></li>
+            
+                <li data-name="TigerJS.Iterator#replace_from"><a href="TigerJS.Iterator.html#replace_from">replace_from</a></li>
+            
+                <li data-name="TigerJS.Iterator#reverse"><a href="TigerJS.Iterator.html#reverse">reverse</a></li>
+            
+                <li data-name="TigerJS.Iterator#reverse_iterator"><a href="TigerJS.Iterator.html#reverse_iterator">reverse_iterator</a></li>
+            
+                <li data-name="TigerJS.Iterator#rewind"><a href="TigerJS.Iterator.html#rewind">rewind</a></li>
+            
+                <li data-name="TigerJS.Iterator#rotate"><a href="TigerJS.Iterator.html#rotate">rotate</a></li>
+            
+                <li data-name="TigerJS.Iterator#set"><a href="TigerJS.Iterator.html#set">set</a></li>
+            
+                <li data-name="TigerJS.Iterator#shift"><a href="TigerJS.Iterator.html#shift">shift</a></li>
+            
+                <li data-name="TigerJS.Iterator#shuffle"><a href="TigerJS.Iterator.html#shuffle">shuffle</a></li>
+            
+                <li data-name="TigerJS.Iterator#size"><a href="TigerJS.Iterator.html#size">size</a></li>
+            
+                <li data-name="TigerJS.Iterator#slice"><a href="TigerJS.Iterator.html#slice">slice</a></li>
+            
+                <li data-name="TigerJS.Iterator#some"><a href="TigerJS.Iterator.html#some">some</a></li>
+            
+                <li data-name="TigerJS.Iterator#sortBy"><a href="TigerJS.Iterator.html#sortBy">sortBy</a></li>
+            
+                <li data-name="TigerJS.Iterator#splice"><a href="TigerJS.Iterator.html#splice">splice</a></li>
+            
+                <li data-name="TigerJS.Iterator#str_indexOf"><a href="TigerJS.Iterator.html#str_indexOf">str_indexOf</a></li>
+            
+                <li data-name="TigerJS.Iterator#str_lastIndexOf"><a href="TigerJS.Iterator.html#str_lastIndexOf">str_lastIndexOf</a></li>
+            
+                <li data-name="TigerJS.Iterator#sum"><a href="TigerJS.Iterator.html#sum">sum</a></li>
+            
+                <li data-name="TigerJS.Iterator#swap"><a href="TigerJS.Iterator.html#swap">swap</a></li>
+            
+                <li data-name="TigerJS.Iterator#toArray"><a href="TigerJS.Iterator.html#toArray">toArray</a></li>
+            
+                <li data-name="TigerJS.Iterator#unique"><a href="TigerJS.Iterator.html#unique">unique</a></li>
+            
+                <li data-name="TigerJS.Iterator#unset"><a href="TigerJS.Iterator.html#unset">unset</a></li>
+            
+                <li data-name="TigerJS.Iterator#unset_if"><a href="TigerJS.Iterator.html#unset_if">unset_if</a></li>
+            
+                <li data-name="TigerJS.Iterator#unset_r"><a href="TigerJS.Iterator.html#unset_r">unset_r</a></li>
+            
+                <li data-name="TigerJS.Iterator#unset_r_if"><a href="TigerJS.Iterator.html#unset_r_if">unset_r_if</a></li>
+            
+                <li data-name="TigerJS.Iterator#unshift"><a href="TigerJS.Iterator.html#unshift">unshift</a></li>
+            
+                <li data-name="TigerJS.Iterator#walk"><a href="TigerJS.Iterator.html#walk">walk</a></li>
+            
+                <li data-name="TigerJS.Iterator#walk_recursive"><a href="TigerJS.Iterator.html#walk_recursive">walk_recursive</a></li>
+            
+                <li data-name="TigerJS.Iterator#without"><a href="TigerJS.Iterator.html#without">without</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.Map">
+            <span class="title">
+                <a href="TigerJS.Map.html">TigerJS.Map</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.Map#clear"><a href="TigerJS.Map.html#clear">clear</a></li>
+            
+                <li data-name="TigerJS.Map#containsKey"><a href="TigerJS.Map.html#containsKey">containsKey</a></li>
+            
+                <li data-name="TigerJS.Map#containsValue"><a href="TigerJS.Map.html#containsValue">containsValue</a></li>
+            
+                <li data-name="TigerJS.Map#get"><a href="TigerJS.Map.html#get">get</a></li>
+            
+                <li data-name="TigerJS.Map#keys"><a href="TigerJS.Map.html#keys">keys</a></li>
+            
+                <li data-name="TigerJS.Map#keySet"><a href="TigerJS.Map.html#keySet">keySet</a></li>
+            
+                <li data-name="TigerJS.Map#put"><a href="TigerJS.Map.html#put">put</a></li>
+            
+                <li data-name="TigerJS.Map#remove"><a href="TigerJS.Map.html#remove">remove</a></li>
+            
+                <li data-name="TigerJS.Map#replace"><a href="TigerJS.Map.html#replace">replace</a></li>
+            
+                <li data-name="TigerJS.Map#replaceIfValue"><a href="TigerJS.Map.html#replaceIfValue">replaceIfValue</a></li>
+            
+                <li data-name="TigerJS.Map#size"><a href="TigerJS.Map.html#size">size</a></li>
+            
+                <li data-name="TigerJS.Map#values"><a href="TigerJS.Map.html#values">values</a></li>
+            
+                <li data-name="TigerJS.Map#valueSet"><a href="TigerJS.Map.html#valueSet">valueSet</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.nodes">
+            <span class="title">
+                <a href="TigerJS.nodes.html">TigerJS.nodes</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.nodes#_addClass"><a href="TigerJS.nodes.html#_addClass">_addClass</a></li>
+            
+                <li data-name="TigerJS.nodes#_attr"><a href="TigerJS.nodes.html#_attr">_attr</a></li>
+            
+                <li data-name="TigerJS.nodes#_children"><a href="TigerJS.nodes.html#_children">_children</a></li>
+            
+                <li data-name="TigerJS.nodes#_css"><a href="TigerJS.nodes.html#_css">_css</a></li>
+            
+                <li data-name="TigerJS.nodes#_data"><a href="TigerJS.nodes.html#_data">_data</a></li>
+            
+                <li data-name="TigerJS.nodes#_destroy"><a href="TigerJS.nodes.html#_destroy">_destroy</a></li>
+            
+                <li data-name="TigerJS.nodes#_each"><a href="TigerJS.nodes.html#_each">_each</a></li>
+            
+                <li data-name="TigerJS.nodes#_fire"><a href="TigerJS.nodes.html#_fire">_fire</a></li>
+            
+                <li data-name="TigerJS.nodes#_hasClass"><a href="TigerJS.nodes.html#_hasClass">_hasClass</a></li>
+            
+                <li data-name="TigerJS.nodes#_height"><a href="TigerJS.nodes.html#_height">_height</a></li>
+            
+                <li data-name="TigerJS.nodes#_html"><a href="TigerJS.nodes.html#_html">_html</a></li>
+            
+                <li data-name="TigerJS.nodes#_insert"><a href="TigerJS.nodes.html#_insert">_insert</a></li>
+            
+                <li data-name="TigerJS.nodes#_off"><a href="TigerJS.nodes.html#_off">_off</a></li>
+            
+                <li data-name="TigerJS.nodes#_on"><a href="TigerJS.nodes.html#_on">_on</a></li>
+            
+                <li data-name="TigerJS.nodes#_removeAttr"><a href="TigerJS.nodes.html#_removeAttr">_removeAttr</a></li>
+            
+                <li data-name="TigerJS.nodes#_removeClass"><a href="TigerJS.nodes.html#_removeClass">_removeClass</a></li>
+            
+                <li data-name="TigerJS.nodes#_removeData"><a href="TigerJS.nodes.html#_removeData">_removeData</a></li>
+            
+                <li data-name="TigerJS.nodes#_replaceClass"><a href="TigerJS.nodes.html#_replaceClass">_replaceClass</a></li>
+            
+                <li data-name="TigerJS.nodes#_style"><a href="TigerJS.nodes.html#_style">_style</a></li>
+            
+                <li data-name="TigerJS.nodes#_text"><a href="TigerJS.nodes.html#_text">_text</a></li>
+            
+                <li data-name="TigerJS.nodes#_toggleClass"><a href="TigerJS.nodes.html#_toggleClass">_toggleClass</a></li>
+            
+                <li data-name="TigerJS.nodes#_width"><a href="TigerJS.nodes.html#_width">_width</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.Parser">
+            <span class="title">
+                <a href="TigerJS.Parser.html">TigerJS.Parser</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.Parser.parseAddress"><a href="TigerJS.Parser.html#.parseAddress">parseAddress</a></li>
+            
+                <li data-name="TigerJS.Parser.parseAny"><a href="TigerJS.Parser.html#.parseAny">parseAny</a></li>
+            
+                <li data-name="TigerJS.Parser.parseCSS"><a href="TigerJS.Parser.html#.parseCSS">parseCSS</a></li>
+            
+                <li data-name="TigerJS.Parser.parseNumber"><a href="TigerJS.Parser.html#.parseNumber">parseNumber</a></li>
+            
+                <li data-name="TigerJS.Parser.parseScripts"><a href="TigerJS.Parser.html#.parseScripts">parseScripts</a></li>
+            
+                <li data-name="TigerJS.Parser.parseTextOnly"><a href="TigerJS.Parser.html#.parseTextOnly">parseTextOnly</a></li>
+            
+                <li data-name="TigerJS.Parser.parseURI"><a href="TigerJS.Parser.html#.parseURI">parseURI</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.ua">
+            <span class="title">
+                <a href="TigerJS.ua.html">TigerJS.ua</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI">
+            <span class="title">
+                <a href="TigerJS.UI.html">TigerJS.UI</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Color">
+            <span class="title">
+                <a href="TigerJS.UI.Color.html">TigerJS.UI.Color</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Color.blend"><a href="TigerJS.UI.Color.html#.blend">blend</a></li>
+            
+                <li data-name="TigerJS.UI.Color#colorToHex"><a href="TigerJS.UI.Color.html#colorToHex">colorToHex</a></li>
+            
+                <li data-name="TigerJS.UI.Color#colorToHsl"><a href="TigerJS.UI.Color.html#colorToHsl">colorToHsl</a></li>
+            
+                <li data-name="TigerJS.UI.Color#darken"><a href="TigerJS.UI.Color.html#darken">darken</a></li>
+            
+                <li data-name="TigerJS.UI.Color#getColor"><a href="TigerJS.UI.Color.html#getColor">getColor</a></li>
+            
+                <li data-name="TigerJS.UI.Color#interpolate"><a href="TigerJS.UI.Color.html#interpolate">interpolate</a></li>
+            
+                <li data-name="TigerJS.UI.Color#lighten"><a href="TigerJS.UI.Color.html#lighten">lighten</a></li>
+            
+                <li data-name="TigerJS.UI.Color#parse"><a href="TigerJS.UI.Color.html#parse">parse</a></li>
+            
+                <li data-name="TigerJS.UI.Color#setColor"><a href="TigerJS.UI.Color.html#setColor">setColor</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.FX">
+            <span class="title">
+                <a href="TigerJS.UI.FX.html">TigerJS.UI.FX</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.FX.Animation">
+            <span class="title">
+                <a href="TigerJS.UI.FX.Animation.html">TigerJS.UI.FX.Animation</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.FX.Animation#_onanimationend"><a href="TigerJS.UI.FX.Animation.html#_onanimationend">_onanimationend</a></li>
+            
+                <li data-name="TigerJS.UI.FX.Animation#_onanimationiterate"><a href="TigerJS.UI.FX.Animation.html#_onanimationiterate">_onanimationiterate</a></li>
+            
+                <li data-name="TigerJS.UI.FX.Animation#_onanimationstart"><a href="TigerJS.UI.FX.Animation.html#_onanimationstart">_onanimationstart</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.FX.Draggable">
+            <span class="title">
+                <a href="TigerJS.UI.FX.Draggable.html">TigerJS.UI.FX.Draggable</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.FX.Draggable#cancelDrag"><a href="TigerJS.UI.FX.Draggable.html#cancelDrag">cancelDrag</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Swiper">
+            <span class="title">
+                <a href="TigerJS.UI.Swiper.html">TigerJS.UI.Swiper</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.html">TigerJS.UI.Widget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget#Node"><a href="TigerJS.UI.Widget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget#appendToElement"><a href="TigerJS.UI.Widget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget#autoStack"><a href="TigerJS.UI.Widget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget#destroy"><a href="TigerJS.UI.Widget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget#getId"><a href="TigerJS.UI.Widget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget#hide"><a href="TigerJS.UI.Widget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget#isDraggable"><a href="TigerJS.UI.Widget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget#setDraggable"><a href="TigerJS.UI.Widget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget#show"><a href="TigerJS.UI.Widget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget#unsetDraggable"><a href="TigerJS.UI.Widget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.CalendarWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.CalendarWidget.html">TigerJS.UI.Widget.CalendarWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#Node"><a href="TigerJS.UI.Widget.CalendarWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#appendToElement"><a href="TigerJS.UI.Widget.CalendarWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#autoStack"><a href="TigerJS.UI.Widget.CalendarWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#destroy"><a href="TigerJS.UI.Widget.CalendarWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#getId"><a href="TigerJS.UI.Widget.CalendarWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#hide"><a href="TigerJS.UI.Widget.CalendarWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#isDraggable"><a href="TigerJS.UI.Widget.CalendarWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#setDraggable"><a href="TigerJS.UI.Widget.CalendarWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#setLocaleID"><a href="TigerJS.UI.Widget.CalendarWidget.html#setLocaleID">setLocaleID</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#setView"><a href="TigerJS.UI.Widget.CalendarWidget.html#setView">setView</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#show"><a href="TigerJS.UI.Widget.CalendarWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CalendarWidget#unsetDraggable"><a href="TigerJS.UI.Widget.CalendarWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.CheckBoxWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.CheckBoxWidget.html">TigerJS.UI.Widget.CheckBoxWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#Node"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#appendToElement"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#autoStack"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#destroy"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#getId"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#hide"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#isChecked"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#isChecked">isChecked</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#isDisabled"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#isDisabled">isDisabled</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#isDraggable"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#name"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#name">name</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#readOnly"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#readOnly">readOnly</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#setDraggable"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#show"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.CheckBoxWidget#unsetDraggable"><a href="TigerJS.UI.Widget.CheckBoxWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.FileUploadWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.FileUploadWidget.html">TigerJS.UI.Widget.FileUploadWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#Node"><a href="TigerJS.UI.Widget.FileUploadWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#appendToElement"><a href="TigerJS.UI.Widget.FileUploadWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#autoStack"><a href="TigerJS.UI.Widget.FileUploadWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#destroy"><a href="TigerJS.UI.Widget.FileUploadWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#getId"><a href="TigerJS.UI.Widget.FileUploadWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#hide"><a href="TigerJS.UI.Widget.FileUploadWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#isDraggable"><a href="TigerJS.UI.Widget.FileUploadWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#setDraggable"><a href="TigerJS.UI.Widget.FileUploadWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#show"><a href="TigerJS.UI.Widget.FileUploadWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.FileUploadWidget#unsetDraggable"><a href="TigerJS.UI.Widget.FileUploadWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.NotifyWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.NotifyWidget.html">TigerJS.UI.Widget.NotifyWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#Node"><a href="TigerJS.UI.Widget.NotifyWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#appendToElement"><a href="TigerJS.UI.Widget.NotifyWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#autoStack"><a href="TigerJS.UI.Widget.NotifyWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#destroy"><a href="TigerJS.UI.Widget.NotifyWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#getId"><a href="TigerJS.UI.Widget.NotifyWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#hide"><a href="TigerJS.UI.Widget.NotifyWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#isDraggable"><a href="TigerJS.UI.Widget.NotifyWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#setDraggable"><a href="TigerJS.UI.Widget.NotifyWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#show"><a href="TigerJS.UI.Widget.NotifyWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.NotifyWidget#unsetDraggable"><a href="TigerJS.UI.Widget.NotifyWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.OverlayWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.OverlayWidget.html">TigerJS.UI.Widget.OverlayWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#Node"><a href="TigerJS.UI.Widget.OverlayWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#appendToElement"><a href="TigerJS.UI.Widget.OverlayWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#autoStack"><a href="TigerJS.UI.Widget.OverlayWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#destroy"><a href="TigerJS.UI.Widget.OverlayWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#getId"><a href="TigerJS.UI.Widget.OverlayWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#hide"><a href="TigerJS.UI.Widget.OverlayWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#isDraggable"><a href="TigerJS.UI.Widget.OverlayWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#setDraggable"><a href="TigerJS.UI.Widget.OverlayWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#show"><a href="TigerJS.UI.Widget.OverlayWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.OverlayWidget#unsetDraggable"><a href="TigerJS.UI.Widget.OverlayWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.RangeWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.RangeWidget.html">TigerJS.UI.Widget.RangeWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#Node"><a href="TigerJS.UI.Widget.RangeWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#appendToElement"><a href="TigerJS.UI.Widget.RangeWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#autoStack"><a href="TigerJS.UI.Widget.RangeWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#destroy"><a href="TigerJS.UI.Widget.RangeWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#getId"><a href="TigerJS.UI.Widget.RangeWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#hide"><a href="TigerJS.UI.Widget.RangeWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#isDraggable"><a href="TigerJS.UI.Widget.RangeWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#setDraggable"><a href="TigerJS.UI.Widget.RangeWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#show"><a href="TigerJS.UI.Widget.RangeWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.RangeWidget#unsetDraggable"><a href="TigerJS.UI.Widget.RangeWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.SelectWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.SelectWidget.html">TigerJS.UI.Widget.SelectWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#Node"><a href="TigerJS.UI.Widget.SelectWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#appendToElement"><a href="TigerJS.UI.Widget.SelectWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#autoStack"><a href="TigerJS.UI.Widget.SelectWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#destroy"><a href="TigerJS.UI.Widget.SelectWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#getId"><a href="TigerJS.UI.Widget.SelectWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#getSelectedValue"><a href="TigerJS.UI.Widget.SelectWidget.html#getSelectedValue">getSelectedValue</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#hide"><a href="TigerJS.UI.Widget.SelectWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#isDraggable"><a href="TigerJS.UI.Widget.SelectWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#setDraggable"><a href="TigerJS.UI.Widget.SelectWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#show"><a href="TigerJS.UI.Widget.SelectWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.SelectWidget#unsetDraggable"><a href="TigerJS.UI.Widget.SelectWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.TextInputWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.TextInputWidget.html">TigerJS.UI.Widget.TextInputWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#Node"><a href="TigerJS.UI.Widget.TextInputWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#appendToElement"><a href="TigerJS.UI.Widget.TextInputWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#autoStack"><a href="TigerJS.UI.Widget.TextInputWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#destroy"><a href="TigerJS.UI.Widget.TextInputWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#getId"><a href="TigerJS.UI.Widget.TextInputWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#hide"><a href="TigerJS.UI.Widget.TextInputWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#isDisabled"><a href="TigerJS.UI.Widget.TextInputWidget.html#isDisabled">isDisabled</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#isDraggable"><a href="TigerJS.UI.Widget.TextInputWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#name"><a href="TigerJS.UI.Widget.TextInputWidget.html#name">name</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#readOnly"><a href="TigerJS.UI.Widget.TextInputWidget.html#readOnly">readOnly</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#setDraggable"><a href="TigerJS.UI.Widget.TextInputWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#show"><a href="TigerJS.UI.Widget.TextInputWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#unsetDraggable"><a href="TigerJS.UI.Widget.TextInputWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#validate"><a href="TigerJS.UI.Widget.TextInputWidget.html#validate">validate</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TextInputWidget#value"><a href="TigerJS.UI.Widget.TextInputWidget.html#value">value</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.Widget.TooltipWidget">
+            <span class="title">
+                <a href="TigerJS.UI.Widget.TooltipWidget.html">TigerJS.UI.Widget.TooltipWidget</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#Node"><a href="TigerJS.UI.Widget.TooltipWidget.html#Node">Node</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#appendToElement"><a href="TigerJS.UI.Widget.TooltipWidget.html#appendToElement">appendToElement</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#autoStack"><a href="TigerJS.UI.Widget.TooltipWidget.html#autoStack">autoStack</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#destroy"><a href="TigerJS.UI.Widget.TooltipWidget.html#destroy">destroy</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#getId"><a href="TigerJS.UI.Widget.TooltipWidget.html#getId">getId</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#hide"><a href="TigerJS.UI.Widget.TooltipWidget.html#hide">hide</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#hideTooltip"><a href="TigerJS.UI.Widget.TooltipWidget.html#hideTooltip">hideTooltip</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#isDraggable"><a href="TigerJS.UI.Widget.TooltipWidget.html#isDraggable">isDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#setDraggable"><a href="TigerJS.UI.Widget.TooltipWidget.html#setDraggable">setDraggable</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#show"><a href="TigerJS.UI.Widget.TooltipWidget.html#show">show</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#showTooltip"><a href="TigerJS.UI.Widget.TooltipWidget.html#showTooltip">showTooltip</a></li>
+            
+                <li data-name="TigerJS.UI.Widget.TooltipWidget#unsetDraggable"><a href="TigerJS.UI.Widget.TooltipWidget.html#unsetDraggable">unsetDraggable</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.xui">
+            <span class="title">
+                <a href="TigerJS.xui.html">TigerJS.xui</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="crypt.js.html">Source: crypt.js</h1>
+        
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source "><code>/* global TigerJS, T */
+
+/*   This file is part of the TigerJS Javascript Library @@https://sourceforge.net/p/tigerjs> */
+/********************************* Encryption Functions Base **********************************************/
+
+/*
+ * @ignore
+ *  jsmcrypt version 0.1  -  Copyright 2012 F. Doering
+ *
+ *  This program is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as
+ *  published by the Free Software Foundation; either version 2 of the
+ *  License, or (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ *  02111-1307 USA
+ */
+
+
+//this creates a static class mcrypt that is already initialized
+var mcrypt = mcrypt ? mcrypt : new function () {
+
+    //this allows the user to create instances of this class that keep
+    //track of their own key, cipher, and mode
+    //calling syntax becomes var myMcrypt=new mcrypt();
+    //var mcrypt=function(){
+    /**********
+     * Private *
+     **********/
+
+    /************************
+     * START OF CIPHER DEFFS *
+     ************************/
+
+    /*
+     * @ignore
+     *  Cipher Data
+     * This is an object, keyed with the cipher name whose value is an
+     * array containing the number of octets (bytes) in the block size,
+     * and the number of octets in the key.
+     */
+    var ciphers = {//	block size,	key size
+        "rijndael-128": [16, 32],
+        "rijndael-192": [24, 32],
+        "rijndael-256": [32, 32],
+        "serpent": [16, 32]
+    };
+
+    /* blockCipherCalls
+     * This object is keyed by the cipher names and the vaules are
+     * functions that calls external block ciphers to encypt or
+     * decrypt a single block. These functions must have the arguments:
+     * function(cipher_name,block,key,encrypt)
+     * where: chipher_name is the text of the cipher name,
+     * block is an array of inegers representing octets
+     * key is a string
+     * and encrypt indicates whether it should encrypt or decrypt
+     * the block.
+     * the function should modify the block as its output
+     */
+    var blockCipherCalls = {};
+    blockCipherCalls['rijndael-128'] = function (cipher, block, key, encrypt) {
+        if (key.length &lt; 32)
+            key += Array(33 - key.length).join(String.fromCharCode(0));
+        if (encrypt)
+            Rijndael.Encrypt(block, key);
+        else
+            Rijndael.Decrypt(block, key);
+        return block;
+    };
+    blockCipherCalls['rijndael-192'] = blockCipherCalls['rijndael-128'];
+    blockCipherCalls['rijndael-256'] = blockCipherCalls['rijndael-128'];
+    blockCipherCalls.serpent = function (cipher, block, key, encrypt) {
+        if (encrypt)
+            Serpent.Encrypt(block);
+        else
+            Serpent.Decrypt(block);
+        return block;
+    };
+    blockCipherCalls.serpent.init = function (cipher, key, encrypt) {
+        var keyA = [];
+        for (var i = 0; i &lt; key.length; i++)
+            keyA[i] = key.charCodeAt(i);
+        Serpent.Init(keyA);
+    };
+    blockCipherCalls.serpent.deinit = function (cipher, key, encrypt) {
+        Serpent.Close();
+    };
+
+    /**********************
+     * END OF CIPHER DEFFS *
+     **********************/
+
+    /*********
+     * Public *
+     *********/
+    var pub = {};
+
+    /* Encrypt
+     * This function encypts a plaintext message with an IV, key,  ciphertype, and mode
+     * The message, key, and IV should be extended ascii strings
+     * the ciphertype should be a string that is a supported cipher (see above)
+     * the mode should be a string that is a supported mode of operation
+     * the key, cipher type, and mode will default to the last used
+     * these can be set without encypting by "encrypting" a null message
+     */
+    pub.Encrypt = function (message, IV, key, cipher, mode) {
+        return pub.Crypt(true, message, IV, key, cipher, mode);
+    };
+    /* Decrypt
+     * See Encrypt for usage
+     */
+
+    pub.Decrypt = function (ctext, IV, key, cipher, mode) {
+        return pub.Crypt(false, ctext, IV, key, cipher, mode);
+    };
+    /* Crypt
+     * This function can encrypt or decrypt text
+     */
+
+    pub.Crypt = function (encrypt, text, IV, key, cipher, mode) {
+        if (key)
+            cKey = key;
+        else
+            key = cKey;
+        if (cipher)
+            cCipher = cipher;
+        else
+            cipher = cCipher;
+        if (mode)
+            cMode = mode;
+        else
+            mode = cMode;
+        if (!text)
+            return true;
+        if (blockCipherCalls[cipher].init)
+            blockCipherCalls[cipher].init(cipher, key, encrypt);
+        var blockS = ciphers[cipher][0];
+
+        var chunkS = blockS;
+        var iv = new Array(blockS);
+        switch (mode) {
+            case 'cfb':
+                chunkS = 1;//8-bit
+            case 'cbc':
+            case 'ncfb':
+            case 'nofb':
+            case 'ctr':
+                if (!IV)
+                    throw "mcrypt.Crypt: IV Required for mode " + mode;
+                if (IV.length !== blockS)
+                    throw "mcrypt.Crypt: IV must be " + blockS + " characters long for " + cipher;
+                for (var i = blockS - 1; i >= 0; i--)
+                    iv[i] = IV.charCodeAt(i);
+                break;
+            case 'ecb':
+                break;
+            default:
+                throw "mcrypt.Crypt: Unsupported mode of opperation" + cMode;
+        }
+        var chunks = Math.ceil(text.length / chunkS);
+        var orig = text.length;
+        text += Array(chunks * chunkS - orig + 1).join(String.fromCharCode(0));//zero pad the end
+        var out = '';
+        switch (mode) {
+            case 'ecb':
+                for (var i = 0; i &lt; chunks; i++) {
+                    for (var j = 0; j &lt; chunkS; j++)
+                        iv[j] = text.charCodeAt((i * chunkS) + j);
+                    blockCipherCalls[cipher](cipher, iv, cKey, encrypt);
+                    for (var j = 0; j &lt; chunkS; j++)
+                        out += String.fromCharCode(iv[j]);
+                }
+                break;
+            case 'cbc':
+                if (encrypt) {
+                    for (var i = 0; i &lt; chunks; i++) {
+                        for (var j = 0; j &lt; chunkS; j++)
+                            iv[j] = text.charCodeAt((i * chunkS) + j) ^ iv[j];
+                        blockCipherCalls[cipher](cipher, iv, cKey, true);
+                        for (var j = 0; j &lt; chunkS; j++)
+                            out += String.fromCharCode(iv[j]);
+                    }
+                } else {
+                    for (var i = 0; i &lt; chunks; i++) {
+                        var temp = iv;
+                        iv = new Array(chunkS);
+                        for (var j = 0; j &lt; chunkS; j++)
+                            iv[j] = text.charCodeAt((i * chunkS) + j);
+                        var decr = iv.slice(0);
+                        blockCipherCalls[cipher](cipher, decr, cKey, false);
+                        for (var j = 0; j &lt; chunkS; j++)
+                            out += String.fromCharCode(temp[j] ^ decr[j]);
+                    }
+                }
+                break;
+            case 'cfb':
+                for (var i = 0; i &lt; chunks; i++) {
+                    var temp = iv.slice(0);
+                    blockCipherCalls[cipher](cipher, temp, cKey, true);
+                    temp = temp[0] ^ text.charCodeAt(i);
+                    iv.push(encrypt ? temp : text.charCodeAt(i));
+                    iv.shift();
+                    out += String.fromCharCode(temp);
+                }
+                out = out.substr(0, orig);
+                break;
+            case 'ncfb':
+                for (var i = 0; i &lt; chunks; i++) {
+                    blockCipherCalls[cipher](cipher, iv, cKey, true);
+                    for (var j = 0; j &lt; chunkS; j++) {
+                        var temp = text.charCodeAt((i * chunkS) + j);
+                        iv[j] = temp ^ iv[j];
+                        out += String.fromCharCode(iv[j]);
+                        if (!encrypt)
+                            iv[j] = temp;
+                    }
+                }
+                out = out.substr(0, orig);
+                break;
+            case 'nofb':
+                for (var i = 0; i &lt; chunks; i++) {
+                    blockCipherCalls[cipher](cipher, iv, cKey, true);
+                    for (var j = 0; j &lt; chunkS; j++)
+                        out += String.fromCharCode(text.charCodeAt((i * chunkS) + j) ^ iv[j]);
+                }
+                out = out.substr(0, orig);
+                break;
+            case 'ctr':
+                for (var i = 0; i &lt; chunks; i++) {
+                    temp = iv.slice(0);
+                    blockCipherCalls[cipher](cipher, temp, cKey, true);
+                    for (var j = 0; j &lt; chunkS; j++)
+                        out += String.fromCharCode(text.charCodeAt((i * chunkS) + j) ^ temp[j]);
+                    var carry = 1;
+                    var index = chunkS;
+                    do {
+                        index--;
+                        iv[index] += 1;
+                        carry = iv[index] >> 8;
+                        iv[index] &amp;= 255;
+                    } while (carry)
+                }
+                out = out.substr(0, orig);
+                break;
+        }
+        if (blockCipherCalls[cipher].deinit)
+            blockCipherCalls[cipher].deinit(cipher, key, encrypt);
+        return out;
+    };
+
+//Gets the block size of the specified cipher
+    pub.get_block_size = function (cipher, mode) {
+        if (!cipher)
+            cipher = cCipher;
+        if (!ciphers[cipher])
+            return false;
+        return ciphers[cipher][0];
+    };
+
+//Gets the name of the specified cipher
+    pub.get_cipher_name = function (cipher) {
+        if (!cipher)
+            cipher = cCipher;
+        if (!ciphers[cipher])
+            return false;
+        return cipher;
+    };
+
+//Returns the size of the IV belonging to a specific cipher/mode combination
+    pub.get_iv_size = function (cipher, mode) {
+        if (!cipher)
+            cipher = cCipher;
+        if (!ciphers[cipher])
+            return false;
+        return ciphers[cipher][0];
+    };
+
+//Gets the key size of the specified cipher
+    pub.get_key_size = function (cipher, mode) {
+        if (!cipher)
+            cipher = cCipher;
+        if (!ciphers[cipher])
+            return false;
+        return ciphers[cipher][1];
+    };
+
+//Gets an array of all supported ciphers
+    pub.list_algorithms = function () {
+        var ret = [];
+        for (var i in ciphers)
+            ret.push(i);
+        return ret;
+    };
+
+    pub.list_modes = function () {
+        return ['ecb', 'cbc', 'cfb', 'ncfb', 'nofb', 'ctr'];
+    };
+
+
+
+    /**********
+     * Private *
+     **********/
+
+    var cMode = 'cbc';
+    var cCipher = 'rijndael-128';
+    var cKey = '12345678911234567892123456789312';
+
+
+    return pub;
+};
+
+/**
+ * @ignore
+ *  jsaes version 0.1  -  Copyright 2006 B. Poettering
+ *
+ *  This program is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU General Public License as
+ *  published by the Free Software Foundation; either version 2 of the
+ *  License, or (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA
+ *  02111-1307 USA
+ */
+var Rijndael = Rijndael ? Rijndael : new function () {
+    /*
+     *
+     * This is a javascript implementation of the rijndael block cipher. Key lengths
+     * of 128, 192 and 256 bits, and block lengths of 128, 192, and 256 bit in any
+     * combination are supported.
+     *
+     * The well-functioning of the encryption/decryption routines has been
+     * verified for different key lengths with the test vectors given in
+     * FIPS-197, Appendix C.
+     *
+     * The following code example enciphers the plaintext block '00 11 22 .. EE FF'
+     * with the 256 bit key '12345678911234567892123456789312'.
+     *
+     *    var block = new Array(16);
+     *    for(var i = 0; i &lt; 16; i++)
+     *        block[i] = 0x11 * i;
+     *
+     *    var key = '12345678911234567892123456789312';
+     *
+     *    rijndael.Encrypt(block, key);
+     *
+     */
+
+    /******************************************************************************/
+
+//public
+    var pub = {};
+
+    pub.Encrypt = function (block, key) {
+        crypt(block, key, true);
+    };
+    pub.Decrypt = function (block, key) {
+        crypt(block, key, false);
+    };
+
+//private
+
+    var sizes = [16, 24, 32];
+
+    //key bytes	16,	24,	32		block bytes
+    var rounds = [[10, 12, 14], //	16
+        [12, 12, 14], //	24
+        [14, 14, 14]];//	32
+
+    var expandedKeys = {};//object to keep keys we've already expanded in.
+
+    var ExpandKey = function (key) {
+        if (!expandedKeys[key]) {
+            var kl = key.length, ks, Rcon = 1;
+            ks = 15 &lt;&lt; 5;
+            var keyA = new Array(ks);
+            for (var i = 0; i &lt; kl; i++)
+                keyA[i] = key.charCodeAt(i);
+            for (var i = kl; i &lt; ks; i += 4) {
+                var temp = keyA.slice(i - 4, i);
+                if (i % kl === 0) {
+                    temp = [Sbox[temp[1]] ^ Rcon, Sbox[temp[2]],
+                        Sbox[temp[3]], Sbox[temp[0]]];
+                    if ((Rcon &lt;&lt;= 1) >= 256)
+                        Rcon ^= 0x11b;
+                } else if ((kl > 24) &amp;&amp; (i % kl === 16))
+                    temp = [Sbox[temp[0]], Sbox[temp[1]],
+                        Sbox[temp[2]], Sbox[temp[3]]];
+                for (var j = 0; j &lt; 4; j++)
+                    keyA[i + j] = keyA[ i + j - kl ] ^ temp[j];
+            }
+            expandedKeys[key] = keyA;
+        }
+        return expandedKeys[key];
+    };
+
+    var crypt = function (block, key, encrypt) {
+        var bB = block.length;
+        var kB = key.length;
+        var bBi = 0;
+        var kBi = 0;
+        switch (bB) {
+            case 32:
+                bBi++;
+            case 24:
+                bBi++;
+            case 16:
+                break;
+            default:
+                throw 'rijndael: Unsupported block size: ' + block.length;
+        }
+        switch (kB) {
+            case 32:
+                kBi++;
+            case 24:
+                kBi++;
+            case 16:
+                break;
+            default:
+                throw 'rijndael: Unsupported key size: ' + key.length;
+        }
+        var r = rounds[bBi][kBi];
+        key = ExpandKey(key);
+        var end = r * bB;
+        if (encrypt) {
+            AddRoundKey(block, key.slice(0, bB));
+            var SRT = ShiftRowTab[bBi];
+            for (var i = bB; i &lt; end; i += bB) {
+                SubBytes(block, Sbox);
+                ShiftRows(block, SRT);
+                MixColumns(block);
+                AddRoundKey(block, key.slice(i, i + bB));
+            }
+            SubBytes(block, Sbox);
+            ShiftRows(block, SRT);
+            AddRoundKey(block, key.slice(i, i + bB));
+        } else { //decrypt
+            AddRoundKey(block, key.slice(end, end + bB));
+            var SRT = ShiftRowTab_Inv[bBi];
+            ShiftRows(block, SRT);
+            SubBytes(block, Sbox_Inv);
+            for (var i = end - bB; i >= bB; i -= bB) {
+                AddRoundKey(block, key.slice(i, i + bB));
+                MixColumns_Inv(block);
+                ShiftRows(block, SRT);
+                SubBytes(block, Sbox_Inv);
+            }
+            AddRoundKey(block, key.slice(0, bB));
+        }
+    };
+    /******************************************************************************/
+
+    /* The following lookup tables and functions are for internal use only! */
+    var Sbox = new Array(99, 124, 119, 123, 242, 107, 111, 197, 48, 1, 103, 43, 254, 215, 171,
+            118, 202, 130, 201, 125, 250, 89, 71, 240, 173, 212, 162, 175, 156, 164, 114, 192, 183, 253,
+            147, 38, 54, 63, 247, 204, 52, 165, 229, 241, 113, 216, 49, 21, 4, 199, 35, 195, 24, 150, 5, 154,
+            7, 18, 128, 226, 235, 39, 178, 117, 9, 131, 44, 26, 27, 110, 90, 160, 82, 59, 214, 179, 41, 227,
+            47, 132, 83, 209, 0, 237, 32, 252, 177, 91, 106, 203, 190, 57, 74, 76, 88, 207, 208, 239, 170,
+            251, 67, 77, 51, 133, 69, 249, 2, 127, 80, 60, 159, 168, 81, 163, 64, 143, 146, 157, 56, 245,
+            188, 182, 218, 33, 16, 255, 243, 210, 205, 12, 19, 236, 95, 151, 68, 23, 196, 167, 126, 61,
+            100, 93, 25, 115, 96, 129, 79, 220, 34, 42, 144, 136, 70, 238, 184, 20, 222, 94, 11, 219, 224,
+            50, 58, 10, 73, 6, 36, 92, 194, 211, 172, 98, 145, 149, 228, 121, 231, 200, 55, 109, 141, 213,
+            78, 169, 108, 86, 244, 234, 101, 122, 174, 8, 186, 120, 37, 46, 28, 166, 180, 198, 232, 221,
+            116, 31, 75, 189, 139, 138, 112, 62, 181, 102, 72, 3, 246, 14, 97, 53, 87, 185, 134, 193, 29,
+            158, 225, 248, 152, 17, 105, 217, 142, 148, 155, 30, 135, 233, 206, 85, 40, 223, 140, 161,
+            137, 13, 191, 230, 66, 104, 65, 153, 45, 15, 176, 84, 187, 22);
+    //row	0	1	2	3		block Bytes
+    var rowshifts = [[0, 1, 2, 3], //16
+        [0, 1, 2, 3], //24
+        [0, 1, 3, 4]];	//32
+
+    var ShiftRowTab = Array(3);
+    for (var i = 0; i &lt; 3; i++) {
+        ShiftRowTab[i] = Array(sizes[i]);
+        for (var j = sizes[i]; j >= 0; j--)
+            ShiftRowTab[i][j] = (j + (rowshifts[i][j &amp; 3] &lt;&lt; 2)) % sizes[i];
+    }
+    var Sbox_Inv = new Array(256);
+    for (var i = 0; i &lt; 256; i++)
+        Sbox_Inv[Sbox[i]] = i;
+    var ShiftRowTab_Inv = Array(3);
+    for (var i = 0; i &lt; 3; i++) {
+        ShiftRowTab_Inv[i] = Array(sizes[i]);
+        for (var j = sizes[i]; j >= 0; j--)
+            ShiftRowTab_Inv[i][ShiftRowTab[i][j]] = j;
+    }
+    var xtime = new Array(256);
+    for (var i = 0; i &lt; 128; i++) {
+        xtime[i] = i &lt;&lt; 1;
+        xtime[128 + i] = (i &lt;&lt; 1) ^ 0x1b;
+    }
+
+    var SubBytes = function (state, sbox) {
+        for (var i = state.length - 1; i >= 0; i--)
+            state[i] = sbox[state[i]];
+    };
+
+    var AddRoundKey = function (state, rkey) {
+        for (var i = state.length - 1; i >= 0; i--)
+            state[i] ^= rkey[i];
+    };
+
+    var ShiftRows = function (state, shifttab) {
+        var h = state.slice(0);
+        for (var i = state.length - 1; i >= 0; i--)
+            state[i] = h[shifttab[i]];
+    };
+
+    var MixColumns = function (state) {
+        for (var i = state.length - 4; i >= 0; i -= 4) {
+            var s0 = state[i + 0], s1 = state[i + 1];
+            var s2 = state[i + 2], s3 = state[i + 3];
+            var h = s0 ^ s1 ^ s2 ^ s3;
+            state[i + 0] ^= h ^ xtime[s0 ^ s1];
+            state[i + 1] ^= h ^ xtime[s1 ^ s2];
+            state[i + 2] ^= h ^ xtime[s2 ^ s3];
+            state[i + 3] ^= h ^ xtime[s3 ^ s0];
+        }
+    };
+
+    var MixColumns_Inv = function (state) {
+        for (var i = state.length - 4; i >= 0; i -= 4) {
+            var s0 = state[i + 0], s1 = state[i + 1];
+            var s2 = state[i + 2], s3 = state[i + 3];
+            var h = s0 ^ s1 ^ s2 ^ s3;
+            var xh = xtime[h];
+            var h1 = xtime[xtime[xh ^ s0 ^ s2]] ^ h;
+            var h2 = xtime[xtime[xh ^ s1 ^ s3]] ^ h;
+            state[i + 0] ^= h1 ^ xtime[s0 ^ s1];
+            state[i + 1] ^= h2 ^ xtime[s1 ^ s2];
+            state[i + 2] ^= h1 ^ xtime[s2 ^ s3];
+            state[i + 3] ^= h2 ^ xtime[s3 ^ s0];
+        }
+    };
+    return pub;
+};
+
+var Serpent = Serpent ? Serpent : new function () {
+
+    var pub = {};
+
+    var wMax = 0xFFFFFFFF;
+    var rotw = function (w, n) {
+        return (w &lt;&lt; n | w >>> (32 - n)) &amp; wMax;
+    };
+    var getW = function (a, i) {
+        return a[i] | a[i + 1] &lt;&lt; 8 | a[i + 2] &lt;&lt; 16 | a[i + 3] &lt;&lt; 24;
+    };
+    var setWInv = function (a, i, w) {
+        a.splice(i, 4, w &amp; 0xFF, (w >>> 8) &amp; 0xFF, (w >>> 16) &amp; 0xFF, (w >>> 24) &amp; 0xFF);
+    };
+
+
+// Serpent
+
+    var srpKey = [];
+
+    var srpK = function (r, a, b, c, d, i) {
+        r[a] ^= srpKey[4 * i];
+        r[b] ^= srpKey[4 * i + 1];
+        r[c] ^= srpKey[4 * i + 2];
+        r[d] ^= srpKey[4 * i + 3];
+    };
+
+    var srpLK = function (r, a, b, c, d, e, i) {
+        r[a] = rotw(r[a], 13);
+        r[c] = rotw(r[c], 3);
+        r[b] ^= r[a];
+        r[e] = (r[a] &lt;&lt; 3) &amp; wMax;
+        r[d] ^= r[c];
+        r[b] ^= r[c];
+        r[b] = rotw(r[b], 1);
+        r[d] ^= r[e];
+        r[d] = rotw(r[d], 7);
+        r[e] = r[b];
+        r[a] ^= r[b];
+        r[e] = (r[e] &lt;&lt; 7) &amp; wMax;
+        r[c] ^= r[d];
+        r[a] ^= r[d];
+        r[c] ^= r[e];
+        r[d] ^= srpKey[4 * i + 3];
+        r[b] ^= srpKey[4 * i + 1];
+        r[a] = rotw(r[a], 5);
+        r[c] = rotw(r[c], 22);
+        r[a] ^= srpKey[4 * i + 0];
+        r[c] ^= srpKey[4 * i + 2];
+    };
+
+    var srpKL = function (r, a, b, c, d, e, i) {
+        r[a] ^= srpKey[4 * i + 0];
+        r[b] ^= srpKey[4 * i + 1];
+        r[c] ^= srpKey[4 * i + 2];
+        r[d] ^= srpKey[4 * i + 3];
+        r[a] = rotw(r[a], 27);
+        r[c] = rotw(r[c], 10);
+        r[e] = r[b];
+        r[c] ^= r[d];
+        r[a] ^= r[d];
+        r[e] = (r[e] &lt;&lt; 7) &amp; wMax;
+        r[a] ^= r[b];
+        r[b] = rotw(r[b], 31);
+        r[c] ^= r[e];
+        r[d] = rotw(r[d], 25);
+        r[e] = (r[a] &lt;&lt; 3) &amp; wMax;
+        r[b] ^= r[a];
+        r[d] ^= r[e];
+        r[a] = rotw(r[a], 19);
+        r[b] ^= r[c];
+        r[d] ^= r[c];
+        r[c] = rotw(r[c], 29);
+    };
+
+    var srpS = [
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x3];
+            r[x3] |= r[x0];
+            r[x0] ^= r[x4];
+            r[x4] ^= r[x2];
+            r[x4] = ~r[x4];
+            r[x3] ^= r[x1];
+            r[x1] &amp;= r[x0];
+            r[x1] ^= r[x4];
+            r[x2] ^= r[x0];
+            r[x0] ^= r[x3];
+            r[x4] |= r[x0];
+            r[x0] ^= r[x2];
+            r[x2] &amp;= r[x1];
+            r[x3] ^= r[x2];
+            r[x1] = ~r[x1];
+            r[x2] ^= r[x4];
+            r[x1] ^= r[x2];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x1];
+            r[x1] ^= r[x0];
+            r[x0] ^= r[x3];
+            r[x3] = ~r[x3];
+            r[x4] &amp;= r[x1];
+            r[x0] |= r[x1];
+            r[x3] ^= r[x2];
+            r[x0] ^= r[x3];
+            r[x1] ^= r[x3];
+            r[x3] ^= r[x4];
+            r[x1] |= r[x4];
+            r[x4] ^= r[x2];
+            r[x2] &amp;= r[x0];
+            r[x2] ^= r[x1];
+            r[x1] |= r[x0];
+            r[x0] = ~r[x0];
+            r[x0] ^= r[x2];
+            r[x4] ^= r[x1];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x3] = ~r[x3];
+            r[x1] ^= r[x0];
+            r[x4] = r[x0];
+            r[x0] &amp;= r[x2];
+            r[x0] ^= r[x3];
+            r[x3] |= r[x4];
+            r[x2] ^= r[x1];
+            r[x3] ^= r[x1];
+            r[x1] &amp;= r[x0];
+            r[x0] ^= r[x2];
+            r[x2] &amp;= r[x3];
+            r[x3] |= r[x1];
+            r[x0] = ~r[x0];
+            r[x3] ^= r[x0];
+            r[x4] ^= r[x0];
+            r[x0] ^= r[x2];
+            r[x1] |= r[x2];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x1];
+            r[x1] ^= r[x3];
+            r[x3] |= r[x0];
+            r[x4] &amp;= r[x0];
+            r[x0] ^= r[x2];
+            r[x2] ^= r[x1];
+            r[x1] &amp;= r[x3];
+            r[x2] ^= r[x3];
+            r[x0] |= r[x4];
+            r[x4] ^= r[x3];
+            r[x1] ^= r[x0];
+            r[x0] &amp;= r[x3];
+            r[x3] &amp;= r[x4];
+            r[x3] ^= r[x2];
+            r[x4] |= r[x1];
+            r[x2] &amp;= r[x1];
+            r[x4] ^= r[x3];
+            r[x0] ^= r[x3];
+            r[x3] ^= r[x2];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x3];
+            r[x3] &amp;= r[x0];
+            r[x0] ^= r[x4];
+            r[x3] ^= r[x2];
+            r[x2] |= r[x4];
+            r[x0] ^= r[x1];
+            r[x4] ^= r[x3];
+            r[x2] |= r[x0];
+            r[x2] ^= r[x1];
+            r[x1] &amp;= r[x0];
+            r[x1] ^= r[x4];
+            r[x4] &amp;= r[x2];
+            r[x2] ^= r[x3];
+            r[x4] ^= r[x0];
+            r[x3] |= r[x1];
+            r[x1] = ~r[x1];
+            r[x3] ^= r[x0];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x1];
+            r[x1] |= r[x0];
+            r[x2] ^= r[x1];
+            r[x3] = ~r[x3];
+            r[x4] ^= r[x0];
+            r[x0] ^= r[x2];
+            r[x1] &amp;= r[x4];
+            r[x4] |= r[x3];
+            r[x4] ^= r[x0];
+            r[x0] &amp;= r[x3];
+            r[x1] ^= r[x3];
+            r[x3] ^= r[x2];
+            r[x0] ^= r[x1];
+            r[x2] &amp;= r[x4];
+            r[x1] ^= r[x2];
+            r[x2] &amp;= r[x0];
+            r[x3] ^= r[x2];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x1];
+            r[x3] ^= r[x0];
+            r[x1] ^= r[x2];
+            r[x2] ^= r[x0];
+            r[x0] &amp;= r[x3];
+            r[x1] |= r[x3];
+            r[x4] = ~r[x4];
+            r[x0] ^= r[x1];
+            r[x1] ^= r[x2];
+            r[x3] ^= r[x4];
+            r[x4] ^= r[x0];
+            r[x2] &amp;= r[x0];
+            r[x4] ^= r[x1];
+            r[x2] ^= r[x3];
+            r[x3] &amp;= r[x1];
+            r[x3] ^= r[x0];
+            r[x1] ^= r[x2];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x1] = ~r[x1];
+            r[x4] = r[x1];
+            r[x0] = ~r[x0];
+            r[x1] &amp;= r[x2];
+            r[x1] ^= r[x3];
+            r[x3] |= r[x4];
+            r[x4] ^= r[x2];
+            r[x2] ^= r[x3];
+            r[x3] ^= r[x0];
+            r[x0] |= r[x1];
+            r[x2] &amp;= r[x0];
+            r[x0] ^= r[x4];
+            r[x4] ^= r[x3];
+            r[x3] &amp;= r[x0];
+            r[x4] ^= r[x1];
+            r[x2] ^= r[x4];
+            r[x3] ^= r[x1];
+            r[x4] |= r[x0];
+            r[x4] ^= r[x1];
+        }];
+
+    var srpSI = [
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x3];
+            r[x1] ^= r[x0];
+            r[x3] |= r[x1];
+            r[x4] ^= r[x1];
+            r[x0] = ~r[x0];
+            r[x2] ^= r[x3];
+            r[x3] ^= r[x0];
+            r[x0] &amp;= r[x1];
+            r[x0] ^= r[x2];
+            r[x2] &amp;= r[x3];
+            r[x3] ^= r[x4];
+            r[x2] ^= r[x3];
+            r[x1] ^= r[x3];
+            r[x3] &amp;= r[x0];
+            r[x1] ^= r[x0];
+            r[x0] ^= r[x2];
+            r[x4] ^= r[x3];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x1] ^= r[x3];
+            r[x4] = r[x0];
+            r[x0] ^= r[x2];
+            r[x2] = ~r[x2];
+            r[x4] |= r[x1];
+            r[x4] ^= r[x3];
+            r[x3] &amp;= r[x1];
+            r[x1] ^= r[x2];
+            r[x2] &amp;= r[x4];
+            r[x4] ^= r[x1];
+            r[x1] |= r[x3];
+            r[x3] ^= r[x0];
+            r[x2] ^= r[x0];
+            r[x0] |= r[x4];
+            r[x2] ^= r[x4];
+            r[x1] ^= r[x0];
+            r[x4] ^= r[x1];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x2] ^= r[x1];
+            r[x4] = r[x3];
+            r[x3] = ~r[x3];
+            r[x3] |= r[x2];
+            r[x2] ^= r[x4];
+            r[x4] ^= r[x0];
+            r[x3] ^= r[x1];
+            r[x1] |= r[x2];
+            r[x2] ^= r[x0];
+            r[x1] ^= r[x4];
+            r[x4] |= r[x3];
+            r[x2] ^= r[x3];
+            r[x4] ^= r[x2];
+            r[x2] &amp;= r[x1];
+            r[x2] ^= r[x3];
+            r[x3] ^= r[x4];
+            r[x4] ^= r[x0];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x2] ^= r[x1];
+            r[x4] = r[x1];
+            r[x1] &amp;= r[x2];
+            r[x1] ^= r[x0];
+            r[x0] |= r[x4];
+            r[x4] ^= r[x3];
+            r[x0] ^= r[x3];
+            r[x3] |= r[x1];
+            r[x1] ^= r[x2];
+            r[x1] ^= r[x3];
+            r[x0] ^= r[x2];
+            r[x2] ^= r[x3];
+            r[x3] &amp;= r[x1];
+            r[x1] ^= r[x0];
+            r[x0] &amp;= r[x2];
+            r[x4] ^= r[x3];
+            r[x3] ^= r[x0];
+            r[x0] ^= r[x1];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x2] ^= r[x3];
+            r[x4] = r[x0];
+            r[x0] &amp;= r[x1];
+            r[x0] ^= r[x2];
+            r[x2] |= r[x3];
+            r[x4] = ~r[x4];
+            r[x1] ^= r[x0];
+            r[x0] ^= r[x2];
+            r[x2] &amp;= r[x4];
+            r[x2] ^= r[x0];
+            r[x0] |= r[x4];
+            r[x0] ^= r[x3];
+            r[x3] &amp;= r[x2];
+            r[x4] ^= r[x3];
+            r[x3] ^= r[x1];
+            r[x1] &amp;= r[x0];
+            r[x4] ^= r[x1];
+            r[x0] ^= r[x3];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x1];
+            r[x1] |= r[x2];
+            r[x2] ^= r[x4];
+            r[x1] ^= r[x3];
+            r[x3] &amp;= r[x4];
+            r[x2] ^= r[x3];
+            r[x3] |= r[x0];
+            r[x0] = ~r[x0];
+            r[x3] ^= r[x2];
+            r[x2] |= r[x0];
+            r[x4] ^= r[x1];
+            r[x2] ^= r[x4];
+            r[x4] &amp;= r[x0];
+            r[x0] ^= r[x1];
+            r[x1] ^= r[x3];
+            r[x0] &amp;= r[x2];
+            r[x2] ^= r[x3];
+            r[x0] ^= r[x2];
+            r[x2] ^= r[x4];
+            r[x4] ^= r[x3];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x0] ^= r[x2];
+            r[x4] = r[x0];
+            r[x0] &amp;= r[x3];
+            r[x2] ^= r[x3];
+            r[x0] ^= r[x2];
+            r[x3] ^= r[x1];
+            r[x2] |= r[x4];
+            r[x2] ^= r[x3];
+            r[x3] &amp;= r[x0];
+            r[x0] = ~r[x0];
+            r[x3] ^= r[x1];
+            r[x1] &amp;= r[x2];
+            r[x4] ^= r[x0];
+            r[x3] ^= r[x4];
+            r[x4] ^= r[x2];
+            r[x0] ^= r[x1];
+            r[x2] ^= r[x0];
+        },
+        function (r, x0, x1, x2, x3, x4) {
+            r[x4] = r[x3];
+            r[x3] &amp;= r[x0];
+            r[x0] ^= r[x2];
+            r[x2] |= r[x4];
+            r[x4] ^= r[x1];
+            r[x0] = ~r[x0];
+            r[x1] |= r[x3];
+            r[x4] ^= r[x0];
+            r[x0] &amp;= r[x2];
+            r[x0] ^= r[x1];
+            r[x1] &amp;= r[x2];
+            r[x3] ^= r[x2];
+            r[x4] ^= r[x3];
+            r[x2] &amp;= r[x3];
+            r[x3] |= r[x0];
+            r[x1] ^= r[x4];
+            r[x3] ^= r[x4];
+            r[x4] &amp;= r[x0];
+            r[x4] ^= r[x2];
+        }];
+
+    var srpKc = [7788, 63716, 84032, 7891, 78949, 25146, 28835, 67288, 84032, 40055, 7361, 1940, 77639, 27525, 24193, 75702,
+        7361, 35413, 83150, 82383, 58619, 48468, 18242, 66861, 83150, 69667, 7788, 31552, 40054, 23222, 52496, 57565, 7788, 63716];
+    var srpEc = [44255, 61867, 45034, 52496, 73087, 56255, 43827, 41448, 18242, 1939, 18581, 56255, 64584, 31097, 26469,
+        77728, 77639, 4216, 64585, 31097, 66861, 78949, 58006, 59943, 49676, 78950, 5512, 78949, 27525, 52496, 18670, 76143];
+    var srpDc = [44255, 60896, 28835, 1837, 1057, 4216, 18242, 77301, 47399, 53992, 1939, 1940, 66420, 39172, 78950,
+        45917, 82383, 7450, 67288, 26469, 83149, 57565, 66419, 47400, 58006, 44254, 18581, 18228, 33048, 45034, 66508, 7449];
+
+    var keyIt = function (r, a, b, c, d, i) {
+        srpKey[i] = r[b] = rotw(srpKey[a] ^ r[b] ^ r[c] ^ r[d] ^ 0x9e3779b9 ^ i, 11);
+    };
+
+    var keyLoad = function (r, a, b, c, d, i) {
+        r[a] = srpKey[i];
+        r[b] = srpKey[i + 1];
+        r[c] = srpKey[i + 2];
+        r[d] = srpKey[i + 3];
+    };
+
+    var keyStore = function (r, a, b, c, d, i) {
+        srpKey[i] = r[a];
+        srpKey[i + 1] = r[b];
+        srpKey[i + 2] = r[c];
+        srpKey[i + 3] = r[d];
+    };
+
+    pub.Init = function (key) {
+        var i, j, m, n;
+
+        //key.reverse();
+        if (key.length &lt; 32)
+            key[key.length] = 1;
+        while (key.length &lt; 32)
+            key[key.length] = 0;
+        for (i = 0; i &lt; 8; i++) {
+            srpKey[i] = (key[4 * i + 0] &amp; 0xff) | (key[4 * i + 1] &amp; 0xff) &lt;&lt; 8 |
+                    (key[4 * i + 2] &amp; 0xff) &lt;&lt; 16 | (key[4 * i + 3] &amp; 0xff) &lt;&lt; 24;
+        }
+
+        var r = [srpKey[3], srpKey[4], srpKey[5], srpKey[6], srpKey[7]];
+
+        i = 0;
+        j = 0;
+        while (keyIt(r, j++, 0, 4, 2, i++), keyIt(r, j++, 1, 0, 3, i++), i &lt; 132) {
+            keyIt(r, j++, 2, 1, 4, i++);
+            if (i === 8) {
+                j = 0;
+            }
+            keyIt(r, j++, 3, 2, 0, i++);
+            keyIt(r, j++, 4, 3, 1, i++);
+        }
+
+        i = 128;
+        j = 3;
+        n = 0;
+        while (m = srpKc[n++], srpS[j++ % 8](r, m % 5, m % 7, m % 11, m % 13, m % 17), m = srpKc[n], keyStore(r, m % 5, m % 7, m % 11, m % 13, i), i > 0) {
+            i -= 4;
+            keyLoad(r, m % 5, m % 7, m % 11, m % 13, i);
+        }
+    };
+
+    pub.Close = function () {
+        srpKey = [];
+    };
+
+    pub.Encrypt = function (bData)
+    {
+        var blk = bData.slice(0); //blk.reverse();
+        var r = [getW(blk, 0), getW(blk, 4), getW(blk, 8), getW(blk, 12)];
+
+        srpK(r, 0, 1, 2, 3, 0);
+        var n = 0, m = srpEc[n];
+
+        while (srpS[n % 8](r, m % 5, m % 7, m % 11, m % 13, m % 17), n &lt; 31) {
+            m = srpEc[++n];
+            srpLK(r, m % 5, m % 7, m % 11, m % 13, m % 17, n);
+        }
+
+        srpK(r, 0, 1, 2, 3, 32);
+        setWInv(bData, 0, r[0]);
+        setWInv(bData, 4, r[1]);
+        setWInv(bData, 8, r[2]);
+        setWInv(bData, 12, r[3]);
+
+    };
+
+    pub.Decrypt = function (bData)
+    {
+        var blk = bData.slice(0, 16); //blk.reverse();
+        var r = [getW(blk, 0), getW(blk, 4), getW(blk, 8), getW(blk, 12)];
+
+        srpK(r, 0, 1, 2, 3, 32);
+        var n = 0, m = srpDc[n];
+        while (srpSI[7 - n % 8](r, m % 5, m % 7, m % 11, m % 13, m % 17), n &lt; 31) {
+            m = srpDc[++n];
+            srpKL(r, m % 5, m % 7, m % 11, m % 13, m % 17, 32 - n);
+        }
+        srpK(r, 2, 3, 1, 4, 0);
+
+        setWInv(bData, 0, r[2]);
+        setWInv(bData, 4, r[3]);
+        setWInv(bData, 8, r[1]);
+        setWInv(bData, 12, r[4]);
+        i += 16;
+    };
+    return pub;
+};
+
+
+mcrypt.pad = function (x, y) {
+    if (x.length >= y)
+        return x.substr(0, y);
+    for (var i = y - x.length; i; i--)
+        x += String.fromCharCode(Math.floor(Math.random() * 256));
+    return x;
+};
+var hexdigits = '0123456789ABCDEF';
+var hexLookup = Array(256);
+for (var i = 0; i &lt; 256; i++)
+    hexLookup[i] = hexdigits.indexOf(String.fromCharCode(i));
+
+mcrypt.bin2hex = function (str) {
+    var out = '';
+    for (var i = 0; i &lt; str.length; i++)
+        out += hexdigits[str.charCodeAt(i) >> 4] + hexdigits[str.charCodeAt(i) &amp; 15] + ' ';
+    return out;
+};
+
+
+/**********************************End Encryption Functions *****************************/
+
+/* Public Encryption Interface */
+/**
+ * @class
+ * TigerJS.Crypto Provides interfaces to for performing data encryption
+ * Currently Supported Ciphers are
+ *  rijndael-128,  rijndael-192,   rijndael-256 and serpent&lt;br/>
+ * Use a key size of 32, for ciphers to work with other implementations
+ */
+TigerJS.Crypto = {};
+/**
+ * Encrypt text given certain parameters, This function generates a
+ * random iv for its operation
+ * @param {String} data The data to encrypt
+ * @param {String} key The encryptiton key, This must have a byte length
+ * of 32
+ * @param {String} cipher The block cipher to use
+ * @param {String} mode The cipher-mode to use, one of (cbc | cfb | efb | ofb)
+ *
+ * @return Object Returns an Object with cipherTextRaw contaning the
+ * raw-binary encrypted tex, cipherTextHex the ciphertext in Hex format
+ * and iv as properties
+ *
+ * @name TigerJS.Crypto.encrypt
+ * @function
+ */
+
+TigerJS.Crypto.encrypt = function (data, key, cipher, mode) {
+
+
+    //This iv is returned as a binary string so, lets convert to hex
+    var iv = mcrypt.bin2hex(mcrypt.pad("0", mcrypt.get_iv_size(cipher, mode))),
+            keylength, enc;
+
+    //clip the iv to the desired length
+    iv = iv.replace(/\s/g, "").substr(0, mcrypt.get_iv_size(cipher, mode));
+
+    keylength = mcrypt.get_key_size(cipher, mode);
+    if (key &amp;&amp; (key.length > keylength || key.length &lt; keylength)) {
+        throw new Error("TigerJS::Crypto::encrypt : use a 256 bit key");
+    }
+
+//Encrypt
+    enc = (mcrypt.Encrypt(data, iv, key, cipher, mode));
+
+    return {
+        "cipherTextRaw": enc,
+        "cipherTextHex": mcrypt.bin2hex(enc).toString().replace(/\s/g, "")
+        , "iv": (iv).replace(/\s/g, "").substr(0, mcrypt.get_iv_size(cipher, mode))
+    };
+
+};
+/**
+ * Decrypts a Cipher Text back to its original form
+ * @param {String} data The data to decrypt as returned in binary form a compatible encrypt function
+ * @param {String} key The encryptiton key, This mus have a byte length
+ * of 32 (256 bit)
+ * @param {String} cipher The block cipher to use
+ * @param {String} iv The Initialization vector used in encryption phase
+ * @param {String} mode The cipher-mode to use, one of (cbc | cfb | efb | ofb)
+ *
+ * @return Returns the decrytted text
+ * @name TigerJS.Crypto.decrypt
+ * @function
+ */
+
+TigerJS.Crypto.decrypt = function (data, iv, key, cipher, mode) {
+
+
+    var keylength = mcrypt.get_key_size(cipher, mode), txt;
+
+    if (key &amp;&amp; (key.length > keylength || key.length &lt; keylength)) {
+        throw new Error("TigerJS::Crypto::decrypt : use a 256 bit key");
+    }
+
+    //function(ctext, IV, key, cipher, mode)
+    txt = (mcrypt.Decrypt(data, iv, key, cipher, mode));
+
+    return txt;
+
+};
+
+       </code></pre>
+        </article>
+    </section>
+
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Dec 28 2016 22:14:41 GMT+0100 (W. Central Africa Standard Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
