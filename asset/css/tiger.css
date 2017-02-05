@@ -3127,9 +3127,180 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
         }
 
         /**
-         *More Animations
-        
+         *More Animations by me (wipe-xxx and slide-xxx) are defines using JS, so are always available... see docs
          */
+        @-webkit-keyframes scaleIn {
+            0% {
+                -webkit-transform: scale(.2);
+                -ms-transform: scale(.2);
+                transform: scale(.2);
+                opacity :.2;
+            }
+            20% {
+                -webkit-transform: scale(.2);
+                -ms-transform: scale(.2);
+                transform: scale(.2);
+                opacity :.3;
+            }
+            40% {
+                -webkit-transform: scale(.4);
+                -ms-transform: scale(.4);
+                transform: scale(.4);
+                opacity :.4;
+            }
+            60% {
+                -webkit-transform: scale(.6);
+                -ms-transform: scale(.6);
+                transform: scale(.6);
+                opacity :.6;
+            }
+
+            80% {
+                -webkit-transform: scale(.8);
+                -ms-transform: scale(.8);
+                transform: scale(.8);
+                opacity :.8;
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+                opacity :1;
+            }
+        }
+
+        @keyframes scaleIn {
+            0% {
+                -webkit-transform: scale(.2);
+                -ms-transform: scale(.2);
+                transform: scale(.2);
+                opacity :.2;
+            }
+            20% {
+                -webkit-transform: scale(.2);
+                -ms-transform: scale(.2);
+                transform: scale(.2);
+                opacity :.3;
+            }
+            40% {
+                -webkit-transform: scale(.4);
+                -ms-transform: scale(.4);
+                transform: scale(.4);
+                opacity :.4;
+            }
+            60% {
+                -webkit-transform: scale(.6);
+                -ms-transform: scale(.6);
+                transform: scale(.6);
+                opacity :.6;
+            }
+
+            80% {
+                -webkit-transform: scale(.8);
+                -ms-transform: scale(.8);
+                transform: scale(.8);
+                opacity :.8;
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+                opacity :1;
+            }
+        }
+
+        .scaleIn {
+            -webkit-animation-name: scaleIn;
+            animation-name: scaleIn;
+        }
+        @-webkit-keyframes scaleOut {
+            0% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+                opacity :1;
+            }
+            20% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+                opacity :.9;
+            }
+            40% {
+                -webkit-transform: scale(.8);
+                -ms-transform: scale(.8);
+                transform: scale(.8);
+                opacity :.8;
+            }
+            60% {
+                -webkit-transform: scale(.6);
+                -ms-transform: scale(.6);
+                transform: scale(.6);
+                opacity :.6;
+            }
+
+            80% {
+                -webkit-transform: scale(.4);
+                -ms-transform: scale(.4);
+                transform: scale(.4);
+                opacity :.4;
+            }
+
+            100% {
+                -webkit-transform: scale(.2);
+                -ms-transform: scale(.2);
+                transform: scale(.2);
+                opacity :0;
+            }
+        }
+
+        @keyframes scaleOut {
+            0% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+                opacity :1;
+            }
+            20% {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+                opacity :.9;
+            }
+            40% {
+                -webkit-transform: scale(.8);
+                -ms-transform: scale(.8);
+                transform: scale(.8);
+                opacity :.8;
+            }
+            60% {
+                -webkit-transform: scale(.6);
+                -ms-transform: scale(.6);
+                transform: scale(.6);
+                opacity :.6;
+            }
+
+            80% {
+                -webkit-transform: scale(.4);
+                -ms-transform: scale(.4);
+                transform: scale(.4);
+                opacity :.4;
+            }
+
+            100% {
+                -webkit-transform: scale(.2);
+                -ms-transform: scale(.2);
+                transform: scale(.2);
+                opacity :0;
+            }
+        }
+
+        .scaleOut {
+            -webkit-animation-name: scaleOut;
+            animation-name: scaleOut;
+        }
 
 
         /*!
@@ -3166,7 +3337,7 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
         .w3-bgray-theme-4 {color:#000 !important;background-color:#b0bec5 !important}
         .w3-bgray-theme-5 {color:#000 !important;background-color:#90a4ae !important}
         .w3-bgray-theme-6 {color:#fff !important;background-color:#78909c !important}
-        .w3-bgray-theme-7 {color:gr#fff !important;background-color:#546e7a !important}
+        .w3-bgray-theme-7 {color:#fff !important;background-color:#546e7a !important}
         .w3-bgray-theme-8 {color:#fff !important;background-color:#455a64 !important}
         .w3-bgray-theme-9 {color:#fff !important;background-color:#37474f !important}
         .w3-bgray-theme-10 {color:#fff !important;background-color:#263238 !important}
@@ -3674,21 +3845,117 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 
         /** STYLE DEFS FOR THE X GUI ELEMENTS ***************************************************************/
         .xui_default{
-            background-color:#111 !important;
-            fill:#111;
-            font-size :.8em;
             color :#fff;
-            stroke-width:1.5;
+            stroke-width:3;
             stroke:#fff;
-            text-shadow :0px 0px 4px #fff;
-            position:  relative
+            text-shadow :0px 0px 5px #fff;
+            opacity: .95;
 
+        }
+
+        .xui_white_theme{
+            fill-opacity:.6;
+            fill:#fff !important;
+        }
+        .xui_white_active_theme{
+            fill:#fff !important;
+        }
+        .xui_red_theme{
+            fill-opacity:.6;
+            fill:#660000 !important;         
+            stroke:#ff1a1a !important; 
+        }
+        .xui_red_active_theme{
+            fill:#ff3333 !important;
+            stroke:#ff9999 !important; 
+        }
+        .xui_green_theme{
+            fill-opacity:.6;
+            fill:#004d1a !important;
+            stroke:#99ffbb !important; 
+        }
+        .xui_green_active_theme{
+            fill:#00e64d !important;
+            stroke:#99ffbb !important; 
+        }
+        .xui_orange_theme{
+            fill-opacity:.6;
+            fill:#663d00 !important;
+            stroke:#ffcc80 !important; 
+        }
+        .xui_orange_active_theme{
+            fill: #ff9900 !important;
+            stroke:#ffcc80 !important; 
         }
 
         .xui_blue_theme{
+            fill-opacity:.6;
             fill:#00394d !important;
             stroke:#ccffff !important; 
         }
-        .xui_blue_theme_active{
-            fill:#66d9ff !important;
+        .xui_blue_active_theme{
+            stroke:#4dcfff !important; 
+            fill:#1ac2ff !important;
         }
+
+        .xui_green__textc_theme{
+            stroke-width:3;
+            stroke:#b3ff66;
+            fill:none
+        }
+        .xui_green__textc_theme_default{
+            fill:none;
+            color :#33ff33 !important;
+            position: absolute;
+            text-shadow :0px 0px 4px #66ff66;
+        }
+        .xui_red__textc_theme_default{
+            fill:none;
+            color: #f00 !important;            
+            position: absolute;
+            text-shadow :0px 0px 4px #ff1a1a;
+
+        }
+        .xui_red__textc_theme{
+            stroke-width:3;
+            stroke: #f00;
+            fill:none;
+        }
+
+
+        .xui_orange__textc_theme{
+            stroke-width:3;
+            stroke: #e3e303 ;
+            fill:none;
+        }
+
+        .xui_orange__textc_theme_default{
+            fill:none;
+            color :  #ffcc00 !important;
+            position: absolute;
+            text-shadow :0px 0px 4px #fcfc4f;
+        }
+        .xui_blue__textc_theme{
+            stroke-width:3;
+            stroke:#00ccff ;
+            fill:none;
+        }
+
+        .xui_blue__textc_theme_default{
+            fill:none;
+            color :#00ccff !important;
+            text-shadow :0px 0px 4px #66d6ff;
+            position: absolute;
+        }
+        .xui_white__textc_theme_default{
+            fill:none;
+            color :  #fff !important;
+            position: absolute;
+            text-shadow :0px 0px 4px #fff;
+        }
+        .xui_white__textc_theme{
+            stroke-width:3;
+            stroke:#fff;
+            fill:none;
+        }
+        

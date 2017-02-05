@@ -1,0 +1,38 @@
+
+
+
+manual library usage scheme
+<script type="text/javascript" src="http://tiger.16/src/tiger.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/parser.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/map.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/Iterator.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/string.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/ua.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/io.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/conn.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/hash.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/crypt.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/$.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/eventManager.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/nodes.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/ui.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/DateLocalizationInfo.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/Date.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/CalendarWidget.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/TextInputWidget.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/TooltipWidget.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/CheckBoxWidget.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/OverlayWidget.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/NotifyWidget.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/RangeWidget.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/FileUploadWidget.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/X_UI.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/X_UI_xuiText.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/X_UI_xuiTextb.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/X_UI_xuiTextc.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/X_UI_xuiLine.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/X_UI_xuiLine.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/X_UI_xuiCircle.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/bootstrap.js" ></script>
+    <script type="text/javascript" src="http://tiger.16/src/ArrayBufferShim.js" ></script>
+    <link type="text/css" rel="stylesheet" href="http://tiger.16/asset/css/tiger.min.css" />

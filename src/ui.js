@@ -599,11 +599,16 @@ TigerJS.UI.FX = {
      * lightSpeedIn|lightSpeedOut|pulse|rollIn|rollOut|rotateIn|rotateInDownLeft|
      * rotateInDownRight|rotateInUpLeft|rotateInUpRight|rotateOut|rotateOutDownLeft|
      * rotateOutDownRight|rotateOutUpLeft|rotateOutUpRight|rubberBand|shake|slideInDown|
-     * slideInLeft|slideInRight|slideOutLeft|slideOutright|slideOutUp|swing|tada|wobble
+     * slideInLeft|slideInRight|slideOutLeft|slideOutright|slideOutUp|swing|tada|wobble|scaleIn|scaleOut
      *
      * The following animations can only be used from javascript by using this object
      * wipe-left|wipe-right|wipe-bottom|wipe-top|
      * slidein-left|slidein-right|slidein-bottom|slidein-top
+     * 
+     * For scaleIn animation set the initaial opacity on the Element to .2
+     * For scaleOut animation the initial opacity is expected to be 1
+     * 
+     * For most animations that fade's in an element an initial opacity of zero is expected
      *   </pre>
      * @example T.UI.FX.Animation({
      *                 el : id, //just pass the string id of the element or a DOM reference
@@ -633,12 +638,12 @@ TigerJS.UI.FX = {
     Animation: function (animConfig) {
         var el = animConfig.el._outerHTML ? animConfig.el : T.$(animConfig.el); // element to animate
 
-
+        var coords = el.rect();
 
         if (animConfig.name.strpos("wipe") !== -1) {
             //create custom css-clip animation function
-            var elWidth = el.offsetWidth,
-                    elHeight = el.offsetHeight;
+            var elWidth = coords.width,
+                    elHeight = coords.height;
             if (animConfig.name === "wipe-left") {
 
 
@@ -785,9 +790,9 @@ TigerJS.UI.FX = {
         } else if (animConfig.name.search(/slidei/g) !== -1) {
 
             //create custom css-clip animation function
-            var elWidth = el.offsetWidth,
-                    elHeight = el.offsetHeight;
-            if (animConfig.name === "slidein-left") { //we're to do a wipe left animation
+             var elWidth = coords.width,
+                    elHeight = coords.height;
+            if (animConfig.name === "slidein-left") { 
 
                 //set a default clip property on the element before animating
                 el.style.clip = "rect(0px,0px," + elHeight + "px,0px)";

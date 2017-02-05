@@ -81,7 +81,7 @@ String.prototype.unEscQuote = function ()
 
 
 String.prototype.explode = function (del, lim)
-{ 
+{
 
     var c = 0,
             r = [],
@@ -1122,21 +1122,36 @@ String.prototype.insert_n = function (o, n, offset)
 };
 
 /**
- * Insert a sequence o characters, a character at a time
+ * Insert a sequence o characters, a character at a time, a tidle (`) character is used for line breaks
  * @param {String} data The character string to be inserted
  * @param {HTMLELement | String} node The element the strings are to be inserted into
+ * @param {Boolean} [alignTextNode = false] Adding strings dynamically can affect the positioning of an element within its
+ * parent, setting this flag to true ensure the text node stays aligned
  */
-String.prototype.drizzle = function(data, node){
-    
+String.prototype.drizzle = function (data, node, alignTextNode) {
+
     data = this.length ? this : data; //use the calling string contents if avaialable
-    
+
     var node = T.$(node);
-   
-    T.Iterator(data).timed_iterator( function(char){
-     node.innerHTML += (char);
-        
-    },50);
-    
+    node.innerHTML = "";
+
+    T.Iterator(data).timed_iterator(function (char) {
+        if(char === '`'){
+            node.innerHTML += "<br/>";
+        }else{
+        node.innerHTML += (char);
+        }
+        //reposition the text-node on veritcally and horizontally in the parent
+        //so it remains centered
+        if (alignTextNode && alignTextNode === true) {
+
+                node.style.marginTop = (node.parentNode.offsetHeight - node.offsetHeight) * .5 + "px";
+                node.style.marginLeft = (node.parentNode.offsetWidth - node.offsetWidth) * .5 + "px";
+
+        }
+
+    }, 10);
+
 };
 
 /**

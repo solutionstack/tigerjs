@@ -1,14 +1,14 @@
                                README FILE
                               ------------
 
-                        TigerJS Javascript Library 1.1a
+                        TigerJS Javascript Library 1.2.2
                     -------------------------------------------
 
     INTRODUCTION
     ----------------
 
     The TigerJS JavaScript Library is an advanced, cross-browser, feature-rich and highly optimized 
-    JavaScript/DOM library, that is built to reduce the time and effort uou need to put in building 
+    JavaScript/DOM library, that is built to reduce the time and effort you need to put in building 
     todays web 2.0/3.0 Applications, it has built to deliver high runtime performance and has low memory
     overhead, it includes lot of reusable utilities and language enhancement's / functional programming modules, DOM management modules, Basic Animations,
     Events, Ajax communication, data structures and much more.
@@ -22,7 +22,7 @@
     ----------
 
     TigerJS Javascript Library  (C) Agbalaya Olubodun (  , Nigeria)
-                            2014-2016, GNU LGPL v3, 
+                            2014-2017, GNU LGPL v3, 
                              agbalaya@users.sourceforge.net, 
                              https://github.com/solutionstack/tigerjs
                              s.stackng@gmail.com
@@ -96,9 +96,9 @@
 
     Dojo Library, Glow (BBC), YUI, PHPJs / PHP, openjs.com, Uize Library
     Ext Framework, Scripty, jsSHA, jsmcrypt, prototypejs.org, Google Closure 
-   various GitHub Projects , Paul Hayes, Mozilla (MDN)
+    various GitHub Projects , Paul Hayes, Mozilla (MDN)
     Stack-Overflow, Datejs, XDate, (Easing Equations. by Robert Penner),
-   And other open-source projects/people/ideas/bugs not mentioned  
+    And other open-source projects/people/ideas/bugs not mentioned  
     
 
 

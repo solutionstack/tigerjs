@@ -89,13 +89,14 @@ var TigerJS = function () {
             /**
              * @ignore
              */
-            _pt = _loc.protocol, //protocol
+_pt = _loc.protocol, //protocol
 
             /**
              * @ignore
              */
 
-            _ssl = _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
+_ssl = 
+_pt.toLowerCase() === 'https:'; //are we on SSL/TLS
 
     /**
      *

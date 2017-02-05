@@ -26,16 +26,8 @@
  * 'ENGINE' : The browser enfine
  *            TRIDENT | GECKO | PRESTO | WEBKIT
  * 'VERSION' : The browser version (float);
- * 'JAVA' : Boolean True if java is installed and enabled else false
- * 'FLASH' : Boolean True if abobe flash plugin is installed and enabled else false
- * 'FLASH_VER' : The version of the adobe flash plugin
- * 'SILVERIGHT' : Boolean True if silverlight plugin  is installed and enabled else false
- * 'SILVERLIGHT_VER' : THE VERSION OF THE SILVERLIGHT PLUGIN
- * 'PDF' : Boolean True if a compatible pdf plugin is installed and enabled else false
- * 'HTML_5_AUDIO': Boolean True if HTML5 Audio is supported
- * 'HTML_5_VIDEO': Boolean True if HTML5 Video is supported
  
- * 'CANVAS' : Boolean True if HTML5 canvas is supported
+ * 'HTML5_API ' : If HTML5 API's are fully supported
  * 'SVG' : Boolean true if SVG is supported
  * 'isMOBILE : Boolean ti indicate if we're in a mobile enviroment
  *
@@ -52,20 +44,14 @@
 TigerJS.ua = function () {
 //    //
 //....Quick and Dirty
-    var doc = document;
+    var doc = document, wn = window;
     this.BROWSER = "";
     this.VERSION = "undefined";
     this.isMOBILE = false;
-    this.FLASH = false;
-    this.FLASH_VER = false;
-    this.SILVERLIGHT = "";
-    this.SILVERLIGHT_VER = "";
-
-    this.PDF = false;
-    this.JAVA = false; ////we dont detect java version for now
+   
     this.SelectorsAPI = false;
     this.HTML5_API = false;
-
+    
     //lets get the HTML5 stuff out of the way
     if (!!document.createElement('canvas').getContext && !!document.createElement('video').canPlayType &&
             !!('localStorage' in window && window['localStorage']) && !!window.Worker && !!navigator.geolocation &&
@@ -73,125 +59,11 @@ TigerJS.ua = function () {
             ) {
         this.HTML5_API = true;
     }
-    //Declare function vars
-    var version, versionArray, obj, major, minor, descParts, type, mimeTypes, wn = window.navigator, i, s,
-            z,
-            /*
-             * @ignore
-             */
-            getActiveX = function (_CLASSID_) { //generic, simple get activeX function
-                var obj;
-                try {
-                    obj = new ActiveXObject(_CLASSID_);
-                } catch (err) {
-                    obj = {
-                        activeXError: true//denotes error
-                    };
-                    return obj;
-                }
-                return obj;
-            };
-    //hnadle flash, IE first
 
-    // initialize obj and check return val
-    this.FLASH = (obj = getActiveX("ShockwaveFlash.ShockwaveFlash")).activeXError ? false : true; //if theres an error set to false, else... TRUE
-    if (this.FLASH) {
-        try {
-
-            version = obj.GetVariable("$version");
-            versionArray = version.split(","); //replace with regex
-
-            major = parseInt(versionArray[0].split(" ")[1], 10);
-            minor = parseInt(versionArray[1], 10);
-            this.FLASH_VER = parseFloat(major + "." + minor);
-
-        } catch (err) {
-//.....
-        }
-    }
-
-//...........then, FireFox and Friends
-    try {
-
-        if (wn.plugins && wn.plugins.length > 0) {
-            type = 'application/x-shockwave-flash';
-            mimeTypes = wn.mimeTypes;
-            if (mimeTypes && mimeTypes[type] && mimeTypes[type].enabledPlugin && !!(version = mimeTypes[type].enabledPlugin.description)) {
-                this.FLASH = true;
-                descParts = version.split(/ +/); //split th description up
-                major = descParts[2].split(/\./)[0]; //index 2 containing major and minor version -info
-
-                minor = descParts[2].split(/\./)[1];
-                this.FLASH_VER = parseFloat(major + "." + minor);
-
-            }
-        }
-    } catch (e) {
-    }
-
-
-
-///now PDF
-    if (wn.plugins && wn.plugins.length > 0) {
-        type = "application/pdf";
-        if (mimeTypes && mimeTypes[type] && mimeTypes[type].enabledPlugin) {
-//we did not test for the plugins description here cuz, some dont have one
-//e.g. the default chrome pdf veiwer,
-
-            this.PDF = true;
-        }
-    }
-
-
-//big, thanks to ben on stackoverflow
-
-//versions < 7 use the first activeX ver >= use the second
-    if (!this.PDF && getActiveX("Pdf.PdfCtrl").activeXError && getActiveX("AcroPDF.PDF").activeXError) {
-
-        this.PDF = false;
-    } else {
-
-        this.PDF = true;
-    }
-//
-//handle silverlight
-//
-//
-
-    try {
-        if (wn.plugins && wn.plugins.length > 0) {
-            type = "application/x-silverlight";
-            if (mimeTypes && mimeTypes[type] && mimeTypes[type].enabledPlugin && mimeTypes[type].enabledPlugin.description) {
-                this.SILVERLIGHT = true;
-                this.SILVERLIGHT_VER = "%.1f".sprintf(parseFloat(mimeTypes[type].enabledPlugin.description));
-            }
-        }
-    } catch (e) {
-    }
-    this.SILVERLIGHT = !this.SILVERLIGHT && (obj = getActiveX("AgControl.AgControl")).activeXError ? false : true; //if theres an error set to false, else... TRUE
-    //get silverlight activeX version
-
-
-    try {
-        var lastVer = null;
-        for (i = 0.0; i < 10; i += .1) {
-            lastVer = "%.1f".sprintf(i);
-            if (obj.isVersionSupported(lastVer)) {
-                this.SILVERLIGHT_VER = lastVer;
-            } else {
-                break; //break when isVersionSupported returns false
-            }
-
-        }
-    } catch (e) {
-    }
-
-
-    //SVG
+//SVG
     !!(doc.createElementNS && !!doc.createElementNS("http:/" + "/www.w3.org/2000/svg", "svg").createSVGRect)
             ? this.SVG = true
             : this.SVG = false;
-
     this.SelectorsAPI = !!doc.querySelector;
     doc = null;
     /// detect OS
@@ -299,7 +171,7 @@ TigerJS.ua = function () {
             this.VERSION = z[1];
         this.BROWSER = "OPERA";
     }
-    //more recent webkit based operas
+//more recent webkit based operas
     if (z = /OPR\/(\d{1,2}.\d{1,2})/gi.exec(ua)) {
         this.VERSION = z[1];
         this.BROWSER = "OPERA";
@@ -309,19 +181,12 @@ TigerJS.ua = function () {
 //for opera in spook mode, yeah playing mozilla or IE
     if (!!(z = /Opera (\d{1,2}.\d{1,2})\b/.exec(ua))) {
         this.VERSION = z[1];
-
     }
 //and lastly for opera mini
     if (/Opera Mini/.test(ua)) {
         this.VERSION = parseFloat(ua.substr(ua.indexOf("Opera Mini") + 11, 4));
-
     }
     z = null;
-
-
-
-
-
 //now llets get firefoxy
 //
 

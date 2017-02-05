@@ -318,7 +318,7 @@ TigerJS.Parser = {
     //attributed to http://stackoverflow.com/users/18078/david-leppik
     parseNumber: function (arg)
     {
-        var numberReSnippet = "(?:NaN|-?(?:(?:\\d+|\\d*\\.\\d+)(?:[E|e][+|-]?\\d+)?|Infinity))";
+        var numberReSnippet = "([NaN|+|-]?(?:(?:\\d+|\\d*\\.\\d+)(?:[E|e][+|-]?\\d+)?|Infinity))";
         var matchOnlyNumberRe = new RegExp("^(" + numberReSnippet + ")$"),
                 possible_numbers = arg.split(/[\s;,]+/),
                 m, i, numbers = []; // split on any combination of whitespace, comma, or semi-colon

@@ -188,6 +188,9 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
 
 ///////////// //////////////////SPARSE CONFIGURATION PARAMETERS//////////////////////
+        if (attachToForm ) {
+            baseWidget._widgetElement.form = attachToForm ;
+        }
         if (tColor) {
             baseWidget._widgetElement.style.color = tColor;
             baseWidget._widgetElement.parentNode.style.color = tColor;
@@ -256,7 +259,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 //Create the required span
             var reqEl = T.$(document.createElement("span"));
             reqEl.className += " T-icons-svg";
-            reqEl.setStyle({color: val_req_color, fontSize: ".6em",
+            reqEl.setStyle({color: val_req_color, fill: val_req_color,fontSize: ".6em",
                 width: "1em", textAlign: "center", cssFloat: "right"});
 
             baseWidget._widgetElement.parentNode.appendChild(reqEl);
@@ -381,7 +384,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
             if (!validate_as && _pattern && val !== "") {//they sent their own regex
 
-                if (_pattern.test(val)) {//user pattern validated
+                if (_pattern.test(val)) {//user pattern to validate
 
                     //see if we are to coerce a truthy validation as false
 
@@ -519,7 +522,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
             }
 
-            T.$(); /** Workaround for firefox Heirachy request Error BUG!! -- Just MAKE A  call that accesses the dom after your insertion**/
+            document.createElement("SPAN"); /** Workaround for firefox Heirachy request Error BUG!! -- Just MAKE A  call that accesses the dom after your insertion**/
             ;
             //see if we are been attached to a form so we can validate before submission
 

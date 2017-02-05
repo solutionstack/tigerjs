@@ -1081,6 +1081,7 @@ TigerJS.$ = function (el_) {
      * @return The removed child node, which could be later re-inserted later
      */
     this.el.destroy = function () {
+        this.removeChildNodes();
         try {
             return T.$((this.parentNode.removeChild(this)));
         } catch (e) {

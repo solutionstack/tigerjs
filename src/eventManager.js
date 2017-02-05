@@ -153,10 +153,12 @@ TigerJS.EventManager = function () {
                     if (e.toElement) {
                         e.toElement = T.$(e.toElement);
                     }
-                } catch (e) {//assignment to read-only property error
+                } catch (f) {//assignment to read-only property error
 
                 }
                 try {
+                   
+                    
                     e.relatedTarget = getRT(e);
                     e.timeStamp = (new Date).getTime();
                     e.target = T.$(e.target ? e.target : e.srcElement);
@@ -164,7 +166,7 @@ TigerJS.EventManager = function () {
                     e.clientY = e.clientY || e.X || this.changedTouches[0].pageX;
                     e.defaultPrevented = e.defaultPrevented || e.returnValue;
 
-                } catch (e) {
+                } catch (f) {
                 }
 
                 return e;
@@ -459,7 +461,7 @@ TigerJS.EventManager = function () {
                             || (e.relatedTarget === e.target.parentNode) ||
                             T.$(e.target.parentNode).containsNode(e.relatedTarget)) {
 
-                        extra_argv ? cb.apply(e, [extra_argv]) : cb.apply(e); //call the user call-back using
+                        extra_argv ? cb.apply(e, extra_argv) : cb.apply(e); //call the user call-back using
                         // the event object as the 'this' context
 
                     }

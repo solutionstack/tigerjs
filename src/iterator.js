@@ -29,7 +29,7 @@
  */
 
 TigerJS.Iterator = function (elements) {
-    var el = elements;
+    var el = elements || [];
     /**
      *  @ignore
      * real Iterator starts here
@@ -1612,7 +1612,7 @@ TigerJS.Iterator = function (elements) {
             return this;
         };
         /**
-         *  Send each element of the iterator to a callback function, at specific intervals
+         *  Send each element of the iterator to a callback function, at specific timed intervals
          *  the Iterator instance is passed as an execution context to the call-back
          * @param {Function} cb function to accept the elements,
          * @param {Number} delay milliseconds to wait before sending the next element to the call back

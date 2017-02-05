@@ -9,7 +9,7 @@
  * @param {Object} configurationOptions  An object contaning configuration parameters for this widget
  
  * @param {Boolean} [configurationOptions.required = false] Specifies if the input is required and cannot be sent empty
- 
+ * @param {CSSColor} [configurationOptions.requiredTagColor = red] The value of the required indicator
  * @param {String} [configurationOptions.errorColor = red] The color of the error icon, when an error is present
  * @param {CSSColor} [configurationOptions.borderColor = transparent]  Border color
  * @param {CSSColor} [configurationOptions.backgroundColor = transparent] Background color for the widget
@@ -66,6 +66,8 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
                 T.$(configurationOptions.attachToForm) : false,
                 val_req = configurationOptions && configurationOptions.required ?
                 configurationOptions.required : false,
+                val_req_color = configurationOptions && configurationOptions.requiredTagColor ?
+                configurationOptions.requiredTagColor : "red",
                 err_col = configurationOptions && configurationOptions.errorColor ?
                 configurationOptions.errorColor.toString().trim() : "red",
                 headerElementImg = configurationOptions && configurationOptions.headerElementImg ?
@@ -163,12 +165,13 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
 //Create the required span
             var reqEl = T.$(document.createElement("span"));
             reqEl.className += " T-icons-svg";
-            reqEl.setStyle({color: val_req_color,
+            reqEl.setStyle({fill: val_req_color,
                 fontSize: ".6em",
                 padding: "4px",
                 width: "1em",
                 textAlign: "center",
                 cssFloat: "right",
+                marginRight:"1em",
                 opacity: 1});
             // reqEl.style.setProperty("opacity", 1.0, "important"); //dont blur out the required icon
 
@@ -240,7 +243,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
                         if (hColor)
                             this.style.backgroundColor = hColor;
                         if (hTextColor)
-                            this.style.color = hTextColor ;
+                            this.style.color = hTextColor;
                     };
                     _li.onmouseout = function () {
                         if (hColor)
@@ -258,7 +261,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
 
                 //set the background color when the select-list is open
                 baseWidget._widgetElement.style.backgroundColor = onOpenBgColor || bgColor;
-              
+
 
                 listCollapsed = false;//we are expanded so...
             } else {
@@ -375,7 +378,6 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
 
             }
 
-            T.$(); /** Workaround for firefox Heirachy request Error BUG!! -- Just call a method that accesses the dom after your insertion**/
             ;
             //see if we are been attached to a form so we can validate before submission
 
