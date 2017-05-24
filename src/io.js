@@ -696,7 +696,7 @@ TigerJS.io.SerialRequestQueue = function(load, error, progress) {
         };
         var abortQueue = this.abortQueue;
         /*
-         * We intercept needed calls here
+         * We intercept xhr events here
          * @ignore
          */
         this.registeredEvents = {};

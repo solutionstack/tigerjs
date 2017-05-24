@@ -1,6 +1,5 @@
 /* global TigerJS, T */
 
-/*   This file is part of the TigerJS Javascript Library @@https://sourceforge.net/p/tigerjs> */
 /**
  * @class
  

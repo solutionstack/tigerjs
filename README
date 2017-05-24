@@ -22,8 +22,7 @@
     ----------
 
     TigerJS Javascript Library  (C) Agbalaya Olubodun (  , Nigeria)
-                            2014-2017, GNU LGPL v3, 
-                             agbalaya@users.sourceforge.net, 
+                            2014-2017, GNU LGPL v3
                              https://github.com/solutionstack/tigerjs
                              s.stackng@gmail.com
                              and CONTRIBUTORS  
@@ -49,7 +48,6 @@
     -------------------
 
     Details of the latest version can be found on the TigerJS Project pages(s)
-    @sourceforge <https://sourceforge.net/p/tigerjs>
     @github <https://github.com/solutionstack/tigerjs>
 
 
@@ -79,14 +77,11 @@
 
     * If you want freely available support for using TigerJS, please join the
         TigerJS Library user community by subscribing to any of the following
-        https://sourceforge.net/p/tigerjs/blog/
-        https://sourceforge.net/p/tigerjs/discussion/
         https://github.com/solutionstack/tigerjs/wiki
 
         
     * If you have a concrete bug report for the TigerJS Library,
         please go here
-          https://sourceforge.net/p/tigerjs/tickets/
           https://github.com/solutionstack/tigerjs/issues
     Acknowledgments
     ----------------

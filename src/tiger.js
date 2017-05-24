@@ -3,8 +3,8 @@
 /* window TigerJS, T */
 
 /*   This file is part of the TigerJS Javascript Library 
- * <https://sourceforge.net/p/tigerjs> <https://github.com/solutionstack/tigerjs> */
-/* copyright 2014-2016 Olubodun Agbalaya. <s.stackng@gmail.com>, <agbalaya@users.sourceforge.net> */
+ * <https://github.com/solutionstack/tigerjs> */
+/* copyright 2014-2017 Olubodun Agbalaya. <s.stackng@gmail.com>, <agbalaya@users.sourceforge.net> */
 
 /**
  
@@ -65,7 +65,7 @@ var TigerJS = function () {
     /**
      * @ignore
      */
-    
+
     var win = window, //main window object
             /**
              * @ignore
@@ -89,14 +89,14 @@ var TigerJS = function () {
             /**
              * @ignore
              */
-_pt = _loc.protocol, //protocol
+            _pt = _loc.protocol, //protocol
 
             /**
              * @ignore
              */
 
-_ssl = 
-_pt.toLowerCase() === 'https:'; //are we on SSL/TLS
+            _ssl =
+            _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
 
     /**
      *
@@ -162,7 +162,8 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
             //remove spaces , brackets and the object keyword so we return
             //just the Generic Type
 
-            return Object.prototype.toString.call(o).replace(/[\[\] ]*/g, "").replace("object", "");
+            return Object.prototype.toString.call(o).replace(/[\[\] ]*/g, "").
+                    replace("object", "");
         }
 
         /////////////DOM TYPES////////////////////////////
@@ -180,7 +181,9 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
                 "HTMLIFrameElement", "HTMLAudioElement", "HTMLCommandElement", "HTMLDetailsElement", "HTMLInputElement", "HTMLMeterElement", "HTMLLegendElement", "HTMLLIElement", "HTMLOutputElement", "HTMLSpanElement", "XMLDocument"
             ];
 
-            var reg_exp = Object.prototype.toString.call(o).replace(/[\[\] ]*/g, "").replace("object", "").replace(" ", "");
+            var reg_exp = Object.prototype.toString.call(o).
+                    replace(/[\[\] ]*/g, "").replace("object", "").
+                    replace(" ", "");
             for (i = 0; i < dom_element_names.length; i++) {
 
                 if (dom_element_names[i].indexOf(reg_exp) > -1) {
@@ -199,19 +202,22 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
 
         //Our internal types
         if ((o.__toString && o.__toString().indexOf("[o") !== -1)) {
-            return o.__toString().replace(/[\[\] ]*/g, "").replace("object", "");
+            return o.__toString().replace(/[\[\] ]*/g, "").
+                    replace("object", "");
         }
         if (o["Node"] && o["Node"].__toString) {//our widget elements
 
-            if (o["Node"].__toString) { 
-                return o.Node.__toString().replace(/[\[\] ]*/g, "").replace("object", "");
+            if (o["Node"].__toString) {
+                return o.Node.__toString().replace(/[\[\] ]*/g, "").
+                        replace("object", "");
             }
         }
 
         /////////////////Native Types//////////////////////////
         if (/(Array|ArrayBuffer|DataView|Float32Array|Float64Array|Int8Array|Int16Array|Int32Array|Uint8Array|Uint8ClampedArray|Uint16Array|Uint32ArrayString|Date|Number|Object|Function|RegExp|Math|Boolean|Promise|Anonymous)/gi.test(Object.prototype.toString.call(o)) && !o.nodeType) {
 
-            return Object.prototype.toString.call(o).replace(/[\[\] ]*/g, "").replace("object", "");
+            return Object.prototype.toString.call(o).replace(/[\[\] ]*/g, "").
+                    replace("object", "");
         }
 
     };
@@ -570,7 +576,8 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
             ////////////////////// NO EDIT BELOW THIS LINE /////////////////////////////////////////////////////
             ///////////////////////////////////////////////////////////////////////////////////////////////////
             try {
-                if (arr.constructor.toString().indexOf('Array') > -1 && !item) {
+                if (arr.constructor.toString().
+                        indexOf('Array') > -1 && !item) {
 
                     dumped_text += "(ARRAY) ==> \"' ...\n";
                 }
@@ -578,7 +585,8 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
 
                     dumped_text += level_padding + "  '" + item + "'  -->  (ARRAY)  ...\n";
                 }
-                if (arr.constructor.toString().indexOf('Object') > 1 && !item) {
+                if (arr.constructor.toString().
+                        indexOf('Object') > 1 && !item) {
 
                     dumped_text += "(OBJECT) ==> \"' ...\n";
                 }
@@ -587,12 +595,16 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
                     dumped_text += level_padding + "  '" + item + "'  -->  (OBJECT)  ...\n";
                 }
 
-                if (arr.constructor.toString().indexOf('function') === 0 && !item && arr.constructor.toString().indexOf('(') === 9) {
+                if (arr.constructor.toString().
+                        indexOf('function') === 0 && !item && arr.constructor.toString().
+                        indexOf('(') === 9) {
 
 
                     dumped_text += "(OBJECT) ==> \"' ...\n";
                 }
-                if (arr.constructor.toString().indexOf('function') === 0 && item && arr.constructor.toString().indexOf('(') === 9) {
+                if (arr.constructor.toString().
+                        indexOf('function') === 0 && item && arr.constructor.toString().
+                        indexOf('(') === 9) {
 
 
                     dumped_text += level_padding + "  \'" + item + "'  -->  (OBJECT)  ...\n";
@@ -672,7 +684,8 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
         if (arr_.constructor === undefined)
             return d(arr_);
 
-        var _ty = T.type(arr_).replace(/^\s*((?:[\S\s]*\S)?)\s*$/, '$1'); //trimmmm
+        var _ty = T.type(arr_).
+                replace(/^\s*((?:[\S\s]*\S)?)\s*$/, '$1'); //trimmmm
 
 
         //Handle regular types, trim to avoided any extra spaces (some browsers are SPACE CRAAAAZZYY!!
@@ -1277,7 +1290,8 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
     this.isEnumerable = function (arg) {
 
 
-        return (T.type(arg) === 'Array' || T.type(arg) === 'Nodelist' || T.type(arg) === 'Object' || T.type(arg).indexOf('Collection') !== -1);
+        return (T.type(arg) === 'Array' || T.type(arg) === 'Nodelist' || T.type(arg) === 'Object' || T.type(arg).
+                indexOf('Collection') !== -1);
 
     };
 
@@ -1509,6 +1523,23 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
 
         };
     };
+    /**
+     * Parses the argument as a query string and retuns an Object conaining individual query values/name properties
+     * 
+     * @param {String = location.search} query string with GET parameters in the form name=val&name=val%&....
+     * 
+     * @return {Object} 
+     */
+
+    this.parseQuery = function (qstr) {
+        var query = {};
+        var a = (qstr[0] === '?' ? qstr.substr(1) : qstr).split('&');
+        for (var i = 0; i < a.length; i++) {
+            var b = a[i].split('=');
+            query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+        }
+        return query;
+    }
 
 
     /**
@@ -1904,7 +1935,8 @@ _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
         //am creating an Iterator and compacting it cause' during the process some array indices got null or undefined
         //or just magically dissapeared
         //TODO, whats causing this
-        re_match = T.Iterator(re_match.concat(re_empty_match)).compact(); //addup all the results and create the node
+        re_match = T.Iterator(re_match.concat(re_empty_match)).
+                compact(); //addup all the results and create the node
 
 
         //first we use a div as a place holder for all matched elements
