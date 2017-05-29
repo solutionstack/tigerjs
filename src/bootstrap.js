@@ -69,7 +69,7 @@ function insertSVGIcons() { //insert SVG icons refrenced in HTMLElements class v
         x = T.$(x);
 
         //make sure we havent done the svg replacement for this node before
-        if (x._firstElementChild().nodeName === "svg")
+        if (x.nodeName === "svg" || x._firstElementChild().nodeName === "svg")
             return;
 
 
