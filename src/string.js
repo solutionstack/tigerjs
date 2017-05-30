@@ -289,9 +289,9 @@ String.prototype.str_replace = function (se, su, re, st)
 
     ///CASE :1 //////////////////////////////////////////////////////////////////////////
     //   both serach and replace are strings , subject could be either ,do a raw replace
-    if (T.isString(se) && T.isString(re))
+    if (T.is_string(se) && T.is_string(re))
     {
-        if (T.isArray(su))
+        if (T.is_array(su))
         {
 
             //subject is an array others are strings
@@ -310,7 +310,7 @@ String.prototype.str_replace = function (se, su, re, st)
                 }
                 c++;
             } while (_t.next())
-            r = _t.toArray();
+            r = _t.to_array();
         } else
         {
 
@@ -328,10 +328,10 @@ String.prototype.str_replace = function (se, su, re, st)
     //CASE :2 ///////////////////////////////////////////////////////////////////////
     // serach is an array but  replace is string  , subject could be either, use each of serach's index to test for a match
     //
-    if (T.isArray(se) && T.isString(re))
+    if (T.is_array(se) && T.is_string(re))
     {
 
-        if (T.isArray(su))
+        if (T.is_array(su))
         { //1st case subject is array
 
 
@@ -354,7 +354,7 @@ String.prototype.str_replace = function (se, su, re, st)
 
                 }
             } while (_t.next())
-            r = _t.toArray();
+            r = _t.to_array();
         } //..
         else
         { //su is not array
@@ -384,9 +384,9 @@ String.prototype.str_replace = function (se, su, re, st)
     //CASE :3 //////////////////////////////////////////////////////////////////////////////////////
     //serach and replace are both arrays of equal length (should be, if this is to work right)
 
-    if (T.isArray(se) && T.isArray(re))
+    if (T.is_array(se) && T.is_array(re))
     {
-        if (T.isArray(su))
+        if (T.is_array(su))
         {
 
             //subject is an array others are arrays
@@ -410,7 +410,7 @@ String.prototype.str_replace = function (se, su, re, st)
 
                 }
             } while (_t.next())
-            r = _t.toArray();
+            r = _t.to_array();
         } //..
         else
         { //subject is not array
@@ -475,7 +475,7 @@ String.prototype.toCase = function (flag)
                 if (x.toLowerCase() !== x)
                 {
                     this[this.key] = x.toLowerCase();
-                    this.insertAt("-", this.key);
+                    this.insert_at("-", this.key);
                 }
 
             });
@@ -840,7 +840,7 @@ String.prototype.strpos = function (needle, offset)
  */
 String.prototype.startsWith = function (substring)
 {
-    return this.lastIndexOf(substring, 0) === 0;
+    return this.last_index_of(substring, 0) === 0;
 };
 
 /**
@@ -851,7 +851,7 @@ String.prototype.startsWith = function (substring)
  * The method is case-sensitive
  * <br/> adapted from <a href='http://www.prototypejs.org/'> prototype framework</a>
  */
-String.prototype.endsWith = function (substring)
+String.prototype.ends_with = function (substring)
 {
     var d = this.length - substring.length;
     return d >= 0 && this.indexOf(substring, d) === d;
@@ -890,7 +890,7 @@ String.prototype.strrpos = function (needle, offset)
 {
 
 
-    return offset ? this.substring(offset).lastIndexOf(needle) : this.lastIndexOf(needle);
+        return offset ? this.substring(offset).lastIndexOf(needle) : this.lastIndexOf(needle);
 
 };
 
@@ -1077,10 +1077,10 @@ String.prototype.insert_ch = function (o, offset)
     if (offset >= 0)
     {
 
-        str_l.insertAt(o, offset);
+        str_l.insert_at(o, offset);
     } else
     {
-        str_l.addAll(o);
+        str_l.add_all(o);
     }
     return str_l.join("");
 };
@@ -1112,10 +1112,10 @@ String.prototype.insert_n = function (o, n, offset)
     if (offset)
     {
         //INSERT CHARS AT THE PARTICULAR OFFSET
-        this_str.insertAt(str_l, offset);
+        this_str.insert_at(str_l, offset);
     } else
     { // ELSE JUST ADD EM'ALL
-        this_str.addAll(o);
+        this_str.add_all(o);
     }
 
     return this_str.join("");
@@ -1316,7 +1316,7 @@ String.prototype.sprintf = function (args)
 {
 
     //incantation, wow!!!
-    return T.sprintf.apply(this, T.Iterator().add(this.toString()).addAll(arguments).toArray());
+    return T.sprintf.apply(this, T.Iterator().add(this.toString()).add_all(arguments).to_array());
 };
 
 /**
@@ -1524,7 +1524,7 @@ String.prototype.find_first_of = function (s, pos)
     var _this = T.Iterator(this),
             _s = T.Iterator(s);
     if (pos)
-        _this.empty().addAll(this.substring(pos));
+        _this.empty().add_all(this.substring(pos));
     do {
         if (_s.indexOf(_this.current()) !== false)
         {
@@ -1554,7 +1554,7 @@ String.prototype.find_first_not_of = function (s, pos)
     var _this = T.Iterator(this),
             _s = T.Iterator(s);
     if (pos)
-        _this.empty().addAll(this.substring(pos));
+        _this.empty().add_all(this.substring(pos));
     do {
         if (_s.indexOf(_this.current()) === false)
         {
@@ -1584,7 +1584,7 @@ String.prototype.find_last_of = function (s, pos)
             _s = T.Iterator(s),
             key = -1;
     if (pos)
-        _this.empty().addAll(this.substring(pos));
+        _this.empty().add_all(this.substring(pos));
     do {
         if (_s.indexOf(_this.current()) !== false)
         {
@@ -1614,7 +1614,7 @@ String.prototype.find_last_not_of = function (s, pos)
             _s = T.Iterator(s),
             key = -1;
     if (pos)
-        _this.empty().addAll(this.substring(pos));
+        _this.empty().add_all(this.substring(pos));
 
     do {
         if (_s.indexOf(_this.current()) === false)

@@ -4,7 +4,7 @@
  * @class
  * This class repreents a generic Overlay Widget,
  * This widget requires that the first child of the body element be a container that holds all other elements displayed;
- * This is the element that should be sent to the {@link TigerJS.UI.Widget.OverlayWidget#appendToElement} Method. <p/>
+ * This is the element that should be sent to the {@link TigerJS.UI.Widget.OverlayWidget#append_to_element} Method. <p/>
  * The overlay would be shown when the {@link TigerJS.UI.Widget.OverlayWidget#show} method is called.
  
  * @param {Object} configurationOptions  An object contaning configuration parameters for this widget
@@ -59,8 +59,8 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
         baseWidget._widgetElement.id = baseWidget.InstanceID;
 /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
-        baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
-        baseWidget._widgetElement.setStyle({
+        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
+        baseWidget._widgetElement.set_style({
             position: "fixed",
             width: "100%",
             height: "100%",
@@ -96,13 +96,13 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
 
         var container, containerOverflow, bodyBg;
 
-        baseWidget.appendToElement = function (parEl) {
+        baseWidget.append_to_element = function (parEl) {
 
             var p = T.$(parEl);
             container = p;
-            containerOverflow = p.getStyle()['overflow'];
+            containerOverflow = p.get_style()['overflow'];
 
-            bodyBg = T.$(document.body).getStyle()['background'];
+            bodyBg = T.$(document.body).get_style()['background'];
             document.body.appendChild(baseWidget._widgetElement);
             if (ovPcnt) {
                 baseWidget._widgetElement.style.width = ovPcnt + "%";
@@ -111,7 +111,7 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
             switch (overlayStyle) { //initiate the overlay
                 //setup initial styling depending on the overlay style
                 case 'scale':
-                    baseWidget._widgetElement.addClass("overlay-contentscale");
+                    baseWidget._widgetElement.add_class("overlay-contentscale");
                     baseWidget._widgetElement.style.width = 100 + "%";
                     container.style.transition = "transform .5s";
                     container.style.msTransition = "-ms-transform .5s";
@@ -120,7 +120,7 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
                     break;
                 case 'push':
 
-                    baseWidget._widgetElement.addClass("overlay-contentpush");
+                    baseWidget._widgetElement.add_class("overlay-contentpush");
                     container.style.transition = "transform .5s";
                     container.style.msTransition = "-ms-transform .5s";
                     container.style.MozTransition = "-moz-transform .5s";
@@ -129,7 +129,7 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
 
                 case 'pushright':
                     baseWidget._widgetElement.style.width = 100 + "%";
-                    baseWidget._widgetElement.addClass("overlay-contentrpush");
+                    baseWidget._widgetElement.add_class("overlay-contentrpush");
                     container.style.transition = "transform .5s";
                     container.style.msTransition = "-ms-transform .5s";
                     container.style.MozTransition = "-moz-transform .5s";
@@ -139,7 +139,7 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
 
                     baseWidget._widgetElement.style.height = ovPcnt + "%";
                     baseWidget._widgetElement.style.width = 100 + "%";
-                    baseWidget._widgetElement.addClass("overlay-slidedown");
+                    baseWidget._widgetElement.add_class("overlay-slidedown");
                     break;
             }
             return this;
@@ -153,7 +153,7 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
             if (!document.querySelector("#" + baseWidget._widgetElement.id + " .TigerSmartOverlayCloseButton"))
             {
                 var _closeBut = T.$(document.createElement("p"));
-                _closeBut.addClass("TigerSmartOverlayCloseButton icon-cross");
+                _closeBut.add_class("TigerSmartOverlayCloseButton icon-cross");
                 _closeBut.style.color = cBTc;
                 //next append the close button
                 baseWidget._widgetElement.appendChild(_closeBut);
@@ -167,22 +167,22 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
             switch (overlayStyle) { //animate the main container for the body content
                 case 'scale':
 
-                    container.addClass("containerOnOpen1");
-                    baseWidget._widgetElement.addClass("overlay-contentscale_open");
-                    baseWidget._widgetElement.removeClass("overlay-contentscale");
+                    container.add_class("containerOnOpen1");
+                    baseWidget._widgetElement.add_class("overlay-contentscale_open");
+                    baseWidget._widgetElement.remove_class("overlay-contentscale");
 
                     //append close button
-                    _closeBut.addClass("overlay-cancel-4");
+                    _closeBut.add_class("overlay-cancel-4");
 
                     break;
 
                 case 'push':
 
                     if (!ovPcnt) {// if they didnt send a percentage, add the default class
-                        container.addClass("containerOnOpen2");
+                        container.add_class("containerOnOpen2");
                     } else
                     {
-                        container.setStyle({overflowX: "hidden", transform: "translateX(" + ovPcnt + "%)",
+                        container.set_style({overflowX: "hidden", transform: "translateX(" + ovPcnt + "%)",
                             WebkitTransform: "translateX(" + ovPcnt + "%)",
                             MozTransform: "translateX(" + ovPcnt + "%)",
                             msTransform: "translateX(" + ovPcnt + "%)",
@@ -190,24 +190,24 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
                         });
                     }
 
-                    baseWidget._widgetElement.addClass("overlay-contentpush_open");
-                    baseWidget._widgetElement.removeClass("overlay-contentpush");
+                    baseWidget._widgetElement.add_class("overlay-contentpush_open");
+                    baseWidget._widgetElement.remove_class("overlay-contentpush");
 
-                    _closeBut.addClass("overlay-cancel-1");
+                    _closeBut.add_class("overlay-cancel-1");
 
                     break
 
                 case 'pushright':
 
                     if (!ovPcnt) {// if they didnt send a percentage, add the default class
-                        container.addClass("containerOnOpen3");
+                        container.add_class("containerOnOpen3");
 
-                        baseWidget._widgetElement.addClass("overlay-contentrpush_open");
-                        baseWidget._widgetElement.removeClass("overlay-contentrpush");
+                        baseWidget._widgetElement.add_class("overlay-contentrpush_open");
+                        baseWidget._widgetElement.remove_class("overlay-contentrpush");
                     } else
                     {
                         //move the main container to the left
-                        container.setStyle({overflowX: "hidden", transform: "translateX(" + ovPcnt * -1 + "%)",
+                        container.set_style({overflowX: "hidden", transform: "translateX(" + ovPcnt * -1 + "%)",
                             WebkitTransform: "translateX(" + ovPcnt * -1 + "%)",
                             MozTransform: "translateX(" + ovPcnt * -1 + "%)",
                             msTransform: "translateX(" + ovPcnt * -1 + "%)",
@@ -216,7 +216,7 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
 
                         //the show the overlay
 
-                        baseWidget._widgetElement.setStyle({visibility: "visible", transform: "translateX(" + (100 - (ovPcnt * -1)) + "%)",
+                        baseWidget._widgetElement.set_style({visibility: "visible", transform: "translateX(" + (100 - (ovPcnt * -1)) + "%)",
                             WebkitTransform: "translateX(" + (100 - (ovPcnt * -1)) + "%)",
                             MozTransform: "translateX(" + (100 - (ovPcnt * -1)) + "%)",
                             msTransform: "translateX(" + (100 - (ovPcnt * -1)) + "%)",
@@ -225,21 +225,21 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
                             msTransition: "-ms-transform 0.5s",
                             MozTransition: "-moz-transform 0.5s"
                         });
-                        baseWidget._widgetElement.removeClass("overlay-contentrpush");
+                        baseWidget._widgetElement.remove_class("overlay-contentrpush");
                     }
 
 
                     //add the close button
-                    _closeBut.addClass("overlay-cancel-2");
+                    _closeBut.add_class("overlay-cancel-2");
 
                     break;
 
                 case 'slidedown' :
 
-                    baseWidget._widgetElement.addClass("overlay-slidedown_open");
-                    baseWidget._widgetElement.removeClass("overlay-slidedown");
+                    baseWidget._widgetElement.add_class("overlay-slidedown_open");
+                    baseWidget._widgetElement.remove_class("overlay-slidedown");
 
-                    _closeBut.addClass("overlay-cancel-3");
+                    _closeBut.add_class("overlay-cancel-3");
 
                     baseWidget._widgetElement.style.opacity = .9;
                     break;
@@ -256,41 +256,41 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
             switch (overlayStyle) {
                 case 'scale':
 
-                    container.removeClass("containerOnOpen1");
+                    container.remove_class("containerOnOpen1");
                     container.style.overflow = containerOverflow;
 
-                    baseWidget._widgetElement.removeClass("overlay-contentscale_open");
-                    baseWidget._widgetElement.addClass("overlay-contentscale");
+                    baseWidget._widgetElement.remove_class("overlay-contentscale_open");
+                    baseWidget._widgetElement.add_class("overlay-contentscale");
                     //remove the close button
                     baseWidget._widgetElement.removeChild(document.querySelector(".overlay-contentscale .TigerSmartOverlayCloseButton"));
 
                     break;
 
                 case 'push':
-                    container.removeClass("containerOnOpen2");
+                    container.remove_class("containerOnOpen2");
 
-                    container.setStyle({overflowX: "hidden", transform: "translateX(0%)",
+                    container.set_style({overflowX: "hidden", transform: "translateX(0%)",
                         WebkitTransform: "translateX(0%)",
                         MozTransform: "translateX(0%)",
                         msTransform: "translateX(0%)"
                     });
-                    baseWidget._widgetElement.removeClass("overlay-contentpush_open");
-                    baseWidget._widgetElement.addClass("overlay-contentpush");
+                    baseWidget._widgetElement.remove_class("overlay-contentpush_open");
+                    baseWidget._widgetElement.add_class("overlay-contentpush");
 
                     break
 
                 case 'pushright':
 
 
-                    baseWidget._widgetElement.removeClass("overlay-contentrpush_open");
-                    baseWidget._widgetElement.addClass("overlay-contentrpush");
+                    baseWidget._widgetElement.remove_class("overlay-contentrpush_open");
+                    baseWidget._widgetElement.add_class("overlay-contentrpush");
 
-                    container.setStyle({overflowX: "hidden", transform: "translateX(0%)",
+                    container.set_style({overflowX: "hidden", transform: "translateX(0%)",
                         WebkitTransform: "translateX(0%)",
                         MozTransform: "translateX(0%)",
                         msTransform: "translateX(0%)"
                     });
-                    baseWidget._widgetElement.setStyle({transform: "translateX(" + (100) + "%)",
+                    baseWidget._widgetElement.set_style({transform: "translateX(" + (100) + "%)",
                         WebkitTransform: "translateX(" + (100) + "%)",
                         MozTransform: "translateX(" + (100) + "%)",
                         msTransform: "translateX(" + (100) + "%)",
@@ -303,8 +303,8 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
                     break;
                 case 'slidedown':
 
-                    baseWidget._widgetElement.removeClass("overlay-slidedown_open");
-                    baseWidget._widgetElement.addClass("overlay-slidedown");
+                    baseWidget._widgetElement.remove_class("overlay-slidedown_open");
+                    baseWidget._widgetElement.add_class("overlay-slidedown");
 
                     break;
             }
@@ -317,7 +317,7 @@ TigerJS.UI.Widget.OverlayWidget = function (configurationOptions) {
         //
 
 
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.OverlayWidget]";
         };
         ;

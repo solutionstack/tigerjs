@@ -9,7 +9,7 @@
  * Event management constructor classs
  * This class provies implementations for cross-browswer event abstraction, creating and firing custom
  * listening to custom avents and much more. You would normally not use this class directly
- * (for DOM Elements) but use methods like {@link TigerJS.$#on} and {@link TigerJS.$#onKey}
+ * (for DOM Elements) but use methods like {@link TigerJS.$#on} and {@link TigerJS.$#on_key}
  * @constructor
  */
 TigerJS.EventManager = function () {
@@ -459,7 +459,7 @@ TigerJS.EventManager = function () {
 //an enter /leave event
                     if (!e.relatedTarget || e.relatedTarget.tagName.search(/html|body/i) !== -1
                             || (e.relatedTarget === e.target.parentNode) ||
-                            T.$(e.target.parentNode).containsNode(e.relatedTarget)) {
+                            T.$(e.target.parentNode).contains_node(e.relatedTarget)) {
 
                         extra_argv ? cb.apply(e, extra_argv) : cb.apply(e); //call the user call-back using
                         // the event object as the 'this' context
@@ -509,7 +509,7 @@ TigerJS.EventManager = function () {
 //This function accepts this initialization commands for the event
 //
 //Lets see if its one of our custom functions
-            if (events_std_dom2.str_indexOf(type[i]) >= 0) { //if its a regular event
+            if (events_std_dom2.str_index_of(type[i]) >= 0) { //if its a regular event
 
                 //change click to touchend for mobile
                 if (type[i].replace(/^on/, "") === "click") {

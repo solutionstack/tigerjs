@@ -1,11 +1,15 @@
 /* global TigerJS, T, _T_NET_OFFLINE, _T_NET_ONLINE */
 /******************************* START BOOTSTRAP*************************************/
 (function () {
+
     //set the localinstallation path
     ////library base path
+
     for (var i = 0; i < document.scripts.length; i++) {
         if (document.scripts[i].src.strpos("tiger") !== -1) {
-            T.library_installation_path = document.scripts[i].src.substr(0,
+            
+            
+             T.library_installation_path = document.scripts[i].src.substr(0,
                     document.scripts[i].src.strrpos("/"));
 
         }
@@ -14,7 +18,7 @@
 
     //insert our css base-file before the dom is ready
     var css_base = T.library_installation_path + "/asset/css/tiger.min.css";
-    T.Parser.parseCSS("<link rel='stylesheet' type='text/css' href='" + css_base + "' />", true);
+    T.Parser.parse_css("<link rel='stylesheet' type='text/css' href='" + css_base + "' />", true);
 
 
 
@@ -31,10 +35,10 @@
     T.Conn.update();
 
     //execute registered startup routines, once the page loads ..(onDomReady)
-    T.poll(T.domReady, T.executeStartupRoutines);
-    T.poll(T.domReady, insertSVGIcons);
+    T.poll(T.dom_ready, T.execute_startup_routines);
+    T.poll(T.dom_ready, insert_svg_icons);
     ///...... more bootstrap actions
-
+    
 })();
 
 
@@ -51,10 +55,10 @@
  * 
  * 
  leave this here for now (or for prosperity.. :/)
- T.Parser.parseCSS("<link rel='stylesheet' type='text/css' href='" + glyph_base + "' />", true);
+ T.Parser.parse_css("<link rel='stylesheet' type='text/css' href='" + glyph_base + "' />", true);
  **/
 
-function insertSVGIcons() { //insert SVG icons refrenced in HTMLElements class values as T-icons-*
+function insert_svg_icons() { //insert SVG icons refrenced in HTMLElements class values as T-icons-*
 
     //get all images
     var docImages = T.Iterator(document.querySelectorAll("[class*='T-icons']"));
@@ -69,12 +73,12 @@ function insertSVGIcons() { //insert SVG icons refrenced in HTMLElements class v
         x = T.$(x);
 
         //make sure we havent done the svg replacement for this node before
-        if (x.nodeName === "svg" || x._firstElementChild().nodeName === "svg")
+        if (x.nodeName === "svg" || x.first_element_child().nodeName === "svg")
             return;
 
 
         //put the classes for this element into an iterator and get the value for the icon class
-        var T_ICON_CLASS = T.Iterator(x.className.split(" ")).at(T.Iterator(x.className.split(" ")).str_indexOf("T-icons-"));
+        var T_ICON_CLASS = T.Iterator(x.className.split(" ")).at(T.Iterator(x.className.split(" ")).str_index_of("T-icons-"));
 
 
         requestConfigurationData[requestConfigurationData.length] = {
@@ -121,7 +125,7 @@ function insertSVGIcons() { //insert SVG icons refrenced in HTMLElements class v
 
 
                 for (var i = 0; i < svgImages.length; i++) {   /** remove any internal stylesheets from the SVG markup*/
-                    var _curPlaceHolderStyle = svgImages[i].getStyle();
+                    var _curPlaceHolderStyle = svgImages[i].get_style();
                     try {
 
 
@@ -215,4 +219,4 @@ function insertSVGIcons() { //insert SVG icons refrenced in HTMLElements class v
 }
 
 
-T.insertSVGIcons = insertSVGIcons; //so we can reference it globally
+T.insert_svg_icons = insert_svg_icons; //so we can reference it globally

@@ -20,7 +20,7 @@
  * @param {CSSColor} [configurationOptions.headerElementColor]  color for the select header
  * @param {String} [configurationOptions.headerElementImg] A header image, pass the name
  * @param {CSSColor}  [configurationOptions.headerElementImgColor] Header image color, defaults to the headerElementColor
- * one of the SVG images budled with the library, and dont forget to call T.insertSVGIcons after adding the wiget to the DOM`.
+ * one of the SVG images budled with the library, and dont forget to call T.insert_svg_icons after adding the wiget to the DOM`.
  * 
  * @param {CSSColor} [configurationOptions.hoverTextColor]  Text color on hover, when the items\' on the list are hovered on
  * @param {Array} configurationOptions.optionText An Array containing text for the various selectable options, the first index should contain
@@ -97,12 +97,12 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
         baseWidget._widgetElement.id = baseWidget.InstanceID;
 /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
-        baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
+        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
 
 
         //the real select element
         var innerSelectElement = T.$(document.createElement("SELECT"));
-        innerSelectElement.setStyle({
+        innerSelectElement.set_style({
             display: "none", width: "0px"
         });
         innerSelectElement.name = _name;
@@ -121,7 +121,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
         }
 
 
-        baseWidget._widgetElement.setStyle({
+        baseWidget._widgetElement.set_style({
             position: "relative", width: "70%",
             textAlign: "left", borderRadius: 0,
             height: "auto", minHeight: ".5em", minWidth: ".5em", cursor: "pointer",
@@ -136,7 +136,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
         //the drop down initial state
         var listCollapsed = true, oList;
 
-        baseWidget._widgetElement.addClass("TigerSmartDropDown");
+        baseWidget._widgetElement.add_class("TigerSmartDropDown");
 
 
 //create the list header, including the header text
@@ -146,9 +146,9 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
 
         baseWidget._widgetElement.appendChild(headerSpan);//append it
 
-        var headerElement = baseWidget._widgetElement._firstElementChild();
+        var headerElement = baseWidget._widgetElement.first_element_child();
 
-        headerElement.setStyle({
+        headerElement.set_style({
             fill: headerElementImgColor || headerElementColor || "#000",
             padding: "1.5em",
             paddingLeft: "5px",
@@ -165,7 +165,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
 //Create the required span
             var reqEl = T.$(document.createElement("span"));
             reqEl.className += " T-icons-svg";
-            reqEl.setStyle({fill: val_req_color,
+            reqEl.set_style({fill: val_req_color,
                 fontSize: ".6em",
                 padding: "4px",
                 width: "1em",
@@ -201,7 +201,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
 
             if (listCollapsed) {
                 oList = T.$(document.createElement("UL"));
-                oList.setStyle({
+                oList.set_style({
                     width: "100%", listStyleType: "none", margin: "0px", padding: "0px",
                     fontSize: ".8em", display: "block"
                 });
@@ -294,16 +294,16 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
          * Returns the selected value
          * @function
          * @return {String}  The selected value
-         *  @name TigerJS.UI.Widget.SelectWidget#getSelectedValue
+         *  @name TigerJS.UI.Widget.SelectWidget#get_selected_value
          */
-        baseWidget.getSelectedValue = function () {
+        baseWidget.get_selected_value = function () {
             return innerSelectElement.options[innerSelectElement.selectedIndex].value;
         };
 
         //>
         baseWidget.validated = false;
         //>
-        baseWidget.validateOnFormSubmit = function () {
+        baseWidget.validate_on_form_submit = function () {
             this.validated = false; //always reset the global var, so we dont get the previous validated value
 
             if (!val_req)
@@ -357,14 +357,14 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
          */
         baseWidget.validate = function () {
 
-            return this.validateOnFormSubmit();
+            return this.validate_on_form_submit();
         };
         //
 
 
         //
         //->   //overide appendTo Element
-        baseWidget.appendToElement = function (parEl) {
+        baseWidget.append_to_element = function (parEl) {
             var p, __formNode = false;
 
             if (parEl.nodeType && parEl.nodeType === 1) {
@@ -372,7 +372,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
                 parEl.appendChild(baseWidget._widgetElement);
                 p = T.$(parEl);
             } else
-            if (T.isString(parEl)) {
+            if (T.is_string(parEl)) {
                 p = T.$(parEl);
                 p.appendChild(baseWidget._widgetElement);
 
@@ -391,7 +391,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
                     for (i = el.length - 1; i >= 0; i--) { //we loop in reverse so the validation starts from the last filled element
 
                         //see if the Widget Object of this input has a validation interface
-                        if (el[i].WidgetObj && el[i].WidgetObj.validateOnFormSubmit) {
+                        if (el[i].WidgetObj && el[i].WidgetObj.validate_on_form_submit) {
 
                             //if validation fails, stop the form submision, (errors would be displayed from the validation method)
                             if (!el[i].WidgetObj.validate())
@@ -410,7 +410,7 @@ TigerJS.UI.Widget.SelectWidget = function (configurationOptions) {
         //
         innerSelectElement.WidgetObj = baseWidget;
 
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.SelectWidget]";
         };
 

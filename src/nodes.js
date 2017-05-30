@@ -74,7 +74,7 @@ TigerJS.nodes = function(config, strictMatch) {
             sib = null,
             i, j, k;
         //check if we're been sent an array of nodes, to make life easier
-        if (T.isArray(pred)) {
+        if (T.is_array(pred)) {
 
             childNodes = TigerJS.Iterator().concat(pred);
             pred = null; //am nullifying these so the algorithms below can be skipped
@@ -252,32 +252,32 @@ TigerJS.nodes = function(config, strictMatch) {
          * @function
          *
          *  @type TigerJS.nodes
-         *  @name TigerJS.nodes#_addClass
+         *  @name TigerJS.nodes#add_class
          *
          *
          */
 
-        this.n._addClass = function(classlist, filter) {
+        this.n._add_class = function(classlist, filter) {
             if (!this.length) {
                 return this;
             }
             if (!filter) { // just add to all
                 this.foward_iterator(function(x) {
 
-                    x.addClass(classlist);
+                    x.add_class(classlist);
                 });
             } else {
                 if (filter === "even") { //set even nodes
                     this.foward_iterator(function(x) {
 
-                        x.addClass(classlist);
+                        x.add_class(classlist);
                     }, 2); // jump by 2
 
                 } else
                 if (filter === "odd") { // set odd nodes
                     var re = this.odd().foward_iterator(function(x) {
 
-                        x.addClass(classlist);
+                        x.add_class(classlist);
                     });
                     this.empty().concat(re); // the odd function returns a new iterator so reset -this- 
                 } else {
@@ -285,7 +285,7 @@ TigerJS.nodes = function(config, strictMatch) {
 
                         this.foward_iterator(function(x) {
                             if (filter(x)) {
-                                x.addClass(classlist);
+                                x.add_class(classlist);
                             }
                         });
 
@@ -329,25 +329,25 @@ TigerJS.nodes = function(config, strictMatch) {
                 case 'before':
                     this.foward_iterator(function(x) {
 
-                        x.addHtml(content, "before");
+                        x.add_html(content, "before");
                     });
                     break;
                 case 'after':
                     this.foward_iterator(function(x) {
 
-                        x.addHtml(content, "after");
+                        x.add_html(content, "after");
                     });
                     break;
                 case 'append':
                     this.foward_iterator(function(x) {
 
-                        x.addHtml(content, "last");
+                        x.add_html(content, "last");
                     });
                     break;
                 case 'prepend':
                     this.foward_iterator(function(x) {
 
-                        x.addHtml(content, "first");
+                        x.add_html(content, "first");
                     });
                     break;
             }
@@ -392,12 +392,12 @@ TigerJS.nodes = function(config, strictMatch) {
             if (value) {
                 this.foward_iterator(function(x) {
 
-                    x.setAttr({
+                    x.set_attr({
                         name: value
                     });
                 });
             } else {
-                r = this[0].getAttr(name);
+                r = this[0].get_attr(name);
             }
             return r;
         };
@@ -439,9 +439,9 @@ TigerJS.nodes = function(config, strictMatch) {
                 i;
             for (i = 0; i < this.size(); i++) {
                 //this would add only the values from the returned object
-                r.addAll(this[i].getStyle([attr]));
+                r.add_all(this[i].get_style([attr]));
             }
-            return r.toArray();
+            return r.to_array();
         };
         /**
          * Gets / sets HTML content Either gets content of the first element,
@@ -460,12 +460,12 @@ TigerJS.nodes = function(config, strictMatch) {
                 if (htmlString) {
                     this.foward_iterator(function(x) {
 
-                        x.setHtml(htmlString);
+                        x.set_html(htmlString);
                     });
                     return this;
                 } else {
 
-                    return this[0].getHtml();
+                    return this[0].get_html();
                 }
             } else {
                 return "NoDataAvailable";
@@ -505,7 +505,7 @@ TigerJS.nodes = function(config, strictMatch) {
         this.n._css = function(styleMap) {
             if (!styleMap) { //get
 
-                return this[0].getStyle();
+                return this[0].get_style();
             } else {
                 this.foward_iterator(function(x) {
 
@@ -522,15 +522,15 @@ TigerJS.nodes = function(config, strictMatch) {
          * @param {String} classList Space delimited list of CSS classes to check for
          * @function
          *  @type Boolean
-         * @name TigerJS.nodes#_hasClass
+         * @name TigerJS.nodes#has_class
          */
-        this.n._hasClass = function(classList) {
+        this.n._has_class = function(classList) {
             var r = true;
             if (this.length) {
                 this.foward_iterator(function(x) {
 
                     //match all classes , not single
-                    if (!x.hasClass(classList, false))
+                    if (!x.has_class(classList, false))
                         r = false;
                 });
             };
@@ -544,13 +544,13 @@ TigerJS.nodes = function(config, strictMatch) {
          * @param {String} classList Space delimited list of CSS classes to remove
          * @function
          *  @type TigerJS.nodes
-         * @name TigerJS.nodes#_removeClass
+         * @name TigerJS.nodes#remove_class
          */
-        this.n._removeClass = function(classList) {
+        this.n._remove_class = function(classList) {
             if (this.length) {
                 this.foward_iterator(function(x) {
 
-                    x.removeClass(classList);
+                    x.remove_class(classList);
                 });
             }
             return this;
@@ -558,17 +558,17 @@ TigerJS.nodes = function(config, strictMatch) {
 
         /**
          * Replaces the specified CSS classes from the elements in the List
-         * see documentation for {@link TigerJS.$#replaceClass}
+         * see documentation for {@link TigerJS.$#replace_class }
          * @function
          *  @type TigerJS.nodes
-         * @name TigerJS.nodes#_replaceClass
-         * @see  TigerJS.$#replaceClass
+         * @name TigerJS.nodes#replace_class
+         * @see  TigerJS.$#replace_class 
          */
-        this.n._replaceClass = function(classNames, withClassNames) {
+        this.n._replace_class = function(classNames, withClassNames) {
 
             this.foward_iterator(function(x) {
 
-                x.replaceClass(classNames, withClassNames);
+                x.replace_class (classNames, withClassNames);
             });
             return this;
         };
@@ -578,14 +578,14 @@ TigerJS.nodes = function(config, strictMatch) {
          * @param {String} classList Space delimited list of CSS classes to toggle
          * @function
          *   @type TigerJS._nodes
-         * @name TigerJS.nodes#_toggleClass
+         * @name TigerJS.nodes#toggle_class
          * @function
          */
-        this.n._toggleClass = function(classList) {
+        this.n._toggle_class = function(classList) {
             if (this.length) {
                 this.foward_iterator(function(x) {
 
-                    x.toggleClass(classList);
+                    x.toggle_class(classList);
                 });
             }
             return this;;
@@ -648,13 +648,13 @@ TigerJS.nodes = function(config, strictMatch) {
         /**
          * Removes the attribute from the elements in the List
          * @param {String} name atribute to remove
-         * @name TigerJS.nodes#_removeAttr
+         * @name TigerJS.nodes#remove_attr
          * @function
          * @type TigerJS.nodes
          */
-        this.n._removeAttr = function(name) {
+        this.n._remove_attr = function(name) {
             this.foward_iterator(function(x) {
-                x.removeAttr(name);
+                x.remove_attr(name);
             });
             return this;
         };
@@ -671,9 +671,9 @@ TigerJS.nodes = function(config, strictMatch) {
         this.n._text = function(content) {
             if (this.length) {
                 if (!content)
-                    return this[0].getText() || "";
+                    return this[0].get_text() || "";
                 this.foward_iterator(function(x) {
-                    x.setText(content);
+                    x.set_text(content);
                 });
             }
             return this;
@@ -689,7 +689,7 @@ TigerJS.nodes = function(config, strictMatch) {
         this.n._children = function() {
             var c = T.Iterator;
             this.foward_iterator(function(x) {
-                c.merge(x._elementChildren());
+                c.merge(x.element_children());
             });
             return T.nodes(c);
         };
@@ -704,7 +704,7 @@ TigerJS.nodes = function(config, strictMatch) {
 
         this.n._width = function(size) {
             this.foward_iterator(function(x) {
-                x.setWidth(size);
+                x.set_width(size);
             });
             return this;
         };
@@ -719,7 +719,7 @@ TigerJS.nodes = function(config, strictMatch) {
         this.n._height = function(size) {
             if (this.length) {
                 this.foward_iterator(function(x) {
-                    x.setHeight(size);
+                    x.set_height(size);
                 });
             }
             return this;
@@ -735,15 +735,15 @@ TigerJS.nodes = function(config, strictMatch) {
          * @function
          * @type TigerJS.nodes | String
          * @name TigerJS.nodes#_data
-         * @see TigerJS.$#setData
+         * @see TigerJS.$#set_data
          * @see TigerJS.$#_dataset
          */
         this.n._data = function(name, val) {
             if (this.length) {
                 if (!val)
-                    return this[0].getData(name);
+                    return this[0].get_data(name);
                 this.foward_iterator(function(x) {
-                    x.setData(name, val);
+                    x.set_data(name, val);
                 });
             }
             return this;
@@ -754,11 +754,11 @@ TigerJS.nodes = function(config, strictMatch) {
          * @param {String} name Name of data attribute to remove
          * @function
          * @type TigerJS.nodes
-         * @name TigerJS.nodes#_removeData
-         * @see TigerJS.$#setData
+         * @name TigerJS.nodes#_remove_data
+         * @see TigerJS.$#set_data
          * @see TigerJS.$#_dataset
          */
-        this.n._removeData = function(name) {
+        this.n._remove_data = function(name) {
             if (this.length) {
                 this.foward_iterator(function(x) {
                     x.removeAttribute(("data-lick" + name));
@@ -769,7 +769,7 @@ TigerJS.nodes = function(config, strictMatch) {
         /*
          * @ignore
          */
-        this.n.__toString = function() {
+        this.n.__to_string = function() {
             return "[object TigerJS.nodes]";
         };
 

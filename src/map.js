@@ -30,7 +30,7 @@ TigerJS.Map = function ()
 
         this.put = function (k, v)
         {
-            if (!(T.isString(k) || T.isNumber(k)))
+            if (!(T.is_string(k) || T.is_number(k)))
             {
 
                 return false;
@@ -239,7 +239,7 @@ TigerJS.Map = function ()
          * @return [Boolean] true on success or false if the key was not found, or if the value doesnt match
          */
 
-        this.replaceIfValue = function (k, ov, v)
+        this.replace_if_value = function (k, ov, v)
         {
 
             if (!this.containsKey(k))
@@ -270,7 +270,7 @@ TigerJS.Map = function ()
          * Returns an instance of T.Iterator containing the keys of this map
          *
          */
-        this.keySet = function ()
+        this.fetch_key = function ()
         {
 
             return (T.Iterator(this.keys()));
@@ -280,7 +280,7 @@ TigerJS.Map = function ()
          * Returns an instance of {@link TigerJS.Iterator} containing the values of this map
          * @type TigerJS.Iterator
          */
-        this.valueSet = function ()
+        this.fetch_values = function ()
         {
             return (T.Iterator(this.values()));
         };
@@ -288,7 +288,7 @@ TigerJS.Map = function ()
         /**
          * @ignore
          */
-        this.__toString = function ()
+        this.__to_string = function ()
         {
             return "[object TigerJS.Map]";
         };

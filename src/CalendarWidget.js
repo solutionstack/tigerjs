@@ -52,8 +52,8 @@
  });
  
  
- cal.appendToElement("bd");
- cal.setDraggable(); incase you want to move it around
+ cal.append_to_element("bd");
+ cal.set_draggable(); incase you want to move it around
  *
  */
 
@@ -140,9 +140,9 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 
         /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
-        baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
+        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
 ///////////// //////////////////SET SOME STYLES FOR THE CALENDER WIDGET//////////////////////
-        baseWidget._widgetElement.setStyle({
+        baseWidget._widgetElement.set_style({
             width: "100%", height: "100%", minWidth: "16em", minHeight: "14em", borderRadius: "0",
             top: wTop, left: wLeft, maxWidth: "18em", maxHeight: "14em"
 
@@ -151,7 +151,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
         if (bgColor) {//expilict background
             baseWidget._widgetElement.style.setProperty("background-color", bgColor, "important");
         } else if (theme) {
-            baseWidget._widgetElement.addClass(theme);
+            baseWidget._widgetElement.add_class(theme);
         }
 
         baseWidget._widgetElement.on("click", function () {
@@ -167,7 +167,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 ///////////////CREATE THE CALENDAR'S HEARDER////////////////////////////////////
         var calendarHeader = T.$(document.createElement("div")); //the header element
         calendarHeader.id = baseWidget.InstanceID + "_headerElement";
-        calendarHeader.setStyle({
+        calendarHeader.set_style({
             width: "100%", height: "12%", textAlign: "center"
         });
 //->
@@ -175,18 +175,18 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
         ////element for moving the calendar to the previous view
 
         var prevButton = T.$(document.createElement("span")); //
-        prevButton.setStyle({
+        prevButton.set_style({
             display: "inline-block", width: "8%", height: "60%", textAlign: "center", cssFloat: "left",
             borderRadius: "4em", margin: "6px 0px 0px 2px", fontSize: ".8em ", cursor: "pointer"
         });
         prevButton.innerHTML = "&#9668;";
-        prevButton.addClass("t-no-drag");
+        prevButton.add_class("t-no-drag");
         //if we have a theme set, or an explicit color
         if (tColor) {
 
             prevButton.style.setProperty("color", tColor, "important");
         } else if (theme)
-            prevButton.addClass(theme);
+            prevButton.add_class(theme);
         //control hover state
         if (hColor) {
             prevButton.oldColor = prevButton.style.color; //save a reference to the old color
@@ -207,32 +207,32 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 //->
 //       /******** Create YEAR place holder *********/
         var calYearPlaceholder = T.$(document.createElement("span"));
-        calYearPlaceholder.setStyle({
+        calYearPlaceholder.set_style({
             display: "inline-block", width: "auto", height: "86%", paddingTop: "5px",
             fontSize: "1em", textAlign: "center", fontFamily: "Verdana, Geneva, sans-seri",
             fontVariant: "small-caps"
         });
         calYearPlaceholder.innerHTML = "<span class='t-no-drag'>YEAR</span>"; //this would be overridden later with an actual year
-        calYearPlaceholder._firstElementChild().style.cursor = "pointer"; //make sure that year element is shown as clickable
+        calYearPlaceholder.first_element_child().style.cursor = "pointer"; //make sure that year element is shown as clickable
         //
         //make sure its clickable, i needed to do it explicitly like this cause the css cursor rule was getting reset
-        calYearPlaceholder._firstElementChild().on("mouseover", function () {
+        calYearPlaceholder.first_element_child().on("mouseover", function () {
             this.target.style.cursor = "pointer";
         });
         //if we have an explicit color set  or theme set
         if (tColor) {
-            calYearPlaceholder._firstElementChild().style.setProperty("color", tColor, "important");
+            calYearPlaceholder.first_element_child().style.setProperty("color", tColor, "important");
         } else if (theme)
-            calYearPlaceholder._firstElementChild().addClass(theme);
+            calYearPlaceholder.first_element_child().add_class(theme);
         //hover effect
         if (hColor) {
 
-            calYearPlaceholder._firstElementChild().oldColor = calYearPlaceholder._firstElementChild().style.color; //save a reference to the old color
-            calYearPlaceholder._firstElementChild().onmouseover = function () {
+            calYearPlaceholder.first_element_child().oldColor = calYearPlaceholder.first_element_child().style.color; //save a reference to the old color
+            calYearPlaceholder.first_element_child().onmouseover = function () {
 
                 this.style.setProperty("color", hColor, "important");
             };
-            calYearPlaceholder._firstElementChild().onmouseout = function () {
+            calYearPlaceholder.first_element_child().onmouseout = function () {
                 this.style.setProperty("color", this.oldColor);
             };
         }
@@ -243,18 +243,18 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 ////element for moving the calendar to the next view
 
         var nextButton = T.$(document.createElement("span")); //
-        nextButton.setStyle({
+        nextButton.set_style({
             display: "inline-block", width: "8%", height: "60%", textAlign: "center", cssFloat: "right",
             borderRadius: "4em", margin: "6px 2px 0px 0px", fontSize: ".8em ", cursor: "pointer"
         });
         nextButton.innerHTML = "&#9658;";
-        nextButton.addClass("t-no-drag");
+        nextButton.add_class("t-no-drag");
         //if we have a theme set, or an explicit color
         if (tColor) {
 
             nextButton.style.setProperty("color", tColor, "important");
         } else if (theme)
-            nextButton.addClass(theme);
+            nextButton.add_class(theme);
         //control hover state
         if (hColor) {
             nextButton.oldColor = prevButton.style.color; //save a reference to the old color
@@ -288,18 +288,18 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 /////////////////////CREATE MONTH ROW////////////////////////////////////////////////
 
         var monthRow = T.$(document.createElement("div")); //
-        monthRow.setStyle({
+        monthRow.set_style({
             cssFloat: "left", width: "100%", height: "6%", textAlign: "center",
             margin: "6px 5px 0px 0px", fontSize: ".8em "
         });
         monthRow.innerHTML = "<table><tr></tr></table>";
-        monthRow._firstElementChild().setStyle({//set a few style on the table
+        monthRow.first_element_child().set_style({//set a few style on the table
             width: "100%", border: "none", borderStyle: "none", borderColor: "transparent"
         });
         //get the day names based on set locale
         var dayNames = calendarDate.getDayNames(true);
         for (var i = 0; i < 7; i++) {
-            monthRow._firstElementChild().rows[0].insertCell(-1).innerHTML = dayNames[i];
+            monthRow.first_element_child().rows[0].insertCell(-1).innerHTML = dayNames[i];
         }
 
         baseWidget._widgetElement.appendChild(monthRow);
@@ -309,18 +309,18 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 //WE CREATE A TABLE WITH 7 COLUMNS BY 6 ROWS
         var dateCellsBox = T.$(document.createElement("div")); //
         dateCellsBox.selectable(false);
-        dateCellsBox.setStyle({
+        dateCellsBox.set_style({
             cssFloat: "left", width: "96%", height: "62%", textAlign: "center",
             marginTop: "3px", marginLeft: "1.5%", fontSize: ".8em "
         });
-        dateCellsBox.addClass("t-calendar-dateCell");
+        dateCellsBox.add_class("t-calendar-dateCell");
         dateCellsBox.innerHTML = "<table><tr></tr></table>";
-        var dateCellsBoxTableElement = dateCellsBox._firstElementChild(); //a ref to the table
+        var dateCellsBoxTableElement = dateCellsBox.first_element_child(); //a ref to the table
 
 
         baseWidget._widgetElement.appendChild(dateCellsBox); //append the table to the main widget
 
-        dateCellsBoxTableElement.setStyle({//set a few style on the table
+        dateCellsBoxTableElement.set_style({//set a few style on the table
             width: "100%", height: "100%", border: "none", borderStyle: "none", borderColor: "transparent"
         });
         //
@@ -372,13 +372,13 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 //grab a reference to all induvidual cells we have in the dates table
 
 
-            dateCellIterator.addAll(dateCellsBoxTableElement.rows[0].cells).
-                    addAll(dateCellsBoxTableElement.rows[1].cells).
-                    addAll(dateCellsBoxTableElement.rows[2].cells).
-                    addAll(dateCellsBoxTableElement.rows[3].cells).
-                    addAll(dateCellsBoxTableElement.rows[4].cells).
-                    addAll(dateCellsBoxTableElement.rows[5].cells).
-                    addAll(dateCellsBoxTableElement.rows[6].cells);
+            dateCellIterator.add_all(dateCellsBoxTableElement.rows[0].cells).
+                    add_all(dateCellsBoxTableElement.rows[1].cells).
+                    add_all(dateCellsBoxTableElement.rows[2].cells).
+                    add_all(dateCellsBoxTableElement.rows[3].cells).
+                    add_all(dateCellsBoxTableElement.rows[4].cells).
+                    add_all(dateCellsBoxTableElement.rows[5].cells).
+                    add_all(dateCellsBoxTableElement.rows[6].cells);
 
             //initally fill the cells with blanks
             dateCellIterator.foward_iterator(function (x) {
@@ -393,8 +393,8 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                 x.style.backgroundColor = "transparent";
                 x.onmouseover = function () {
 
-                    var bgC = this.style.backgroundColor ? T.UI.Color.colorToHex(this.style.backgroundColor) : "transparent";
-                    var datePckd = selectedDateColor ? T.UI.Color.colorToHex(selectedDateColor) : "none";
+                    var bgC = this.style.backgroundColor ? T.UI.Color.color_to_hex(this.style.backgroundColor) : "transparent";
+                    var datePckd = selectedDateColor ? T.UI.Color.color_to_hex(selectedDateColor) : "none";
                     //before setting the background color make sure the date wasnt clicked
                     //and as such doesnt have our date-clicked color
                     if (bgC !== datePckd)
@@ -402,8 +402,8 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                 };
                 x.onmouseout = function () {
 
-                    var bgC = this.style.backgroundColor ? T.UI.Color.colorToHex(this.style.backgroundColor) : "transparent";
-                    var datePckd = selectedDateColor ? T.UI.Color.colorToHex(selectedDateColor) : "none";
+                    var bgC = this.style.backgroundColor ? T.UI.Color.color_to_hex(this.style.backgroundColor) : "transparent";
+                    var datePckd = selectedDateColor ? T.UI.Color.color_to_hex(selectedDateColor) : "none";
                     //before unsetting the background color make sure the date wasnt clicked
                     //and as such the cell doesn't have our date-clicked color
                     if (bgC !== datePckd)
@@ -452,11 +452,11 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 
 
 //update the month header, reflecting any locale changes as well
-            calYearPlaceholder._firstElementChild().innerHTML = "&#9699; " + calendarDate.getMonth(true) + "  " + calendarDate.getFullYear();
+            calYearPlaceholder.first_element_child().innerHTML = "&#9699; " + calendarDate.getMonth(true) + "  " + calendarDate.getFullYear();
             //update the daysOfWeek as well
             var dayNames = calendarDate.getDayNames(true);
             for (var i = 0; i < 7; i++) {
-                monthRow._firstElementChild().rows[0].cells[i].innerHTML = dayNames[i];
+                monthRow.first_element_child().rows[0].cells[i].innerHTML = dayNames[i];
             }
             localeButton.text = calendarDate.getLocale(); //and also update the locale button
         };
@@ -466,7 +466,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 ////////////////////////////Create locale change link////////////////////////////////
 
 
-        localeButton.setStyle({
+        localeButton.set_style({
             fontSize: ".8em", margin: "1% 0% 0% 90%"
         });
         localeButton.style.setProperty("cursor", "pointer", "important"); //FF sometimes resets the cursor, on a link??/??. strange
@@ -498,7 +498,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 
             var localeList = T.$(document.createElement("ul"));
             localeList.id = "TCalWidgetLocaleList";
-            localeList.setStyle({
+            localeList.set_style({
                 border: "solid 1px #999", padding: "2px", position: "relative", width: "2em",
                 listStyleType: "none", textAlign: "center", fontSize: ".8em",
                 left: "88%", top: "-2%", backgroundColor: "#fff", zIndex: "200"
@@ -542,11 +542,11 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
             calendarDate.setLocale(this.target.textContent.trim());
             var dayNames = calendarDate.getDayNames(true);
             for (var i = 0; i < 7; i++) {
-                monthRow._firstElementChild().rows[0].cells[i].innerHTML = dayNames[i];
+                monthRow.first_element_child().rows[0].cells[i].innerHTML = dayNames[i];
             }
 
-            calYearPlaceholder._firstElementChild().innerHTML = "";
-            calYearPlaceholder._firstElementChild().innerHTML = "&#9699; " + calendarDate.getMonth(true) + "  " + calendarDate.getFullYear();
+            calYearPlaceholder.first_element_child().innerHTML = "";
+            calYearPlaceholder.first_element_child().innerHTML = "&#9699; " + calendarDate.getMonth(true) + "  " + calendarDate.getFullYear();
 
             _t.parentNode.parentNode.removeChild(_t.parentNode); //remove the locale list
             localeButton.text = calendarDate.getLocale();
@@ -565,7 +565,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 
             //cretae the year selector element
             var yrSlct = T.$(document.createElement("div")); //
-            yrSlct.setStyle({
+            yrSlct.set_style({
                 width: baseWidget._widgetElement.style.width,
                 height: baseWidget._widgetElement.style.height,
                 backgroundColor: bgColor ? bgColor : baseWidget._widgetElement.style.backgroundColor,
@@ -574,7 +574,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 
             });
             if (theme)
-                yrSlct.addClass(theme);
+                yrSlct.add_class(theme);
             baseWidget._widgetElement.appendChild(yrSlct);
             //
             //we are going to create a table where the user can select any year
@@ -590,9 +590,9 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
             }
 
             yrSlct.innerHTML = "<table></table>";
-            var yearCellsBoxTableElement = yrSlct._firstElementChild(); //a ref to the table
+            var yearCellsBoxTableElement = yrSlct.first_element_child(); //a ref to the table
 
-            yearCellsBoxTableElement.setStyle({//set a few style on the table
+            yearCellsBoxTableElement.set_style({//set a few style on the table
                 width: "85%", height: "80%", border: "none", borderStyle: "none", borderColor: "transparent",
                 margin: "2% 0% 0% 7.5%", textAlign: 'center'
             });
@@ -610,11 +610,11 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 
             //now that we have created the rows and colums for the year table
             //we create an interator containing all the cells
-            var yearCellsIterator = T.Iterator().addAll(yearCellsBoxTableElement.rows[0].cells)
-                    .addAll(yearCellsBoxTableElement.rows[1].cells)
-                    .addAll(yearCellsBoxTableElement.rows[2].cells)
-                    .addAll(yearCellsBoxTableElement.rows[3].cells)
-                    .addAll(yearCellsBoxTableElement.rows[4].cells);
+            var yearCellsIterator = T.Iterator().add_all(yearCellsBoxTableElement.rows[0].cells)
+                    .add_all(yearCellsBoxTableElement.rows[1].cells)
+                    .add_all(yearCellsBoxTableElement.rows[2].cells)
+                    .add_all(yearCellsBoxTableElement.rows[3].cells)
+                    .add_all(yearCellsBoxTableElement.rows[4].cells);
             //now insert the dates into the table cells
             yearsToDisplay.foward_iterator(function (x) {
                 yearCellsIterator[this.key].innerHTML = x;
@@ -651,16 +651,16 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
             });
             //implement next and previous buttons
             var yearNextPrevContainer = T.$(document.createElement("div")); //
-            yearNextPrevContainer.setStyle({
+            yearNextPrevContainer.set_style({
                 width: "100%", height: "auto", textAlign: "left",
                 fontSize: "1.5em", fontVariant: "small-caps", marginTop: "-6%"
             });
             var nextButton2 = T.$(document.createElement("p")); //the next button
             nextButton2.innerHTML = "&#9654";
-            nextButton2.setStyle({
+            nextButton2.set_style({
                 marginLeft: "40%", cssFloat: "left", cursor: "pointer"
             });
-            nextButton2.addClass("t-no-drag");
+            nextButton2.add_class("t-no-drag");
             if (hColor) {
                 nextButton2.oldColor = nextButton2.style.color; //save a reference to the old color
                 nextButton2.onmouseover = function () {
@@ -677,10 +677,10 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
             });
             var prevButton2 = T.$(document.createElement("p")); //the prev buttons
             prevButton2.innerHTML = "&#9664";
-            prevButton2.setStyle({
+            prevButton2.set_style({
                 marginLeft: "25%", cssFloat: "left", cursor: "pointer"
             });
-            prevButton2.addClass("t-no-drag");
+            prevButton2.add_class("t-no-drag");
             if (hColor) {
                 prevButton2.oldColor = prevButton2.style.color; //save a reference to the old color
                 prevButton2.onmouseover = function () {
@@ -735,7 +735,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                 //create the month selection view
                 var mntSlct = T.$(document.createElement("div")); //
                 mntSlct = T.$(document.createElement("div")); //
-                mntSlct.setStyle({
+                mntSlct.set_style({
                     width: baseWidget._widgetElement.style.width,
                     height: baseWidget._widgetElement.style.height,
                     backgroundColor: bgColor ? bgColor : baseWidget._widgetElement.style.backgroundColor,
@@ -744,11 +744,11 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 
                 });
                 if (theme)
-                    mntSlct.addClass(theme);
+                    mntSlct.add_class(theme);
                 baseWidget._widgetElement.appendChild(mntSlct);
                 //create the month table
                 var mntTable = T.$(document.createElement("table"));
-                mntTable.setStyle({//set a few style on the table
+                mntTable.set_style({//set a few style on the table
                     width: "80%", height: "80%", border: "none", borderStyle: "none", borderColor: "transparent",
                     margin: "2% 0% 0% 7.5%", textAlign: 'center', borderSpacing: "10px"
                 });
@@ -761,10 +761,10 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                     }
                 }
                 //iterator for the month cells
-                var mntCellsIterator = T.Iterator().addAll(mntTable.rows[0].cells)
-                        .addAll(mntTable.rows[1].cells)
-                        .addAll(mntTable.rows[2].cells)
-                        .addAll(mntTable.rows[3].cells),
+                var mntCellsIterator = T.Iterator().add_all(mntTable.rows[0].cells)
+                        .add_all(mntTable.rows[1].cells)
+                        .add_all(mntTable.rows[2].cells)
+                        .add_all(mntTable.rows[3].cells),
                         //
                         temp_date_object = T.Date(1900, 0); //create a quick date
                 //set it to the current locale, so we get month name in the right language
@@ -818,7 +818,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
             yearNextPrevContainer.appendChild(nextButton2); //append the nav buttons
         };
         //click handler for year place holder
-        calYearPlaceholder._firstElementChild().on("click", baseWidget.yearSelector);
+        calYearPlaceholder.first_element_child().on("click", baseWidget.yearSelector);
 
         /**
          * Set the calendar to a particular year and month, called with no arguments,
@@ -870,7 +870,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
 
 
         //->       //ovveride toString
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.CalendarWidget]";
         };
         ;

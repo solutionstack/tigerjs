@@ -17,7 +17,7 @@
  * @param {CSSColor} [configurationOptions.borderHColor = #fff] Border color on hover-state for this widget 
  * @param {Boolean} [configurationOptions.required = false] Specifies if the input is required and cannot be sent empty
  * @param {Boolean} [configurationOptions.disabled = false] Should the control be disabled
- * @param {Boolean} [configurationOptions.readOnly = false] Should the control be rendered readOnly 
+ * @param {Boolean} [configurationOptions.read_only = false] Should the control be rendered read_only 
  * @param {String | HTMLFormElement} [configurationOptions.attachToForm] Associate this input with a form element, 
  *                                                   you could specify a DOM Node referencing the Form or the Form's id
  * 
@@ -63,8 +63,8 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
                 configurationOptions.required : false,
                 disable = configurationOptions && configurationOptions.disabled ?
                 configurationOptions.disabled : false,
-                readOnly = configurationOptions && configurationOptions.readOnly ?
-                configurationOptions.readOnly : false,
+                read_only = configurationOptions && configurationOptions.read_only ?
+                configurationOptions.read_only : false,
                 name = configurationOptions && configurationOptions.name ?
                 configurationOptions.name.toString().trim() : false,
                 isChk = configurationOptions && configurationOptions.isChecked ?
@@ -94,15 +94,15 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
 
         //set the widget's id to the instance id
         baseWidget._widgetElement.id = baseWidget.InstanceID;
-        baseWidget._widgetElement.setStyle({minWidth: "1em", minHeight: "1em", width: "1em", height: "1em", position: "relative",
+        baseWidget._widgetElement.set_style({minWidth: "1em", minHeight: "1em", width: "1em", height: "1em", position: "relative",
             borderRadius: "0px", backgroundColor: bgColor, border: "solid 1px " + bdColor, display: "inline-block"});
 /////////////////////////////////////////////////////////////////////////////////
 
         /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
-        baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
+        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
 
-        baseWidget._widgetElement.addClass("TigerSmartCheckBox");
+        baseWidget._widgetElement.add_class("TigerSmartCheckBox");
         baseWidget._widgetElement.selectable(false);
         ///////////// //////////////////END SOME ATTR FOR THEWIDGET//////////////////////  
 
@@ -113,12 +113,12 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
         var __internalCheckBox = T.$(document.createElement("input"));
         __internalCheckBox.type = "checkbox";
 
-        __internalCheckBox.setStyle({appearance: "none", MozAppearance: "none",
+        __internalCheckBox.set_style({appearance: "none", MozAppearance: "none",
             WebkitAppearance: "none", opacity: 0});
 
         //create an element to represent the check state
         var checkEl = T.$(document.createElement("span"));
-        checkEl.setStyle({display: "inline-block", width: "100%", height: "100%", position: "absolute",
+        checkEl.set_style({display: "inline-block", width: "100%", height: "100%", position: "absolute",
             top: "0px", left: "0px", fontSize: "1em", fontWeight:"bolder", color: cmColor, opacity: 0});
         checkEl.innerHTML = "&#x2714;"
 
@@ -170,9 +170,9 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
          * @param {Boolean} _disable Boolean to denote if we should disable the conrol or not
          * @function
          * @return {TigerJS.UI.Widget.CheckBoxWidge | Boolean}
-         * @name TigerJS.UI.Widget.CheckBoxWidget#isDisabled
+         * @name TigerJS.UI.Widget.CheckBoxWidget#is_disabled
          */
-        baseWidget.isDisabled = function (_disable) {
+        baseWidget.is_disabled = function (_disable) {
 
             if (Boolean(_disable) === true) {
 
@@ -235,7 +235,7 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
         }
         ;
 
-        baseWidget.isDisabled(disable);//set this unconditionally, wheteher its true or false
+        baseWidget.is_disabled(disable);//set this unconditionally, wheteher its true or false
 
 
         /**
@@ -288,27 +288,27 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
             baseWidget.isChecked(true);
         /**
          * Sets or returns whether a input Widget is read-only
-         * @param {Boolean} readonly Boolean to specify whether the input widget is read only 
+         * @param {Boolean} read_only Boolean to specify whether the input widget is read only 
          * @function
          * @return {TigerJS.UI.Widget.CheckBoxWidget | Boolean}
-         * @name TigerJS.UI.Widget.CheckBoxWidget#readOnly
+         * @name TigerJS.UI.Widget.CheckBoxWidget#read_only
          */
-        baseWidget.readOnly = function (readonly) {
-            if (readonly && T.isBoolean(readonly)) {
-                __internalCheckBox.readOnly = readonly;
+        baseWidget.read_only = function (read_only) {
+            if (read_only && T.is_boolean(read_only)) {
+                __internalCheckBox.read_only = read_only;
                 return this;
             }
-            return  __internalCheckBox.readOnly || false;
+            return  __internalCheckBox.read_only || false;
         };
-        if (readOnly) {//they sent a readonly attribute value
-            baseWidget.readOnly(readOnly);
+        if (read_only) {//they sent a read_only attribute value
+            baseWidget.read_only(read_only);
         }
 
 
 
         baseWidget.validated = false;
         //>
-        baseWidget.validateOnFormSubmit = function () {
+        baseWidget.validate_on_form_submit = function () {
 
             this.validated = false; //always reset the global var, so we dont get the previous validated value
 
@@ -324,14 +324,14 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
 
             else {
                 //show color the forom feild red to indicate an error state
-                this._widgetElement.parentNode.setStyle({
+                this._widgetElement.parentNode.set_style({
                     borderColor: "red",
                     borderWidth: "2px"
                 });
 
                 this._widgetElement.on("input", function () {//when the resumes typing clear the error state
 
-                    this.target.parentNode.setStyle({
+                    this.target.parentNode.set_style({
                         borderColor: " rgb(204, 204, 204)",
                         borderWidth: "1px"
                     });
@@ -353,18 +353,18 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
          */
         baseWidget.validate = function () {
 
-            return this.validateOnFormSubmit();
+            return this.validate_on_form_submit();
         };
         //
 
 
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.CheckBoxWidget]";
         };
         //
         //
         //->   //overide appendTo Element
-        baseWidget.appendToElement = function (parEl) {
+        baseWidget.append_to_element = function (parEl) {
             var p, __formNode = false;
 
             if (parEl.nodeType && parEl.nodeType === 1) {
@@ -372,7 +372,7 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
                 parEl.appendChild(baseWidget._widgetElement);
                 p = T.$(parEl);
             } else
-            if (T.isString(parEl)) {
+            if (T.is_string(parEl)) {
                 p = T.$(parEl);
                 p.appendChild(baseWidget._widgetElement);
 
@@ -395,7 +395,7 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
                     for (i = el.length - 1; i >= 0; i--) { //we loop in reverse so the validation starts from the last filled element
 
                         //see if the Widget Object of this input has a validation interface
-                        if (el[i].WidgetObj && el[i].WidgetObj.validateOnFormSubmit) {
+                        if (el[i].WidgetObj && el[i].WidgetObj.validate_on_form_submit) {
 
                             //if validation fails, stop the form submision, (errors would be displayed from the validation method)
                             if (!el[i].WidgetObj.validate())
@@ -412,7 +412,7 @@ TigerJS.UI.Widget.CheckBoxWidget = function (configurationOptions) {
                 var _widgetLabel = T.$(document.createElement("label"));
                 _widgetLabel.className += " TSILabel";
                 _widgetLabel.innerHTML = label;
-                this._widgetElement.insertBefore(_widgetLabel, baseWidget._widgetElement._firstElementChild());
+                this._widgetElement.insertBefore(_widgetLabel, baseWidget._widgetElement.first_element_child());
 
 
                 //how its supposed to happen with real labels

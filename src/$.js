@@ -19,7 +19,7 @@
 TigerJS.$ = function (el_) {
     //see if we are already an instance of T.$
 
-    if (el_ && el_["setXY"])
+    if (el_ && el_["set_xy"])
         return el_;
     this.el = el_["toUpperCase"] ? document.getElementById(el_) : el_;
 
@@ -34,10 +34,10 @@ TigerJS.$ = function (el_) {
      * Returns a {@link TigerJS.nodes} object containing the Element siblings of this element
      * @function
      *@type TigerJS.nodes
-     * @name TigerJS.$#elementSiblings
+     * @name TigerJS.$#element_siblings
      */
 
-    this.el.elementSiblings = function () {
+    this.el.element_siblings = function () {
 
         return T.nodes({
             siblings: this
@@ -49,7 +49,7 @@ TigerJS.$ = function (el_) {
      *@type TigerJS.$
      * @name TigerJS.$#appendChild
      */
-    this.el._appendChild = function (x) {
+    this.el.append_child = function (x) {
         if (x && x.nodeType)
             this.appendChild(x);
         return this;
@@ -58,11 +58,11 @@ TigerJS.$ = function (el_) {
      * Returns a {@link TigerJS.nodes} object containing the Element siblings before this element
      * @function
      * @type TigerJS.nodes | Boolean
-     * @name TigerJS.$#prevElementSiblings
+     * @name TigerJS.$#prev_element_siblings
      * @return {TigerJS.nodes | Boolean} The elements found or false
      */
 
-    this.el.prevElementSiblings = function () {
+    this.el.prev_element_siblings = function () {
         var n = T.nodes({
             prevSiblings: this
         }, true);
@@ -74,11 +74,11 @@ TigerJS.$ = function (el_) {
      * Returns a {@link TigerJS.nodes} object containing the Element siblings after this element
      * @function
      *  @type TigerJS.nodes | Boolean
-     * @name TigerJS.$#nextElementSiblings
+     * @name TigerJS.$#next_element_siblings
      *  @return {TigerJS.nodes | Boolean} The elements found or false
      */
 
-    this.el.nextElementSiblings = function () {
+    this.el.next_element_siblings = function () {
         var n = T.nodes({
             extSiblings: this
         }, true);
@@ -91,11 +91,11 @@ TigerJS.$ = function (el_) {
      * @function
      *@type TigerJS.$ | Boolean
      *
-     * @name TigerJS.$#_prevElementSibling
+     * @name TigerJS.$#prev_element_sibling
      * @return {HTMLELement | Boolean} The elements found or false
      */
 
-    this.el._prevElementSibling = function () {
+    this.el.prev_element_sibling = function () {
         //if browser supports Element transversal use that..
         var n = this.previousElementSibling;
         if (n)
@@ -114,11 +114,11 @@ TigerJS.$ = function (el_) {
      * Returns a {@link TigerJS.$} object containing this Elements next-sibling in document order
      * @function
      *@type TigerJS.$ | Boolean
-     * @name TigerJS.$#_nextElementSibling
+     * @name TigerJS.$#next_element_sibling
      * @return {HTMLELement | Boolean} The elements found or false
      */
 
-    this.el._nextElementSibling = function () {
+    this.el.next_element_sibling = function () {
         //if browser supports Element transversal use that..
         var n = this.nextElementSibling;
         if (n)
@@ -137,7 +137,7 @@ TigerJS.$ = function (el_) {
      *@type TigerJS.$
      * @name TigerJS.$#removeChildNodes
      */
-    this.el.removeChildNodes = function () {
+    this.el.remove_child_nodes = function () {
         while (this.firstChild) {
             this.removeChild(this.firstChild);
         }
@@ -147,10 +147,10 @@ TigerJS.$ = function (el_) {
      * Return on object of type {@link TigerJS.nodes} that contain all ELement children of this element
      * @function
      * @type TigerJS.nodes | false
-     * @name TigerJS.$#_elementChildren
+     * @name TigerJS.$#element_children
      * @return {TigerJS.nodes | Boolean} The elements found or false
      */
-    this.el._elementChildren = function () {
+    this.el.element_children = function () {
 
         var n = T.nodes({
             childNodes: this
@@ -163,9 +163,9 @@ TigerJS.$ = function (el_) {
      * else returns false
      * @param {String | HTMLELement} needle The element or element ID to find
      * @type Boolean
-     * @name TigerJS.$#containsNode
+     * @name TigerJS.$#contains_node
      */
-    this.el.containsNode = function (needle) {
+    this.el.contains_node = function (needle) {
 
         var n = T.nodes({
             childNodes: this
@@ -178,10 +178,10 @@ TigerJS.$ = function (el_) {
      * Returns the first Element child of this element as an instance of TigerJS.$ or false if no elements are found
      * @function
      * @type TigerJS.$ | Boolean
-     * @name TigerJS.$#_firstElementChild
+     * @name TigerJS.$#first_element_child
      */
 
-    this.el._firstElementChild = function () {
+    this.el.first_element_child = function () {
         //if browser supports Element transversal use that..
         var n = this.firstElementChild;
         if (!n) {
@@ -203,10 +203,10 @@ TigerJS.$ = function (el_) {
      * Returns the last ELement child of this element as an instance of TigerJS.$ or false if no elements are found
      * @function
      * @type TigerJS.$ | Boolean
-     * @name TigerJS.$#_lastElementChild
+     * @name TigerJS.$#last_element_child
      *
      */
-    this.el._lastElementChild = function () {
+    this.el.last_element_child = function () {
         var n = this.lastElementChild;
         if (!n) {
             n = T.nodes({
@@ -224,12 +224,12 @@ TigerJS.$ = function (el_) {
      * The element must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).
      * Element Must have a positioning of Absolute or Relative
      * @function
-     * @name TigerJS.$#setXY
+     * @name TigerJS.$#set_xy
      * @param {Array} xy Contains X & Y values for new position (coordinates are page-based)
      * @type TigerJS.$
      */
 
-    this.el.setXY = function (xy) {
+    this.el.set_xy = function (xy) {
 
         if (xy[0])
             this.style.left = parseInt(xy[0], 10) + "px";
@@ -241,37 +241,37 @@ TigerJS.$ = function (el_) {
      * Set the X position of an html element in page coordinates, regardless of how the element is positioned.
      * The element(s) must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).
      * @function
-     * @name TigerJS.$#setX
+     * @name TigerJS.$#set_x
      * @param {Number} x The X values for new position (coordinates are page-based)
      * @type TigerJS.$
      */
-    this.el.setX = function (x) {
-        return this.setXY([x, null]);
+    this.el.set_x = function (x) {
+        return this.set_xy([x, null]);
     };
     /**
      * Set the Y position of an html element in page coordinates, regardless of how the element is positioned.
      * The element(s) must be part of the DOM tree to have page coordinates (display:none or elements not appended return false).
      * @function
-     * @name TigerJS.$#setY
+     * @name TigerJS.$#set_y
      * @param {Number} y The Y value for new position (coordinates are page-based)
      * @type TigerJS.$
      */
-    this.el.setY = function (y) {
-        return this.setXY([null, y]);
+    this.el.set_y = function (y) {
+        return this.set_xy([null, y]);
     };
     /**
      * Gets the value(s) for the specified style rule(s).
      * It's useful to use this method with {@link TigerJS.dump} to inspect the values of the
      * requested rules
      * @function
-     * @name TigerJS.$#getStyle
+     * @name TigerJS.$#get_style
      * @param {Array} ruleMap An array containing style rules to get,
      * if u specify an empty array all style values are returned
      * @type Object
      *
      * @example
      *         //get an object with the CSS values for the following rules
-     *          var ob = T.$('id').getStyle(['top','border-right-color', 'margin-top'])
+     *          var ob = T.$('id').get_style(['top','border-right-color', 'margin-top'])
      *          if u were to generate dump information on the variable ob, it might contain
      *          something like this
      *
@@ -281,7 +281,7 @@ TigerJS.$ = function (el_) {
      *     'top' => "300px"
      * @return return an object containing all requested style rules
      */
-    this.el.getStyle = function (ruleMap) {
+    this.el.get_style = function (ruleMap) {
         var map, r = {},
                 i;
         ruleMap = T.Iterator(ruleMap || []);
@@ -358,11 +358,11 @@ TigerJS.$ = function (el_) {
      *</pre>
      *@function
      *@type Object
-     *@name TigerJS.$#getPadExtents
+     *@name TigerJS.$#get_pad_extents
      */
 
-    this.el.getPadExtents = function () {
-        var s = this.getStyle();
+    this.el.get_pad_extents = function () {
+        var s = this.get_style();
         //dojo-lized
         return {
             l: s.paddingLeft,
@@ -383,12 +383,12 @@ TigerJS.$ = function (el_) {
      *     //    |        h = the total of the top and bottom border
      *</pre>
      *@function
-     *@name TigerJS.$#getBorderExtents
+     *@name TigerJS.$#get_border_extents
      *@return {Object} Returns object with special values specifically useful for node fitting
      */
 
-    this.el.getBorderExtents = function () {
-        var s = this.getStyle();
+    this.el.get_border_extents = function () {
+        var s = this.get_style();
         //normalize object felds for cases where some styles are not defined, if a border doesnt have a style
         //then set its width to 0px, computedStyle sometimes set this to some defaults like auto, medium e.t.c.
         //
@@ -420,11 +420,11 @@ TigerJS.$ = function (el_) {
      *     </pre>
      *@function
      *@type Object
-     *@name TigerJS.$#getPadBorderExtents
+     *@name TigerJS.$#get_pad_border_extents
      */
-    this.el.getPadBorderExtents = function () {
-        var pe = this.getPadExtents(),
-                be = this.getBorderExtents();
+    this.el.get_pad_border_extents = function () {
+        var pe = this.get_pad_extents(),
+                be = this.get_border_extents();
         return {
             l: parseInt(pe.l) + parseInt(be.l) + "px", //left boder + left padding
             r: parseInt(pe.r) + parseInt(be.r) + "px", //right border + right padding
@@ -443,12 +443,12 @@ TigerJS.$ = function (el_) {
      *     //        * w = total width,  + marginLeft
      *     //        * h = total height, marginTop </pre>
      *@function
-     *@name TigerJS.$#getMarginExtents
+     *@name TigerJS.$#get_margin_extents
      *@type Object
      */
-    this.el.getMarginExtents = function () {
+    this.el.get_margin_extents = function () {
 
-        var s = this.getStyle();
+        var s = this.get_style();
         //dojo-lized
         return {
             l: s.marginLeft === "auto" ? "0px" : s.marginLeft,
@@ -461,17 +461,17 @@ TigerJS.$ = function (el_) {
     /**
      * Sets the value(s) for the specified style rule(s).
      * @function
-     * @name TigerJS.$#setStyle
+     * @name TigerJS.$#set_style
      * @param {Object} styleMap An object containing style rules to set, style rule names should be
      * camel cased
      * @type TigerJS.$
      *  @example
      * Example
      *         //set different style declaration an element
-     *          var ob = T.$('id').setStyle({top:"20px",borderRightColor :"#eeffaa", marginTop :"10px"}
+     *          var ob = T.$('id').set_style({top:"20px",borderRightColor :"#eeffaa", marginTop :"10px"}
      *
      */
-    this.el.setStyle = function (styleMap) {
+    this.el.set_style = function (styleMap) {
         try {
             for (var i in styleMap) {
 
@@ -486,10 +486,10 @@ TigerJS.$ = function (el_) {
      * @param {Number} val A number betwwen 0 and 1 representing the opacity to set<br/>
      *                       0 means totally transparent and 1 means totally opaque
      * @function
-     * @name TigerJS.$#setOpacity
+     * @name TigerJS.$#set_opacity
      * @type TigerJS.$
      */
-    this.el.setOpacity = function (val) {
+    this.el.set_opacity = function (val) {
         if (this["filters"]) {
             this.style['filter'] = "alpha(opacity=" + val * 100 + ")"; //MIGHTY IE,!!
             // well the DxImageTransform is quite useful
@@ -503,15 +503,15 @@ TigerJS.$ = function (el_) {
      * Get the value of opacity on the Element, returned value is between 0 and 1
      * @function
      * @type Number
-     * @name TigerJS.$#getOpacity
+     * @name TigerJS.$#get_opacity
      */
-    this.el.getOpacity = function () {
+    this.el.get_opacity = function () {
         if (this["filters"]) {
             return this["filters"]('alpha')["opacity"] / 100;
         } else {
 
             //watch for errorneous float values
-            return ("%.1f".sprintf(this.getStyle().opacity));
+            return ("%.1f".sprintf(this.get_style().opacity));
         }
 
     };
@@ -521,15 +521,15 @@ TigerJS.$ = function (el_) {
      * @param {HTMLElement | String} node The node or (node id )to swap with
      * @function
      * @type TigerJS.$
-     * @name TigerJS.$#swapXY
+     * @name TigerJS.$#swap_xy
      */
-    this.el.swapXY = function (node) {
+    this.el.swap_xy = function (node) {
         //get the left and top co-ordinates of each element and swap them
-        var xy = this.getStyle(),
+        var xy = this.get_style(),
                 o = T.$(node),
-                oxy = o.getStyle(['left', 'top']);
-        o.setXY([xy.left, xy.top]); //swap
-        this.setXY([oxy.left, oxy.top]);
+                oxy = o.get_style(['left', 'top']);
+        o.set_xy([xy.left, xy.top]); //swap
+        this.set_xy([oxy.left, oxy.top]);
         return this;
     };
     /**
@@ -541,7 +541,7 @@ TigerJS.$ = function (el_) {
      * @return {Object} Object literal containing the following about this element: (top, right, bottom, left)
      */
     this.el.region = function (node) {
-        var reg = this.getStyle();
+        var reg = this.get_style();
         return {//firefox calculates values that  are no explicitly set, so we compare with explicit values
             //and where we dont have values we pull in values from rect()
             top: this.style.top ? reg.top : this.rect().top,
@@ -554,12 +554,12 @@ TigerJS.$ = function (el_) {
      * Check if this node is in the passed region
      * @function
      * @type Boolean
-     * @name TigerJS.$#inRegion
+     * @name TigerJS.$#in_region
      * @param {Object | HTMLElement | String} region the region object got by calling {@link #region}, or the HTMLElement
      *                                               which we would get its region to compare, or its id
      * @return True if in region, false if not.
      */
-    this.el.inRegion = function (region) {
+    this.el.in_region = function (region) {
 
         region = T.$(region).region();
         var r = this.region();
@@ -578,11 +578,11 @@ TigerJS.$ = function (el_) {
     /**
      * Remove a certain [CSS] class, or a list of CSS classes from the given element.
      *  @function
-     *  @name TigerJS.$#removeClass
+     *  @name TigerJS.$#remove_class
      *  @type TigerJS.$
      *  @param classNames {string} The list of space seperated CSS classes to remove.
      */
-    this.el.removeClass = function (classNames) {
+    this.el.remove_class = function (classNames) {
 
         var cls = T.Iterator(this.className.split(" ")), //get the classes on the element
                 arg = arguments[0].split(" "); //get the classes to remove
@@ -596,13 +596,13 @@ TigerJS.$ = function (el_) {
      * @param classNames {string} The list of space seperated CSS classes to append
      * @function
      * @type TigerJS.$
-     * @name TigerJS.$#addClass
+     * @name TigerJS.$#add_class
      */
 
-    this.el.addClass = function (classNames) {
+    this.el.add_class = function (classNames) {
         var cls = T.Iterator(this.className.split(" ")); //get the classes currently on the element
 
-        this.removeClass(classNames); //try to remove the classes been sent in case they already exist so we dont duplicate
+        this.remove_class(classNames); //try to remove the classes been sent in case they already exist so we dont duplicate
         this.className = cls.merge(classNames.split(" ")).join(" "); //add parameters with existing classes
         return this;
     };
@@ -614,10 +614,10 @@ TigerJS.$ = function (el_) {
      *                          Pass false to match all classes instead, defaults to true
      * @return [Boolean] true if the element has the class(es) else false
      *  @function
-     * @name TigerJS.$#hasClass
+     * @name TigerJS.$#has_class
      *
      */
-    this.el.hasClass = function (classNames, single) {
+    this.el.has_class = function (classNames, single) {
         var cls = T.Iterator(this.className.split(" ")), //get the classes currently on the element
                 arg = T.Iterator(classNames.split(" ")),
                 i; //get the argument
@@ -630,23 +630,23 @@ TigerJS.$ = function (el_) {
 
         if (single)
             return !!cls.intersect(arg).length; //return true if a single class matches
-        return cls.isSubset(arg); //return true if every class matches, so arg should be a subset of cls
+        return cls.is_subset(arg); //return true if every class matches, so arg should be a subset of cls
 
     };
     /**
      * Toggles the specified class on the element, removing it if it exists, and adding it if it doesnt
      * @param {string} className CSS class name to toggle
      * @function
-     * @name TigerJS.$#toggleClass
+     * @name TigerJS.$#toggle_class
      * @type TigerJS.$
      *
      */
-    this.el.toggleClass = function (className) {
-        if (this.hasClass(className)) {
-            this.removeClass(className);
+    this.el.toggle_class = function (className) {
+        if (this.has_class(className)) {
+            this.remove_class(className);
         } else {
 
-            this.addClass(className);
+            this.add_class(className);
         }
         return this;
     };
@@ -655,10 +655,10 @@ TigerJS.$ = function (el_) {
      * @param {string} classNames the class(es) to replace seperated by a space.
      * @param {string} withClassNames the class(es) to replace with, seperate each with a space.
      * @function
-     * @name TigerJS.$#replaceClass
+     * @name TigerJS.$#replace_class 
      * @type TigerJS.$
      */
-    this.el.replaceClass = function (classNames, withClassNames) {
+    this.el.replace_class  = function (classNames, withClassNames) {
 
         //this one line incantation calls str_replace on the elements class name
         // since str_replace can work with arrays, we first convert each space seperated string of classes
@@ -671,23 +671,23 @@ TigerJS.$ = function (el_) {
      * Disable all css classes on the element
      *
      * @function
-     *  @name TigerJS.$#classOff
+     *  @name TigerJS.$#class_off
      *  @type TigerJS.$
      */
-    this.el.classOff = function () {
+    this.el.class_off = function () {
         var temp = this.getAttribute('class'); //get the value of the class attribute
         this.setAttribute("l_closed_class", temp); //set a custom attribute with the class content
         this.setAttribute("class", ""); //set the class attribute itself to an empty string
         return this;
     };
     /**
-     * Enables all css classes, disabled by {@link #classOff} on the element
+     * Enables all css classes, disabled by {@link #class_off} on the element
      *
      * @function
-     *  @name TigerJS.$#classOn
+     *  @name TigerJS.$#class_on
      *  @type TigerJS.$
      */
-    this.el.classOn = function () {
+    this.el.class_on = function () {
         var temp = this.getAttribute('l_closed_class'); //get the value of the custom class attribute
         this.setAttribute("class", temp); //set the class attribute to its original content
         this.removeAttribute("l_closed_class"); //delete the custom class attribute
@@ -697,21 +697,21 @@ TigerJS.$ = function (el_) {
      * Returns the text content of the Element.
      * @return  The text content of the element .
      * @function
-     * @name TigerJS.$#getText
+     * @name TigerJS.$#get_text
      * @type String
      */
-    this.el.getText = function () {
+    this.el.get_text = function () {
         return this.textContent || this.innerText || this.nodeValue || this.text || "";
     };
     /**
      * Sets the text content of the Element.
      * @param {string}  content The content to add.
      * @function
-     * @name TigerJS.$#setText
+     * @name TigerJS.$#set_text
      *
      * @type TigerJS.$
      */
-    this.el.setText = function (content) {
+    this.el.set_text = function (content) {
 
         if ('textContent' in this) {
             this.textContent = content;
@@ -730,15 +730,15 @@ TigerJS.$ = function (el_) {
      *            else the function might fail, also if a node or element currently in the document is passed it would be removed
      *            from its current location, then put back as the content of this element
      * @function
-     *  @name TigerJS.$#setHtml
+     *  @name TigerJS.$#set_html
      *  @type TigerJS.$
      */
-    this.el.setHtml = function (content) {
+    this.el.set_html = function (content) {
         var html = "",
                 item, i = 0;
         ;
         //match non empty tags
-        if (T.isString(content)) { //hopefully WE'RE SENT valid (x)html markup
+        if (T.is_string(content)) { //hopefully WE'RE SENT valid (x)html markup
             html = T.create(content); //get the contents as HTMLFragment
 
         } else if (content.nodeType) { //a single node
@@ -766,10 +766,10 @@ TigerJS.$ = function (el_) {
      * Gets the HTML content of the HTMLElement.
      * @function
      * @type String
-     *  @name TigerJS.$#getHtml
+     *  @name TigerJS.$#get_html
      *
      */
-    this.el.getHtml = function () {
+    this.el.get_html = function () {
 
         return this.innerHTML;
     };
@@ -779,11 +779,11 @@ TigerJS.$ = function (el_) {
      * @param {Int} size The pixel height to size to
      * @function
      * @type TigerJS.$
-     * @name TigerJS.$#setWidth
+     * @name TigerJS.$#set_width
      */
-    this.el.setWidth = function (size) {
+    this.el.set_width = function (size) {
 
-        this._setSize('width', size);
+        this.set_size('width', size);
         return this;
     };
     ///GOING YUI!!, expanding open source!!, for the records YUI is a greaaaaat library, as well as dojo and jquery/jquery-ui
@@ -796,14 +796,14 @@ TigerJS.$ = function (el_) {
      * @param {Int} size The pixel height to size to
      * @function
      * @type TigerJS.$
-     * @name TigerJS.$#setheight
+     * @name TigerJS.$#set_height
      */
 
-    this.el.setHeight = function (size) {
-        this._setSize('height', size);
+    this.el.set_height = function (size) {
+        this.set_size('height', size);
         return this;
     };
-    this.el._setSize = function (prop, val) {
+    this.el.set_size = function (prop, val) {
         val = (val > 0) ? val : 0;
         var size = 0;
         this.style[prop] = val + 'px';
@@ -879,19 +879,19 @@ TigerJS.$ = function (el_) {
      * p_first -> insert as first child of this nodes parent
      * p_last  -> insert as Last child of this nodes parent </pre>
      * @function
-     *  @name TigerJS.$#addHtml
+     *  @name TigerJS.$#add_html
      * @type TigerJS.$
      */
 
-    this.el.addHtml = function (content, where) {
-        where = T.isString(where) ? where : "last";
+    this.el.add_html = function (content, where) {
+        where = T.is_string(where) ? where : "last";
         //get the appriopriate content, as HTMLFragment
 
-        var html = T.isString(content) ? T.create(content) : content.cloneNode(true);
+        var html = T.is_string(content) ? T.create(content) : content.cloneNode(true);
         switch (where) {
 
             case 'replace':
-                this.setHtml(html); //if we're to replace call setHtml
+                this.set_html(html); //if we're to replace call set_html
                 break;
             case 'before': //place before this element
                 if (this.tagName.toLowerCase() === "body")
@@ -934,11 +934,11 @@ TigerJS.$ = function (el_) {
      * @param {Object} attrMap An object literal containing name value pair of attributes to set,
      *     duplicate attribute value's are overwritten in order
      * @function
-     * @name TigerJS.$#setAttr
+     * @name TigerJS.$#set_attr
      * @type TigerJS.$
      */
 
-    this.el.setAttr = function (attrMap) {
+    this.el.set_attr = function (attrMap) {
         for (var i in attrMap) {
             if (i === 'style') // CSS style declarations found
             {
@@ -972,10 +972,10 @@ TigerJS.$ = function (el_) {
      * @param {string} name The attribute name
      * @return the attributes value or null if it doesnt exist
      * @function
-     * @name TigerJS.$#getAttr
+     * @name TigerJS.$#get_attr
      * @type DOMString
      */
-    this.el.getAttr = function (name) {
+    this.el.get_attr = function (name) {
 
         return this.getAttribute(name);
     };
@@ -1092,11 +1092,11 @@ TigerJS.$ = function (el_) {
      * Togggles the visibility of the Element,if its visible it renders it invisible
      * and vice-versa. Note invisible elements still occupy their positions and space in the
      * document structure
-     * @name TigerJS.$#toggleVisibility
+     * @name TigerJS.$#toggle_visibility
      * @function
      * @type TigerJS.$
      */
-    this.el.toggleVisibility = function () {
+    this.el.toggle_visibility = function () {
 
         if (this.style.visibility === "hidden") {
             this.style.visibility = "";
@@ -1109,9 +1109,9 @@ TigerJS.$ = function (el_) {
      * Toggles the Elements Enabled/Diable state
      * @function
      * @type TigerJS.$
-     * @name TigerJS.$#toggleDisabled
+     * @name TigerJS.$#toggle_disabled
      */
-    this.el.toggleDisabled = function () {
+    this.el.toggle_disabled = function () {
 
         if (this.disabled) {
             this.disabled = false;
@@ -1121,21 +1121,21 @@ TigerJS.$ = function (el_) {
     };
     /**
      * Returns an Object Map of all HTML 5 'data-*' attributes on the Element
-     * The data attribute must have been previously created by {@link TigerJS.$#setData},
+     * The data attribute must have been previously created by {@link TigerJS.$#set_data},
      * or manually create as an sttribute using the format.<pre>
      *     data-tscript-*=datavalue
      *     e.g A div element
      *     <div data-tscript-temperture="23deg"></pre><br/>
      *  The returned object has one method (<b>.namedItem</b>), which would be used to
      *  retrieve an arbitrary data value by name.<br/>
-     *  Arbitrary data can also be retrieved using the {@link getData} method
+     *  Arbitrary data can also be retrieved using the {@link get_data} method
      *  @example
      *
      *  //some div element
      *   <div style=""  id="mydiv" data-tscript-temperture="23deg"></div>
      *   //or set the data by script
      *
-     *     var el = T.$("mydiv").setData("temperature","23deg"),
+     *     var el = T.$("mydiv").set_data("temperature","23deg"),
      *
      *     dataObject = el._dataset(), // fetch the data set object
      *
@@ -1178,14 +1178,14 @@ TigerJS.$ = function (el_) {
      * Set arbitrary HTML 5, style data on the Element
      * @param {string} name The data name
      * @param {string} val The data value
-     * Data can be later retrieved with {@link #getData} or the {@link _dataset} object
+     * Data can be later retrieved with {@link #get_data} or the {@link _dataset} object
      * @function
      * @type TigerJS.$
-     * @name TigerJS.$#setData
+     * @name TigerJS.$#set_data
      * @see TigerJS.$#_dataset
      */
 
-    this.el.setData = function (name, val) {
+    this.el.set_data = function (name, val) {
 
         this.setAttribute(("data-tigerjs-" + name), val);
         return this;
@@ -1194,21 +1194,21 @@ TigerJS.$ = function (el_) {
      * Gets arbitrary data on the Element or null
      * @param {string} name The name of the data attribute to get
      * @type String
-     * @name TigerJS.$#getData
+     * @name TigerJS.$#get_data
      * @function
      */
 
-    this.el.getData = function (name) {
+    this.el.get_data = function (name) {
 
         return this.getAttribute(("data-tigerjs-" + name));
     };
     /**
      * Returns the outerHTML of the element
      * @function
-     * @name TigerJS.$#_outerHTML
+     * @name TigerJS.$#outer_html
      * @type String
      */
-    this.el._outerHTML = function () {
+    this.el.outer_html = function () {
         if (this.outerHTML) {
             return this.outerHTML;
         }
@@ -1226,11 +1226,11 @@ TigerJS.$ = function (el_) {
      * after the Element and all nextSiblings, before the Element, Its important to note
      * that this method has far-reaching implications on the DOM structure and heirachy
      * and should be used with caution
-     * @name TigerJS.$#swapSiblingPositions
+     * @name TigerJS.$#swap_sibling_positions
      * @function
      * @type TigerJS.$
      */
-    this.el.swapSiblingPositions = function () {
+    this.el.swap_sibling_positions = function () {
         var pre_s = [],
                 ne_s = [],
                 sib = this,
@@ -1282,11 +1282,11 @@ TigerJS.$ = function (el_) {
      *  @param {string} dest where to move the nodes (top || bottom), Top or bottom of the child-node list
      *  @function
      *  @type TigerJS.$
-     *  @name TigerJS.$#moveElementChildNodes
+     *  @name TigerJS.$#move_element_child_nodes
      *
      */
 
-    this.el.moveElementChildNodes = function (start, end, dest) {
+    this.el.move_element_child_nodes = function (start, end, dest) {
 
         if (start === 0 && dest === "top")
             return this; //cant move to top when alread at top
@@ -1315,10 +1315,10 @@ TigerJS.$ = function (el_) {
     /**
      * Reverses  the ChildNodes arrangement of this node
      *@function
-     *@name TigerJS.$#reverseChildNodes
+     *@name TigerJS.$#reverse_child_nodes
      *@type TigerJS.$
      */
-    this.el.reverseChildNodes = function () {
+    this.el.reverse_child_nodes = function () {
         var n = T.Iterator(this.childNodes).reverse();
         //get the child nodes and reverse them
         this.removeChildNodes(); //remove all children
@@ -1335,13 +1335,13 @@ TigerJS.$ = function (el_) {
      *  from this element to the target element overwriting any existing attribute on the target, thie id attribute
      *  is however not copied
      *  @param {HTMLELement | String} target The element (or its id) to recieve the attributes
-     *  @name TigerJS.$#copyAttributes
+     *  @name TigerJS.$#copy_attributes
      *  @function
      *  @type TigerJS.$
      */
 
-    this.el.copyAttributes = function (target) {
-        target = T.isString(target) ? T.$(target) : target;
+    this.el.copy_attributes = function (target) {
+        target = T.is_string(target) ? T.$(target) : target;
         try { //errors accesing non-existent attributes
             var this_atr = this.attributes,
                     target_atr = target.attributes,
@@ -1373,12 +1373,12 @@ TigerJS.$ = function (el_) {
      *  Swap attributes from this Element with attributes on another Element .This method swaps all name/value pairs of attributes
      *  on both elements , thie id attribute is however not swapped
      *  @param {HTMLELement | String} target The element (or its id) to swap attributes with
-     *  @name TigerJS.$#swapAttributes
+     *  @name TigerJS.$#swap_attributes
      *  @function
      *  @type TigerJS.$
      */
-    this.el.swapAttributes = function (target) {
-        target = T.isString(target) ? T.$(target) : target;
+    this.el.swap_attributes = function (target) {
+        target = T.is_string(target) ? T.$(target) : target;
         try {
             //errors accesing non-existent attributes
 
@@ -1425,12 +1425,12 @@ TigerJS.$ = function (el_) {
     };
     /**
      * Removes a certain  attribute on the element
-     *  @name TigerJS.$#removeAttr
+     *  @name TigerJS.$#remove_attr
      *  @function
      *  @type TigerJS.$
      *  @param {String} name Attribute name to remove
      */
-    this.el.removeAttr = function (name) {
+    this.el.remove_attr = function (name) {
         if (name === "style") {
             if (window.attachEvent && !window.addEventListener) {
 
@@ -1445,11 +1445,11 @@ TigerJS.$ = function (el_) {
     };
     /**
      * Removes all attributes on the element
-     *  @name TigerJS.$#removeAttributes
+     *  @name TigerJS.$#_remove_attributes
      *  @function
      *  @type TigerJS.$
      */
-    this.el.removeAttributes = function () {
+    this.el._remove_attributes = function () {
         var this_atr = this.attributes;
         try { //errors happen here when we have no attribute to remove
 
@@ -1478,14 +1478,14 @@ TigerJS.$ = function (el_) {
      * Replaces this Element with the passed node or HTML data
      * @param {String | HTMLElement} content  Valid XHTML markup string  or an Element reference to use
      *                              as replacement data
-     * @name TigerJS.$#replaceNode
+     * @name TigerJS.$#replace_node
      * @function
      * @type TigerJS.$
      * @return returns the removed ELement
      */
-    this.el.replaceNode = function (content) {
+    this.el.replace_node = function (content) {
 
-        if (content && T.isString(content)) {
+        if (content && T.is_string(content)) {
             content = T.create(content);
         }
         this.parentNode.replaceChild(content, this);
@@ -1496,14 +1496,14 @@ TigerJS.$ = function (el_) {
      * that is the Elements position is not alteredâ its position will remain the same.
      * @example
      *   var el = T.$("id").wrap("div"); //wrap whatever element that has the ID value inside the DIV
-     *  @name TigerJS.$#wrapNode
+     *  @name TigerJS.$#wrap_node
      *  @function
      *  @type TigerJS.$
      *  @param {HTMLElement | String} wrapper HTMLElement or an HTML tag-name to be used as the wrapper element
      *  @returns Returns the wrapper Element as an instance of {@link TigerJS.$}
      */
-    this.el.wrapNode = function (wrapper) {
-        if (wrapper && T.isString(wrapper)) {
+    this.el.wrap_node = function (wrapper) {
+        if (wrapper && T.is_string(wrapper)) {
 
             wrapper = document.createElement(wrapper);
         }
@@ -1517,10 +1517,10 @@ TigerJS.$ = function (el_) {
      * Sends each Element ChildNode of this Element, to the callback function
      * @param {Function} cb  Callback function to accept each eLementChildNode
      * @function
-     * @name TigerJS.$#eachChild
+     * @name TigerJS.$#each_child
      * @type TigerJS.$
      */
-    this.el.eachChild = function (cb) {
+    this.el.each_child = function (cb) {
         T.nodes({
             childNodes: this
         })._each(cb);
@@ -1530,10 +1530,10 @@ TigerJS.$ = function (el_) {
      * Sends each Element sibling of this Element, to the callback function
      * @param {Function} cb  Callback function to accept each eLement-sibling
      * @function
-     * @name TigerJS.$#eachSibling
+     * @name TigerJS.$#each_sibling
      * @type TigerJS.$
      */
-    this.el.eachSibling = function (cb) {
+    this.el.each_sibling = function (cb) {
         T.nodes({
             siblings: this
         })._each(cb);
@@ -1779,16 +1779,16 @@ TigerJS.$ = function (el_) {
      *   var el  = T.$("id_of_element");
      *   //set up some events
      *
-     *   el.onKey("Ctrl Alt f7", handler);
+     *   el.on_key("Ctrl Alt f7", handler);
      *   //the above would listen for f7 key in combination with the control and alternate key
      *   // note f7 could be given as F7 while control could be written as Control or ctrlKey,.. all three works
      *
      *   //some more examples
-     *   el.onKey("%", handler);
+     *   el.on_key("%", handler);
      *   //this would listen for the percentage key
      *   //however note , that you could also have done
      *
-     *   el.onKey("Shift %", handler);
+     *   el.on_key("Shift %", handler);
      *    // this is beacuse you'll usually use the shift to
      *   get your percentage key anyway, but for all shifted characters
      *   <br/>
@@ -1837,9 +1837,9 @@ TigerJS.$ = function (el_) {
      *                     keydown, or keypress event object
      *  @function
      *  @type TigerJS.$
-     *  @name TigerJS.$#onKey
+     *  @name TigerJS.$#on_key
      */
-    this.el.onKey = function (key_map, handler) {
+    this.el.on_key = function (key_map, handler) {
 
         var w, et; //some helper variables
         var mod_arr = T.Iterator();
@@ -1948,47 +1948,47 @@ TigerJS.$ = function (el_) {
     };
     /**
      * Checks if this element is the first-child of its parent
-     *  @name TigerJS.$#isFirst
+     *  @name TigerJS.$#in_first
      *  @function
      *  @type Boolean
      */
 
-    this.el.isFirst = function () {
+    this.el.in_first = function () {
 
-        return T.$(this.parentNode)._firstElementChild() === this;
+        return T.$(this.parentNode).first_element_child() === this;
     };
     /**
      * Checks if this element is the last-child of its parent
-     *  @name TigerJS.$#isLast
+     *  @name TigerJS.$#in_last
      *  @function
      *  @type Boolean
      */
 
-    this.el.isLast = function () {
-        return T.$(this.parentNode)._lastElementChild() === this;
+    this.el.in_last = function () {
+        return T.$(this.parentNode).last_element_child() === this;
     };
 
     /**
      * Checks if the argument is a child node of this Element
-     *  @name TigerJS.$#isChild
+     *  @name TigerJS.$#in_child
      *  @param {String | HTMLElement} node An element reference or ID
      *  @function
      *  @type Boolean
      */
 
-    this.el.isChild = function (node) {
+    this.el.in_child = function (node) {
         return T.Iterator(this.children).contains(T.$(node));
     };
 
     /**
      * Checks if this element is a child-of the argument node
-     *  @name TigerJS.$#isChildOf
+     *  @name TigerJS.$#in_child_of
      *  @param {String | HTMLElement} node An element reference or ID
      *  @function
      *  @type Boolean
      */
 
-    this.el.isChildOf = function (node) {
+    this.el.in_child_of = function (node) {
         return T.Iterator(node.children).contains(this);
     };
 
@@ -1998,10 +1998,10 @@ TigerJS.$ = function (el_) {
      * the mouse is wheeled down and -1 when wheeled up, it also recieves the event object as a second argument
      * @function
      * @type TigerJS.$
-     *  @name TigerJS.$#onWheel
+     *  @name TigerJS.$#on_wheel
      *
      */
-    this.el.onWheel = function (callback) {
+    this.el.on_wheel = function (callback) {
         this.on("wheel", function () {
             if (this.deltaY && this.deltaY < 0) {
                 if (callback)
@@ -2016,7 +2016,7 @@ TigerJS.$ = function (el_) {
     /*
      * @ignore
      */
-    this.el.__toString = function () {
+    this.el.__to_string = function () {
         try {
             return "[object TigerJS.$]/" + "HTML" + (this.tagName).toCase('-ufl') + "Element";
         } catch (e) {

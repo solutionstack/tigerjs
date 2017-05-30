@@ -9,7 +9,7 @@
  */
 T.globalWidgetCache = {
     //returns an identifier of all standard widgets registered in the document
-    getWidgetInstanceID: function () {}
+    get_widget_instance_id: function () {}
 };
 /**
  * @class
@@ -100,9 +100,9 @@ TigerJS.UI.Color = {
      *  @function
      *  @memberOf    TigerJS.UI.Color#
      */
-    colorToHex: function (input) {
+    color_to_hex: function (input) {
 
-        var color = T.isArray(input) ? input : this.parse(input);
+        var color = T.is_array(input) ? input : this.parse(input);
         //convert all to hex, pad single hex digits with zero
 
         return "#" +
@@ -120,11 +120,11 @@ TigerJS.UI.Color = {
      * @function
      *  @memberOf    TigerJS.UI.Color#
      */
-    colorToHsl: function (input) {
+    color_to_hsl: function (input) {
 
 
 
-        var color = T.isArray(input) ? input : this.parse(input),
+        var color = T.is_array(input) ? input : this.parse(input),
                 // First must normalize r, g, b to be between 0 and 1.
                 normR = color[0] / 255,
                 normG = color[1] / 255,
@@ -174,9 +174,9 @@ TigerJS.UI.Color = {
      *   @type Array
      
      */
-    getColor: function (el) {
+    get_color: function (el) {
         el = T.$(el);
-        return this.parse(el.getStyle().color);
+        return this.parse(el.get_style().color);
     },
     /**
      * @description
@@ -193,11 +193,11 @@ TigerJS.UI.Color = {
      *   @type Array
      
      */
-    setColor: function (el, color) {
+    set_color: function (el, color) {
         el = T.$(el);
-        var color = T.isArray(color) ? color : this.parse(color),
+        var color = T.is_array(color) ? color : this.parse(color),
                 rgbaString = "rgba(" + color[0] + ", " + color[1] + ", " + color[2] + ", " + (color[3] || color[3] === 0 ? color[3] : 1) + ")";
-        el.setStyle({
+        el.set_style({
             'background-color': rgbaString
         });
     },
@@ -636,7 +636,7 @@ TigerJS.UI.FX = {
      */
 
     Animation: function (animConfig) {
-        var el = animConfig.el._outerHTML ? animConfig.el : T.$(animConfig.el); // element to animate
+        var el = animConfig.el.outer_html ? animConfig.el : T.$(animConfig.el); // element to animate
 
         var coords = el.rect();
 
@@ -668,7 +668,7 @@ TigerJS.UI.FX = {
                     document.documentElement.firstChild.appendChild(styleEl);
                 }
                 //set the animation on the element
-                el.setStyle(// set the animation properties for this node
+                el.set_style(// set the animation properties for this node
                         {
                             animation: new String(el.id + "_wipeLeft" + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                     (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -702,7 +702,7 @@ TigerJS.UI.FX = {
                     document.documentElement.firstChild.appendChild(styleEl);
                 }
                 //set the animation on the element
-                el.setStyle(// set the animation properties for this node
+                el.set_style(// set the animation properties for this node
                         {
                             animation: new String(el.id + "_wipeTop" + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                     (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -736,7 +736,7 @@ TigerJS.UI.FX = {
                     document.documentElement.firstChild.appendChild(styleEl);
                 }
                 //set the animation on the element
-                el.setStyle(// set the animation properties for this node
+                el.set_style(// set the animation properties for this node
                         {
                             animation: new String(el.id + "_wipeBottom" + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                     (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -770,7 +770,7 @@ TigerJS.UI.FX = {
                     document.documentElement.firstChild.appendChild(styleEl);
                 }
                 //set the animation on the element
-                el.setStyle(// set the animation properties for this node
+                el.set_style(// set the animation properties for this node
                         {
                             animation: new String(el.id + "_wipeRight" + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                     (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -815,7 +815,7 @@ TigerJS.UI.FX = {
                     document.documentElement.firstChild.appendChild(styleEl);
                 }
                 //set the animation on the element
-                el.setStyle(// set the animation properties for this node
+                el.set_style(// set the animation properties for this node
                         {
                             animation: new String(el.id + "_slideInLeft" + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                     (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -849,7 +849,7 @@ TigerJS.UI.FX = {
                     document.documentElement.firstChild.appendChild(styleEl);
                 }
                 //set the animation on the element
-                el.setStyle(// set the animation properties for this node
+                el.set_style(// set the animation properties for this node
                         {
                             animation: new String(el.id + "_slideInRight" + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                     (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -885,7 +885,7 @@ TigerJS.UI.FX = {
                     document.documentElement.firstChild.appendChild(styleEl);
                 }
                 //set the animation on the element
-                el.setStyle(// set the animation properties for this node
+                el.set_style(// set the animation properties for this node
                         {
                             animation: new String(el.id + "_slideInBottom" + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                     (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -919,7 +919,7 @@ TigerJS.UI.FX = {
                     document.documentElement.firstChild.appendChild(styleEl);
                 }
                 //set the animation on the element
-                el.setStyle(// set the animation properties for this node
+                el.set_style(// set the animation properties for this node
                         {
                             animation: new String(el.id + "_slideInTop" + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                     (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -934,7 +934,7 @@ TigerJS.UI.FX = {
 
         } else { //standard animations in our css file
 
-            el.setStyle(// set the animation properties for this node
+            el.set_style(// set the animation properties for this node
                     {
                         animation: new String(animConfig.name + " " + (animConfig.time ? animConfig.time + "s" : "1s") + " " +
                                 (animConfig.curve || "ease-in") + " " + (animConfig.delay ? animConfig.delay + "s" : "0s") + " " +
@@ -1022,7 +1022,7 @@ TigerJS.UI.FX = {
      * @param {HTMLElement} config_.dragTarget In cases where just the drag handle specify actual target here
      * 
      *
-     * @see TigerJS.UI.Widget#setDraggable
+     * @see TigerJS.UI.Widget#set_draggable
      * @fires
      * event: _dragmove Fires continiously when the Element is in motion.
      * @fires _dragend Fires when the Element stops moving, and
@@ -1033,7 +1033,7 @@ TigerJS.UI.FX = {
     Draggable: function (el, config_) {
         //get the proper DOMElement, and if its one of our widget,
         // refrence the proper HTML element within
-        if (T.isString(el)) {
+        if (T.is_string(el)) {
             el = T.$(el);
         }
 
@@ -1098,10 +1098,10 @@ TigerJS.UI.FX = {
             //leaves the element, so if we do not monitor the movent
             // on a document wide scope we would have 'moves' stopping
             //abdruptly
-            T.$(document.body).on("mousemove", doDrag, false, false, false);
-            T.$(document.body).on("touchmove", doDrag, false, false, false);
+            T.$(document.body).on("mousemove", do_drag, false, false, false);
+            T.$(document.body).on("touchmove", do_drag, false, false, false);
         }
-        function initDrag() {
+        function init_drag() {
             // first make sure an Invalid Element wasnt clicked
             // Invalid elements would be buttons, editable feilds and links, or other
             // elements with a no drag data-attribute
@@ -1154,7 +1154,7 @@ TigerJS.UI.FX = {
             return false;
         }
 
-        function doDrag() {
+        function do_drag() {
 
             //are we just a drag handle. then set the real element to drag
             el = realDrag ? realDrag : el;
@@ -1298,7 +1298,7 @@ TigerJS.UI.FX = {
             __move(e_dx, e_dy);
         }
 
-        function stopDrag() {
+        function stop_drag() {
 
             el.style.position = old_positioning;
             //    el.style.zIndex = oldZIndex;
@@ -1314,15 +1314,15 @@ TigerJS.UI.FX = {
 
         //setup events for dragging
         if (el) {
-            el.on("mousedown", initDrag);
-            el.on("touchstart", initDrag);
+            el.on("mousedown", init_drag);
+            el.on("touchstart", init_drag);
             //its common for the mouse to be detected on the html element
             //while moving around so the need for the handler, else the drag event would'nt cancel
             //if we mouse up on the html element
-            T.$(document.body).on("mouseup", stopDrag);
-            T.$(document.documentElement).on("mouseup", stopDrag);
-            T.$(document.body).on("touchend", stopDrag);
-            T.$(document.documentElement).on("touchend", stopDrag);
+            T.$(document.body).on("mouseup", stop_drag);
+            T.$(document.documentElement).on("mouseup", stop_drag);
+            T.$(document.body).on("touchend", stop_drag);
+            T.$(document.documentElement).on("touchend", stop_drag);
         }
 
         //PUBLIC INTERFACE FOR CLASS DRAGGABLE
@@ -1334,14 +1334,14 @@ TigerJS.UI.FX = {
              * @function
              * @memberOf TigerJS.UI.FX.Draggable#
              */
-            cancelDrag: function (el) {
+            cancel_drag: function (el) {
                 el = el.nodType && el.nodType === 1 ? el : T.$(el);
-                el.off("mousedown", initDrag);
-                el.off("touchstart", initDrag);
-                T.$(document.body).off("mousemove", doDrag);
-                T.$(document.body).off("touchmove", doDrag);
-                T.$(document.documentElement).off("mousemove", doDrag);
-                T.$(document.documentElement).off("touchmove", doDrag);
+                el.off("mousedown", init_drag);
+                el.off("touchstart", init_drag);
+                T.$(document.body).off("mousemove", do_drag);
+                T.$(document.body).off("touchmove", do_drag);
+                T.$(document.documentElement).off("mousemove", do_drag);
+                T.$(document.documentElement).off("touchmove", do_drag);
             }
         };
     }
@@ -1478,7 +1478,7 @@ TigerJS.UI.Widget = function (configOpt) {
 
     ///default styles, only in default widget mode
     if (!configOpt || (configOpt && !configOpt.elementType)) {
-        _widget.setStyle({
+        _widget.set_style({
             minWidth: "5em",
             minHeight: "5em",
             width: (configOpt && configOpt.width ? configOpt.width + "em" : "5em"),
@@ -1497,7 +1497,7 @@ TigerJS.UI.Widget = function (configOpt) {
     }
 
     /////object type identifier ////////////////////////////////////////
-    _widget.__toString = function () {
+    _widget.__to_string = function () {
         return "[object TigerJS.DefaultWidget]";
     };
     _widget.draggable = false;
@@ -1516,7 +1516,7 @@ TigerJS.UI.Widget = function (configOpt) {
 
     //set some HTML5 data, just for fun..
     if (!configOpt || (configOpt && !configOpt.elementType))
-        _widget.setData(_widget.FamilyID, _widget.InstanceID);
+        _widget.set_data(_widget.FamilyID, _widget.InstanceID);
 
     //
     //
@@ -1524,7 +1524,7 @@ TigerJS.UI.Widget = function (configOpt) {
     _widget.id = _widget.InstanceID;
 
     /////////////////Public Interface for the widget Class
-    _widget.addClass("widgetContainer");
+    _widget.add_class("widgetContainer");
 
     _widget.focusedConfigured = false; // flag for focus manager
     var rval = {
@@ -1535,7 +1535,7 @@ TigerJS.UI.Widget = function (configOpt) {
          * @memberOf TigerJS.UI.Widget#
          * @function
          */
-        getId: function () {
+        get_id: function () {
             return _widget.id;
         },
         /**
@@ -1558,7 +1558,7 @@ TigerJS.UI.Widget = function (configOpt) {
          * @function
          * @type Boolean
          */
-        isDraggable: function () {
+        is_draggable: function () {
             return _widget.draggable;
         },
         /**
@@ -1570,7 +1570,7 @@ TigerJS.UI.Widget = function (configOpt) {
          * @type TigerJS.UI.Widget
          *
          */
-        autoStack: function () { //just put in the page
+        auto_stack: function () { //just put in the page
             this.configureFocus();
             return this;
         },
@@ -1604,7 +1604,7 @@ TigerJS.UI.Widget = function (configOpt) {
          * <p/>Use this method when you needd
          * @memberOf TigerJS.UI.Widget#
          * @feild
-         * @readonly
+         * @read_only
          * @type TigerJS.$
          */
 
@@ -1623,14 +1623,14 @@ TigerJS.UI.Widget = function (configOpt) {
          * @function
          * @type TigerJS.UI.Widget
          */
-        setDraggable: function (constrain, H, V) {
+        set_draggable: function (constrain, H, V) {
             T.UI.FX.Draggable(_widget, {
                 constrain: constrain === (null || true) || T.type(constrain) === "undefined" ? true : false,
                 H: H === (null || true) ? true : false, //if its true or not set
                 V: V === (null || true) ? true : false,
                 dragTarget: configOpt && configOpt.dragTarget ? T.$(configOpt.dragTarget) : false
             });
-            _widget.addClass("draggable");
+            _widget.add_class("draggable");
             _widget.draggable = true; //show we are now draggable
             return this;
 
@@ -1641,9 +1641,9 @@ TigerJS.UI.Widget = function (configOpt) {
          * @function
          * @type TigerJS.UI.Widget
          */
-        unsetDraggable: function () {
-            T.UI.FX.Draggable().cancelDrag(_widget);
-            _widget.removeClass("draggable");
+        unset_draggable: function () {
+            T.UI.FX.Draggable().cancel_drag(_widget);
+            _widget.remove_class("draggable");
             _widget.draggable = false;
             return this;
         },
@@ -1655,11 +1655,11 @@ TigerJS.UI.Widget = function (configOpt) {
          * @function
          * @type TigerJS.UI.Widget
          */
-        appendToElement: function (parEl) {
+        append_to_element: function (parEl) {
             if (parEl.nodeType && parEl.nodeType === 1) {
 
                 parEl.appendChild(_widget);
-            } else if (T.isString(parEl)) {
+            } else if (T.is_string(parEl)) {
                 T.$(parEl).appendChild(_widget);
             }
 
@@ -1679,15 +1679,15 @@ TigerJS.UI.Widget = function (configOpt) {
                 return; // dont do this twice
             }
             //set a mousedown event on all childnodes
-            var widgetChildren = _widget._elementChildren(),
+            var widgetChildren = _widget.element_children(),
                     zIndexValue;
 
-            widgetChildren._on("mousedown", focusEl);
-            widgetChildren._on("mouseup", retainFocus);
-            _widget.on("mousedown", focusEl);
-            _widget.on("mouseup", retainFocus);
+            widgetChildren._on("mousedown", focus_el);
+            widgetChildren._on("mouseup", retain_focus);
+            _widget.on("mousedown", focus_el);
+            _widget.on("mouseup", retain_focus);
 
-            function focusEl() {
+            function focus_el() {
                 //we sequentiall increase the zIndex of any widget clicked
                 if (!T.zIndexCache) {
                     T.zIndexCache = 50;
@@ -1704,7 +1704,7 @@ TigerJS.UI.Widget = function (configOpt) {
 
             }
 
-            function retainFocus() {
+            function retain_focus() {
                 //in-case shit happens and the zIndex got altered again b4 mouseup set again
                 _widget.style.setProperty("z-index", zIndexValue, "important");
 

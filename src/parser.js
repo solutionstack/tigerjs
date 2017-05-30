@@ -19,7 +19,7 @@ TigerJS.Parser = {
      *                  {"source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"}
      */
 
-    parseURI: function (arg)
+    parse_uri: function (arg)
     {
         var o = T.Parser.options,
                 m = o.parser[o.strictMode ? "strict" : "loose"].exec(arg),
@@ -39,7 +39,7 @@ TigerJS.Parser = {
     },
     /**
      * @ignore
-     * This provides options for T.parser.parseURI
+     * This provides options for T.parser.parse_uri
      */
     options:
             {
@@ -66,7 +66,7 @@ TigerJS.Parser = {
      * #Todo This some times lockes up the UI
      */
 
-    parseAddress: function (address_type, arg)
+    parse_address: function (address_type, arg)
     {
 
         /******************* UNIVERSAL EMAIL MATCHING ***************************************************/
@@ -260,7 +260,7 @@ TigerJS.Parser = {
      * @static
      */
 
-    parseScripts: function (txt, exec)
+    parse_scripts: function (txt, exec)
     {
         exec = (exec) || false;
         var scr_re = new RegExp("<\s*script[^>]*>\n*\t*\f*\r*(.*?)<\s*/\s*script>", "gi"),
@@ -316,7 +316,7 @@ TigerJS.Parser = {
      * @static
      */
     //attributed to http://stackoverflow.com/users/18078/david-leppik
-    parseNumber: function (arg)
+    parse_number: function (arg)
     {
         var numberReSnippet = "([NaN|+|-]?(?:(?:\\d+|\\d*\\.\\d+)(?:[E|e][+|-]?\\d+)?|Infinity))";
         var matchOnlyNumberRe = new RegExp("^(" + numberReSnippet + ")$"),
@@ -337,9 +337,9 @@ TigerJS.Parser = {
      * @return {String} The text argument with all numbers stripped out
      * @static
      */
-    parseTextOnly: function (arg)
+    parse_text_only: function (arg)
     {
-        var num_Matches = this.parseNumber(arg); //first match numbers
+        var num_Matches = this.parse_number(arg); //first match numbers
 
         //then remove the matched numbers from the text
         for (var i = 0; i < num_Matches.length; i++)
@@ -359,7 +359,7 @@ TigerJS.Parser = {
      * @static
      */
 
-    parseAny: function (txt, tag)
+    parse_any: function (txt, tag)
     {
         //not using regex here to allow for nested tags
         //first search for the tag within the text block
@@ -379,7 +379,7 @@ TigerJS.Parser = {
      * @static
      */
 
-    parseCSS: function (txt, exec)
+    parse_css: function (txt, exec)
     {
 
         exec = (exec) || false;

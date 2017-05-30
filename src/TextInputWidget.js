@@ -35,7 +35,7 @@
  * @param {Boolean} [configurationOptions.required = false] Specifies if the input is required and cannot be sent empty
  * @param {CSSColor} [configurationOptions.requiredTagColor = red] The value of the required indicator
  * @param {Boolean} [configurationOptions.disabled = false] Should the control be disabled
- * @param {Boolean} [configurationOptions.readOnly = false] Should the control be rendered readOnly. 
+ * @param {Boolean} [configurationOptions.read_only = false] Should the control be rendered read_only. 
  * @param {String} [configurationOptions.value] The default value of the input element
  * @param {String} [configurationOptions.name] The name property sets or returns the value of the name attribute of an input field.
  * Remember only form elements with a name attribute will have their values passed when submitting a form.
@@ -92,8 +92,8 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                 configurationOptions.requiredTagColor : "red",
                 disable = configurationOptions && configurationOptions.disabled ?
                 configurationOptions.disabled : false,
-                readOnly = configurationOptions && configurationOptions.readOnly ?
-                configurationOptions.readOnly : false,
+                read_only = configurationOptions && configurationOptions.read_only ?
+                configurationOptions.read_only : false,
                 name = configurationOptions && configurationOptions.name ?
                 configurationOptions.name.toString().trim() : false,
                 value = configurationOptions && configurationOptions.value ?
@@ -176,7 +176,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
 /////////////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
-        baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
+        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
         baseWidget._widgetElement.setAttribute("type", "text");
         var inputType = baseWidget._widgetElement.getAttribute("type").trim();
         //
@@ -202,7 +202,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
         if (pHolderColor) {
 
 //This dynamically creates a new stylesheet element for the placeholder texts
-            T.addCSSBlob("#" + baseWidget._widgetElement.id + "[type='" + inputType + "']:-ms-input-placeholder" +
+            T.add_css_blob("#" + baseWidget._widgetElement.id + "[type='" + inputType + "']:-ms-input-placeholder" +
                     "{color:" + pHolderColor + " !important;opacity:.5 !important}" +
                     "#" + baseWidget._widgetElement.id + "[type='" + inputType + "']::-webkit-input-placeholder" +
                     "{color:" + pHolderColor + " !important;opacity:.5 !important}" +
@@ -215,7 +215,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 //create the placeholder-image element
             var pHolderImgElement = T.$(document.createElement("span"));
             pHolderImgElement.className += ' ' + pHolderImg;
-            pHolderImgElement.setStyle({fill: (pHolderColor ? pHolderColor : "#ccc")});
+            pHolderImgElement.set_style({fill: (pHolderColor ? pHolderColor : "#ccc")});
 
             //insert into the input elements container
             baseWidget._widgetElement.parentNode.insertBefore(pHolderImgElement, baseWidget._widgetElement);
@@ -237,10 +237,10 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
         if (hColor) { //hover/active/focus border color
             var borderDefaultColor = baseWidget._widgetElement.parentNode.style.borderColor ?
                     baseWidget._widgetElement.parentNode.style.borderColor :
-                    baseWidget._widgetElement.parentNode.getStyle()["borderColor"];
+                    baseWidget._widgetElement.parentNode.get_style()["borderColor"];
 
             //use CSS to control hover states (more effective than from JS)
-            T.addCSSBlob(" #" + baseWidget._widgetElement.parentNode.id + ":hover" +
+            T.add_css_blob(" #" + baseWidget._widgetElement.parentNode.id + ":hover" +
                     " { border-color:" + hColor + " !important}");
             baseWidget._widgetElement.oninput = function () {//remain in the hover state while recieving input
                 this.parentNode.style.borderColor = hColor;
@@ -259,7 +259,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 //Create the required span
             var reqEl = T.$(document.createElement("span"));
             reqEl.className += " T-icons-svg";
-            reqEl.setStyle({color: val_req_color, fill: val_req_color,fontSize: ".6em",
+            reqEl.set_style({color: val_req_color, fill: val_req_color,fontSize: ".6em",
                 width: "1em", textAlign: "center", cssFloat: "right"});
 
             baseWidget._widgetElement.parentNode.appendChild(reqEl);
@@ -268,20 +268,20 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
         /**
          * Sets or returns whether a input Widget is read-only
-         * @param {Boolean} readonly Boolean to specify whether the input widget is read only 
+         * @param {Boolean} read_only Boolean to specify whether the input widget is read only 
          * @function
          * @return {TigerJS.UI.Widget.TextInputWidget | Boolean}
-         * @name TigerJS.UI.Widget.TextInputWidget#readOnly
+         * @name TigerJS.UI.Widget.TextInputWidget#read_only
          */
-        baseWidget.readOnly = function (readonly) {
-            if (readonly && T.isBoolean(readonly)) {
-                baseWidget._widgetElement.readOnly = readonly;
+        baseWidget.read_only = function (read_only) {
+            if (read_only && T.is_boolean(read_only)) {
+                baseWidget._widgetElement.read_only = read_only;
                 return this;
             }
-            return baseWidget._widgetElement.readOnly || false;
+            return baseWidget._widgetElement.read_only || false;
         };
-        if (readOnly) {//they sent a readonly attribute value
-            baseWidget.readOnly(readOnly);
+        if (read_only) {//they sent a read_only attribute value
+            baseWidget.read_only(read_only);
         }
 
         /**
@@ -289,9 +289,9 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
          * @param {Boolean} _disable Boolean to denote if we should disable the conrol or not
          * @function
          * @type TigerJS.UI.Widget.TextInputWidget | Boolean
-         * @name TigerJS.UI.Widget.TextInputWidget#isDisabled
+         * @name TigerJS.UI.Widget.TextInputWidget#is_disabled
          */
-        baseWidget.isDisabled = function (_disable) {
+        baseWidget.is_disabled = function (_disable) {
 
             if (Boolean(_disable) === true) {
 
@@ -310,7 +310,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
         }
         ;
         if (disable) {
-            baseWidget.isDisabled(disable);
+            baseWidget.is_disabled(disable);
         }
 
         /**
@@ -353,10 +353,10 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
         //>
         //set the visual error state if validation fails
-        baseWidget.setVisualErrorState = function () {
+        baseWidget.set_visual_error_state = function () {
             //show color the forom feild red to indicate an error state
 
-            this._widgetElement.parentNode.setStyle({
+            this._widgetElement.parentNode.set_style({
                 borderColor: "red",
                 borderWidth: "2px"
             });
@@ -364,7 +364,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
             this._widgetElement.on("input change", function () {//when the resumes typing clear the error state
 
 
-                this.target.parentNode.setStyle({
+                this.target.parentNode.set_style({
                     borderColor: " rgb(204, 204, 204)",
                     borderWidth: "1px"
                 });
@@ -374,7 +374,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
         };
 
         //>
-        baseWidget.validateOnFormSubmit = function (_pattern, BAD_PATTERN_FLAG) {
+        baseWidget.validate_on_form_submit = function (_pattern, BAD_PATTERN_FLAG) {
 
             if (!val_req)
                 return true; //no validation needed
@@ -391,7 +391,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                     if (BAD_PATTERN_FLAG) {
                         //this.validated = false; //no need, already false from above
 
-                        this.setVisualErrorState();
+                        this.set_visual_error_state();
                     } else
                         this.validated = true;
 
@@ -406,7 +406,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                     } else {
                         //no BAD_PATTERN flag just return the real validation status
                         this.validated = false;
-                        this.setVisualErrorState();
+                        this.set_visual_error_state();
                     }
 
                     return this.validated;
@@ -422,7 +422,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                     case "url":
                         val = val.indexOf("://") > -1 ? val : "http://" + val; //append a fake protocol to play nice with the parser's regex
 
-                        var parser = TigerJS.Parser.parseAddress("web", val);
+                        var parser = TigerJS.Parser.parse_address("web", val);
                         if (parser && parser.length === 1)
                             this.validated = true; //we need just a match
 
@@ -431,13 +431,13 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                     case "email":
 
 
-                        var parser = TigerJS.Parser.parseAddress("mail", val); //we need just a match
+                        var parser = TigerJS.Parser.parse_address("mail", val); //we need just a match
                         if (parser && parser.length === 1)
                             this.validated = true;
                         break;
                     case "number":
 
-                        var parser = TigerJS.Parser.parseNumber(val);
+                        var parser = TigerJS.Parser.parse_number(val);
                         if (parser && parser.length === 1)//we need just a match
                             this.validated = true;
 
@@ -477,7 +477,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                 return true;
             } else {
 
-                this.setVisualErrorState();
+                this.set_visual_error_state();
 
                 return false; //
 
@@ -497,18 +497,18 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
          */
         baseWidget.validate = function (pattern, reverse_validate) {
 
-            return this.validateOnFormSubmit(pattern ? pattern : null,
+            return this.validate_on_form_submit(pattern ? pattern : null,
                     reverse_validate && Boolean(reverse_validate) === true ? true : false);
         };
         //
         //->       //ovveride toString
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.TextInputWidget]";
         };
         //
         //
         //->   //overide appendTo Element
-        baseWidget.appendToElement = function (parEl) {
+        baseWidget.append_to_element = function (parEl) {
             var p, __formNode = false;
 
             if (parEl.nodeType && parEl.nodeType === 1) {
@@ -516,7 +516,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                 parEl.appendChild(baseWidget._widgetElement.parentNode);
                 p = T.$(parEl);
             } else
-            if (T.isString(parEl)) {
+            if (T.is_string(parEl)) {
                 p = T.$(parEl);
                 p.appendChild(baseWidget._widgetElement.parentNode);
 
@@ -537,7 +537,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                     for (i = el.length - 1; i >= 0; i--) { //we loop in reverse so the validation starts from the last filled element
 
                         //see if the Widget Object of this input has a validation interface
-                        if (el[i].WidgetObj && el[i].WidgetObj.validateOnFormSubmit) {
+                        if (el[i].WidgetObj && el[i].WidgetObj.validate_on_form_submit) {
 
                             //if validation fails, stop the form submision, (errors would be displayed from the validation method)
                             if (!el[i].WidgetObj.validate())
@@ -555,7 +555,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                 var l = T.$(document.createElement("div"));
                 l.className += " TSILabel";
                 l.innerHTML = label;
-                this._widgetElement.parentNode.insertBefore(l, baseWidget._widgetElement.parentNode._firstElementChild());
+                this._widgetElement.parentNode.insertBefore(l, baseWidget._widgetElement.parentNode.first_element_child());
                 //how its supposed to happen with real labels
                 l.on("click", function () {
                     baseWidget._widgetElement.focus();
@@ -575,7 +575,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
         //
         //
         //->       //ovveride toString
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.TextInputWidget]";
         };
 
@@ -590,7 +590,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                 break;
             case "date":
 
-                baseWidget._widgetElement.readOnly = true; //make the feild read only
+                baseWidget._widgetElement.read_only = true; //make the feild read only
                 baseWidget._widgetElement.value = pHolder || "mm dd yyyy"; //our date format
                 baseWidget._widgetElement.style.opacity = ".5";
                 //show a date picker on click
@@ -605,7 +605,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                     var calenderConfig = datePickConfig || {};
 
                     //get the last date value
-                    var val = baseWidget._widgetElement.getData("dateVal"),
+                    var val = baseWidget._widgetElement.get_data("dateVal"),
                             currentDateVal = isNaN(new Date(val)) ? new Date() : (new Date(val || ""));
 
                     if (!calenderConfig.hoverColor)//minimum style to be set for the calendar
@@ -626,8 +626,8 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
                         //IE 10 doesnt support new Date(mm dd yyyy) string, so we have to use slashes
                         //cuz this would be used to build up the dates on next call
-                        baseWidget._widgetElement.setData("dateVal", (date.getMonth() + 1) + "/" + _date + "/" + year);
-                        baseWidget._widgetElement.setData("lastLocaleUsed", date.getLocale()); //save the locale
+                        baseWidget._widgetElement.set_data("dateVal", (date.getMonth() + 1) + "/" + _date + "/" + year);
+                        baseWidget._widgetElement.set_data("lastLocaleUsed", date.getLocale()); //save the locale
 
                         //destroy....
                         calObj.destroy();
@@ -647,11 +647,11 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
                     cal.Node.style.zIndex = "1001";
 
-                    var lastUsedLocale = baseWidget._widgetElement.getData("lastLocaleUsed");
+                    var lastUsedLocale = baseWidget._widgetElement.get_data("lastLocaleUsed");
                     //persist locales
                     if (lastUsedLocale)
                         cal.setLocaleID(lastUsedLocale);
-                    cal.appendToElement(baseWidget._widgetElement.parentNode);
+                    cal.append_to_element(baseWidget._widgetElement.parentNode);
 
                     cal.Node.style.left = (baseWidget._widgetElement.parentNode.offsetWidth - cal.Node.offsetWidth) / 2 + "px";
 
@@ -676,14 +676,14 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                 baseWidget._widgetElement.value = value || 0;
                 var numberControlsContainer = T.$(document.createElement("div"));
                 numberControlsContainer.className += " numberControlsContainer";
-                numberControlsContainer.setStyle({
+                numberControlsContainer.set_style({
                     display: "inline-block", width: "8%", height: "1.5em",
                     position: "relative", cssFloat: "right", marginRight: "3%", textAlign: "center", marginTop: "-.2em"
                 });
 
                 //insert the controls box, into the input widget container
                 if (val_req) {
-                    baseWidget._widgetElement.parentNode.appendChild(numberControlsContainer); //, baseWidget._widgetElement.parentNode._lastElementChild());
+                    baseWidget._widgetElement.parentNode.appendChild(numberControlsContainer); //, baseWidget._widgetElement.parentNode.last_element_child());
 
                     //reduce the input with to allow for space for the controls
                     baseWidget._widgetElement.style.setProperty("width", "70%", "important");
@@ -693,7 +693,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
 //create the increase element
                 var incButton = T.$(document.createElement("span")); //
-                incButton.setStyle({
+                incButton.set_style({
                     cssFloat: "left", width: "97%", height: "45%", textAlign: "center",
                     fontSize: ".8em ", color: tColor
                 });
@@ -703,7 +703,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
 
                 //create the decrease element
                 var decButton = T.$(document.createElement("span")); //
-                decButton.setStyle({
+                decButton.set_style({
                     cssFloat: "left", width: "97%", height: "45%", textAlign: "center",
                     fontSize: ".8em ", color: tColor
                 });
@@ -712,7 +712,7 @@ TigerJS.UI.Widget.TextInputWidget = function (configurationOptions) {
                 decButton.selectable(false);
 
                 //set styles for hover state of buttons
-                T.addCSSBlob("#" + baseWidget._widgetElement.parentNode.id + " > .numberControlsContainer > .NumberfeildIncreaseElement:hover, " +
+                T.add_css_blob("#" + baseWidget._widgetElement.parentNode.id + " > .numberControlsContainer > .NumberfeildIncreaseElement:hover, " +
                         "#" + baseWidget._widgetElement.parentNode.id + " > .numberControlsContainer > .NumberfeildDecreaseElement:hover{ " +
                         "color:" + (hColor && (hColor !== tColor) ? hColor : "#ccc") + " !important; cursor: default}");
 

@@ -70,9 +70,9 @@ TigerJS.UI.Widget.NotifyWidget = function (configurationOptions) {
 
         /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
-        baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
+        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
 
-        baseWidget._widgetElement.addClass("TNotifyWidget w3-padding-4 w3-card-4");
+        baseWidget._widgetElement.add_class("TNotifyWidget w3-padding-4 w3-card-4");
 
         //validate arguments
         if (!width)
@@ -83,7 +83,7 @@ TigerJS.UI.Widget.NotifyWidget = function (configurationOptions) {
             throw " ConfigurationPropertyError<> Constructor TigerJS.UI.Widget.NotifyWidget#constructor - A style property is expected";
 
 
-        baseWidget._widgetElement.setStyle({
+        baseWidget._widgetElement.set_style({
             width: width,
             height: height,
             backgroundColor: bgColor ? bgColor : baseWidget._widgetElement.style.backgroundColor,
@@ -123,17 +123,17 @@ TigerJS.UI.Widget.NotifyWidget = function (configurationOptions) {
                     baseWidget._widgetElement.style.transform = "translateX(" + document.body.clientWidth + "px)";
                     break;
                 case "scale-lt":
-                    baseWidget._widgetElement.style.left = baseWidget._widgetElement.getStyle().left || "3%";
-                    baseWidget._widgetElement.style.top = baseWidget._widgetElement.getStyle().top || "3%";
+                    baseWidget._widgetElement.style.left = baseWidget._widgetElement.get_style().left || "3%";
+                    baseWidget._widgetElement.style.top = baseWidget._widgetElement.get_style().top || "3%";
 
                     break;
                 case "scale-lb":
-                    baseWidget._widgetElement.style.left = baseWidget._widgetElement.getStyle().left || "3%";
+                    baseWidget._widgetElement.style.left = baseWidget._widgetElement.get_style().left || "3%";
 
                     break;
                 case "scale-rt":
 
-                    baseWidget._widgetElement.style.top = baseWidget._widgetElement.getStyle().top || "3%";
+                    baseWidget._widgetElement.style.top = baseWidget._widgetElement.get_style().top || "3%";
                     break;
                 case "scale-rb":
 
@@ -186,8 +186,8 @@ TigerJS.UI.Widget.NotifyWidget = function (configurationOptions) {
 ///create caancel button, only once
             if (!document.querySelector("#" + baseWidget._widgetElement.id + " > .icon-cross")) {
                 var _closeBut = T.$(document.createElement("span"));
-                _closeBut.addClass("icon-cross");
-                _closeBut.setStyle({
+                _closeBut.add_class("icon-cross");
+                _closeBut.set_style({
                     position: "absolute", fontSize: "75%", right: "2%", cursor: "pointer", color: cbColor,
                     display: "inline-block",
                     paddingTop: ".1em"
@@ -278,7 +278,7 @@ TigerJS.UI.Widget.NotifyWidget = function (configurationOptions) {
         //
         //
         //->       //ovveride toString
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.NotifyWidget]";
         };
 

@@ -28,7 +28,7 @@ TigerJS.Date = function (date) {
         var internalDate = this; //we'll need this for cases where we cant use the this object
 
         var //get the current date and time
-                dateObj = T.isNumber(arg) || T.isString(arg) ? new Date(arg) : new Date(),
+                dateObj = T.is_number(arg) || T.is_string(arg) ? new Date(arg) : new Date(),
                 //
                 isLeapYear = function () {
                     var y = dateObj.getFullYear();
@@ -97,7 +97,7 @@ TigerJS.Date = function (date) {
          */
         this.setLocale = function (locale_id) {
 
-            if (!T.isString(locale_id) || !locale[locale_id])
+            if (!T.is_string(locale_id) || !locale[locale_id])
                 throw "Bad Locale Identifier <> " + locale_id + " given in - TigerJS.Date#setLocale ... See the documentation for valid locales ";
             current_locale = locale_id;
             return this;
@@ -444,7 +444,7 @@ TigerJS.Date = function (date) {
                         //end this extracted set with the letter token;
                         section[0] += addTokens.current().toString();
                         //addres cases where the prefix token is of two characters
-                        if (addTokens.isIndex(addTokens.key + 1) && //first make sure the index is valid
+                        if (addTokens.is_index(addTokens.key + 1) && //first make sure the index is valid
                                 isNaN(parseInt(addTokens[addTokens.key + 1]))) { //make sure its not a number
 
                             addTokens.next(); //move to this index

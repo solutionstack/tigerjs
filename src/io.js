@@ -57,7 +57,7 @@ TigerJS.io = function (configObj) {
             err_str = " NullArgumentError<> Constructor TigerJS.io Expects at least ONE argument, Zero given";
             throw new Error(err_str);
         }
-        if (!(T.isObject(configObj))) {
+        if (!(T.is_object(configObj))) {
             err_str = " WrongArgumentTypeError<> Constructor TigerJS.io Expects an Object as its argument, * " + T.type(configObj) + " * given";
             throw new Error(err_str);
         }
@@ -66,9 +66,9 @@ TigerJS.io = function (configObj) {
         var _object = new XMLHttpRequest(),
                 uri = "",
                 method = "",
-                default_uri_parts = (T.Parser.parseURI(window.location.href.toString())),
+                default_uri_parts = (T.Parser.parse_uri(window.location.href.toString())),
                 //get the uri components
-                uri_parts = configObj.uri ? T.Parser.parseURI(configObj.uri) :
+                uri_parts = configObj.uri ? T.Parser.parse_uri(configObj.uri) :
                 default_uri_parts,
                 socket_timeout = 0, //time out for this instance: default, ->browser defaults
                 socket_timeout_counter = 0,
@@ -83,7 +83,7 @@ TigerJS.io = function (configObj) {
         }
 
         //////////////ERRORS FOR USER FUNCTIONS////////////////////////////////////
-        if (!T.domReady()) {
+        if (!T.dom_ready()) {
             if (configObj.subscribe.onerror)
                 configObj.subscribe.onerror("ObjectError", "0x1"); //call onerror handler
             return;
@@ -154,7 +154,7 @@ TigerJS.io = function (configObj) {
         }
 
         //append protocol to uri
-        if (!T.Parser.parseURI(uri).protocol) {
+        if (!T.Parser.parse_uri(uri).protocol) {
             uri = uri_parts.host ? uri_parts.protocol + "://" + uri :
                     default_uri_parts.protocol + "://" + uri;
         }
@@ -172,9 +172,9 @@ TigerJS.io = function (configObj) {
          */
 
 
-        this.addQueryData = function (data) {
-            if (this.addQueryData.length !== arguments.length) {
-                err_str = " WrongArgumentCountError <> Function TigerJS.io#addQueryData " +
+        this.add_query_data = function (data) {
+            if (this.add_query_data.length !== arguments.length) {
+                err_str = " WrongArgumentCountError <> Function TigerJS.io#add_query_data " +
                         "Epects one {1} argument,  {" + arguments.length + "} given";
                 throw new Error(err_str);
             }
@@ -192,9 +192,9 @@ TigerJS.io = function (configObj) {
          *
          */
 
-        this.setQueryData = function (data) {
-            if (this.setQueryData.length !== arguments.length) {
-                err_str = " WrongArgumentCountError <> Function TigerJS.io#setQueryData " +
+        this.set_query_data = function (data) {
+            if (this.set_query_data.length !== arguments.length) {
+                err_str = " WrongArgumentCountError <> Function TigerJS.io#set_query_data " +
                         "Epects one {1} argument,  {" + arguments.length + "} given";
                 throw new Error(err_str);
             }
@@ -209,7 +209,7 @@ TigerJS.io = function (configObj) {
         /** Returns the GET Query data in the form of an urlencoded query string.
          *@return {String}
          */
-        this.getQueryData = function () {
+        this.get_query_data = function () {
 
             return encodeURI(uri.substring(uri.indexOf("?") + 1));
         };
@@ -219,16 +219,16 @@ TigerJS.io = function (configObj) {
          *@return {TigerJS.io}
          */
 
-        this.setRequestMethod = function (_method) {
+        this.set_request_method = function (_method) {
 
             if (!/post|get|head|delete|put|head|options|move|lock|unlock|update|label|merge|checkout|checkin|acl|baseline-control/i.test(_method)) {
                 if (methodBlackList.contains(_method)) { //risky
 
-                    err_str = " SecurityError <> Function TigerJS.io#setRequestMethod " +
+                    err_str = " SecurityError <> Function TigerJS.io#set_request_method " +
                             "method name [" + _method + "] is ILLEGAL";
                     throw new Error(err_str);
                 }
-                err_str = "InvalidMethodError <> Function TigerJS.io#setRequestMethod " +
+                err_str = "InvalidMethodError <> Function TigerJS.io#set_request_method " +
                         "method name [" + _method + "] is UNKNOWN";
                 throw new Error(err_str);
             }
@@ -240,7 +240,7 @@ TigerJS.io = function (configObj) {
          * Returns the HTTP-Request method
          * @return {String}
          */
-        this.getRequestMethod = function () {
+        this.get_query_data = function () {
             return method;
         };
         /**
@@ -263,13 +263,23 @@ TigerJS.io = function (configObj) {
 
             return;
         };
+
+        /**
+         * Alias for #setTimeout
+         * @function 
+         */
+        this.set_timeout = function (n) {
+            return this.setTimeout(n)
+
+        }
+
         /**
          * Returns the timeout set for this request object
          * @return {Number}
          *
          */
 
-        this.getTimeout = function () {
+        this.get_timeout = function () {
             return socket_timeout;
         };
 
@@ -307,12 +317,12 @@ TigerJS.io = function (configObj) {
                             break;
                         case 'onerror':
                             //error handler
-                            _object.addEventListener("error", this.handleRequestErrorsInternally, false);
+                            _object.addEventListener("error", this.handle_request_errors_internally, false);
                             break;
 
                         case 'onload':
                             //we would delegate the load event internally
-                            _object.addEventListener("load", this.handleRequestLoadInternally, false);
+                            _object.addEventListener("load", this.handle_request_load_internally, false);
                             break;
                         case 'onloadend':
 
@@ -324,7 +334,7 @@ TigerJS.io = function (configObj) {
                             break;
                         case 'uploadprogress':
                             //upload progress handler
-                            _object.upload.addEventListener("progress", this.handleUploadProgressEvents, false);
+                            _object.upload.addEventListener("progress", this.handle_upload_progress_events, false);
                             break;
                         case 'uploadload':
                             //upload completed handler
@@ -347,7 +357,7 @@ TigerJS.io = function (configObj) {
          * handle server errors
          * @ignore
          */
-        this.handleRequestErrorsInternally = function () {
+        this.handle_request_errors_internally = function () {
             //check to see if we're offline
             if (T.NETWORK_STATE === "OFFLINE") {
                 if (configObj.subscribe.onerror)
@@ -364,7 +374,7 @@ TigerJS.io = function (configObj) {
          * Handle netork related errors
          * @ignore
          */
-        this.handleRequestLoadInternally = function () {
+        this.handle_request_load_internally = function () {
             var error_codes = T.Iterator(["400", '401', "403", '410', "501", "502", "503", "504", "505", "500", "302", "303"]);
             if (error_codes.indexOf(this.status.toString())) {
                 if (configObj.subscribe.onerror)
@@ -383,7 +393,7 @@ TigerJS.io = function (configObj) {
          * handle upload progress calls
          * @ignore
          */
-        this.handleUploadProgressEvents = function (evt) {
+        this.handle_upload_progress_events = function (evt) {
             if (evt.lengthComputable) {
                 var percentComplete = Math.round(evt.loaded * 100 / evt.total);
                 configObj.subscribe.uploadprogress.apply(this, [percentComplete]); //
@@ -402,15 +412,15 @@ TigerJS.io = function (configObj) {
          * @return {TigerJS.io}
          *
          */
-        this.addDataFeilds = function (data) {
+        this.add_data_feilds = function (data) {
 
-            if (this.addDataFeilds.length !== arguments.length) {
-                err_str = " WrongArgumentCountError <> Function TigerJS.io#addDataFeilds " +
+            if (this.add_data_feilds.length !== arguments.length) {
+                err_str = " WrongArgumentCountError <> Function TigerJS.io#add_data_feilds " +
                         "Epects one {1} argument,  {" + arguments.length + "} given";
                 throw new Error(err_str);
             }
             if (!this.postDataFeilds) { //It has to be existing, to add to
-                err_str = "InvalidMethodCall <> Function TigerJS.io#addDataFeilds " +
+                err_str = "InvalidMethodCall <> Function TigerJS.io#add_data_feilds " +
                         "Cannot Add Data to NULL, No POST data previously SET";
                 throw new Error(err_str);
             }
@@ -437,7 +447,7 @@ TigerJS.io = function (configObj) {
                     for (i in data) {
                         if (data[i].nodeType) // a node refrenced in the object
                         {
-                            this.addDataFeilds(data[i]);
+                            this.add_data_feilds(data[i]);
                         } else {
                             this.postDataFeilds.append(i, data[i]);
                         }
@@ -489,10 +499,10 @@ TigerJS.io = function (configObj) {
          * @return {TigerJS.io}
          *
          */
-        this.setDataFeilds = function (data) {
+        this.set_data_feilds = function (data) {
             var i, j;
-            if (this.setDataFeilds.length !== arguments.length) {
-                err_str = " WrongArgumentCountError <> Function TigerJS.io#setDataFeilds " +
+            if (this.set_data_feilds.length !== arguments.length) {
+                err_str = " WrongArgumentCountError <> Function TigerJS.io#set_data_feilds " +
                         "Expects one {1} argument,  {" + arguments.length + "} given";
                 throw new Error(err_str);
             }
@@ -521,7 +531,7 @@ TigerJS.io = function (configObj) {
                         if (data[i].nodeType) // a node refrenced in the object
                         {
 
-                            this.addDataFeilds(data[i]);
+                            this.add_data_feilds(data[i]);
                         } else {
                             this.postDataFeilds.append(i, data[i]);
                         }
@@ -564,10 +574,10 @@ TigerJS.io = function (configObj) {
         };
         //see if we have any initial request data to append
         if (configObj.postData) {
-            this.setDataFeilds(configObj.postData);
+            this.set_data_feilds(configObj.postData);
         }
         if (configObj.queryData) {
-            this.setQueryData(configObj.queryData);
+            this.set_query_data(configObj.queryData);
         }
 
         /**
@@ -904,7 +914,7 @@ TigerJS.io.CompositeRequest = function () {
 
 
         var request_container = (T.Iterator()).
-                addAll(arguments_), // hold references to all requests arguments to be sent
+                add_all(arguments_), // hold references to all requests arguments to be sent
                 globalConfigObj = {}, // a mashup-up of all configObj's for each request
                 request_index_counter = 0;
         //get the details out of each config obj
@@ -946,7 +956,7 @@ TigerJS.io.CompositeRequest = function () {
 
             //send the result object to the call back
             try {
-                if (T.isFunction(arg[arg.length - 1]))
+                if (T.is_function(arg[arg.length - 1]))
                     arg[arg.length - 1](JSON.parse(this.responseText));//send the result to the user call-back function
             } catch (e) {
 

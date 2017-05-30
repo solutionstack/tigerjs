@@ -201,14 +201,14 @@ var TigerJS = function () {
         }
 
         //Our internal types
-        if ((o.__toString && o.__toString().indexOf("[o") !== -1)) {
-            return o.__toString().replace(/[\[\] ]*/g, "").
+        if ((o.__to_string && o.__to_string().indexOf("[o") !== -1)) {
+            return o.__to_string().replace(/[\[\] ]*/g, "").
                     replace("object", "");
         }
-        if (o["Node"] && o["Node"].__toString) {//our widget elements
+        if (o["Node"] && o["Node"].__to_string) {//our widget elements
 
-            if (o["Node"].__toString) {
-                return o.Node.__toString().replace(/[\[\] ]*/g, "").
+            if (o["Node"].__to_string) {
+                return o.Node.__to_string().replace(/[\[\] ]*/g, "").
                         replace("object", "");
             }
         }
@@ -235,11 +235,11 @@ var TigerJS = function () {
      * @example
      *
      * var _ob = {a: 1, b: 2}
-     * T.hasKey(_ob, "b"); //returns true
-     * T.hasKey(_ob, "j"); //returns false
+     * T.has_key(_ob, "b"); //returns true
+     * T.has_key(_ob, "j"); //returns false
      */
 
-    this.hasKey = function (object, key) {
+    this.has_key = function (object, key) {
 
         for (var i in object) {
             if (object.hasOwnProperty(i)) {//only evaluate public properties
@@ -261,11 +261,11 @@ var TigerJS = function () {
      * @example
      *
      *           var _ob = {a: 1, b: 2}
-     console.log(T.hasValue(_ob, "1")); //returns false
-     console.log(T.hasValue(_ob, 2)); //returns true
+     console.log(T.has_value(_ob, "1")); //returns false
+     console.log(T.has_value(_ob, 2)); //returns true
      */
 
-    this.hasValue = function (object, value) {
+    this.has_value = function (object, value) {
         for (var i in object) {
             if (object.hasOwnProperty(i)) {
                 if (object[i] === value) {
@@ -314,7 +314,7 @@ var TigerJS = function () {
 
         //#todo	check args
         var i;
-        if (T.isFunction(toObject)) {
+        if (T.is_function(toObject)) {
 
             for (i in fromObject) {
 
@@ -989,12 +989,12 @@ var TigerJS = function () {
      */
     this._isDOCUMENTReady = false;
     /**
-     * Returns true when the dom is ready, if u need to act when the dom is ready, you could use {@link TigerJS#registerStartupFunctions}
+     * Returns true when the dom is ready, if u need to act when the dom is ready, you could use {@link TigerJS#register_startup_functions}
      *@function
      * @type Boolean
      */
 
-    this.domReady = function () {
+    this.dom_ready = function () {
 
         return document.readyState.match(/interactive/gi) !== null || document.readyState.match(/complete/gi) !== null;
     };
@@ -1007,7 +1007,7 @@ var TigerJS = function () {
      * @param {String} path the cookie path.
      * @param {Number} exp_days {number of days of cookie validity.
      */
-    this.writeCK = function (name, value, domain, path, exp_days) {
+    this.write_cookie = function (name, value, domain, path, exp_days) {
         value = encodeURIComponent(value);
         var ck = name + "=" + value,
                 exp;
@@ -1030,7 +1030,7 @@ var TigerJS = function () {
      */
 
 
-    this.getCK = function (name) {
+    this.get_cookie = function (name) {
         var pattern = name + "=",
                 tokenPos = 0 | endValuePos;
         while (tokenPos < document.cookie.length) {
@@ -1055,8 +1055,8 @@ var TigerJS = function () {
      *
      * @param name {string} the cookie name
      */
-    this.delCK = function (name) {
-        this.writeCK(name, "", "", "", -1);
+    this.delete_cookie = function (name) {
+        this.write_cookie(name, "", "", "", -1);
     };
 
     /**
@@ -1174,7 +1174,7 @@ var TigerJS = function () {
      *@function
      * @type Boolean
      */
-    this.isEmpty = function (obj) {
+    this.is_empty = function (obj) {
         for (var i in obj) {
 
             if (i) {
@@ -1194,7 +1194,7 @@ var TigerJS = function () {
      *
      */
 
-    this.isArray = function (arg) {
+    this.is_array = function (arg) {
 
         return this.type(arg) === 'Array';
     };
@@ -1206,7 +1206,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isNumber = function (arg) {
+    this.is_number = function (arg) {
 
         return this.type(arg) === 'Number';
     };
@@ -1218,7 +1218,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isString = function (arg) {
+    this.is_string = function (arg) {
 
         return this.type(arg) === 'String';
     };
@@ -1230,7 +1230,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isFunction = function (arg) {
+    this.is_function = function (arg) {
 
         return this.type(arg) === 'Function';
     };
@@ -1242,7 +1242,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isDate = function (arg) {
+    this.is_date = function (arg) {
         var s = new Date(arg);
         return (s === null || s.toString() === "NaN" || s.toString() === "Invalid Date") ? false : true;
     };
@@ -1253,7 +1253,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isRegExp = function (arg) {
+    this.is_regexp = function (arg) {
 
         return this.type(arg) === 'Regexp';
     };
@@ -1265,7 +1265,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isBoolean = function (arg) {
+    this.is_boolean = function (arg) {
 
         return this.type(arg) === 'Boolean';
     };
@@ -1276,7 +1276,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isObject = function (arg) {
+    this.is_object = function (arg) {
 
         return this.type(arg) === 'Object';
     };
@@ -1287,7 +1287,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isEnumerable = function (arg) {
+    this.is_enumerable = function (arg) {
 
 
         return (T.type(arg) === 'Array' || T.type(arg) === 'Nodelist' || T.type(arg) === 'Object' || T.type(arg).
@@ -1314,7 +1314,7 @@ var TigerJS = function () {
                 qfRE = /^([-a-z0-9._~:@!$&'()*+,;=?\/]|%[0-9a-f]{2})*$/i,
                 //alloweg chars in host name
                 hRE = /^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$/i,
-                uri = T.Parser.parseURI(arg); //parser returns an object with props[path query host anchor file relative [i.e relativepath] user password userInfo
+                uri = T.Parser.parse_uri(arg); //parser returns an object with props[path query host anchor file relative [i.e relativepath] user password userInfo
         //authourity source port]
 
         path = uri.path;
@@ -1343,7 +1343,7 @@ var TigerJS = function () {
      * @type Boolean
      */
 
-    this.isIP = function (arg) {
+    this.is_ip = function (arg) {
 
 
         if (/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.test(arg)) { //detect general dotted IP4 format
@@ -1379,7 +1379,7 @@ var TigerJS = function () {
         // Check if part is in IPv4 format
         if (ip.indexOf('.') > 0) {
 
-            lastcolon = ip.lastIndexOf(':');
+            lastcolon = ip.last_index_of(':');
             if (!(lastcolon && /^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.test(ip.substr(lastcolon + 1))))
                 return false;
             // replace IPv4 part with dummy
@@ -1433,9 +1433,9 @@ var TigerJS = function () {
      *@param {string} arg String to validate as email
      * @type Boolean
      */
-    this.isEmail = function (arg) {
+    this.is_email = function (arg) {
 
-        return (T.Parser.parseAddress("mail" | arg)).length > 0;
+        return (T.Parser.parse_address("mail" | arg)).length > 0;
     };
 
 
@@ -1472,7 +1472,7 @@ var TigerJS = function () {
      * @type void
      */
 
-    this.registerStartupFunctions = function () {
+    this.register_startup_functions = function () {
 
         T.each(arguments, function (x) {
 
@@ -1484,7 +1484,7 @@ var TigerJS = function () {
      * @ignore
      */
 
-    this.executeStartupRoutines = function () {
+    this.execute_startup_routines = function () {
 
         try { //avoid -useless settimeout error- in  FF, those guys are wacko!!, love the nightly's
             T.each(f_arr, function (x) {
@@ -1531,7 +1531,7 @@ var TigerJS = function () {
      * @return {Object} 
      */
 
-    this.parseQuery = function (qstr) {
+    this.parse_query = function (qstr) {
         var query = {};
         var a = (qstr[0] === '?' ? qstr.substr(1) : qstr).split('&');
         for (var i = 0; i < a.length; i++) {
@@ -1751,7 +1751,7 @@ var TigerJS = function () {
                     return; //pause the function chain execution
                 }
                 if (this.i < this.fnIterator.size()) {
-                    if (T.isObject(this.fnIterator[this.i])) {
+                    if (T.is_object(this.fnIterator[this.i])) {
 
 
                         //call each function reference in the object argument, passing arguments and bindng context as required
@@ -1762,7 +1762,7 @@ var TigerJS = function () {
                                 //pass extra arguments
                                 this.fnIterator[this.i].args);
 
-                        if (T.hasKey(this.fnIterator[this.i], "autoContinue") && this.fnIterator[this.i].autoContinue === false) {
+                        if (T.has_key(this.fnIterator[this.i], "autoContinue") && this.fnIterator[this.i].autoContinue === false) {
                             // //if an object has an autoContinue  feild to false
                             this.pause(); //pause the queue
 
@@ -2025,7 +2025,7 @@ var TigerJS = function () {
     }());
 
 
-    this.toString = function () {
+    this.__to_string = function () {
         return "[object TigerJS]";
 
     };
@@ -2084,7 +2084,7 @@ window.onerror = function (err, file, line) {
  * @return XML DOCUMENT
  *
  * @example
- *     var XMLDoc = T.createXML(); //create an XML Documenr
+ *     var XMLDoc = T.create_xml(); //create an XML Documenr
  *
  *
  console.log(T.type(XMLDoc)); //the types is returned as XMLDocument
@@ -2096,7 +2096,7 @@ window.onerror = function (err, file, line) {
  XMLDoc.appendChild(newEle)
  */
 
-TigerJS.createXML = function () {
+TigerJS.create_xml = function () {
     return document.implementation.createDocument("", "", null);
 };
 
@@ -2108,7 +2108,7 @@ TigerJS.createXML = function () {
  * @return String
  * @example
  
- var XMLDoc = T.createXML(); //create an XML Documenr
+ var XMLDoc = T.create_xml(); //create an XML Documenr
  
  
  //create and append a new element using the standard DOM methods
@@ -2119,13 +2119,13 @@ TigerJS.createXML = function () {
  
  //save the XML document back to a string
  
- console.log(T.saveXML(XMLDoc));
+ console.log(T.save_xml(XMLDoc));
  //the above would return the following
  <?xml version="1.0" encoding="UTF-8"?><edition>first</edition>
  
  */
 
-TigerJS.saveXML = function (node) {
+TigerJS.save_xml = function (node) {
     var nodedata = ((new XMLSerializer()).serializeToString(node));
 
     //if its an XML document and not just a node
@@ -2144,7 +2144,7 @@ TigerJS.saveXML = function (node) {
  * @function
  * @return XML Document
  */
-TigerJS.parseXML = function (data) {
+TigerJS.parse_xml = function (data) {
     try {
 
         var parser = new DOMParser();
@@ -2167,9 +2167,9 @@ TigerJS.parseXML = function (data) {
  * var CssSelector = "#ElementId >.classForAChildNode",
  *     rules = "float:letf; animation : goUp 2s ease-out";
  *
- *    T.addCSSRules(CssSelector, rules);
+ *    T.add_css_rules(CssSelector, rules);
  */
-TigerJS.addCSSRules = function (selector, rules) {
+TigerJS.add_css_rules = function (selector, rules) {
 
     //get our tiger stylesheet
     var sheet = document.styleSheets,
@@ -2202,14 +2202,14 @@ TigerJS.addCSSRules = function (selector, rules) {
  * @example
  *
  *
- *     T.addCSSBlob("#SomeElementId{color:#ffa;  opacity:.5 !important}"+
+ *     T.add_css_blob("#SomeElementId{color:#ffa;  opacity:.5 !important}"+
  *                   ".SomeElementClass" + "{font-weight:bold;  text-align:.left}"+
  *                    );
  
  
  *
  */
-TigerJS.addCSSBlob = function (CSSBlob) {
+TigerJS.add_css_blob = function (CSSBlob) {
 
     //>Dump a blob of style declarations to the document
     var style = document.createElement('style');

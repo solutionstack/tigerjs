@@ -10,7 +10,7 @@
  * @param {CSSColor} [configurationOptions.borderColor = "#ccc"] border color for this widget 
  * @param {String} configurationOptions.text The tooltip text
  * @param {String} [configurationOptions.icon] A an icon for this tooltip widget, 
- * pass the name one of the SVG images budled with the library, and dont forget to call T.insertSVGIcons after adding the wiget to the DOM`.
+ * pass the name one of the SVG images budled with the library, and dont forget to call T.insert_svg_icons after adding the wiget to the DOM`.
  * 
  * @param {CSSColor} [configurationOptions.iconColor] The color for the icon, defaults to the widgets text color    
  * @extends TigerJS.UI.Widget
@@ -52,7 +52,7 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
     baseWidget._widgetElement.id = baseWidget.InstanceID;
     /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
     //the _widgetElement is the actual DOM Element so..
-    baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
+    baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
     baseWidget._widgetElement.className += " TigerSmartTooltip t-card-4";
     //
     //
@@ -94,7 +94,7 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
 
 
     //->       //ovveride toString
-    baseWidget._widgetElement.__toString = function () {
+    baseWidget._widgetElement.__to_string = function () {
         return "[object TigerJS.TooltipWidget]";
     };
     baseWidget.styleInsertedinDoc = false;
@@ -110,7 +110,7 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
     baseWidget.showTooltip = function () {
 
         var t = baseWidget._widgetElement, parent = T.$(baseWidget._widgetElement.parentNode),
-                t_style = t.getStyle(), /* All style declarations for the tooltip*/
+                t_style = t.get_style(), /* All style declarations for the tooltip*/
                 t_coords = t.rect(), /* tooltip element coordinates*/
                 parent_coords = parent.rect(); /* tooltip parent coordinates*/
 
@@ -123,7 +123,7 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
                 t.style.top = "0px";
                 if (!this.styleInsertedinDoc) {
 
-                    T.addCSSBlob("#" + t.id + "::before," +
+                    T.add_css_blob("#" + t.id + "::before," +
                             "#" + t.id + "::after{" +
                             " content: ''; position: absolute; z-index: 1000 ;bottom: 59%; left:98%" +
                             ";border-top: 6px solid " + bgColor +
@@ -137,7 +137,7 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
                 t.style.left = "5px";
                 t.style.top = (parseInt(t.offsetHeight) * -1) - 10 + "px";
                 if (!this.styleInsertedinDoc) {
-                    T.addCSSBlob("#" + t.id + "::before," +
+                    T.add_css_blob("#" + t.id + "::before," +
                             "#" + t.id + "::after{" +
                             " content: ''; position: absolute; z-index: 998 ;bottom: -25%; left:20" +
                             "px;border-top: 8px solid " + bgColor +
@@ -151,7 +151,7 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
                 t.style.top = parseInt(parent.offsetHeight) + 10 + "px";
                 t.style.left = "5px";
                 if (!this.styleInsertedinDoc) {
-                    T.addCSSBlob("#" + t.id + "::before," +
+                    T.add_css_blob("#" + t.id + "::before," +
                             "#" + t.id + "::after{" +
                             " content: ''; position: absolute; z-index: 1000 ;bottom: 100%; left:20" +
                             "px;border-top: 8px solid " + bgColor +
@@ -164,7 +164,7 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
                 t.style.left = parseInt(parent.offsetWidth) + 8 + "px";
                 t.style.top = "0px";
                 if (!this.styleInsertedinDoc) {
-                    T.addCSSBlob("#" + t.id + "::before," +
+                    T.add_css_blob("#" + t.id + "::before," +
                             "#" + t.id + "::after{" +
                             " content: ''; position: absolute; z-index: 1000 ;bottom: 58%; left:-9" +
                             "px;border-top: 6px solid " + bgColor +
@@ -200,13 +200,13 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
      * @param {HTMLElement | String} parEl A pre-existing Element
      * reference or the Element's id
      * @param {Boolean} noHoverAction The tooltip would be shown by default on hover, set this to disable this effect; 
-     * @name TigerJS.UI.Widget.TooltipWidget#appendToElement
+     * @name TigerJS.UI.Widget.TooltipWidget#append_to_element
      * @function
      * @type TigerJS.UI.Widget.TooltipWidget
      */
 
 
-    baseWidget.appendToElement = function (parEl, noHoverAction) {
+    baseWidget.append_to_element = function (parEl, noHoverAction) {
         parEl = (T.$(parEl));
         parEl.appendChild(this._widgetElement);
         T.$(); //call a function or property on something after using appendChild in Firefox to squash some weird bugs
@@ -235,7 +235,7 @@ TigerJS.UI.Widget.TooltipWidget = function (configurationOptions) {
         }
 
         //->       //ovveride toString
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.TooltipWidget]";
         };
         //>Override show and hide from the Default Widget

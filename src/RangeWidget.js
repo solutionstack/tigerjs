@@ -91,7 +91,7 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
 
         if (ort === "vertical") {
 
-            baseWidget._widgetElement.setStyle({
+            baseWidget._widgetElement.set_style({
                 minHeight: "3em",
                 height: width,
                 minWidth: ".2em",
@@ -105,7 +105,7 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
 
         } else {
 
-            baseWidget._widgetElement.setStyle({
+            baseWidget._widgetElement.set_style({
                 minWidth: "3em",
                 width: width,
                 minHeight: ".2em",
@@ -123,9 +123,9 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
 
         /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
-        baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
+        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
 
-        baseWidget._widgetElement.addClass("TigerSmartRange");
+        baseWidget._widgetElement.add_class("TigerSmartRange");
         baseWidget._widgetElement.selectable(false);
         ///////////// //////////////////END SOME ATTR FOR THEWIDGET//////////////////////  
 
@@ -140,12 +140,12 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
         //create the sliders
         var slider = T.UI.Widget();
 
-        slider.appendToElement(baseWidget._widgetElement);
+        slider.append_to_element(baseWidget._widgetElement);
 
         //configure for vertical or horizontal placement
         if (ort === "vertical") { //ort = orientation
 
-            slider._widgetElement.setStyle({
+            slider._widgetElement.set_style({
                 height: "1.3em",
                 minHeight: ".5em",
                 minWidth: ".1em",
@@ -164,12 +164,12 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
             if (handleColor === trackColor) //set the outline colour for each handle
                 slider._widgetElement.style.border = "solid 1px #999";
 
-            slider.setDraggable(false, false, true); //set the handle as 
+            slider.set_draggable(false, false, true); //set the handle as 
             //draggable and constrain to vertical movement
 
 
         } else {
-            slider._widgetElement.setStyle({
+            slider._widgetElement.set_style({
                 width: "1.2em",
                 minWidth: ".5em",
                 minHeight: ".1em",
@@ -187,7 +187,7 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
             if (handleColor === trackColor) //set the outline colour for each handle
                 slider._widgetElement.style.border = "solid 1px #999";
 
-            slider.setDraggable(false, true); //set the handle as 
+            slider.set_draggable(false, true); //set the handle as 
             //draggable and constrain to horizontal movement
         }
 
@@ -268,7 +268,7 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
 
         function setValue() {
             if (ort === "vertical") {
-                percentVal = (parseInt(slider._widgetElement.getStyle().top) / baseWidget._widgetElement.clientHeight) * 100;
+                percentVal = (parseInt(slider._widgetElement.get_style().top) / baseWidget._widgetElement.clientHeight) * 100;
 
                 if (percentVal <= 0) //since we are at the start of the range
                     realVal = r_min;
@@ -299,7 +299,7 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
 
             } else {
 
-                percentVal = (parseInt(slider._widgetElement.getStyle().left) / baseWidget._widgetElement.clientWidth) * 100;
+                percentVal = (parseInt(slider._widgetElement.get_style().left) / baseWidget._widgetElement.clientWidth) * 100;
 
                 if (percentVal <= 0)
                     realVal = r_min; //since we are at the start of the range
@@ -330,7 +330,7 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
         }
 
         //->   //overide appendTo Element
-        baseWidget.appendToElement = function(parEl) {
+        baseWidget.append_to_element = function(parEl) {
             var p;
 
             if (parEl.nodeType && parEl.nodeType === 1) {
@@ -338,7 +338,7 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
                 parEl.appendChild(baseWidget._widgetElement);
                 p = T.$(parEl);
             } else
-            if (T.isString(parEl)) {
+            if (T.is_string(parEl)) {
                 p = T.$(parEl);
                 p.appendChild(baseWidget._widgetElement);
 
@@ -374,7 +374,7 @@ TigerJS.UI.Widget.RangeWidget = function(configurationOptions) {
         //
         //
         //->       //ovveride toString
-        baseWidget._widgetElement.__toString = function() {
+        baseWidget._widgetElement.__to_string = function() {
             return "[object TigerJS.RangeWidget]";
         };
         //

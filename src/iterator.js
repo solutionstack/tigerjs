@@ -17,7 +17,7 @@
  
  var myItr = T.Iterator([1,2,3,3,4,5]);
  myItr.shuffle().walk_recursive(callback_func, user_data).unique().
- insertAt([9,10,''],0).next().empty().addAll(obj);
+ insert_at([9,10,''],0).next().empty().add_all(obj);
  
  //access an element
  var el = myItr[2];
@@ -50,13 +50,13 @@ TigerJS.Iterator = function (elements) {
             for (i in el) {
 
                 // for Arrays an array Likes, that is Collections and nodeLists
-                if (el.length && !T.isObject(el)) {
+                if (el.length && !T.is_object(el)) {
 
-                    if (T.isNumber(parseInt(i)) || i === "0") { //retrive only numeric indexes, leaving any Object property, lyk item nameditem e.t.c.
+                    if (T.is_number(parseInt(i)) || i === "0") { //retrive only numeric indexes, leaving any Object property, lyk item nameditem e.t.c.
                         this.obj[this.obj.length] = el[i];
                     }
 
-                } else if (T.isObject(el)) { //native Object
+                } else if (T.is_object(el)) { //native Object
 
                     this.obj[this.obj.length] = el[i];
                 }
@@ -92,9 +92,9 @@ TigerJS.Iterator = function (elements) {
          * Returns true if the Iterator is empty
          * @type Boolean
          * @function
-         * @name TigerJS.Iterator#isEmpty
+         * @name TigerJS.Iterator#is_empty
          */
-        this.obj.isEmpty = function () {
+        this.obj.is_empty = function () {
             return !this.length;
         };
         /**
@@ -146,25 +146,25 @@ TigerJS.Iterator = function (elements) {
             return this;
         };
         /**
-         * Method -> addAll
+         * Method -> add_all
          * This method provides functionality to add all indexes or properties from another
          * <br/>object directly to the Iterator, like appending an entire array to the list
          * or<br/> an object hash or even a string, whereby each charcters of the string become<br/> elements
          * in the set
          * @param {Object | Array | String | HTMLCollection | nodeList | TigerJS.Iterator} Obj An object String , array or collection
          *          object to recursively add its offsets[nodes/indexes] to this Iterator
-         * @name TigerJS.Iterator#addAll
+         * @name TigerJS.Iterator#add_all
          * @type TigerJS.Iterator
          *  @function
          */
-        this.obj.addAll = function (Obj) {
+        this.obj.add_all = function (Obj) {
             var i = '_null_';
             for (i in Obj) {
 
                 // for Arrays an array Likes, that is Collections and nodeLists
-                if (Obj.length && !T.isObject(Obj)) {
+                if (Obj.length && !T.is_object(Obj)) {
 
-                    if (T.isNumber(parseInt(i)) || i === "0") { //retrive only numeric indexes, leaving any Object property, lyk item nameditem e.t.c.
+                    if (T.is_number(parseInt(i)) || i === "0") { //retrive only numeric indexes, leaving any Object property, lyk item nameditem e.t.c.
                         this.push(Obj[i]);
                     }
 
@@ -192,7 +192,7 @@ TigerJS.Iterator = function (elements) {
          * This method provides functionality to add indexes or properties from another
          * <br/>object directly to the Iterator, starting at a specific index or Key
          * If the index or key is given and not found no new Elements are added to the iteratorx
-         * Similar to {@link #addAll}
+         * Similar to {@link #add_all}
          * @param {Object | Array | String | HTMLCollection | nodeList | TigerJS.Iterator} Obj An object String , array or collection
          *          object to recursively add its offsets[nodes/properties] to this Iterator
          * @param {Number | String} [start = fisrt index, or key] Numeric index or Object key to start adding elements of c.
@@ -208,7 +208,7 @@ TigerJS.Iterator = function (elements) {
             var search = false, s = start, e = end,
                     i = '_null_',
                     j;
-            if (T.isObject(Obj)) {
+            if (T.is_object(Obj)) {
 
                 if (s) { // we have a start key
                     for (j in Obj) {
@@ -263,21 +263,21 @@ TigerJS.Iterator = function (elements) {
         };
 
         /**
-         * Method -> insertAt
+         * Method -> insert_at
          *        This method adds nodes to the Iterator from a specified offset
          * @param {Object| Array | String | HTMLCollection | nodeList | TigerJS.Iterator} Obj An object String , array or collection
          *          object to recursively add its offsets to this list
-         * @param {Number} offset Offset to begin adding to the list, if zero, then the behavior is similar<br/> to addAll
+         * @param {Number} offset Offset to begin adding to the list, if zero, then the behavior is similar<br/> to add_all
          * @function
-         * @name TigerJS.Iterator#insertAt
+         * @name TigerJS.Iterator#insert_at
          * @type TigerJS.Iterator
          */
 
-        this.obj.insertAt = function (Obj, offset) {
+        this.obj.insert_at = function (Obj, offset) {
             var o = offset,
                     i;
             if (o >= this.size()) {
-                return this.addAll(Obj);
+                return this.add_all(Obj);
             }
             //need to increment the offset else elements get inserted in
             // reverse order
@@ -305,7 +305,7 @@ TigerJS.Iterator = function (elements) {
          
          */
         this.obj.next = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return false;
 
             var k = this.key;
@@ -323,10 +323,10 @@ TigerJS.Iterator = function (elements) {
          * @param {Number} max If Given only max numbers of elements would be returned
          * @return {TigerJS.Iterator} An Iterator Containing the needed range of elements, or an empty Iterator if no elements
          * @function
-         * @name TigerJS.Iterator#nextAll
+         * @name TigerJS.Iterator#next_all
          
          */
-        this.obj.nextAll = function (max) {
+        this.obj.next_all = function (max) {
             max = max || this.length - this.key; //its minus key so that if key is at 2 we take length as 2 to array length and not from 0
             var r = [];
             for (var i = this.key; r.length < max; i++) {
@@ -345,7 +345,7 @@ TigerJS.Iterator = function (elements) {
         this.obj.prev = function () {
 
 
-            if (this.isEmpty() || this.key === 0) {
+            if (this.is_empty() || this.key === 0) {
                 return false;
             }
 
@@ -363,7 +363,7 @@ TigerJS.Iterator = function (elements) {
 
         this.obj.merge = function (args) {
             for (var i = 0; i < arguments.length; i++) {
-                this.addAll(arguments[i]); //we use addAll so we dont add unecessary properties and feilds, lyk namedItem...
+                this.add_all(arguments[i]); //we use add_all so we dont add unecessary properties and feilds, lyk namedItem...
             }
 
             return this;
@@ -375,10 +375,10 @@ TigerJS.Iterator = function (elements) {
          * to the first element of the iterator
          * @param {Number} [max] If given only [max] numbers of elements would be returned
          * @return {TigerJS.Iterator} An Iterator Containing the needed range of elements, or an empty Iterator if no elements
-         * @name TigerJS.Iterator#prevAll
+         * @name TigerJS.Iterator#prev_all
          *  @function
          */
-        this.obj.prevAll = function (max) {
+        this.obj.prev_all = function (max) {
             max = max || this.key + 1;
             var r = [];
             for (var i = this.key; r.length < max; i--) {
@@ -405,9 +405,9 @@ TigerJS.Iterator = function (elements) {
          * @param {Number} x Numeric offset to check
          * @return {Boolean} True if the offset exists as an index in this collection.
          * @function
-         * @name TigerJS.Iterator#isIndex
+         * @name TigerJS.Iterator#is_index
          */
-        this.obj.isIndex = function (x) {
+        this.obj.is_index = function (x) {
             //we check for the number zero, in case the value at the index is actually zero,
             //which otherwise would return false
             return (this[x]) || this[x] === 0 ? true : false; //..now is this mootools or dojo style??
@@ -424,10 +424,10 @@ TigerJS.Iterator = function (elements) {
          * @type TigerJS.Iterator
          */
         this.obj.set = function (x, v) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
 
-            if (!this.isIndex(x)) {
+            if (!this.is_index(x)) {
                 return this;
             }
 
@@ -443,10 +443,10 @@ TigerJS.Iterator = function (elements) {
          * @return Returns the value at the specified index else returns undefined
          */
         this.obj.at = function (x) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return undefined;
 
-            if (!this.isIndex(x)) {
+            if (!this.is_index(x)) {
                 return undefined;
             }
 
@@ -461,7 +461,7 @@ TigerJS.Iterator = function (elements) {
          * @type TigerJS.Iterator
          */
         this.obj.duplicate = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
             var top = this.peek();
             this.push(top);
@@ -500,7 +500,7 @@ TigerJS.Iterator = function (elements) {
          * @name TigerJS.Iterator#rand
          */
         this.obj.rand = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return null;
             var s = Math.round(Math.random() * this.length - 1);
             return this[(s < 0 ? 0 : s)];
@@ -513,7 +513,7 @@ TigerJS.Iterator = function (elements) {
          * @type TigerJS.Iterator
          */
         this.obj.unique = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
             var itr = T.Iterator(),
                     count = 0,
@@ -531,7 +531,7 @@ TigerJS.Iterator = function (elements) {
             }
             //empty the Iterator and add the uniqued!! list
             this.empty();
-            this.addAll(itr);
+            this.add_all(itr);
             return this;
         };
         /*
@@ -555,7 +555,7 @@ TigerJS.Iterator = function (elements) {
 
 
         this.obj.unset = function (x) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
             this.splice(x, 1);
             return this;
@@ -565,9 +565,9 @@ TigerJS.Iterator = function (elements) {
          * Return a native array containing this Iterators elements
          * @type Array
          * @function
-         * @name TigerJS.Iterator#toArray
+         * @name TigerJS.Iterator#to_array
          */
-        this.obj.toArray = function () {
+        this.obj.to_array = function () {
             return [].concat(this);
         };
 
@@ -657,7 +657,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.slice = function (offset, length) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
             return (TigerJS.Iterator(this.slice(offset, length)));
         };
@@ -669,7 +669,7 @@ TigerJS.Iterator = function (elements) {
          * @name TigerJS.Iterator#clone
          */
         this.obj.clone = function ( /** variable argument list */ ) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return TigerJS.Iterator();
             return (TigerJS.Iterator(this));
         };
@@ -684,7 +684,7 @@ TigerJS.Iterator = function (elements) {
          *  @type TigerJS.Iterator
          */
         this.obj.walk = function (funcname, userdata) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
 
             var _key = this.key;
@@ -706,23 +706,24 @@ TigerJS.Iterator = function (elements) {
          *   @type TigerJS.Iterator
          */
         this.obj.walk_recursive = function (funcname, userdata) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
             var _key = this.key;
             this.key = 0;
             do {
 
                 for (var i in this.current()) { //if this index/sub-item is enumerable recurse it
-                    if (T.isEnumerable(this.current())) {
+                    if (T.is_enumerable(this.current())) {
 
-                        TigerJS.Iterator(this.current()).walk_recursive(funcname, userdata || null);
+                        TigerJS.Iterator(this.current()).
+                                walk_recursive(funcname, userdata || null);
                         if (!this.next()) {
                             return this;
                         } // normally after iterating a sub-item we need to move foward to avoid a repitition
                     }
 
                 }
-                if (!T.isEnumerable(this.current())) {
+                if (!T.is_enumerable(this.current())) {
                     //leave out enumerables for the above logic
                     funcname(this.current(), userdata || null);
                 }
@@ -739,7 +740,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.peek = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return null;
             return this[0];
         };
@@ -752,7 +753,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.last = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return null;
             return this[this.length - 1];
         };
@@ -762,14 +763,14 @@ TigerJS.Iterator = function (elements) {
 
         /**
          * Return the index of a particular item in the iterator, this function might not work when searching for part of a string value,
-         * for that use  {@link TigerJS.Iterator#str_indexOf}
+         * for that use  {@link TigerJS.Iterator#str_index_of}
          * @param {Mixed} x The item to serach for
          * @function
          * @name TigerJS.Iterator#indexOf
          * @return {Number | Boolean} The integer offset if found, else false
          */
         this.obj.indexOf = function (x) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return false;
 
 
@@ -786,15 +787,25 @@ TigerJS.Iterator = function (elements) {
         };
 
         /**
+         * Alias of TigerJS.Iterator#indexOf
+         * @name TigerJS.Iterator#index_of
+          * @param {Mixed} x The item to serach for
+         * @function
+         */
+        this.obj.index_of = function(x){
+            return this.obj.indexOf(x);
+        } //migrating;
+        
+        /**
          * Assuming this Iterator is made up of strings, this method returns the first index
          * that contains the argument as a substring
          * @param {string} needle String to search for in all Iterator indexes
          * @function
-         * @name TigerJS.Iterator#str_indexOf
+         * @name TigerJS.Iterator#str_index_of
          * @return {Number} The integer offset if found, else -1
          */
-        this.obj.str_indexOf = function (needle) {
-            if (this.isEmpty())
+        this.obj.str_index_of = function (needle) {
+            if (this.is_empty())
                 return -1;
             for (var i = 0, j = this.length; i < j; i++) {
 
@@ -811,11 +822,11 @@ TigerJS.Iterator = function (elements) {
          * Return the last index at which  a particular element was found in the iterator
          * @param {Mixed} x The item to serach for
          * @function
-         * @name TigerJS.Iterator#lastIndexOf
+         * @name TigerJS.Iterator#last_index_of
          * @return {Number | Boolean} The integer offset if found, else false
          */
-        this.obj.lastIndexOf = function (x) {
-            if (this.isEmpty())
+        this.obj.last_index_of = function (x) {
+            if (this.is_empty())
                 return false;
             var index = -1;
             for (var i = 0, j = this.length; i < j; i++) {
@@ -833,10 +844,10 @@ TigerJS.Iterator = function (elements) {
          * that contains the argument as a substring
          * @param {string} needle String to search for in all Iterator indexes
          * @function
-         * @name TigerJS.Iterator#str_lastIndexOf
+         * @name TigerJS.Iterator#str_last_indexOf
          * @return {Number} The integer offset if found, else -1
          */
-        this.obj.str_lastIndexOf = function (needle) {
+        this.obj.str_last_index_of = function (needle) {
             var index = -1;
             for (var i = 0, j = this.length; i < j; i++) {
                 if (this[i].indexOf && this[i].indexOf(needle) > -1) {
@@ -867,7 +878,7 @@ TigerJS.Iterator = function (elements) {
                 if (!!(si = (start_index || this.length)) < 0)
                     return this;
                 while (num) {
-                    if (T.isFunction(val)) {
+                    if (T.is_function(val)) {
                         this.splice(si, 0, val());
                     } else {
                         this.splice(si, 0, val);
@@ -889,7 +900,7 @@ TigerJS.Iterator = function (elements) {
          * @name TigerJS.Iterator#even
          */
         this.obj.even = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var r = [],
                     x = [].concat(this);
@@ -910,7 +921,7 @@ TigerJS.Iterator = function (elements) {
          * @name TigerJS.Iterator#odd
          */
         this.obj.odd = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var r = [],
                     x = [].concat(this);
@@ -931,7 +942,7 @@ TigerJS.Iterator = function (elements) {
          * @name TigerJS.Iterator#some
          */
         this.obj.some = function (f) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return false;
             var _key = this.key;
             this.key = 0;
@@ -955,7 +966,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.every = function (f) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return false;
             var _key = this.key;
             this.key = 0;
@@ -977,7 +988,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.compact = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var _key = this.key; //cache key
             this.key = 0;
@@ -1001,7 +1012,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.flatten = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var x = this.compact(),
                     _temp = [];
@@ -1010,7 +1021,7 @@ TigerJS.Iterator = function (elements) {
             };
             x.walk_recursive(f);
             this.empty();
-            this.addAll(_temp);
+            this.add_all(_temp);
             this.key = 0;
             return this;
         };
@@ -1024,10 +1035,10 @@ TigerJS.Iterator = function (elements) {
          * @type TigerJS.Iterator
          */
         this.obj.without = function (list) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
 
-            var a = T.Iterator(list), b = T.Iterator().addAll(this);
+            var a = T.Iterator(list), b = T.Iterator().add_all(this);
             this.empty();
 
             while (b.indexOf(a.current()) !== false) {
@@ -1037,7 +1048,7 @@ TigerJS.Iterator = function (elements) {
                 a.next();
             }
 
-            this.addAll(b.compact());
+            this.add_all(b.compact());
             return this;
         };
 
@@ -1053,7 +1064,7 @@ TigerJS.Iterator = function (elements) {
          * @name TigerJS.Iterator#map
          */
         this.obj.map = function (f) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
 
             var _key = this.key;
@@ -1076,7 +1087,7 @@ TigerJS.Iterator = function (elements) {
          *@name TigerJS.Iterator#filter
          */
         this.obj.filter = function (f) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var _key = this.key,
                     r = [];
@@ -1099,7 +1110,7 @@ TigerJS.Iterator = function (elements) {
          * @name TigerJS.Iterator#reject
          */
         this.obj.reject = function (f) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var _key = this.key,
                     r;
@@ -1124,7 +1135,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.replace = function (args) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var _key = this.key,
                     f;
@@ -1153,7 +1164,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.replace_from = function (start_index, args) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var _key = this.key,
                     f;
@@ -1192,7 +1203,7 @@ TigerJS.Iterator = function (elements) {
             }
             var s, e,
                     r = T.Iterator();
-            if (T.isNumber(sv)) { //range is numerical
+            if (T.is_number(sv)) { //range is numerical
                 if (sv < ev) {
                     r.add(sv);
                     while (r.last() < ev) {
@@ -1215,14 +1226,16 @@ TigerJS.Iterator = function (elements) {
                     }
                 }
             }
-            if (T.isString(sv)) { //range is alphabetical
+            if (T.is_string(sv)) { //range is alphabetical
 
                 if (sv.charCodeAt(0) < ev.charCodeAt(0)) {
                     r.add(sv);
                     s = sv.charCodeAt(0);
                     e = ev.charCodeAt(0);
                     while (r.last().charCodeAt(0) < ev.charCodeAt(0)) {
-                        if ((step && step + r.last().charCodeAt(0) > e) || r.last().charCodeAt(0) + 1 > e) {
+                        if ((step && step + r.last().
+                                charCodeAt(0) > e) || r.last().
+                                charCodeAt(0) + 1 > e) {
                             break;
                         }
                         r.add((step ? String.fromCharCode(step + s++) : String.fromCharCode(s++)));
@@ -1234,10 +1247,13 @@ TigerJS.Iterator = function (elements) {
                     s = sv.charCodeAt(0);
                     e = ev.charCodeAt(0);
                     while (s >= e) {
-                        if ((step && r.last().charCodeAt(0) - step) < e || (r.last().charCodeAt(0) - 1) < e) {
+                        if ((step && r.last().
+                                charCodeAt(0) - step) < e || (r.last().
+                                charCodeAt(0) - 1) < e) {
                             break;
                         }
-                        r.add((step ? String.fromCharCode(r.last().charCodeAt(0) - step) : String.fromCharCode(s--)));
+                        r.add((step ? String.fromCharCode(r.last().
+                                charCodeAt(0) - step) : String.fromCharCode(s--)));
                     }
 
                 }
@@ -1257,7 +1273,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.intersect = function (c1) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var result = T.Iterator(),
                     //get iterator interface for argument
@@ -1283,7 +1299,7 @@ TigerJS.Iterator = function (elements) {
          * @function
          */
         this.obj.diff = function (c1) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             var _key = this.key,
                     result = T.Iterator(),
@@ -1306,9 +1322,9 @@ TigerJS.Iterator = function (elements) {
          * @param {Object} c1 object to compare
          * @type Boolean
          * @function
-         * @name TigerJS.Iterator#isSubset
+         * @name TigerJS.Iterator#is_subset
          */
-        this.obj.isSubset = function (c1) {
+        this.obj.is_subset = function (c1) {
 
             //get iterator interface for argument
             var i1 = T.Iterator(c1);
@@ -1327,9 +1343,9 @@ TigerJS.Iterator = function (elements) {
          * @param {Object} c1 object to compare
          * @type Boolean
          * @function
-         * @name TigerJS.Iterator#isSuperset
+         * @name TigerJS.Iterator#is_superset
          */
-        this.obj.isSuperset = function (c1) {
+        this.obj.is_superset = function (c1) {
             var _key = this.key,
                     i1;
             //get iterator interface for argument
@@ -1379,7 +1395,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.partition = function (f) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
 
             var _key = this.key,
@@ -1414,7 +1430,7 @@ TigerJS.Iterator = function (elements) {
          ]
          * Array fruits is a data-table containing information of fruits, to sort it with this method, using say its
          second index ( i.e. Array[1]), invoke this line
-         * var sortedResult = (T.Iterator()).sortBy(dt,1) results in the array
+         * var sortedResult = (T.Iterator()).sort_by(dt,1) results in the array
          *
          [
          ['Grapefruits',42,10.66,1.6]
@@ -1427,10 +1443,10 @@ TigerJS.Iterator = function (elements) {
          * @param {Number} index Index by which to sort by
          * @type Array
          * @function
-         * @name TigerJS.Iterator#sortBy
+         * @name TigerJS.Iterator#sort_by
          */
 
-        this.obj.sortBy = function (dt, index) {
+        this.obj.sort_by = function (dt, index) {
 
 
             //quick and fast
@@ -1445,7 +1461,7 @@ TigerJS.Iterator = function (elements) {
                 indx_arr[i] = dt[i][index];
             }
             //sort the array, depending on the type of elements
-            if (T.isString(indx_arr[0])) {
+            if (T.is_string(indx_arr[0])) {
 
                 indx_arr.sort();
             } else {
@@ -1481,7 +1497,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.advance = function (n, Reverse) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return T.Iterator();
             if (!n)
                 return this;
@@ -1516,15 +1532,15 @@ TigerJS.Iterator = function (elements) {
 
 
         this.obj.foward_iterator = function (cb, jump) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
-            
-             if (!T.isFunction(cb)){
-                  err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#foward_iterator" +
+
+            if (!T.is_function(cb)) {
+                err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#foward_iterator" +
                         "Expects a function as its first argument, * " + T.type(cb) + " * given";
-                throw new Error(err_str);   
+                throw new Error(err_str);
             }
-            
+
             var _key = this.key;
             this.key = 0;
             do {
@@ -1553,15 +1569,15 @@ TigerJS.Iterator = function (elements) {
 
 
         this.obj.reverse_iterator = function (cb, jump) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
 
-            if (!T.isFunction(cb)){
-                  err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#reverse_iterator" +
+            if (!T.is_function(cb)) {
+                err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#reverse_iterator" +
                         "Expects a function as its first argument, * " + T.type(cb) + " * given";
-                throw new Error(err_str);   
+                throw new Error(err_str);
             }
-            
+
             var _key = this.key;
             this.key = this.size() - 1;
             do {
@@ -1590,13 +1606,13 @@ TigerJS.Iterator = function (elements) {
 
 
         this.obj.random_access_iterator = function (cb) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
 
-            if (!T.isFunction(cb)){
-                  err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#random_access_iterator" +
+            if (!T.is_function(cb)) {
+                err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#random_access_iterator" +
                         "Expects a function as its first argument, * " + T.type(cb) + " * given";
-                throw new Error(err_str);   
+                throw new Error(err_str);
             }
 
             var i = this.clone(),
@@ -1623,17 +1639,17 @@ TigerJS.Iterator = function (elements) {
 
 
         this.obj.timed_iterator = function (cb, delay) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
 
 
-            if (!T.isFunction(cb)){
-                  err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#timed_iterator" +
+            if (!T.is_function(cb)) {
+                err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#timed_iterator" +
                         "Expects a function as its first argument, * " + T.type(cb) + " * given";
-                throw new Error(err_str);   
+                throw new Error(err_str);
             }
-            
-            if (!T.isNumber(delay)) {
+
+            if (!T.is_number(delay)) {
                 err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#timed_iterator" +
                         "Expects an integer as its second argument, * " + T.type(delay) + " * given";
                 throw new Error(err_str);
@@ -1644,11 +1660,11 @@ TigerJS.Iterator = function (elements) {
             var itr = this;
 
             setTimeout(z, delay);
-          
+
             function z() {
                 if (_key <= _isize) {
                     cb(itr[_key++]);
-                    
+
                     setTimeout(z, delay);
                     return;
                 }
@@ -1666,7 +1682,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.unset_r = function (arr) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
             var c = (arr[1] - arr[0]) + 1; //get the range size
 
@@ -1689,7 +1705,7 @@ TigerJS.Iterator = function (elements) {
          */
 
         this.obj.unset_r_if = function (arr, pred) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
             var _t = this.clone();
             _t.key = arr[0];
@@ -1700,7 +1716,7 @@ TigerJS.Iterator = function (elements) {
                 }
 
             } while (_t.next() && _t.key <= arr[1]);
-            return this.empty().addAll();
+            return this.empty().add_all();
         };
 
 
@@ -1715,7 +1731,7 @@ TigerJS.Iterator = function (elements) {
 
 
         this.obj.unset_if = function (x, pred) {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return this;
             if (pred(x)) {
                 this.splice(x, 1);
@@ -1764,9 +1780,9 @@ TigerJS.Iterator = function (elements) {
          itr_b.swap(a);
          
          //yeilds, if you inspect the elements
-         T.dump(itr_b.toArray());         ==> 0,1,2,3,4,5
+         T.dump(itr_b.to_array());         ==> 0,1,2,3,4,5
          and
-         T.dump(itr_a.toArray());         ==> 10,11,12,13,14,15
+         T.dump(itr_a.to_array());         ==> 10,11,12,13,14,15
          
          *
          */
@@ -1816,9 +1832,9 @@ TigerJS.Iterator = function (elements) {
                 key = 0; //reset pointer on sort
             }
             do {
-                if (T.isNumber(this.current()) && this.current() >= value - 1) {
+                if (T.is_number(this.current()) && this.current() >= value - 1) {
 
-                    return this.lastIndexOf(this.current()) + 1;
+                    return this.last_index_of(this.current()) + 1;
                 }
 
             } while (this.next());
@@ -1833,14 +1849,14 @@ TigerJS.Iterator = function (elements) {
          * @function
          */
         this.obj.sum = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return Number.NaN;
             var re = 0,
                     _key = this.key,
                     nc = true;
             this.key = 0;
             do {
-                if (T.isNumber(this.current())) {
+                if (T.is_number(this.current())) {
                     re += this.current();
                     nc = false;
                 }
@@ -1859,14 +1875,14 @@ TigerJS.Iterator = function (elements) {
          * @function
          */
         this.obj.product = function () {
-            if (this.isEmpty())
+            if (this.is_empty())
                 return Number.NaN;
             var re = 1,
                     _key = this.key,
                     nc = true;
             this.key = 0;
             do {
-                if (T.isNumber(this.current())) {
+                if (T.is_number(this.current())) {
                     re *= this.current();
                     nc = false;
                 }
@@ -1878,7 +1894,7 @@ TigerJS.Iterator = function (elements) {
         /**
          * @ignore
          */
-        this.obj.__toString = function () {
+        this.obj.__to_string = function () {
             return "[object TigerJS.Iterator]";
         };
 

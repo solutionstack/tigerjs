@@ -18,7 +18,7 @@ TigerJS.Conn = {
   /**
    *@ignore
    */
-  subscrptionList:
+  SubscrptionList:
       T.Iterator(),  // list of functions to report network state activity to
 
   /**
@@ -38,7 +38,7 @@ TigerJS.Conn = {
    */
   subscribe: function(args) {  // subscribe to the net monitor event
 
-    this.subscrptionList.addAll(arguments);
+    this.SubscrptionList.add_all(arguments);
   },
   /**
    *Unsubscribe from network state events.
@@ -51,7 +51,7 @@ TigerJS.Conn = {
 
   unSubscribe: function(args) {  // unsubscribe from the net monitor event
 
-    this.subscrptionList = this.subscrptionList.without(T.Iterator(arguments));
+    this.SubscrptionList = this.SubscrptionList.without(T.Iterator(arguments));
   },
   /**
    *@ignore
@@ -90,10 +90,10 @@ TigerJS.Conn = {
               T.Conn.state === null) {  // send info to callbacks only when the
                                         // state changes, or its the first time
                                         // (i.e null)
-            if (T.Conn.subscrptionList.size()) {  // if we have a non-zero size
+            if (T.Conn.SubscrptionList.size()) {  // if we have a non-zero size
                                                   // meaning functions have been
                                                   // registered
-              T.Conn.subscrptionList.walk(function(x) {
+              T.Conn.SubscrptionList.walk(function(x) {
 
                 x({state: 'offline'});
 
@@ -116,10 +116,10 @@ TigerJS.Conn = {
               T.Conn.state ===
                   null) {  // send info to callbacks only when the state changes
 
-            if (T.Conn.subscrptionList.size()) {  // if we have a non-zero size
+            if (T.Conn.SubscrptionList.size()) {  // if we have a non-zero size
                                                   // meaning functions have been
                                                   // registered
-              T.Conn.subscrptionList.walk(function(x) {
+              T.Conn.SubscrptionList.walk(function(x) {
 
                 x({state: 'offline'});
 
@@ -143,10 +143,10 @@ TigerJS.Conn = {
                                 // was previously false/null, and now changing
                                 // to true
 
-            if (T.Conn.subscrptionList.size()) {  // if we have a non-zero size
+            if (T.Conn.SubscrptionList.size()) {  // if we have a non-zero size
                                                   // meaning functions have been
                                                   // registered
-              T.Conn.subscrptionList.walk(function(x) {
+              T.Conn.SubscrptionList.walk(function(x) {
                 x({state: 'online'});
               });
             }

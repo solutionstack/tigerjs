@@ -134,8 +134,8 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
         /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
-        baseWidget._widgetElement.setData(baseWidget.FamilyID, baseWidget.InstanceID);
-        baseWidget._widgetElement.setStyle({//style the container
+        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
+        baseWidget._widgetElement.set_style({//style the container
             width: isDropZoneAllowed ? "95%" : "90%",
             backgroundColor: "#fff",
             textAlign: "center",
@@ -150,7 +150,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
         //next create the dropzone
         var dz = T.$(document.createElement("DIV"));
-        dz.setStyle({
+        dz.set_style({
             display: "inline-block",
             minWidth: "0em",
             width: "97%",
@@ -182,7 +182,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         //create alternate upload button
         var uButton = T.$(document.createElement("SPAN"));
 
-        uButton.setStyle({
+        uButton.set_style({
             width: "8.5em",
             height: "auto",
             padding: ".3em",
@@ -197,7 +197,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             transition: "all .5s"
         });
         uButton.on("mouseover touchstart", function () {
-            this.target.setStyle({
+            this.target.set_style({
                 backgroundColor: "#fff",
                 color: "#666"
             });
@@ -205,7 +205,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         //
 
         uButton.on("mouseout touchend touchcancel", function () {
-            this.target.setStyle({
+            this.target.set_style({
                 backgroundColor: "#666",
                 color: "#ccc"
             });
@@ -277,7 +277,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
                                 //
                     });
-                    notifyW.appendToElement(document.body);
+                    notifyW.append_to_element(document.body);
                     notifyW.Node.innerHTML = "Upload in progress!!";
                     notifyW.Node.style.left = "40%";
                     notifyW.Node.className += " " + baseWidget._widgetElement.id + "_upload_in_progress ";
@@ -294,7 +294,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             //
             //
 
-            preparing__.setStyle({
+            preparing__.set_style({
                 display: "block"
             });
             baseWidget._widgetElement.appendChild(preparing__);
@@ -323,14 +323,14 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                     noOfFilesToUpload -= 1;
                     continue; //skip files with mismatched mime types, but dont skip when we are to match all files i.e (*)
                 }
-                if (fList[i].name.substr(fList[i].name.lastIndexOf(".") + 1) === "lnk") { //window links
+                if (fList[i].name.substr(fList[i].name.last_index_of(".") + 1) === "lnk") { //window links
                     noOfFilesToUpload -= 1;
                     continue; //
                 }
 
                 compositeFileStructure[i] = {};
                 compositeFileStructure[i]["name"] = fList[i].name;
-                compositeFileStructure[i]["ext"] = fList[i].name.substr(fList[i].name.lastIndexOf(".") + 1);
+                compositeFileStructure[i]["ext"] = fList[i].name.substr(fList[i].name.last_index_of(".") + 1);
 
                 compositeFileStructure[i]["lastModified"] = fList[i].lastModified;
                 compositeFileStructure[i]["size"] = fList[i].size;
@@ -562,7 +562,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
             var pBarBox = T.$(document.createElement("DIV")); //container for the progress bars
             pBarBox.className += " TFileUploadProgress"; //class for the progress bars
-            pBarBox.setStyle({
+            pBarBox.set_style({
                 width: "100%",
                 height: "1em",
                 backgroundColor: "transparent",
@@ -575,7 +575,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             pBarBox.id = compositeFileStructure[fileIndex].id;
 
             var progText = T.$(document.createElement("SPAN"));
-            progText.setStyle({
+            progText.set_style({
                 display: "block",
                 position: "relative",
                 padding: ".2em",
@@ -592,7 +592,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                     "%.1f".sprintf((compositeFileStructure[fileIndex].size / 1024) / 1024) + "MB</b>";
 
             var progLevel = T.$(document.createElement("SPAN"));
-            progLevel.setStyle({
+            progLevel.set_style({
                 display: "inline-block",
                 padding: ".2em",
                 color: "#000",
@@ -627,7 +627,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
                 //style the progress bar(s) sections
                 progressArray[i].className += " TFileUploadProgressChunk";
-                progressArray[i].setStyle({
+                progressArray[i].set_style({
                     width: 1 + "px",
                     height: "100%",
                     display: "inline-block",
@@ -702,7 +702,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             for (var i = 0; i < progress_bar.childNodes.length; i++)
                 p += parseFloat(progress_bar.childNodes[i].style.width);
 
-            var progress_percent_text = T.$(compositeFileStructure[currentFilesForUploadIndex].name)._firstElementChild()._nextElementSibling();
+            var progress_percent_text = T.$(compositeFileStructure[currentFilesForUploadIndex].name).first_element_child()._nextElementSibling();
             progress_percent_text.innerHTML = (p / 4) + "%";
 
             if (p < 100)
@@ -730,7 +730,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
                             //
                 });
-                notifyW.appendToElement(document.body);
+                notifyW.append_to_element(document.body);
                 notifyW.Node.innerHTML = error_string || "File upload interrupted!!";
                 notifyW.Node.style.left = "40%";
                 notifyW.Node.className += " " + baseWidget._widgetElement.id + "_upload_error ";
@@ -827,7 +827,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         }
 
         //->       //ovveride toString
-        baseWidget._widgetElement.__toString = function () {
+        baseWidget._widgetElement.__to_string = function () {
             return "[object TigerJS.FileUploadWidget]";
         };
 
