@@ -1633,7 +1633,7 @@ TigerJS.Iterator = function (elements) {
          * @param {Function} cb function to accept the elements,
          * @param {Number} delay milliseconds to wait before sending the next element to the call back
          *  @type TigerJS.Iterator
-         *  @name TigerJS.Iterator#random_access_iterator
+         *  @name TigerJS.Iterator#timed_iterator
          *  @function
          */
 

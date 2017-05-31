@@ -6,7 +6,7 @@
  *  @class An Enhanced Object for manipulating  DOMElements.
  *
  * @param {String | HTMLElement} el_ String id or a reference to an HTMLElement
- * @return an Enhanced HTML element  of type {@link TigerJS.$} or a an extended DOCUMENT FRAGMENT object if he ELement couldnt be found.
+ * @return An enhanced HTMLElement of type {@link TigerJS.$} or a an extended DOCUMENT FRAGMENT object if the element couldnt be found.
  *               The return object also supprot chaining of operations<br/>
  *
  *
@@ -45,8 +45,9 @@ TigerJS.$ = function (el_) {
     };
     /**
      * Append Child and return this Object
+     * @function
      * @param {HTMLElement} x The child to append
-     *@type TigerJS.$
+     * @type TigerJS.$
      * @name TigerJS.$#appendChild
      */
     this.el.append_child = function (x) {
@@ -135,7 +136,7 @@ TigerJS.$ = function (el_) {
      * Removes all cildren of thie Element
      * @function
      *@type TigerJS.$
-     * @name TigerJS.$#removeChildNodes
+     * @name TigerJS.$#remove_child_nodes
      */
     this.el.remove_child_nodes = function () {
         while (this.firstChild) {
@@ -306,7 +307,7 @@ TigerJS.$ = function (el_) {
 
 
         try { //if this T.$ instance is a DocumentFragment rather than an actual HTMLElement
-            //errors could occur here with toCase and other routines
+            //errors could occur here with to_case and other routines
 
             //        document.write(T.dump(T.clone(map)));
             for (i in map) { //go through the computed style object
@@ -315,7 +316,7 @@ TigerJS.$ = function (el_) {
 
                         function (x) {
 
-                            if (i === x.toCase("-cm")) { //usually elements in ruleMap come in standard CSS dasherized form,
+                            if (i === x.to_case("-cm")) { //usually elements in ruleMap come in standard CSS dasherized form,
                                 //so we camelize to match that in the computedStyle object
                                 r[i] = map[i];
                             }
@@ -330,7 +331,7 @@ TigerJS.$ = function (el_) {
 
                                                 if (y.split(":")[0].trim() === x) { //so we parse out the rule name and check if its been requested
 
-                                                    r[x.toCase("-cm")] = y.split(":")[1]; //if it is, add it to our return object along side its value
+                                                    r[x.to_case("-cm")] = y.split(":")[1]; //if it is, add it to our return object along side its value
 
                                                 }
                                             }
@@ -475,7 +476,7 @@ TigerJS.$ = function (el_) {
         try {
             for (var i in styleMap) {
 
-                this.style[i.toCase("-cm")] = styleMap[i];
+                this.style[i.to_case("-cm")] = styleMap[i];
             }
         } catch (e) {
         }
@@ -951,7 +952,7 @@ TigerJS.$ = function (el_) {
 
                 for (var j = 0, len = s.length; j < len; ) {
                     try {
-                        this.style[s[j++].toCase('-cm')] = s[j++]; //iteratively set each individual style rule, camelizing CSS
+                        this.style[s[j++].to_case('-cm')] = s[j++]; //iteratively set each individual style rule, camelizing CSS
                         //names where necesarry
                     } catch (e) {
                     }
@@ -1081,7 +1082,7 @@ TigerJS.$ = function (el_) {
      * @return The removed child node, which could be later re-inserted later
      */
     this.el.destroy = function () {
-        this.removeChildNodes();
+        this.remove_child_nodes();
         try {
             return T.$((this.parentNode.removeChild(this)));
         } catch (e) {
@@ -1321,7 +1322,7 @@ TigerJS.$ = function (el_) {
     this.el.reverse_child_nodes = function () {
         var n = T.Iterator(this.childNodes).reverse();
         //get the child nodes and reverse them
-        this.removeChildNodes(); //remove all children
+        this.remove_child_nodes(); //remove all children
 
         for (var i = 0; i < n.length; i++) { //put back the reversed nodes
 
@@ -2018,7 +2019,7 @@ TigerJS.$ = function (el_) {
      */
     this.el.__to_string = function () {
         try {
-            return "[object TigerJS.$]/" + "HTML" + (this.tagName).toCase('-ufl') + "Element";
+            return "[object TigerJS.$]/" + "HTML" + (this.tagName).to_case('-ufl') + "Element";
         } catch (e) {
             return "[object TigerJS.$]/DocumentFragment]";
         }

@@ -106,9 +106,15 @@ TigerJS.UI.Color = {
         //convert all to hex, pad single hex digits with zero
 
         return "#" +
-                (parseInt(color[0]).toString(16).length === 1 ? "0" + parseInt(color[0]).toString(16) : parseInt(color[0]).toString(16)) +
-                (parseInt(color[1]).toString(16).length === 1 ? "0" + parseInt(color[1]).toString(16) : parseInt(color[1]).toString(16)) +
-                (parseInt(color[2]).toString(16).length === 1 ? "0" + parseInt(color[2]).toString(16) : parseInt(color[2]).toString(16)) +
+                (parseInt(color[0]).
+                        toString(16).length === 1 ? "0" + parseInt(color[0]).
+                        toString(16) : parseInt(color[0]).toString(16)) +
+                (parseInt(color[1]).
+                        toString(16).length === 1 ? "0" + parseInt(color[1]).
+                        toString(16) : parseInt(color[1]).toString(16)) +
+                (parseInt(color[2]).
+                        toString(16).length === 1 ? "0" + parseInt(color[2]).
+                        toString(16) : parseInt(color[2]).toString(16)) +
                 "";
     },
     /**
@@ -790,9 +796,9 @@ TigerJS.UI.FX = {
         } else if (animConfig.name.search(/slidei/g) !== -1) {
 
             //create custom css-clip animation function
-             var elWidth = coords.width,
+            var elWidth = coords.width,
                     elHeight = coords.height;
-            if (animConfig.name === "slidein-left") { 
+            if (animConfig.name === "slidein-left") {
 
                 //set a default clip property on the element before animating
                 el.style.clip = "rect(0px,0px," + elHeight + "px,0px)";
@@ -1002,7 +1008,7 @@ TigerJS.UI.FX = {
     /**
      * @class
      * 
-     * The {@link TigerJS.UI.FX.Draggable} class is used to set Widget elements
+     * The {@link TigerJS.UI.FX.draggable} class is used to set Widget elements
      * or any other element for that that matter as a draggable.
      * <pre>
      * Note*:
@@ -1010,7 +1016,7 @@ TigerJS.UI.FX = {
      *   Give the child element a 't-no-drag- class
      *   
      *   </pre>
-     * @param {TigerJS.$ | DOMELement} el The element to set as Draggable
+     * @param {TigerJS.$ | DOMELement} el The element to set as draggable
      * @param {Object} config_ Configuration object for this class
      * @param {Boolean} config_.constrain Configuration specifying
      * if widget movement should be restricted to their parent element
@@ -1027,39 +1033,31 @@ TigerJS.UI.FX = {
      * event: _dragmove Fires continiously when the Element is in motion.
      * @fires _dragend Fires when the Element stops moving, and
      * we have a mouse up or touch-end action.
-     * @name TigerJS.UI.FX.Draggable
+     * @name TigerJS.UI.FX.draggable
      */
 
-    Draggable: function (el, config_) {
+    draggable: function (el, config_) {
         //get the proper DOMElement, and if its one of our widget,
         // refrence the proper HTML element within
         if (T.is_string(el)) {
             el = T.$(el);
-        }
-
-        if (T.type(el) !== "undefined") {
-
-            el = el.nodeType && el.nodeType === 1 ? T.$(el) : el._widgetElement;
         } else {
 
-
-
-            var el = null; // no element, may be they are cancelling a drag
-
+            el = el.nodeType && el.nodeType === 1 ? T.$(el) : el._widgetElement;
         }
-
+      
         if (el) {
             var ev_x, ev_y, el_x, el_y, oldZIndex, dragging = false,
                     old_coord = {}, parent_coords = {}, drag_clientX,
                     drag_clientY,
-                    old_positioning, oldCursor,
+                    old_positioning,
                     config = config_ || {},
                     current_x = null,
                     current_y = null, // just some trackers, for edge detection
 
                     //elements-parent size, to be set on-mousedown, this is also
                     // used to calculate the edges of parent nodes in (constrain) mode
-                    op_width, op_height, realDrag = false,
+                    op_width, op_height, real_drag = false,
                     _handle = false;
             /**constrain to container **/ /// default to true
 
@@ -1070,43 +1068,21 @@ TigerJS.UI.FX = {
 
         //set the element to drag, if the current element is just a handle
         if (el && config.dragTarget) {
-            el.className += " t-dragHandle"; // note it as a drag handle
-            if (el.Node)
-                realDrag = T.$(config.dragTarget); //a widget
-            if (!el.Node)
-                realDrag = T.$(config.dragTarget); //a regular element
+            el.className += " t-dragHandle"; // set is as a drag handle
+            real_drag = T.$(config.dragTarget); //a regular element
         }
 
-        //in such a case where we are  just a handle keep a reference 
 
-        if (el) {
-            if (realDrag)
-                _handle = el;
-            //mouse move cursor stuff
-            if (_handle) { // if we are a drag handle
-                _handle.on("_dragmove", function () {
-                    this.target.style.cursor = "move";
-                });
-            } else { //if we are the real drag target
-                el.on("_dragmove", function () {
-                    this.target.style.cursor = "move";
-                });
-            }
 
-            //we register this events on the document
-            //as when dragging really fast the mouese-pointer actually
-            //leaves the element, so if we do not monitor the movent
-            // on a document wide scope we would have 'moves' stopping
-            //abdruptly
-            T.$(document.body).on("mousemove", do_drag, false, false, false);
-            T.$(document.body).on("touchmove", do_drag, false, false, false);
-        }
-        function init_drag() {
+        var init_drag = function () {
+
+
             // first make sure an Invalid Element wasnt clicked
             // Invalid elements would be buttons, editable feilds and links, or other
             // elements with a no drag data-attribute
             //
-            if (/button|a|input|textarea/gi.test(this.target.tagName)) {
+            if (/\b(button|a|input|textarea)\b/gi.test(this.target.tagName)) {
+          
                 this.target.style.cursor = "auto";
                 return;
             }
@@ -1122,24 +1098,17 @@ TigerJS.UI.FX = {
                     this.clientY;
 
             //target initial coords
-            el_x = realDrag ? parseInt(realDrag.offsetLeft) : parseInt(el.offsetLeft);
-            el_y = realDrag ? parseInt(realDrag.offsetTop) : parseInt(el.offsetTop);
+            el_x = real_drag ? parseInt(real_drag.offsetLeft) : parseInt(el.offsetLeft);
+            el_y = real_drag ? parseInt(real_drag.offsetTop) : parseInt(el.offsetTop);
 
             //offsetParent fixins
-            op_width = realDrag ? realDrag.offsetParent.scrollWidth : el.offsetParent.scrollWidth;
-            op_height = realDrag ? realDrag.offsetParent.scrollHeight : el.offsetParent.scrollHeight;
+            op_width = real_drag ? real_drag.offsetParent.scrollWidth : el.offsetParent.scrollWidth;
+            op_height = real_drag ? real_drag.offsetParent.scrollHeight : el.offsetParent.scrollHeight;
 
-            old_positioning = realDrag ? realDrag.style.position : el.style.position;
-            oldCursor = realDrag ? realDrag.style.cursor : el.style.cursor;
 
-            if (!realDrag) {
-                el.style.position = "absolute";
-            } else {
+            dragging = true;
+            
 
-                realDrag.style.position = "absolute";
-            }
-
-            dragging = !dragging;
             this.preventDefault();
             this.stopPropagation();
             // prevent text selection in IE ... Is this really needed
@@ -1154,26 +1123,34 @@ TigerJS.UI.FX = {
             return false;
         }
 
-        function do_drag() {
-
+        var do_drag = function (el) {
+          
             //are we just a drag handle. then set the real element to drag
-            el = realDrag ? realDrag : el;
+            var el = real_drag ? real_drag : el;
+            el.style.cursor = "move";
+
+
+
             // this is the actual "drag code"
             if (dragging === false)
                 return;
+           
+
             //support touch;
             drag_clientX = this.touches ? this.changedTouches[0].pageX :
                     this.clientX;
             drag_clientY = this.touches ? this.changedTouches[0].pageY :
                     this.clientY;
+
             //Amount moved
             var e_dx = drag_clientX - ev_x,
                     e_dy = drag_clientY - ev_y,
                     i;
+
+
             if (config.constrain || el.offsetParent === document.body ||
                     el.offsetParent.tagName === "HTML") {
-                { //restric movement if we are at the top-edge of parent
-
+             
                     if (el.offsetTop <= 0 && !config.H) {//we make sure we are not set to move only horizontally
 
                         el.style.top = 0 + "px";
@@ -1190,9 +1167,8 @@ TigerJS.UI.FX = {
                         }
 
                     }
-                }
+              
 
-                { //restric movement if we are at the bottom-edge of parent
                     if (op_height - (el.offsetTop + el.offsetHeight) <= 0 && !config.H) {
 
                         el.style.top = op_height - (el.offsetHeight) + "px";
@@ -1209,9 +1185,9 @@ TigerJS.UI.FX = {
                         }
                         ;
                     }
-                }
+                
 
-                { //restrict at left edge of parent, (why exaclty am i scoping here ??)///
+                 //restrict at left edge of parent, (why exaclty am i scoping here ??)///
                     if (el.offsetLeft <= 0 && !config.V) {
                         el.style.left = 0 + "px";
                         if (!current_x)
@@ -1227,10 +1203,10 @@ TigerJS.UI.FX = {
                         }
                     }
 
-                }
+                
 
 
-                { //restrict at right edge of parent
+                 //restrict at right edge of parent
                     if (op_width - (el.offsetLeft + el.offsetWidth) <= 0 && !config.V) {
                         el.style.left = op_width - (el.offsetWidth) + "px";
                         if (!current_x)
@@ -1243,9 +1219,6 @@ TigerJS.UI.FX = {
                             el.style.left = parseInt(el.style.left) - e_dx + "px";
                             current_x = null; //reset edge tracker
                         }
-                    }
-
-
                 }
             }
             //moving function
@@ -1289,23 +1262,25 @@ TigerJS.UI.FX = {
                 ;
                 // fire drag  moveevent
                 //only fire on the drag handle, if its one
-                if (realDrag) {
+                if (real_drag) {
                     _handle.fire("_dragmove");
                 } else {
                     el.fire("_dragmove");
                 }
             };
+           
             __move(e_dx, e_dy);
+
         }
 
-        function stop_drag() {
+        var stop_drag = function () {
 
             el.style.position = old_positioning;
             //    el.style.zIndex = oldZIndex;
-            el.style.cursor = oldCursor;
+            el.style.cursor = "auto";
             dragging = false;
             //only fire on the drag handle, if its one
-            if (realDrag) {
+            if (real_drag) {
                 _handle.fire("_dragend");
             } else {
                 el.fire("_dragend");
@@ -1314,8 +1289,13 @@ TigerJS.UI.FX = {
 
         //setup events for dragging
         if (el) {
+         
             el.on("mousedown", init_drag);
             el.on("touchstart", init_drag);
+
+            T.$(document.body).on("mousemove", do_drag, false, false, [el]);
+            T.$(document.body).on("touchmove", do_drag, false, false, [el]);
+
             //its common for the mouse to be detected on the html element
             //while moving around so the need for the handler, else the drag event would'nt cancel
             //if we mouse up on the html element
@@ -1329,10 +1309,10 @@ TigerJS.UI.FX = {
         return {
             /**
              * Disables the dragging of an Element, to renable simple
-             * call {@link TigerJS.UI.FX.Draggable} with the required arguments
+             * call {@link TigerJS.UI.FX.draggable} with the required arguments
              * @param {HTMLElement | String} el An Element's reference or it's ID
              * @function
-             * @memberOf TigerJS.UI.FX.Draggable#
+             * @memberOf TigerJS.UI.FX.draggable#
              */
             cancel_drag: function (el) {
                 el = el.nodType && el.nodType === 1 ? el : T.$(el);
@@ -1624,9 +1604,10 @@ TigerJS.UI.Widget = function (configOpt) {
          * @type TigerJS.UI.Widget
          */
         set_draggable: function (constrain, H, V) {
-            T.UI.FX.Draggable(_widget, {
+            T.UI.FX.draggable(_widget, {
                 constrain: constrain === (null || true) || T.type(constrain) === "undefined" ? true : false,
-                H: H === (null || true) ? true : false, //if its true or not set
+                H: H === (null || true) ? true : false,
+                //if its true or not set
                 V: V === (null || true) ? true : false,
                 dragTarget: configOpt && configOpt.dragTarget ? T.$(configOpt.dragTarget) : false
             });
@@ -1642,7 +1623,7 @@ TigerJS.UI.Widget = function (configOpt) {
          * @type TigerJS.UI.Widget
          */
         unset_draggable: function () {
-            T.UI.FX.Draggable().cancel_drag(_widget);
+            T.UI.FX.draggable().cancel_drag(_widget);
             _widget.remove_class("draggable");
             _widget.draggable = false;
             return this;

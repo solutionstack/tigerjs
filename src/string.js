@@ -460,7 +460,7 @@ String.prototype.str_replace = function (se, su, re, st)
  * @return {String} the converted string.
  */
 
-String.prototype.toCase = function (flag)
+String.prototype.to_case = function (flag)
 {
 
     var str_ = this.toString(),

@@ -510,7 +510,7 @@ TigerJS.nodes = function(config, strictMatch) {
                 this.foward_iterator(function(x) {
 
                     for (i in styleMap) {
-                        x.style[i.toCase("-cm")] = styleMap[i];
+                        x.style[i.to_case("-cm")] = styleMap[i];
                     }
                 });
             }
