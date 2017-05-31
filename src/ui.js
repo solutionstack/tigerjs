@@ -1040,7 +1040,7 @@ TigerJS.UI.FX = {
         //get the proper DOMElement, and if its one of our widget,
         // refrence the proper HTML element within
         if (T.is_string(el)) {
-            el = T.$(el);
+            var el = T.$(el);
         } else {
 
             el = el.nodeType && el.nodeType === 1 ? T.$(el) : el._widgetElement;
@@ -1109,16 +1109,6 @@ TigerJS.UI.FX = {
             dragging = true;
 
 
-            this.preventDefault();
-            this.stopPropagation();
-            // prevent text selection in IE ... Is this really needed
-            el.onselectstart = function () {
-                return false;
-            };
-            // prevent IE from trying to drag an image
-            el.ondragstart = function () {
-                return false;
-            };
             // prevent text selection (except IE)
             return false;
         }
@@ -1274,7 +1264,6 @@ TigerJS.UI.FX = {
         }
 
         var stop_drag = function () {
-
             el.style.position = old_positioning;
             //    el.style.zIndex = oldZIndex;
             el.style.cursor = "auto";
@@ -1284,6 +1273,20 @@ TigerJS.UI.FX = {
                 _handle.fire("_dragend");
             } else {
                 el.fire("_dragend");
+            }
+
+            
+            //dragging and stuff could mess up content editabl, so renable
+            //am using this target so we only select the right element, not any bubble-phase lement
+            if (this.target.get_attr("contenteditable") === "true") {//the drag ops could disrupt editablity
+
+                this.target.set_attr({
+                    contenteditable: "false"
+                });
+                this.target.set_attr({
+                    contenteditable: "true"
+                });
+                this.target.focus();
             }
         }
 
@@ -1301,6 +1304,7 @@ TigerJS.UI.FX = {
             //if we mouse up on the html element
             T.$(document.body).on("mouseup", stop_drag);
             T.$(document.documentElement).on("mouseup", stop_drag);
+            
             T.$(document.body).on("touchend", stop_drag);
             T.$(document.documentElement).on("touchend", stop_drag);
         }
@@ -1326,14 +1330,14 @@ TigerJS.UI.FX = {
         };
     },
 
- /**
+    /**
      * @class
      * 
      * The {@link TigerJS.UI.FX.resizable} class is used to set Widget elements
      * or any other element for that that matter as a resizable.
-   
+     
      * @param {TigerJS.$ | DOMELement} el The element to set as resizable
- 
+     
      * @name TigerJS.UI.FX.resizable
      */
     resizable: function (el) {
