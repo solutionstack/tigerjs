@@ -427,11 +427,16 @@ TigerJS.$ = function (el_) {
         var pe = this.get_pad_extents(),
                 be = this.get_border_extents();
         return {
-            l: parseInt(pe.l) + parseInt(be.l) + "px", //left boder + left padding
-            r: parseInt(pe.r) + parseInt(be.r) + "px", //right border + right padding
-            t: parseInt(pe.t) + parseInt(be.t) + "px", //top border + top padding
-            b: parseInt(pe.b) + parseInt(be.b) + "px", //bottom border + bottom padding,
-            w: parseInt(pe.w) + parseInt(be.w) + "px", //sum of left and right paddings and borders
+            l: parseInt(pe.l) + parseInt(be.l) + "px",
+            //left boder + left padding
+            r: parseInt(pe.r) + parseInt(be.r) + "px",
+            //right border + right padding
+            t: parseInt(pe.t) + parseInt(be.t) + "px",
+            //top border + top padding
+            b: parseInt(pe.b) + parseInt(be.b) + "px",
+            //bottom border + bottom padding,
+            w: parseInt(pe.w) + parseInt(be.w) + "px",
+            //sum of left and right paddings and borders
             h: parseInt(pe.h) + parseInt(be.h) + "px" //sum of top and bottom paddings and borders
 
         };
@@ -543,7 +548,8 @@ TigerJS.$ = function (el_) {
      */
     this.el.region = function (node) {
         var reg = this.get_style();
-        return {//firefox calculates values that  are no explicitly set, so we compare with explicit values
+        return {
+            //firefox calculates values that  are no explicitly set, so we compare with explicit values
             //and where we dont have values we pull in values from rect()
             top: this.style.top ? reg.top : this.rect().top,
             right: this.style.right ? reg.right : this.rect().right,
@@ -588,7 +594,8 @@ TigerJS.$ = function (el_) {
         var cls = T.Iterator(this.className.split(" ")), //get the classes on the element
                 arg = arguments[0].split(" "); //get the classes to remove
 
-        this.className = cls.without(arg).join(" "); //remove classes not neeed and replace on the element
+        this.className = cls.without(arg).
+                join(" "); //remove classes not neeed and replace on the element
         return this;
     };
 
@@ -604,7 +611,8 @@ TigerJS.$ = function (el_) {
         var cls = T.Iterator(this.className.split(" ")); //get the classes currently on the element
 
         this.remove_class(classNames); //try to remove the classes been sent in case they already exist so we dont duplicate
-        this.className = cls.merge(classNames.split(" ")).join(" "); //add parameters with existing classes
+        this.className = cls.merge(classNames.split(" ")).
+                join(" "); //add parameters with existing classes
         return this;
     };
     /**
@@ -659,7 +667,7 @@ TigerJS.$ = function (el_) {
      * @name TigerJS.$#replace_class 
      * @type TigerJS.$
      */
-    this.el.replace_class  = function (classNames, withClassNames) {
+    this.el.replace_class = function (classNames, withClassNames) {
 
         //this one line incantation calls str_replace on the elements class name
         // since str_replace can work with arrays, we first convert each space seperated string of classes
@@ -944,7 +952,8 @@ TigerJS.$ = function (el_) {
             if (i === 'style') // CSS style declarations found
             {
 
-                var s = attrMap[i].trim('BOTH').split(/\s*(?::|;)\s*/); //parse out each style rule, this would parse out the
+                var s = attrMap[i].trim('BOTH').
+                        split(/\s*(?::|;)\s*/); //parse out each style rule, this would parse out the
                 //rules in such a way that the first index of the array
                 //would contain the first css rule name e.g. color
                 //the next index would contain the rule value e.g. #ffffff
@@ -1054,7 +1063,8 @@ TigerJS.$ = function (el_) {
         for (var i = 0; i < c.length; i++) {
             if (c[i].nodeType === 1) {
 
-                n = n.concat(T.$(c[i]).elementChildren()); //get all grand Children, that is children of each ChildNode (Elements only)
+                n = n.concat(T.$(c[i]).
+                        elementChildren()); //get all grand Children, that is children of each ChildNode (Elements only)
                 //this could be resource intensive, <<<TODO : OPTIMIZE ME
             }
         }
@@ -1201,7 +1211,9 @@ TigerJS.$ = function (el_) {
 
     this.el.get_data = function (name) {
 
-        return this.getAttribute(("data-tigerjs-" + name));
+        if (this.attributes(("data-tigerjs-" + name)))
+            return this.getAttribute(("data-tigerjs-" + name));
+        else return this.getAttribute(name);
     };
     /**
      * Returns the outerHTML of the element
@@ -1728,7 +1740,8 @@ TigerJS.$ = function (el_) {
                         function (x) {
                             var ev_Obj = {//create simple event object
                                 type: eventName,
-                                target: alterNateTarget || o, //if an alternate target was sent else this object
+                                target: alterNateTarget || o,
+                                //if an alternate target was sent else this object
                                 timeStamp: new Date().getTime()
 
                             };
@@ -1847,7 +1860,8 @@ TigerJS.$ = function (el_) {
         var onPress = function () { //internal callback
 
             var eventObject = this;
-            var internal_a = T.Iterator(mod_arr).unique(), //we'll need this in here
+            var internal_a = T.Iterator(mod_arr).
+                    unique(), //we'll need this in here
                     internal_b = T.Iterator(),
                     eventType = et,
                     assert = true;

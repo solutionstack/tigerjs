@@ -400,11 +400,13 @@ String.prototype.str_replace = function (se, su, re, st)
 
                     if (!st)
                     {
-                        _v = _t.current().replace(new RegExp(se[i], "gi"), re[i]);
+                        _v = _t.current().
+                                replace(new RegExp(se[i], "gi"), re[i]);
                         _t.set(_t.key, _v);
                     } else
                     {
-                        _v = _t.current().replace(new RegExp(se[i], "g"), re[i]);
+                        _v = _t.current().
+                                replace(new RegExp(se[i], "g"), re[i]);
                         _t.set(_t.key, _v);
                     }
 
@@ -599,7 +601,13 @@ String.prototype.to_case = function (flag)
 String.prototype.quotemeta = function (str)
 {
     var str_ = str || this;
-    return (str_.replace("", "").replace("\\", new String("\\" + "\u005c")).replace(/(\+)/g, "\\+").replace(/(\?)/g, "\\?").replace(/(\[)/g, "\\[").replace(/(\^)/g, "\\^").replace(/(\( )/g, "\\(").replace(/(\$)/g, "\\$").replace(/(\))/g, "\\)").replace(/(\*)/g, "\\*").replace(/(\])/g, "\\]").replace(/(\/)/g, "\\/").replace(/(\.)/g, "\\."));
+    return (str_.replace("", "").replace("\\", new String("\\" + "\u005c")).
+            replace(/(\+)/g, "\\+").replace(/(\?)/g, "\\?").
+            replace(/(\[)/g, "\\[").replace(/(\^)/g, "\\^").
+            replace(/(\( )/g, "\\(").replace(/(\$)/g, "\\$").
+            replace(/(\))/g, "\\)").replace(/(\*)/g, "\\*").
+            replace(/(\])/g, "\\]").replace(/(\/)/g, "\\/").
+            replace(/(\.)/g, "\\."));
 };
 
 
@@ -827,7 +835,8 @@ String.prototype.strpos = function (needle, offset)
 {
 
 
-    return offset ? this.substring(offset).indexOf(needle) : this.indexOf(needle);
+    return offset ? this.substring(offset).
+            indexOf(needle) : this.indexOf(needle);
 };
 /**
  * Returns a boolean, indicating whether or not the object string
@@ -890,7 +899,8 @@ String.prototype.strrpos = function (needle, offset)
 {
 
 
-        return offset ? this.substring(offset).lastIndexOf(needle) : this.lastIndexOf(needle);
+    return offset ? this.substring(offset).
+            lastIndexOf(needle) : this.lastIndexOf(needle);
 
 };
 
@@ -1136,17 +1146,17 @@ String.prototype.drizzle = function (data, node, alignTextNode) {
     node.innerHTML = "";
 
     T.Iterator(data).timed_iterator(function (char) {
-        if(char === '`'){
+        if (char === '`') {
             node.innerHTML += "<br/>";
-        }else{
-        node.innerHTML += (char);
+        } else {
+            node.innerHTML += (char);
         }
         //reposition the text-node on veritcally and horizontally in the parent
         //so it remains centered
         if (alignTextNode && alignTextNode === true) {
 
-                node.style.marginTop = (node.parentNode.offsetHeight - node.offsetHeight) * .5 + "px";
-                node.style.marginLeft = (node.parentNode.offsetWidth - node.offsetWidth) * .5 + "px";
+            node.style.marginTop = (node.parentNode.offsetHeight - node.offsetHeight) * .5 + "px";
+            node.style.marginLeft = (node.parentNode.offsetWidth - node.offsetWidth) * .5 + "px";
 
         }
 
@@ -1316,7 +1326,8 @@ String.prototype.sprintf = function (args)
 {
 
     //incantation, wow!!!
-    return T.sprintf.apply(this, T.Iterator().add(this.toString()).add_all(arguments).to_array());
+    return T.sprintf.apply(this, T.Iterator().add(this.toString()).
+            add_all(arguments).to_array());
 };
 
 /**
@@ -1337,7 +1348,8 @@ TigerJS.sprintf = function ()
         {
             chr = ' ';
         }
-        var padding = (str.length >= len) ? '' : Array(1 + len - str.length >>> 0).join(chr);
+        var padding = (str.length >= len) ? '' : Array(1 + len - str.length >>> 0).
+                join(chr);
         return leftJustify ? str + padding : padding + str;
     };
     // justify()
@@ -1482,7 +1494,8 @@ TigerJS.sprintf = function ()
             case 'x':
                 return formatBaseX(value, 16, prefixBaseX, leftJustify, minWidth, precision, zeroPad);
             case 'X':
-                return formatBaseX(value, 16, prefixBaseX, leftJustify, minWidth, precision, zeroPad).toUpperCase();
+                return formatBaseX(value, 16, prefixBaseX, leftJustify, minWidth, precision, zeroPad).
+                        toUpperCase();
             case 'u':
                 return formatBaseX(value, 10, prefixBaseX, leftJustify, minWidth, precision, zeroPad);
             case 'i':
@@ -1677,8 +1690,10 @@ String.prototype.interpolate = function (data, opts)
         placeHolderRx = /\{[^{}]+\}/g;
     } else
     {
-        leftDelimiter = opts.delimiter.substr(0, 1).replace(regexEscape, "\\$1");
-        rightDelimiter = opts.delimiter.substr(1, 1).replace(regexEscape, "\\$1") || leftDelimiter;
+        leftDelimiter = opts.delimiter.substr(0, 1).
+                replace(regexEscape, "\\$1");
+        rightDelimiter = opts.delimiter.substr(1, 1).
+                replace(regexEscape, "\\$1") || leftDelimiter;
         placeHolderRx = new RegExp(leftDelimiter + "[^" + leftDelimiter + rightDelimiter + "]+" + rightDelimiter, "g");
     }
 
