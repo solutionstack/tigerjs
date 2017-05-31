@@ -109,7 +109,7 @@
             
                 <li data-name="String#substr_count"><a href="String.html#substr_count">substr_count</a></li>
             
-                <li data-name="String#toCase"><a href="String.html#toCase">toCase</a></li>
+                <li data-name="String#to_case"><a href="String.html#to_case">to_case</a></li>
             
                 <li data-name="String#trim"><a href="String.html#trim">trim</a></li>
             
@@ -274,8 +274,6 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="TigerJS.$#appendChild"><a href="TigerJS.$.html#appendChild">appendChild</a></li>
-            
                 <li data-name="TigerJS.$#scrollX"><a href="TigerJS.$.html#scrollX">scrollX</a></li>
             
                 <li data-name="TigerJS.$#scrollY"><a href="TigerJS.$.html#scrollY">scrollY</a></li>
@@ -297,6 +295,8 @@
                 <li data-name="TigerJS.$#add_class"><a href="TigerJS.$.html#add_class">add_class</a></li>
             
                 <li data-name="TigerJS.$#add_html"><a href="TigerJS.$.html#add_html">add_html</a></li>
+            
+                <li data-name="TigerJS.$#appendChild"><a href="TigerJS.$.html#appendChild">appendChild</a></li>
             
                 <li data-name="TigerJS.$#class_off"><a href="TigerJS.$.html#class_off">class_off</a></li>
             
@@ -382,9 +382,9 @@
             
                 <li data-name="TigerJS.$#remove_attr"><a href="TigerJS.$.html#remove_attr">remove_attr</a></li>
             
-                <li data-name="TigerJS.$#remove_class"><a href="TigerJS.$.html#remove_class">remove_class</a></li>
+                <li data-name="TigerJS.$#remove_child_nodes"><a href="TigerJS.$.html#remove_child_nodes">remove_child_nodes</a></li>
             
-                <li data-name="TigerJS.$#removeChildNodes"><a href="TigerJS.$.html#removeChildNodes">removeChildNodes</a></li>
+                <li data-name="TigerJS.$#remove_class"><a href="TigerJS.$.html#remove_class">remove_class</a></li>
             
                 <li data-name="TigerJS.$#replace_class"><a href="TigerJS.$.html#replace_class">replace_class</a></li>
             
@@ -814,8 +814,6 @@
             
                 <li data-name="TigerJS.Iterator#random_access_iterator"><a href="TigerJS.Iterator.html#random_access_iterator">random_access_iterator</a></li>
             
-                <li data-name="TigerJS.Iterator#random_access_iterator"><a href="TigerJS.Iterator.html#random_access_iterator">random_access_iterator</a></li>
-            
                 <li data-name="TigerJS.Iterator#range"><a href="TigerJS.Iterator.html#range">range</a></li>
             
                 <li data-name="TigerJS.Iterator#reject"><a href="TigerJS.Iterator.html#reject">reject</a></li>
@@ -855,6 +853,8 @@
                 <li data-name="TigerJS.Iterator#sum"><a href="TigerJS.Iterator.html#sum">sum</a></li>
             
                 <li data-name="TigerJS.Iterator#swap"><a href="TigerJS.Iterator.html#swap">swap</a></li>
+            
+                <li data-name="TigerJS.Iterator#timed_iterator"><a href="TigerJS.Iterator.html#timed_iterator">timed_iterator</a></li>
             
                 <li data-name="TigerJS.Iterator#to_array"><a href="TigerJS.Iterator.html#to_array">to_array</a></li>
             
@@ -1152,9 +1152,9 @@
             </ul>
         </li>
     
-        <li class="item" data-name="TigerJS.UI.FX.Draggable">
+        <li class="item" data-name="TigerJS.UI.FX.draggable">
             <span class="title">
-                <a href="TigerJS.UI.FX.Draggable.html">TigerJS.UI.FX.Draggable</a>
+                <a href="TigerJS.UI.FX.draggable.html">TigerJS.UI.FX.draggable</a>
                 
             </span>
             <ul class="members itemMembers">
@@ -1167,7 +1167,26 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="TigerJS.UI.FX.Draggable#cancel_drag"><a href="TigerJS.UI.FX.Draggable.html#cancel_drag">cancel_drag</a></li>
+                <li data-name="TigerJS.UI.FX.draggable#cancel_drag"><a href="TigerJS.UI.FX.draggable.html#cancel_drag">cancel_drag</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.FX.resizable">
+            <span class="title">
+                <a href="TigerJS.UI.FX.resizable.html">TigerJS.UI.FX.resizable</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
             
             </ul>
             <ul class="events itemMembers">
@@ -1800,7 +1819,7 @@
 
 
 
-an Enhanced HTML element  of type <a href="TigerJS.$.html">TigerJS.$</a> or a an extended DOCUMENT FRAGMENT object if he ELement couldnt be found.
+An enhanced HTMLElement of type <a href="TigerJS.$.html">TigerJS.$</a> or a an extended DOCUMENT FRAGMENT object if the element couldnt be found.
               The return object also supprot chaining of operations<br/>
 
 
@@ -1826,51 +1845,6 @@ an Enhanced HTML element  of type <a href="TigerJS.$.html">TigerJS.$</a> or a an
         <h3 class="subsection-title">Members</h3>
         
         <dl>
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="appendChild">appendChild<span class="type-signature type tigerjs.$"><a href="TigerJS.$.html">TigerJS.$</a></span> </h4>
-    </div>
-    
-    
-</dt>
-<dd>
-    
-    <div class="description">
-        Append Child and return this Object
-    </div>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        
             
 <dt>
     <div class="nameContainer">
@@ -1977,7 +1951,7 @@ an Enhanced HTML element  of type <a href="TigerJS.$.html">TigerJS.$</a> or a an
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1063">line 1063</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1064">line 1064</a>
         </div>
         
     </div>
@@ -2139,7 +2113,7 @@ deep cloning means cloning all child nodes as well.</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1122">line 1122</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1123">line 1123</a>
         </div>
         
     </div>
@@ -2268,7 +2242,7 @@ or manually create as an sttribute using the format.<pre>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1446">line 1446</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1447">line 1447</a>
         </div>
         
     </div>
@@ -2368,7 +2342,7 @@ or manually create as an sttribute using the format.<pre>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line594">line 594</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line595">line 595</a>
         </div>
         
     </div>
@@ -2513,7 +2487,7 @@ or manually create as an sttribute using the format.<pre>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line866">line 866</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line867">line 867</a>
         </div>
         
     </div>
@@ -2694,6 +2668,151 @@ p_last  -> insert as Last child of this nodes parent </pre></td>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="appendChild">
+            
+            appendChild<span class="signature">(x)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.$.html">TigerJS.$</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line46">line 46</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Append Child and return this Object
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>x</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                The child to append</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="TigerJS.$.html">TigerJS.$</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="class_off">
             
             class_off<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.$.html">TigerJS.$</a>}</span>
@@ -2701,7 +2820,7 @@ p_last  -> insert as Last child of this nodes parent </pre></td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line670">line 670</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line671">line 671</a>
         </div>
         
     </div>
@@ -2801,7 +2920,7 @@ p_last  -> insert as Last child of this nodes parent </pre></td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line683">line 683</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line684">line 684</a>
         </div>
         
     </div>
@@ -2901,7 +3020,7 @@ p_last  -> insert as Last child of this nodes parent </pre></td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line160">line 160</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line161">line 161</a>
         </div>
         
     </div>
@@ -3049,7 +3168,7 @@ p_last  -> insert as Last child of this nodes parent </pre></td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1333">line 1333</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1334">line 1334</a>
         </div>
         
     </div>
@@ -3199,7 +3318,7 @@ p_last  -> insert as Last child of this nodes parent </pre></td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1042">line 1042</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1043">line 1043</a>
         </div>
         
     </div>
@@ -3301,7 +3420,7 @@ any grand-child of this element
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1076">line 1076</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1077">line 1077</a>
         </div>
         
     </div>
@@ -3409,7 +3528,7 @@ any grand-child of this element
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1516">line 1516</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1517">line 1517</a>
         </div>
         
     </div>
@@ -3554,7 +3673,7 @@ any grand-child of this element
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1529">line 1529</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1530">line 1530</a>
         </div>
         
     </div>
@@ -3699,7 +3818,7 @@ any grand-child of this element
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line146">line 146</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line147">line 147</a>
         </div>
         
     </div>
@@ -3916,7 +4035,7 @@ any grand-child of this element
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1689">line 1689</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1690">line 1690</a>
         </div>
         
     </div>
@@ -4065,7 +4184,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line177">line 177</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line178">line 178</a>
         </div>
         
     </div>
@@ -4168,7 +4287,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line970">line 970</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line971">line 971</a>
         </div>
         
     </div>
@@ -4321,7 +4440,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line377">line 377</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line378">line 378</a>
         </div>
         
     </div>
@@ -4427,7 +4546,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1193">line 1193</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1194">line 1194</a>
         </div>
         
     </div>
@@ -4543,7 +4662,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line765">line 765</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line766">line 766</a>
         </div>
         
     </div>
@@ -4643,7 +4762,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line438">line 438</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line439">line 439</a>
         </div>
         
     </div>
@@ -4748,7 +4867,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line502">line 502</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line503">line 503</a>
         </div>
         
     </div>
@@ -4848,7 +4967,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line413">line 413</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line414">line 414</a>
         </div>
         
     </div>
@@ -4954,7 +5073,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line350">line 350</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line351">line 351</a>
         </div>
         
     </div>
@@ -5061,7 +5180,7 @@ and timeStamp - contaning the timestamp of the event
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line262">line 262</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line263">line 263</a>
         </div>
         
     </div>
@@ -5233,7 +5352,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line696">line 696</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line697">line 697</a>
         </div>
         
     </div>
@@ -5341,7 +5460,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line609">line 609</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line610">line 610</a>
         </div>
         
     </div>
@@ -5491,7 +5610,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1971">line 1971</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1972">line 1972</a>
         </div>
         
     </div>
@@ -5639,7 +5758,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1983">line 1983</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1984">line 1984</a>
         </div>
         
     </div>
@@ -5787,7 +5906,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1949">line 1949</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1950">line 1950</a>
         </div>
         
     </div>
@@ -5887,7 +6006,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1960">line 1960</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1961">line 1961</a>
         </div>
         
     </div>
@@ -5987,7 +6106,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line553">line 553</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line554">line 554</a>
         </div>
         
     </div>
@@ -6147,7 +6266,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line202">line 202</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line203">line 203</a>
         </div>
         
     </div>
@@ -6250,7 +6369,7 @@ if u specify an empty array all style values are returned</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1273">line 1273</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1274">line 1274</a>
         </div>
         
     </div>
@@ -6445,7 +6564,7 @@ and an 'end' point indicating the child node where extractin stops, the third ar
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line113">line 113</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line114">line 114</a>
         </div>
         
     </div>
@@ -6562,7 +6681,7 @@ and an 'end' point indicating the child node where extractin stops, the third ar
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line73">line 73</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line74">line 74</a>
         </div>
         
     </div>
@@ -6679,7 +6798,7 @@ and an 'end' point indicating the child node where extractin stops, the third ar
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1741">line 1741</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1742">line 1742</a>
         </div>
         
     </div>
@@ -6848,7 +6967,7 @@ This works like the standard removeEventListener or IE's detachEvent
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1542">line 1542</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1543">line 1543</a>
         </div>
         
     </div>
@@ -7267,7 +7386,7 @@ for standard and custom event types, to an element.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1772">line 1772</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1773">line 1773</a>
         </div>
         
     </div>
@@ -7504,7 +7623,7 @@ to detect single or multiple key presses with modifiers etc
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1995">line 1995</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1996">line 1996</a>
         </div>
         
     </div>
@@ -7650,7 +7769,7 @@ the mouse is wheeled down and -1 when wheeled up, it also recieves the event obj
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1205">line 1205</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1206">line 1206</a>
         </div>
         
     </div>
@@ -7750,7 +7869,7 @@ the mouse is wheeled down and -1 when wheeled up, it also recieves the event obj
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line89">line 89</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line90">line 90</a>
         </div>
         
     </div>
@@ -7867,7 +7986,7 @@ the mouse is wheeled down and -1 when wheeled up, it also recieves the event obj
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line57">line 57</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line58">line 58</a>
         </div>
         
     </div>
@@ -7984,7 +8103,7 @@ the mouse is wheeled down and -1 when wheeled up, it also recieves the event obj
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line834">line 834</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line835">line 835</a>
         </div>
         
     </div>
@@ -8097,7 +8216,7 @@ Element must be part of the DOM tree to have page coordinates
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line535">line 535</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line536">line 536</a>
         </div>
         
     </div>
@@ -8243,7 +8362,7 @@ the values are not dependent on page dimensions like #rect.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1426">line 1426</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1427">line 1427</a>
         </div>
         
     </div>
@@ -8381,6 +8500,106 @@ the values are not dependent on page dimensions like #rect.
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="remove_child_nodes">
+            
+            remove_child_nodes<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.$.html">TigerJS.$</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line135">line 135</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Removes all cildren of thie Element
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="TigerJS.$.html">TigerJS.$</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="remove_class">
             
             remove_class<span class="signature">(classNames)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.$.html">TigerJS.$</a>}</span>
@@ -8388,7 +8607,7 @@ the values are not dependent on page dimensions like #rect.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line578">line 578</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line579">line 579</a>
         </div>
         
     </div>
@@ -8526,106 +8745,6 @@ the values are not dependent on page dimensions like #rect.
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="removeChildNodes">
-            
-            removeChildNodes<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.$.html">TigerJS.$</a>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line134">line 134</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Removes all cildren of thie Element
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        <a href="TigerJS.$.html">TigerJS.$</a>
-                        
-                    
-            </td>
-            <td class="description last"></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
         <h4 class="name" id="replace_class">
             
             replace_class<span class="signature">(classNames, withClassNames)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.$.html">TigerJS.$</a>}</span>
@@ -8633,7 +8752,7 @@ the values are not dependent on page dimensions like #rect.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line653">line 653</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line654">line 654</a>
         </div>
         
     </div>
@@ -8801,7 +8920,7 @@ the values are not dependent on page dimensions like #rect.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1477">line 1477</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1478">line 1478</a>
         </div>
         
     </div>
@@ -8958,7 +9077,7 @@ the values are not dependent on page dimensions like #rect.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1315">line 1315</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1316">line 1316</a>
         </div>
         
     </div>
@@ -9058,7 +9177,7 @@ the values are not dependent on page dimensions like #rect.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line982">line 982</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line983">line 983</a>
         </div>
         
     </div>
@@ -9203,7 +9322,7 @@ the values are not dependent on page dimensions like #rect.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line932">line 932</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line933">line 933</a>
         </div>
         
     </div>
@@ -9349,7 +9468,7 @@ the values are not dependent on page dimensions like #rect.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1177">line 1177</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1178">line 1178</a>
         </div>
         
     </div>
@@ -9525,7 +9644,7 @@ Data can be later retrieved with #get_data or the _dataset object</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line791">line 791</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line792">line 792</a>
         </div>
         
     </div>
@@ -9671,7 +9790,7 @@ of box model, border, padding, etc.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line725">line 725</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line726">line 726</a>
         </div>
         
     </div>
@@ -9829,7 +9948,7 @@ of box model, border, padding, etc.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line484">line 484</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line485">line 485</a>
         </div>
         
     </div>
@@ -9975,7 +10094,7 @@ of box model, border, padding, etc.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line461">line 461</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line462">line 462</a>
         </div>
         
     </div>
@@ -10131,7 +10250,7 @@ camel cased</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line706">line 706</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line707">line 707</a>
         </div>
         
     </div>
@@ -10276,7 +10395,7 @@ camel cased</td>
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line776">line 776</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line777">line 777</a>
         </div>
         
     </div>
@@ -10422,7 +10541,7 @@ of box model, border, padding, etc.
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line240">line 240</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line241">line 241</a>
         </div>
         
     </div>
@@ -10568,7 +10687,7 @@ The element(s) must be part of the DOM tree to have page coordinates (display:no
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line222">line 222</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line223">line 223</a>
         </div>
         
     </div>
@@ -10715,7 +10834,7 @@ Element Must have a positioning of Absolute or Relative
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line251">line 251</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line252">line 252</a>
         </div>
         
     </div>
@@ -10861,7 +10980,7 @@ The element(s) must be part of the DOM tree to have page coordinates (display:no
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1372">line 1372</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1373">line 1373</a>
         </div>
         
     </div>
@@ -11010,7 +11129,7 @@ The element(s) must be part of the DOM tree to have page coordinates (display:no
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1224">line 1224</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1225">line 1225</a>
         </div>
         
     </div>
@@ -11113,7 +11232,7 @@ and should be used with caution
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line518">line 518</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line519">line 519</a>
         </div>
         
     </div>
@@ -11261,7 +11380,7 @@ and should be used with caution
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line636">line 636</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line637">line 637</a>
         </div>
         
     </div>
@@ -11406,7 +11525,7 @@ and should be used with caution
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1108">line 1108</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1109">line 1109</a>
         </div>
         
     </div>
@@ -11506,7 +11625,7 @@ and should be used with caution
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1091">line 1091</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1092">line 1092</a>
         </div>
         
     </div>
@@ -11608,7 +11727,7 @@ document structure
     
         
         <div class="tag-source">
-            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1494">line 1494</a>
+            <a href="$.js.html">$.js</a>, <a href="$.js.html#line1495">line 1495</a>
         </div>
         
     </div>
@@ -11780,7 +11899,7 @@ that is the Elements position is not alteredâ its position will remain the 
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue May 30 2017 16:03:38 GMT+0100 (W. Central Africa Standard Time)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed May 31 2017 16:05:55 GMT+0100 (W. Central Africa Standard Time)
         </footer>
     </div>
 </div>

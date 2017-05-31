@@ -1045,7 +1045,7 @@ TigerJS.UI.FX = {
 
             el = el.nodeType && el.nodeType === 1 ? T.$(el) : el._widgetElement;
         }
-      
+
         if (el) {
             var ev_x, ev_y, el_x, el_y, oldZIndex, dragging = false,
                     old_coord = {}, parent_coords = {}, drag_clientX,
@@ -1082,7 +1082,7 @@ TigerJS.UI.FX = {
             // elements with a no drag data-attribute
             //
             if (/\b(button|a|input|textarea)\b/gi.test(this.target.tagName)) {
-          
+
                 this.target.style.cursor = "auto";
                 return;
             }
@@ -1107,7 +1107,7 @@ TigerJS.UI.FX = {
 
 
             dragging = true;
-            
+
 
             this.preventDefault();
             this.stopPropagation();
@@ -1124,7 +1124,7 @@ TigerJS.UI.FX = {
         }
 
         var do_drag = function (el) {
-          
+
             //are we just a drag handle. then set the real element to drag
             var el = real_drag ? real_drag : el;
             el.style.cursor = "move";
@@ -1134,7 +1134,7 @@ TigerJS.UI.FX = {
             // this is the actual "drag code"
             if (dragging === false)
                 return;
-           
+
 
             //support touch;
             drag_clientX = this.touches ? this.changedTouches[0].pageX :
@@ -1150,75 +1150,75 @@ TigerJS.UI.FX = {
 
             if (config.constrain || el.offsetParent === document.body ||
                     el.offsetParent.tagName === "HTML") {
-             
-                    if (el.offsetTop <= 0 && !config.H) {//we make sure we are not set to move only horizontally
 
-                        el.style.top = 0 + "px";
-                        if (!current_y)
-                            current_y = drag_clientY;
-                    }
-                    if ((parseInt(el.style.top) === 0) && !config.H) {
+                if (el.offsetTop <= 0 && !config.H) {//we make sure we are not set to move only horizontally
 
-                        if (drag_clientY - current_y <= 1) {
-                            e_dy = 0;
-                        } else {
-                            el.style.top = parseInt(el.style.top) + e_dy + "px";
-                            current_y = null; //reset edge tracker
-                        }
+                    el.style.top = 0 + "px";
+                    if (!current_y)
+                        current_y = drag_clientY;
+                }
+                if ((parseInt(el.style.top) === 0) && !config.H) {
 
-                    }
-              
-
-                    if (op_height - (el.offsetTop + el.offsetHeight) <= 0 && !config.H) {
-
-                        el.style.top = op_height - (el.offsetHeight) + "px";
-                        if (!current_y)
-                            current_y = drag_clientY;
-                    }
-                    if (parseInt(el.style.top) === op_height - (el.offsetHeight) && !config.H) {
-
-                        if (drag_clientY - current_y >= (1 * -1)) {
-                            e_dy = 0;
-                        } else {
-                            el.style.top = parseInt(el.style.top) - e_dy + "px";
-                            current_y = null; //reset edge tracker
-                        }
-                        ;
-                    }
-                
-
-                 //restrict at left edge of parent, (why exaclty am i scoping here ??)///
-                    if (el.offsetLeft <= 0 && !config.V) {
-                        el.style.left = 0 + "px";
-                        if (!current_x)
-                            current_x = drag_clientX;
-                    }
-                    if (parseInt(el.style.left) === 0 && !config.V) {
-                        //allow right-ward movement only after 2px threshold
-                        if (drag_clientX - current_x < 1) {
-                            e_dx = 0;
-                        } else {
-                            el.style.left = parseInt(el.style.left) + e_dx + "px";
-                            current_x = null; //reset edge tracker
-                        }
+                    if (drag_clientY - current_y <= 1) {
+                        e_dy = 0;
+                    } else {
+                        el.style.top = parseInt(el.style.top) + e_dy + "px";
+                        current_y = null; //reset edge tracker
                     }
 
-                
+                }
 
 
-                 //restrict at right edge of parent
-                    if (op_width - (el.offsetLeft + el.offsetWidth) <= 0 && !config.V) {
-                        el.style.left = op_width - (el.offsetWidth) + "px";
-                        if (!current_x)
-                            current_x = drag_clientX;
+                if (op_height - (el.offsetTop + el.offsetHeight) <= 0 && !config.H) {
+
+                    el.style.top = op_height - (el.offsetHeight) + "px";
+                    if (!current_y)
+                        current_y = drag_clientY;
+                }
+                if (parseInt(el.style.top) === op_height - (el.offsetHeight) && !config.H) {
+
+                    if (drag_clientY - current_y >= (1 * -1)) {
+                        e_dy = 0;
+                    } else {
+                        el.style.top = parseInt(el.style.top) - e_dy + "px";
+                        current_y = null; //reset edge tracker
                     }
-                    if (parseInt(el.style.left) === op_width - (el.offsetWidth) && !config.V) {
-                        if (drag_clientX - current_x > (1 * -1)) {
-                            e_dx = 0;
-                        } else {
-                            el.style.left = parseInt(el.style.left) - e_dx + "px";
-                            current_x = null; //reset edge tracker
-                        }
+                    ;
+                }
+
+
+                //restrict at left edge of parent, (why exaclty am i scoping here ??)///
+                if (el.offsetLeft <= 0 && !config.V) {
+                    el.style.left = 0 + "px";
+                    if (!current_x)
+                        current_x = drag_clientX;
+                }
+                if (parseInt(el.style.left) === 0 && !config.V) {
+                    //allow right-ward movement only after 2px threshold
+                    if (drag_clientX - current_x < 1) {
+                        e_dx = 0;
+                    } else {
+                        el.style.left = parseInt(el.style.left) + e_dx + "px";
+                        current_x = null; //reset edge tracker
+                    }
+                }
+
+
+
+
+                //restrict at right edge of parent
+                if (op_width - (el.offsetLeft + el.offsetWidth) <= 0 && !config.V) {
+                    el.style.left = op_width - (el.offsetWidth) + "px";
+                    if (!current_x)
+                        current_x = drag_clientX;
+                }
+                if (parseInt(el.style.left) === op_width - (el.offsetWidth) && !config.V) {
+                    if (drag_clientX - current_x > (1 * -1)) {
+                        e_dx = 0;
+                    } else {
+                        el.style.left = parseInt(el.style.left) - e_dx + "px";
+                        current_x = null; //reset edge tracker
+                    }
                 }
             }
             //moving function
@@ -1268,7 +1268,7 @@ TigerJS.UI.FX = {
                     el.fire("_dragmove");
                 }
             };
-           
+
             __move(e_dx, e_dy);
 
         }
@@ -1289,12 +1289,12 @@ TigerJS.UI.FX = {
 
         //setup events for dragging
         if (el) {
-         
+
             el.on("mousedown", init_drag);
             el.on("touchstart", init_drag);
 
-            T.$(document.body).on("mousemove", do_drag, false, false, [el]);
-            T.$(document.body).on("touchmove", do_drag, false, false, [el]);
+            T.$(document.body).on("mousemove", do_drag, true, false, [el]);
+            T.$(document.body).on("touchmove", do_drag, true, false, [el]);
 
             //its common for the mouse to be detected on the html element
             //while moving around so the need for the handler, else the drag event would'nt cancel
@@ -1324,6 +1324,66 @@ TigerJS.UI.FX = {
                 T.$(document.documentElement).off("touchmove", do_drag);
             }
         };
+    },
+
+ /**
+     * @class
+     * 
+     * The {@link TigerJS.UI.FX.resizable} class is used to set Widget elements
+     * or any other element for that that matter as a resizable.
+   
+     * @param {TigerJS.$ | DOMELement} el The element to set as resizable
+ 
+     * @name TigerJS.UI.FX.resizable
+     */
+    resizable: function (el) {
+        ///set resixer
+        var element = T.$(el);
+//create box in bottom-left
+        var resizer = T.$(document.createElement('div'));
+
+        var startX;
+        var startY
+                ;
+        resizer.className += ' t-no-drag';
+        resizer.style.width = '15px';
+        resizer.style.zIndex = '10000';
+        resizer.style.height = '15px';
+        resizer.style.background = 'red';
+        resizer.style.position = 'absolute';
+        resizer.style.right = "-.5em";
+        resizer.style.bottom = "-.5em";
+        resizer.style.cursor = 'se-resize';
+        resizer.style.borderRadius = '.5em';
+//Append Child to Element
+        element.appendChild(resizer);
+//box function onmousemove
+        resizer.on('mousedown', initResize, false);
+
+//Window funtion mousemove & mouseup
+        function initResize() {
+
+            startX = this.clientX;
+            startY = this.clientY;
+            startWidth = parseInt(element.get_style().width, 10);
+            startHeight = parseInt(element.get_style().height, 10)
+
+            window.addEventListener('mousemove', Resize, false);
+            window.addEventListener('mouseup', stopResize, false);
+        }
+//resize the element
+        function Resize(e) {
+            e.stopPropagation();
+
+
+            element.style.width = (startWidth + e.clientX - startX) + 'px';
+            element.style.height = (startHeight + e.clientY - startY) + 'px';
+        }
+//on mouseup remove windows functions mousemove & mouseup
+        function stopResize(e) {
+            window.removeEventListener('mousemove', Resize, false);
+            window.removeEventListener('mouseup', stopResize, false);
+        }
     }
 
 };

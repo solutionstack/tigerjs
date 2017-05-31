@@ -109,7 +109,7 @@
             
                 <li data-name="String#substr_count"><a href="String.html#substr_count">substr_count</a></li>
             
-                <li data-name="String#toCase"><a href="String.html#toCase">toCase</a></li>
+                <li data-name="String#to_case"><a href="String.html#to_case">to_case</a></li>
             
                 <li data-name="String#trim"><a href="String.html#trim">trim</a></li>
             
@@ -274,8 +274,6 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="TigerJS.$#appendChild"><a href="TigerJS.$.html#appendChild">appendChild</a></li>
-            
                 <li data-name="TigerJS.$#scrollX"><a href="TigerJS.$.html#scrollX">scrollX</a></li>
             
                 <li data-name="TigerJS.$#scrollY"><a href="TigerJS.$.html#scrollY">scrollY</a></li>
@@ -297,6 +295,8 @@
                 <li data-name="TigerJS.$#add_class"><a href="TigerJS.$.html#add_class">add_class</a></li>
             
                 <li data-name="TigerJS.$#add_html"><a href="TigerJS.$.html#add_html">add_html</a></li>
+            
+                <li data-name="TigerJS.$#appendChild"><a href="TigerJS.$.html#appendChild">appendChild</a></li>
             
                 <li data-name="TigerJS.$#class_off"><a href="TigerJS.$.html#class_off">class_off</a></li>
             
@@ -382,9 +382,9 @@
             
                 <li data-name="TigerJS.$#remove_attr"><a href="TigerJS.$.html#remove_attr">remove_attr</a></li>
             
-                <li data-name="TigerJS.$#remove_class"><a href="TigerJS.$.html#remove_class">remove_class</a></li>
+                <li data-name="TigerJS.$#remove_child_nodes"><a href="TigerJS.$.html#remove_child_nodes">remove_child_nodes</a></li>
             
-                <li data-name="TigerJS.$#removeChildNodes"><a href="TigerJS.$.html#removeChildNodes">removeChildNodes</a></li>
+                <li data-name="TigerJS.$#remove_class"><a href="TigerJS.$.html#remove_class">remove_class</a></li>
             
                 <li data-name="TigerJS.$#replace_class"><a href="TigerJS.$.html#replace_class">replace_class</a></li>
             
@@ -814,8 +814,6 @@
             
                 <li data-name="TigerJS.Iterator#random_access_iterator"><a href="TigerJS.Iterator.html#random_access_iterator">random_access_iterator</a></li>
             
-                <li data-name="TigerJS.Iterator#random_access_iterator"><a href="TigerJS.Iterator.html#random_access_iterator">random_access_iterator</a></li>
-            
                 <li data-name="TigerJS.Iterator#range"><a href="TigerJS.Iterator.html#range">range</a></li>
             
                 <li data-name="TigerJS.Iterator#reject"><a href="TigerJS.Iterator.html#reject">reject</a></li>
@@ -855,6 +853,8 @@
                 <li data-name="TigerJS.Iterator#sum"><a href="TigerJS.Iterator.html#sum">sum</a></li>
             
                 <li data-name="TigerJS.Iterator#swap"><a href="TigerJS.Iterator.html#swap">swap</a></li>
+            
+                <li data-name="TigerJS.Iterator#timed_iterator"><a href="TigerJS.Iterator.html#timed_iterator">timed_iterator</a></li>
             
                 <li data-name="TigerJS.Iterator#to_array"><a href="TigerJS.Iterator.html#to_array">to_array</a></li>
             
@@ -1152,9 +1152,9 @@
             </ul>
         </li>
     
-        <li class="item" data-name="TigerJS.UI.FX.Draggable">
+        <li class="item" data-name="TigerJS.UI.FX.draggable">
             <span class="title">
-                <a href="TigerJS.UI.FX.Draggable.html">TigerJS.UI.FX.Draggable</a>
+                <a href="TigerJS.UI.FX.draggable.html">TigerJS.UI.FX.draggable</a>
                 
             </span>
             <ul class="members itemMembers">
@@ -1167,7 +1167,26 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="TigerJS.UI.FX.Draggable#cancel_drag"><a href="TigerJS.UI.FX.Draggable.html#cancel_drag">cancel_drag</a></li>
+                <li data-name="TigerJS.UI.FX.draggable#cancel_drag"><a href="TigerJS.UI.FX.draggable.html#cancel_drag">cancel_drag</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TigerJS.UI.FX.resizable">
+            <span class="title">
+                <a href="TigerJS.UI.FX.resizable.html">TigerJS.UI.FX.resizable</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
             
             </ul>
             <ul class="events itemMembers">
@@ -1670,7 +1689,7 @@
  *  @class An Enhanced Object for manipulating  DOMElements.
  *
  * @param {String | HTMLElement} el_ String id or a reference to an HTMLElement
- * @return an Enhanced HTML element  of type {@link TigerJS.$} or a an extended DOCUMENT FRAGMENT object if he ELement couldnt be found.
+ * @return An enhanced HTMLElement of type {@link TigerJS.$} or a an extended DOCUMENT FRAGMENT object if the element couldnt be found.
  *               The return object also supprot chaining of operations&lt;br/>
  *
  *
@@ -1709,8 +1728,9 @@ TigerJS.$ = function (el_) {
     };
     /**
      * Append Child and return this Object
+     * @function
      * @param {HTMLElement} x The child to append
-     *@type TigerJS.$
+     * @type TigerJS.$
      * @name TigerJS.$#appendChild
      */
     this.el.append_child = function (x) {
@@ -1799,7 +1819,7 @@ TigerJS.$ = function (el_) {
      * Removes all cildren of thie Element
      * @function
      *@type TigerJS.$
-     * @name TigerJS.$#removeChildNodes
+     * @name TigerJS.$#remove_child_nodes
      */
     this.el.remove_child_nodes = function () {
         while (this.firstChild) {
@@ -1970,7 +1990,7 @@ TigerJS.$ = function (el_) {
 
 
         try { //if this T.$ instance is a DocumentFragment rather than an actual HTMLElement
-            //errors could occur here with toCase and other routines
+            //errors could occur here with to_case and other routines
 
             //        document.write(T.dump(T.clone(map)));
             for (i in map) { //go through the computed style object
@@ -1979,7 +1999,7 @@ TigerJS.$ = function (el_) {
 
                         function (x) {
 
-                            if (i === x.toCase("-cm")) { //usually elements in ruleMap come in standard CSS dasherized form,
+                            if (i === x.to_case("-cm")) { //usually elements in ruleMap come in standard CSS dasherized form,
                                 //so we camelize to match that in the computedStyle object
                                 r[i] = map[i];
                             }
@@ -1994,7 +2014,7 @@ TigerJS.$ = function (el_) {
 
                                                 if (y.split(":")[0].trim() === x) { //so we parse out the rule name and check if its been requested
 
-                                                    r[x.toCase("-cm")] = y.split(":")[1]; //if it is, add it to our return object along side its value
+                                                    r[x.to_case("-cm")] = y.split(":")[1]; //if it is, add it to our return object along side its value
 
                                                 }
                                             }
@@ -2139,7 +2159,7 @@ TigerJS.$ = function (el_) {
         try {
             for (var i in styleMap) {
 
-                this.style[i.toCase("-cm")] = styleMap[i];
+                this.style[i.to_case("-cm")] = styleMap[i];
             }
         } catch (e) {
         }
@@ -2615,7 +2635,7 @@ TigerJS.$ = function (el_) {
 
                 for (var j = 0, len = s.length; j &lt; len; ) {
                     try {
-                        this.style[s[j++].toCase('-cm')] = s[j++]; //iteratively set each individual style rule, camelizing CSS
+                        this.style[s[j++].to_case('-cm')] = s[j++]; //iteratively set each individual style rule, camelizing CSS
                         //names where necesarry
                     } catch (e) {
                     }
@@ -2745,7 +2765,7 @@ TigerJS.$ = function (el_) {
      * @return The removed child node, which could be later re-inserted later
      */
     this.el.destroy = function () {
-        this.removeChildNodes();
+        this.remove_child_nodes();
         try {
             return T.$((this.parentNode.removeChild(this)));
         } catch (e) {
@@ -2985,7 +3005,7 @@ TigerJS.$ = function (el_) {
     this.el.reverse_child_nodes = function () {
         var n = T.Iterator(this.childNodes).reverse();
         //get the child nodes and reverse them
-        this.removeChildNodes(); //remove all children
+        this.remove_child_nodes(); //remove all children
 
         for (var i = 0; i &lt; n.length; i++) { //put back the reversed nodes
 
@@ -3682,7 +3702,7 @@ TigerJS.$ = function (el_) {
      */
     this.el.__to_string = function () {
         try {
-            return "[object TigerJS.$]/" + "HTML" + (this.tagName).toCase('-ufl') + "Element";
+            return "[object TigerJS.$]/" + "HTML" + (this.tagName).to_case('-ufl') + "Element";
         } catch (e) {
             return "[object TigerJS.$]/DocumentFragment]";
         }
@@ -3700,7 +3720,7 @@ TigerJS.$ = function (el_) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue May 30 2017 16:03:37 GMT+0100 (W. Central Africa Standard Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed May 31 2017 16:05:53 GMT+0100 (W. Central Africa Standard Time)
         </footer>
     </div>
 </div>
