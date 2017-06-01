@@ -7,9 +7,9 @@
 
     for (var i = 0; i < document.scripts.length; i++) {
         if (document.scripts[i].src.strpos("tiger") !== -1) {
-            
-            
-             T.library_installation_path = document.scripts[i].src.substr(0,
+
+
+            T.library_installation_path = document.scripts[i].src.substr(0,
                     document.scripts[i].src.strrpos("/"));
 
         }
@@ -38,7 +38,7 @@
     T.poll(T.dom_ready, T.execute_startup_routines);
     T.poll(T.dom_ready, insert_svg_icons);
     ///...... more bootstrap actions
-    
+
 })();
 
 
@@ -83,7 +83,8 @@ function insert_svg_icons() { //insert SVG icons refrenced in HTMLElements class
 
         requestConfigurationData[requestConfigurationData.length] = {
             uri: T.library_installation_path + "/asset/font/" + T_ICON_CLASS + ".svg",
-            tag: T_ICON_CLASS.substring(T_ICON_CLASS + 2), //use the image's name as our tag
+            tag: T_ICON_CLASS.substring(T_ICON_CLASS + 2),
+            //use the image's name as our tag
             uniqueID: true
 
         };
@@ -131,6 +132,12 @@ function insert_svg_icons() { //insert SVG icons refrenced in HTMLElements class
 
                         for (var j = 0; j < SVGNodesArray[i].children.length; j++) {
 
+                            if (SVGNodesArray[i].children[j].hasAttribute("style")) {
+                                SVGNodesArray[i].children[j].removeAttribute("style");
+                            }
+                            if (SVGNodesArray[i].children[j].hasAttribute("fill")) {
+                                SVGNodesArray[i].children[j].removeAttribute("fill");
+                            }
 
 
                             if (SVGNodesArray[i].children[j].nodeName === "style") {
@@ -145,11 +152,20 @@ function insert_svg_icons() { //insert SVG icons refrenced in HTMLElements class
 
                                     if (SVGNodesArray[i].children[j].children[k].nodeName === "style")
                                         SVGNodesArray[i].children[j].children[k].parentNode.removeChild(SVGNodesArray[i].children[j].children[k]);
-                                }
-                                //:) sweet recursion
 
+
+                                    if (SVGNodesArray[i].children[j].children[k].hasAttribute("style")) {
+                                        SVGNodesArray[i].children[j].children[k].removeAttribute("style");
+                                    }
+                                    if (SVGNodesArray[i].children[j].children[k].hasAttribute("fill")) {
+                                        SVGNodesArray[i].children[j].children[k].removeAttribute("fill");
+                                    }
+                                }
                             }
+                            //:) sweet recursion
+
                         }
+
                         if (svgImages[i].id) {
 
                             SVGNodesArray[i].id = svgImages[i].id;
@@ -205,7 +221,7 @@ function insert_svg_icons() { //insert SVG icons refrenced in HTMLElements class
 
 
                     } catch (e) {
-                      
+
                     }
                 }
 

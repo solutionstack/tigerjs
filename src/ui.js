@@ -1349,7 +1349,7 @@ TigerJS.UI.FX = {
         var startX;
         var startY
                 ;
-        resizer.className += ' t-no-drag';
+        resizer.className += 'T-resizer t-no-drag';
         resizer.style.width = '15px';
         resizer.style.zIndex = '10000';
         resizer.style.height = '15px';
