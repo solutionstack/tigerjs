@@ -210,13 +210,16 @@ function insert_svg_icons() { //insert SVG icons refrenced in HTMLElements class
                         /** make the inheritance recursive */
                         if (_curPlaceHolderStyle ["fill"]) {
 
-                            for (var j = 0; j < SVGNodesArray[i].children.length; j++)
+                            for (var j = 0; j < SVGNodesArray[i].children.length; j++) {
                                 SVGNodesArray[i].children[j].style.setProperty("fill", _curPlaceHolderStyle ["fill"], "important");
-
+                                SVGNodesArray[i].style.setProperty("fill", _curPlaceHolderStyle ["fill"], "important");
+                            }
                         } else if (_curPlaceHolderStyle ["color"]) {
-                            for (var j = 0; j < SVGNodesArray[i].children.length; j++)
+                            for (var j = 0; j < SVGNodesArray[i].children.length; j++) {
+                                
                                 SVGNodesArray[i].children[j].style.setProperty("fill", _curPlaceHolderStyle ["color"], "important");
-
+                                SVGNodesArray[i].style.setProperty("fill", _curPlaceHolderStyle ["color"], "important");
+                            }
                         }
 
 
