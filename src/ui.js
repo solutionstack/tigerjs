@@ -1337,10 +1337,11 @@ TigerJS.UI.FX = {
      * or any other element for that that matter as a resizable.
      
      * @param {TigerJS.$ | DOMELement} el The element to set as resizable
+     * @param {Function} _resizeEndCallback Function to call when resizing stops
      
      * @name TigerJS.UI.FX.resizable
      */
-    resizable: function (el) {
+    resizable: function (el, _resizeEndCallback) {
         ///set resixer
         var element = T.$(el);
 //create box in bottom-left
@@ -1387,6 +1388,8 @@ TigerJS.UI.FX = {
         function stopResize(e) {
             window.removeEventListener('mousemove', Resize, false);
             window.removeEventListener('mouseup', stopResize, false);
+            
+            if(_resizeEndCallback)_resizeEndCallback();
         }
     }
 
