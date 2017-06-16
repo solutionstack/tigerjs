@@ -960,7 +960,7 @@ TigerJS.Iterator = function (elements) {
         /**
          * ;Iterates over every element of our Iterator, sending them to a call back function
          * @param {Function} f The function to execute
-         * @return [Boolean] Returns true if the function returns true for every Iterator element sent
+         * @return Boolean Returns true if the function returns true for every Iterator element sent
          * @function
          * @name TigerJS.Iterator#every
          */
@@ -1041,9 +1041,9 @@ TigerJS.Iterator = function (elements) {
             var a = T.Iterator(list), b = T.Iterator().add_all(this);
             this.empty();
 
-            while (b.indexOf(a.current()) !== false) {
-                b.unset(b.indexOf(a.current()));
-                if (b.indexOf(a.current()))
+            while (b.index_of(a.current()) !== false) {
+                b.unset(b.index_of(a.current()));
+                if (b.index_of(a.current()))
                     continue; //still more matches, dont move to next index yet
                 a.next();
             }
