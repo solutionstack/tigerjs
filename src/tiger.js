@@ -1912,52 +1912,9 @@ var TigerJS = function () {
      */
 
     this.create = function (content) {
-        var re_match = [],
-                //this regexp also takes care of cases where the tag is broken with a new line or feed
-                re = new RegExp("<([a-z]+\s*)?\s*.*?\s*>\n*\t*\f*\r*(.*?)<\s*/\s*[a-z]*>\*\n*\t*\f*\r*", "gim"),
-                re_empty = new RegExp("<([img | hr | br | meta | link | embed]+\s*)?([.])+/>", "gi"), //match empty tags, must be xhtml/xml//
-                re_empty_match = [],
-                temp_div, html = "",
-                tag = tag || "div",
-                i;
-        content = content.trim();
-        do {
-            ///match empty tags
-            re_empty_match[re_empty_match.length] = re_empty.exec(content);
-        } while (re_empty_match[re_empty_match.length - 1]);
-        //strip out empty tags
-        content = content.replace(re_empty, "");
-        do { ///match regular tags
-            re_match[re_match.length] = re.exec(content); //
-
-        } while (re_match[re_match.length - 1]);
-
-        //am creating an Iterator and compacting it cause' during the process some array indices got null or undefined
-        //or just magically dissapeared
-        //TODO, whats causing this
-        re_match = T.Iterator(re_match.concat(re_empty_match)).
-                compact(); //addup all the results and create the node
-
-
-        //first we use a div as a place holder for all matched elements
-        temp_div = document.createElement(tag);
-        for (i = 0; i < re_match.length; i++) {
-            temp_div.innerHTML += re_match[i][0];
-
-        }
-
-        html = document.createDocumentFragment(); //fragment to hold All nodes to be appended
-
-        for (i = 0; i < temp_div.childNodes.length; i++) {
-            //without cloning nodes here error occurs while appending paragraph element, not sure Y!, ok it seems its
-            //some standard DOMException, or heirachy issue, well we have a solution
-
-            html.appendChild(temp_div.childNodes.item(i).cloneNode(true));
-        }
-
-
-        temp_div = null;
-        return html; //return the created nodes
+        
+        return document.createRange().createContextualFragment? //return the created nodes
+         document.createRange().createContextualFragment(content): (new DOMParser()).parseFromString(content, 'text/html').body.firstChild; //return the created nodes
 
 
     };

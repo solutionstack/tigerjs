@@ -793,7 +793,7 @@ TigerJS.Iterator = function (elements) {
          * @function
          */
         this.obj.index_of = function(x){
-            return this.obj.indexOf(x);
+            return this.indexOf(x);
         } //migrating;
         
         /**
