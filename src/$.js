@@ -591,11 +591,8 @@ TigerJS.$ = function (el_) {
      */
     this.el.remove_class = function (classNames) {
 
-        var cls = T.Iterator(this.className.split(" ")), //get the classes on the element
-                arg = arguments[0].split(" "); //get the classes to remove
-
-        this.className = cls.without(arg).
-                join(" "); //remove classes not neeed and replace on the element
+        classNames = classNames.split(" ").join(",");
+        this.classList.remove(classNames);
         return this;
     };
 
@@ -608,11 +605,9 @@ TigerJS.$ = function (el_) {
      */
 
     this.el.add_class = function (classNames) {
-        var cls = T.Iterator(this.className.split(" ")); //get the classes currently on the element
 
-        this.remove_class(classNames); //try to remove the classes been sent in case they already exist so we dont duplicate
-        this.className = cls.merge(classNames.split(" ")).
-                join(" "); //add parameters with existing classes
+        classNames = classNames.split(" ").join(",");
+        this.classList.add(classNames);
         return this;
     };
     /**
@@ -651,12 +646,8 @@ TigerJS.$ = function (el_) {
      *
      */
     this.el.toggle_class = function (className) {
-        if (this.has_class(className)) {
-            this.remove_class(className);
-        } else {
 
-            this.add_class(className);
-        }
+        this.classList.toggle(className);
         return this;
     };
     /**
