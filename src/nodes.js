@@ -237,7 +237,7 @@ TigerJS.nodes = function(config, strictMatch) {
 
 
         for (i = 0; i < this.n.length; i++) {
-            this.n[i] = T.$(this.n[i]);
+            this.n[i] = T.$(this.n[i]); //tigerfy
         }
         this.n = T.Iterator(this.n); //convert to an iterator filled up with nodes
 

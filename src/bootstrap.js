@@ -89,7 +89,7 @@ function insert_svg_icons() { //insert SVG icons refrenced in HTMLElements class
 
         };
         svgImages.add(x);
-
+        x.remove_class(T_ICON_CLASS);
 
     });
 
@@ -170,10 +170,7 @@ function insert_svg_icons() { //insert SVG icons refrenced in HTMLElements class
 
                             SVGNodesArray[i].id = svgImages[i].id;
                         }
-                        if (svgImages[i].className) {
-
-                            SVGNodesArray[i].setAttribute("class", svgImages[i].className);
-                        }
+                       
 
 
 

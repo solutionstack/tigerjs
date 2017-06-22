@@ -1,4 +1,4 @@
-
+ 
 /* global TigerJS, T */
 
 /*   This file is part of the TigerJS Javascript Library @@https://sourceforge.net/p/tigerjs> */
@@ -18,11 +18,11 @@ TigerJS.EventManager = function () {
     if (!('hasOwnProperty' in Event.prototype)) {
         addHasOwnProperty(event);
     }
-    if (!('stopPropagation' in Event.prototype)) {
+    if (!('stopPropagation' in Event.prototype)) { //IE hack
         Event.prototype.stopPropagation = function () {
             this.cancelBubble = true;
         };
-        Event.prototype.stopImmediatePropagation = function () {
+        Event.prototype.stopImmediatePropagation = function () { //IE again
             this.cancelBubble = true;
             this.immediatePropagationStopped = true;
         };
@@ -139,10 +139,9 @@ TigerJS.EventManager = function () {
              *@ignore
              */
             normalize_event = function (eventObject) {
-                var e = eventObject;
+                var e = T.clone( eventObject);
                 var keys = getKey(e); //normalize the DOM3 key and char values
                 e['key'] = keys.key;
-
                 e["char"] = keys["char"];
                 e["_char"] = keys["_char"];
                 //normalize the event object,
@@ -161,7 +160,7 @@ TigerJS.EventManager = function () {
                     
                     e.relatedTarget = getRT(e);
                     e.timeStamp = (new Date).getTime();
-                    e.target = T.$(e.target ? e.target : e.srcElement);
+                    e.target = T.$(e.currentTarget || e.srcElement || e.target);
                     e.clientX = e.clientX || e.Y || this.changedTouches[0].pageY;
                     e.clientY = e.clientY || e.X || this.changedTouches[0].pageX;
                     e.defaultPrevented = e.defaultPrevented || e.returnValue;
@@ -477,19 +476,6 @@ TigerJS.EventManager = function () {
                     x_target.removeEventListener(x_type, std_callBack_redirect, false);
                     x_target.off(x_type, cb);
                 }
-
-
-            },
-            ///private
-            ///removeEvent abstraction Layer, accepts target, event type, and callback
-            /*
-             *@ignore
-             */
-
-            removeListener = function (target, type, callBack) {
-
-                target.removeEventListener ? target.removeEventListener(type, callBack) :
-                        target.detachEvent("on" + type, callBack);
 
 
             };
