@@ -257,11 +257,11 @@ TigerJS.io = function (configObj) {
 
                 socket_timeout = timeout;
             } catch (e) {
-                return;
+                throw e;
                 //
             }
 
-            return;
+            return this;
         };
 
         /**
@@ -606,6 +606,7 @@ TigerJS.io = function (configObj) {
 
 
             }
+            return this;
         }
             ;
             //see if we have any initial request data to append
