@@ -59,7 +59,7 @@
  */
 
 
-var TigerJS = function () {
+var TigerJS = function() {
 
     ////////////////PRIVATE PROPERTIES/////////////////////////////////
     /**
@@ -67,36 +67,36 @@ var TigerJS = function () {
      */
 
     var win = window, //main window object
-            /**
-             * @ignore
-             */
-            _doc = win.document,
-            /**
-             * @ignore
-             */
-            _body = function () {
-                return _doc.body;
-            },
-            /**
-             * @ignore
-             */
-            _docEl = _doc.documentElement, //document Element (a.k.a <html>)
+        /**
+         * @ignore
+         */
+        _doc = win.document,
+        /**
+         * @ignore
+         */
+        _body = function() {
+            return _doc.body;
+        },
+        /**
+         * @ignore
+         */
+        _docEl = _doc.documentElement, //document Element (a.k.a <html>)
 
-            /**
-             * @ignore
-             */
-            _loc = win.location, //location
-            /**
-             * @ignore
-             */
-            _pt = _loc.protocol, //protocol
+        /**
+         * @ignore
+         */
+        _loc = win.location, //location
+        /**
+         * @ignore
+         */
+        _pt = _loc.protocol, //protocol
 
-            /**
-             * @ignore
-             */
+        /**
+         * @ignore
+         */
 
-            _ssl =
-            _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
+        _ssl =
+        _pt.toLowerCase() === 'https:'; //are we on SSL/TLS
 
     /**
      *
@@ -111,7 +111,7 @@ var TigerJS = function () {
      *
      */
 
-    this.include = function (sSrc, callBack) {
+    this.include = function(sSrc, callBack) {
         var scr = document.createElement("SCRIPT");
         if (callBack) {
             scr.addEventListener("load", callBack);
@@ -136,9 +136,9 @@ var TigerJS = function () {
      * @param {Object} Obj The object to test
      * @type String
      */
-    this.type = function (Obj) {
+    this.type = function(Obj) {
         var o = Obj,
-                i;
+            i;
         //UNDEFINED, OR NOT SUPPORTED ON OBJECT
 
         if (typeof Obj === 'undefined' || (!Obj && typeof o !== 'string' && o !== false && o !== null && o !== 0 && typeof o !== "object")) { //undefined, watch for emtpy strings and zero
@@ -150,20 +150,22 @@ var TigerJS = function () {
 
         //html 5 collection types
         if (
-                Object.prototype.toString.call(o) === "[object NamedNodeMap]" ||
-                Object.prototype.toString.call(o) === "[object NodeList]" ||
-                Object.prototype.toString.call(o) === "[object HTMLCollection]" ||
-                Object.prototype.toString.call(o) === "[object HTMLAllCollection]" ||
-                Object.prototype.toString.call(o) === "[object HTMLPropertiesCollection]" ||
-                Object.prototype.toString.call(o) === "[object HTMLOptionsCollection]" ||
-                Object.prototype.toString.call(o) === "[object HTMLFormControlsCollection]"
-                ) {
+            Object.prototype.toString.call(o) === "[object NamedNodeMap]" ||
+            Object.prototype.toString.call(o) === "[object NodeList]" ||
+            Object.prototype.toString.call(o) === "[object HTMLCollection]" ||
+            Object.prototype.toString.call(o) === "[object HTMLAllCollection]" ||
+            Object.prototype.toString.call(o) === "[object HTMLPropertiesCollection]" ||
+            Object.prototype.toString.call(o) === "[object HTMLOptionsCollection]" ||
+            Object.prototype.toString.call(o) === "[object HTMLFormControlsCollection]"
+        ) {
 
             //remove spaces , brackets and the object keyword so we return
             //just the Generic Type
 
-            return Object.prototype.toString.call(o).replace(/[\[\] ]*/g, "").
-                    replace("object", "");
+            return Object.prototype.toString.call(o)
+                .replace(/[\[\] ]*/g, "")
+                .
+            replace("object", "");
         }
 
         /////////////DOM TYPES////////////////////////////
@@ -181,9 +183,12 @@ var TigerJS = function () {
                 "HTMLIFrameElement", "HTMLAudioElement", "HTMLCommandElement", "HTMLDetailsElement", "HTMLInputElement", "HTMLMeterElement", "HTMLLegendElement", "HTMLLIElement", "HTMLOutputElement", "HTMLSpanElement", "XMLDocument"
             ];
 
-            var reg_exp = Object.prototype.toString.call(o).
-                    replace(/[\[\] ]*/g, "").replace("object", "").
-                    replace(" ", "");
+            var reg_exp = Object.prototype.toString.call(o)
+                .
+            replace(/[\[\] ]*/g, "")
+                .replace("object", "")
+                .
+            replace(" ", "");
             for (i = 0; i < dom_element_names.length; i++) {
 
                 if (dom_element_names[i].indexOf(reg_exp) > -1) {
@@ -201,23 +206,30 @@ var TigerJS = function () {
         }
 
         //Our internal types
-        if ((o.__to_string && o.__to_string().indexOf("[o") !== -1)) {
-            return o.__to_string().replace(/[\[\] ]*/g, "").
-                    replace("object", "");
+        if ((o.__to_string && o.__to_string()
+                .indexOf("[o") !== -1)) {
+            return o.__to_string()
+                .replace(/[\[\] ]*/g, "")
+                .
+            replace("object", "");
         }
-        if (o["Node"] && o["Node"].__to_string) {//our widget elements
+        if (o["Node"] && o["Node"].__to_string) { //our widget elements
 
             if (o["Node"].__to_string) {
-                return o.Node.__to_string().replace(/[\[\] ]*/g, "").
-                        replace("object", "");
+                return o.Node.__to_string()
+                    .replace(/[\[\] ]*/g, "")
+                    .
+                replace("object", "");
             }
         }
 
         /////////////////Native Types//////////////////////////
         if (/(Array|ArrayBuffer|DataView|Float32Array|Float64Array|Int8Array|Int16Array|Int32Array|Uint8Array|Uint8ClampedArray|Uint16Array|Uint32ArrayString|Date|Number|Object|Function|RegExp|Math|Boolean|Promise|Anonymous)/gi.test(Object.prototype.toString.call(o)) && !o.nodeType) {
 
-            return Object.prototype.toString.call(o).replace(/[\[\] ]*/g, "").
-                    replace("object", "");
+            return Object.prototype.toString.call(o)
+                .replace(/[\[\] ]*/g, "")
+                .
+            replace("object", "");
         }
 
     };
@@ -239,10 +251,10 @@ var TigerJS = function () {
      * T.has_key(_ob, "j"); //returns false
      */
 
-    this.has_key = function (object, key) {
+    this.has_key = function(object, key) {
 
         for (var i in object) {
-            if (object.hasOwnProperty(i)) {//only evaluate public properties
+            if (object.hasOwnProperty(i)) { //only evaluate public properties
                 if (i === key) {
 
                     return true;
@@ -265,7 +277,7 @@ var TigerJS = function () {
      console.log(T.has_value(_ob, 2)); //returns true
      */
 
-    this.has_value = function (object, value) {
+    this.has_value = function(object, value) {
         for (var i in object) {
             if (object.hasOwnProperty(i)) {
                 if (object[i] === value) {
@@ -310,9 +322,9 @@ var TigerJS = function () {
      * //This means you can directly use the SomeClass object without a new Class call
      * @return {Object} Returns the augmented object
      */
-    this.mix = function (toObject, fromObject, args) {
+    this.mix = function(toObject, fromObject, args) {
 
-        //#todo	check args
+        //#todo check args
         var i;
         if (T.is_function(toObject)) {
 
@@ -323,8 +335,7 @@ var TigerJS = function () {
 
             // return a new Object of the base class, pasing arguments if available
             return (args === undefined ? new toObject() : new toObject(args));
-        }
-        { //else b is an object
+        } { //else b is an object
 
             for (i in fromObject) {
 
@@ -373,18 +384,18 @@ var TigerJS = function () {
      *  reciever.foo = [baz] // due to aggregation of suppliers property
      * @return {Object} returns an object of the extended reciever class
      */
-    this.aggregate = function (reciever, supplier, overwrite, args) {
+    this.aggregate = function(reciever, supplier, overwrite, args) {
         var r = reciever,
-                s = supplier,
-                o = overwrite,
-                //#todo	check args
-                _r = (typeof reciever) === 'function' ? new reciever(args) : reciever, //internal reciever object
-                _s = (typeof supplier) === 'function' ? new supplier : supplier, //internal supplier object
+            s = supplier,
+            o = overwrite,
+            //#todo check args
+            _r = (typeof reciever) === 'function' ? new reciever(args) : reciever, //internal reciever object
+            _s = (typeof supplier) === 'function' ? new supplier : supplier, //internal supplier object
 
-                /**
-                 *@ignore
-                 */
-                _o = function () { }; //This constructor shall be our return object
+            /**
+             *@ignore
+             */
+            _o = function() {}; //This constructor shall be our return object
         //inherit all object from the reciever
 
         _o.prototype = _r;
@@ -464,8 +475,8 @@ var TigerJS = function () {
      *@return {Object} returns a reference to the augmented constructor class
      */
 
-    this.extend = function (baseClass, funcArray) {
-        //#todo	check args
+    this.extend = function(baseClass, funcArray) {
+        //#todo check args
 
         var oa = [];
         //add the base class to the array
@@ -483,8 +494,7 @@ var TigerJS = function () {
             oa[oa.length] = funcArray[i]; //add the current index to the array
         }
 
-        return oa[oa.length - 1];
-        ; //return the last constructed object
+        return oa[oa.length - 1];; //return the last constructed object
     };
 
     /**
@@ -494,7 +504,7 @@ var TigerJS = function () {
      * @return {Array} The keys of the passed object as an array
      */
 
-    this.keys = function (_Object) {
+    this.keys = function(_Object) {
         var r = [];
         for (var i in _Object) {
 
@@ -511,7 +521,7 @@ var TigerJS = function () {
      * @return {Array} The values of the passed object as an array
      */
 
-    this.values = function (_Object) {
+    this.values = function(_Object) {
         var r = [];
         for (var i in _Object) {
 
@@ -532,11 +542,11 @@ var TigerJS = function () {
      * example
      *    var arra = new Array("So long",'s',42,42.13,"Hello World" , {'a':1, 'b':2},99);
      *    var assoc = {
-     *		"val"  : "New",
-     *		"number" : 8,
-     *		"theting" : arra,
+     *      "val"  : "New",
+     *      "number" : 8,
+     *      "theting" : arra,
      *              "foo"   : 'bar'
-     *	};
+     *  };
      *           ///then do
      *     document.write( T.dump(assoc));
      * // should output---------->
@@ -561,59 +571,60 @@ var TigerJS = function () {
      *@function
      *@type {String}
      */
-    this.dump = function (arr_) {
+    this.dump = function(arr_) {
 
-        var f = function (arr, level, item) { //default dump function for objects and constructors
+        var f = function(arr, level, item) { //default dump function for objects and constructors
             var dumped_text = "";
             if (!level) {
                 level = 0;
             }
             //The padding given at the beginning of the line.
             var level_padding = "",
-                    sp_ = "     ";
+                sp_ = "     ";
             for (var j = 0; j < level + 1; j++)
                 level_padding += "    ";
             ////////////////////// NO EDIT BELOW THIS LINE /////////////////////////////////////////////////////
             ///////////////////////////////////////////////////////////////////////////////////////////////////
             try {
-                if (arr.constructor.toString().
-                        indexOf('Array') > -1 && !item) {
+                if (arr.constructor.toString()
+                    .indexOf('Array') > -1 && !item) {
 
                     dumped_text += "(ARRAY) ==> \"' ...\n";
                 }
-                if (arr.constructor.toString().indexOf('Array') > -1 && item) {
+                if (arr.constructor.toString()
+                    .indexOf('Array') > -1 && item) {
 
                     dumped_text += level_padding + "  '" + item + "'  -->  (ARRAY)  ...\n";
                 }
-                if (arr.constructor.toString().
-                        indexOf('Object') > 1 && !item) {
+                if (arr.constructor.toString()
+                    .indexOf('Object') > 1 && !item) {
 
                     dumped_text += "(OBJECT) ==> \"' ...\n";
                 }
-                if (arr.constructor.toString().indexOf('Object') > 1 && item) {
+                if (arr.constructor.toString()
+                    .indexOf('Object') > 1 && item) {
 
                     dumped_text += level_padding + "  '" + item + "'  -->  (OBJECT)  ...\n";
                 }
 
-                if (arr.constructor.toString().
-                        indexOf('function') === 0 && !item && arr.constructor.toString().
-                        indexOf('(') === 9) {
+                if (arr.constructor.toString()
+                    .indexOf('function') === 0 && !item && arr.constructor.toString()
+                    .indexOf('(') === 9) {
 
 
                     dumped_text += "(OBJECT) ==> \"' ...\n";
                 }
-                if (arr.constructor.toString().
-                        indexOf('function') === 0 && item && arr.constructor.toString().
-                        indexOf('(') === 9) {
+                if (arr.constructor.toString()
+                    .indexOf('function') === 0 && item && arr.constructor.toString()
+                    .indexOf('(') === 9) {
 
 
                     dumped_text += level_padding + "  \'" + item + "'  -->  (OBJECT)  ...\n";
                 }
-            } catch (e) {
-            }
+            } catch (e) {}
             ///////////////////// END NO EDIT ///////////////////////////////////////////////////////////////////////////
 
-            if (typeof (arr) === 'object') { //Array/Hashes/Objects
+            if (typeof(arr) === 'object') { //Array/Hashes/Objects
 
 
                 for (var item_ in arr) {
@@ -622,11 +633,11 @@ var TigerJS = function () {
                     if (value && value.nodeType) {
                         //prabably an array or object with HTML element references in its element
                         dumped_text += d(value);
-                    } else if (value && typeof (value) === 'object' && value !== window) { //If it's enumerable|recurese|but dont recurse if the object is a widow reference
+                    } else if (value && typeof(value) === 'object' && value !== window) { //If it's enumerable|recurese|but dont recurse if the object is a widow reference
 
                         dumped_text += "  \'" + item_ + "\' => " + T.dump(value, level + 50, item_);
 
-                    } else if (typeof (value) === 'function') {
+                    } else if (typeof(value) === 'function') {
 
                         dumped_text += "                            " + sp_ + level_padding + sp_ + "'" + item_ + "' => \"" + 'function(){}' + "\"\n";
                     } else {
@@ -636,33 +647,34 @@ var TigerJS = function () {
                 }
 
             } else { //Stings/Chars/Numbers etc.
-                dumped_text = "===>" + arr + "<===(" + typeof (arr) + ")";
+                dumped_text = "===>" + arr + "<===(" + typeof(arr) + ")";
 
             }
             return dumped_text; //return the internal information(dump) about this object
 
         };
-        var d = function (arr) { //Handler for DOM/HTML types, no recursion
+        var d = function(arr) { //Handler for DOM/HTML types, no recursion
 
             var dumped_text = "",
-                    level = 2;
+                level = 2;
             dumped_text += T.type(arr) + " ==> \"' ...\n";
 
             //The padding given at the beginning of the line.
             var level_padding = "",
-                    sp_ = "     ";
+                sp_ = "     ";
             for (var j = 0; j < level + 1; j++)
                 level_padding += "    ";
-            if (arr && typeof (arr) === 'object') { //valid Node
+            if (arr && typeof(arr) === 'object') { //valid Node
                 // arr = new Object(arr);
                 for (var item in arr) {
 
                     try { //google chrome and some others throw error here (strange) if arr[item] is null
 
                         dumped_text += sp_ +
-                                level_padding + sp_ + "'" +
-                                item + "' => \"" +
-                                (T.type(arr[item]) === "Function" ? T.type(arr[item]) : new String(arr[item]).replace(/[\n]/g, "")) + "\"\n";
+                            level_padding + sp_ + "'" +
+                            item + "' => \"" +
+                            (T.type(arr[item]) === "Function" ? T.type(arr[item]) : new String(arr[item])
+                                .replace(/[\n]/g, "")) + "\"\n";
                     } catch (e) {
                         //any case or arr[item] that can be converted to object
 
@@ -684,17 +696,18 @@ var TigerJS = function () {
         if (arr_.constructor === undefined)
             return d(arr_);
 
-        var _ty = T.type(arr_).
-                replace(/^\s*((?:[\S\s]*\S)?)\s*$/, '$1'); //trimmmm
+        var _ty = T.type(arr_)
+            .
+        replace(/^\s*((?:[\S\s]*\S)?)\s*$/, '$1'); //trimmmm
 
 
         //Handle regular types, trim to avoided any extra spaces (some browsers are SPACE CRAAAAZZYY!!
         if (_ty === "Array" || _ty === "Arguments" || "Promise" ||
-                _ty === "String" || _ty === "Math" || _ty === "Error" ||
-                _ty === "Object" || _ty === "ArrayBuffer" || _ty === "DataView" ||
-                _ty === "Float32Array" || _ty === "Float64Array" || _ty === "JSON" ||
-                _ty === "Uint16Array" || _ty === "Uint32Array" || _ty === "Uint8Array" ||
-                _ty === "Uint8ClampedArray" || _ty === "Regexp" || _ty === "RegExp" || _ty === "Date") {
+            _ty === "String" || _ty === "Math" || _ty === "Error" ||
+            _ty === "Object" || _ty === "ArrayBuffer" || _ty === "DataView" ||
+            _ty === "Float32Array" || _ty === "Float64Array" || _ty === "JSON" ||
+            _ty === "Uint16Array" || _ty === "Uint32Array" || _ty === "Uint8Array" ||
+            _ty === "Uint8ClampedArray" || _ty === "Regexp" || _ty === "RegExp" || _ty === "Date") {
 
             return f(arr_);
         }
@@ -709,20 +722,20 @@ var TigerJS = function () {
         //next check if its  an HTMLCollection or NodeList
         //if its a collection just pass it to the Dom handler, it did not get passed above, cuz it doesnt have a NodeType
         if (Object.prototype.toString.call(arr_) === "[object NamedNodeMap]" ||
-                Object.prototype.toString.call(arr_) === "[object NodeList]" ||
-                Object.prototype.toString.call(arr_) === "[object HTMLCollection]" ||
-                Object.prototype.toString.call(arr_) === "[object HTMLAllCollection]" ||
-                Object.prototype.toString.call(arr_) === "[object HTMLPropertiesCollection]" ||
-                Object.prototype.toString.call(arr_) === "[object HTMLOptionsCollection]" ||
-                Object.prototype.toString.call(arr_) === "[object HTMLFormControlsCollection]" || T.type(arr_) === "TigerJS.NodeList" //for our T.nodes type
-                ) {
+            Object.prototype.toString.call(arr_) === "[object NodeList]" ||
+            Object.prototype.toString.call(arr_) === "[object HTMLCollection]" ||
+            Object.prototype.toString.call(arr_) === "[object HTMLAllCollection]" ||
+            Object.prototype.toString.call(arr_) === "[object HTMLPropertiesCollection]" ||
+            Object.prototype.toString.call(arr_) === "[object HTMLOptionsCollection]" ||
+            Object.prototype.toString.call(arr_) === "[object HTMLFormControlsCollection]" || T.type(arr_) === "TigerJS.NodeList" //for our T.nodes type
+        ) {
 
             return d(arr_); //send to Dom dump handler
         } else {
 
             //If we got here then, we have a  a valid object of a custom function constructors ( like function foo(){})
             // which would return foo as its type
-            return (function (f_) {
+            return (function(f_) {
 
                 try {
 
@@ -765,20 +778,20 @@ var TigerJS = function () {
      *   //3, 6 and NaN by multiplying the value in our object by the array values
      *
      */
-    this.each = function (Obj, FuncRef, Exec) {
+    this.each = function(Obj, FuncRef, Exec) {
         var i, len;
         if (T.type(Obj) === 'Array' || T.type(Obj) === 'Arguments' || T.type(Obj) === 'TigerJS.Iterator') { //IE doesnt iterate the argument object by index
 
             for (i = 0, len = Obj.length; i < len; i++) {
 
-                (Exec) ? FuncRef.call(new Exec, Obj[i], i) : FuncRef(Obj[i], i);
+                (Exec) ? FuncRef.call(new Exec, Obj[i], i): FuncRef(Obj[i], i);
             }
 
         } else { //for objects
 
             for (i in Obj) {
 
-                (Exec) ? FuncRef.call(new Exec, Obj[i], i) : FuncRef(Obj[i], i);
+                (Exec) ? FuncRef.call(new Exec, Obj[i], i): FuncRef(Obj[i], i);
             }
 
         }
@@ -791,11 +804,11 @@ var TigerJS = function () {
      * @see TigerJS#periodic
      * @type Mixed
      */
-    this.poll = function (Func, callback) {
+    this.poll = function(Func, callback) {
 
         var f = Func,
-                cb = callback,
-                val = f();
+            cb = callback,
+            val = f();
 
         function recall() {
 
@@ -823,44 +836,44 @@ var TigerJS = function () {
      
      *  @function
      */
-    this.periodic = function (func, callback, return_val, poll_interval, timeout) {
+    this.periodic = function(func, callback, return_val, poll_interval, timeout) {
 
         var cb = callback || null, //callback
 
-                ival = poll_interval || 100, //interval le poll
+            ival = poll_interval || 100, //interval le poll
 
-                t_o = timeout || null, //how many polls b4 we timeout
+            t_o = timeout || null, //how many polls b4 we timeout
 
-                r_val = return_val || null, //an optional return value, which when we get signalls the end of polling
+            r_val = return_val || null, //an optional return value, which when we get signalls the end of polling
 
-                count = 0, // keep count for timeout value
+            count = 0, // keep count for timeout value
 
-                /**
-                 
-                 *@ignore
-                 
-                 */
-                g = function () {
+            /**
+             
+             *@ignore
+             
+             */
+            g = function() {
 
-                    if (count && count === t_o) {
+                if (count && count === t_o) {
 
-                        clearInterval(iv);
-                        return;
-                    } //time-out if needed
+                    clearInterval(iv);
+                    return;
+                } //time-out if needed
 
-                    var val = (func());
-                    if (val && val === r_val) {
+                var val = (func());
+                if (val && val === r_val) {
 
-                        clearInterval(iv);
-                        if (cb)
-                            cb(val); //if we've a valid return value, check for a callback and send it the return value
+                    clearInterval(iv);
+                    if (cb)
+                        cb(val); //if we've a valid return value, check for a callback and send it the return value
 
-                        return;
-                    }
+                    return;
+                }
 
-                    ++count;
-                },
-                iv;
+                ++count;
+            },
+            iv;
         iv = setInterval(g, ival);
     };
 
@@ -875,8 +888,8 @@ var TigerJS = function () {
      * v() ;// => hello
      *
      */
-    this.constant = function (retValue) {
-        return function () {
+    this.constant = function(retValue) {
+        return function() {
             return retValue;
         };
     };
@@ -907,10 +920,10 @@ var TigerJS = function () {
      *
      *  //where argumentsForEachFunctions are argument(s) to be sent to function a and function b
      */
-    this.and = function (var_args) {
+    this.and = function(var_args) {
         var functions = arguments,
-                length = functions.length;
-        return function () {
+            length = functions.length;
+        return function() {
             for (var i = 0; i < length; i++) {
                 if (!functions[i].apply(this | arguments)) {
                     return false;
@@ -950,10 +963,10 @@ var TigerJS = function () {
      // so 11 is logged next from function a then the text: (called next) is logged
      *
      */
-    this.compose = function (var_args) {
+    this.compose = function(var_args) {
         var functions = arguments,
-                length = functions.length;
-        return function () {
+            length = functions.length;
+        return function() {
             var result;
             if (length) {
                 result = functions[length - 1].apply(this, arguments);
@@ -972,10 +985,10 @@ var TigerJS = function () {
      * @param {...Function} var_args A list of functions.
      * @return {Function} A function that calls all inputs in sequence.
      */
-    this.sequence = function (var_args) {
+    this.sequence = function(var_args) {
         var functions = arguments,
-                length = functions.length;
-        return function () {
+            length = functions.length;
+        return function() {
             var result;
             for (var i = 0; i < length; i++) {
                 result = functions[i].apply(this, arguments);
@@ -994,7 +1007,7 @@ var TigerJS = function () {
      * @type Boolean
      */
 
-    this.dom_ready = function () {
+    this.dom_ready = function() {
 
         return document.readyState.match(/interactive/gi) !== null || document.readyState.match(/complete/gi) !== null;
     };
@@ -1007,10 +1020,10 @@ var TigerJS = function () {
      * @param {String} path the cookie path.
      * @param {Number} exp_days {number of days of cookie validity.
      */
-    this.write_cookie = function (name, value, domain, path, exp_days) {
+    this.write_cookie = function(name, value, domain, path, exp_days) {
         value = encodeURIComponent(value);
         var ck = name + "=" + value,
-                exp;
+            exp;
         if (domain)
             ck += ";domain=" + domain;
         if (path)
@@ -1030,9 +1043,9 @@ var TigerJS = function () {
      */
 
 
-    this.get_cookie = function (name) {
+    this.get_cookie = function(name) {
         var pattern = name + "=",
-                tokenPos = 0 | endValuePos;
+            tokenPos = 0 | endValuePos;
         while (tokenPos < document.cookie.length) {
             var valuePos = tokenPos + pattern.length;
             if (document.cookie.substring(tokenPos, valuePos) === pattern) {
@@ -1055,7 +1068,7 @@ var TigerJS = function () {
      *
      * @param name {string} the cookie name
      */
-    this.delete_cookie = function (name) {
+    this.delete_cookie = function(name) {
         this.write_cookie(name, "", "", "", -1);
     };
 
@@ -1084,7 +1097,7 @@ var TigerJS = function () {
      *
      */
 
-    this.http_build_query = function (formdata, numeric_prefix, arg_separator) {
+    this.http_build_query = function(formdata, numeric_prefix, arg_separator) {
 
         var value, key, tmp = [];
         //if we're been sent a form
@@ -1131,7 +1144,7 @@ var TigerJS = function () {
          
          */
 
-        var f = function (key, val, arg_separator) {
+        var f = function(key, val, arg_separator) {
 
             var k, tmp = [];
             if (val === true) {
@@ -1139,7 +1152,7 @@ var TigerJS = function () {
             } else if (val === false) {
                 val = "0";
             }
-            if (val !== null && typeof (val) === "object") {
+            if (val !== null && typeof(val) === "object") {
                 for (k in val) {
 
                     if (val[k] !== null) {
@@ -1147,7 +1160,7 @@ var TigerJS = function () {
                     }
                 }
                 return tmp.join(arg_separator);
-            } else if (typeof (val) !== "function") {
+            } else if (typeof(val) !== "function") {
                 return encodeURIComponent(key) + "=" + encodeURIComponent(val);
             } else {
                 //            throw new Error('There was an error processing for http_build_query().');
@@ -1174,7 +1187,7 @@ var TigerJS = function () {
      *@function
      * @type Boolean
      */
-    this.is_empty = function (obj) {
+    this.is_empty = function(obj) {
         for (var i in obj) {
 
             if (i) {
@@ -1194,7 +1207,7 @@ var TigerJS = function () {
      *
      */
 
-    this.is_array = function (arg) {
+    this.is_array = function(arg) {
 
         return this.type(arg) === 'Array';
     };
@@ -1206,7 +1219,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.is_number = function (arg) {
+    this.is_number = function(arg) {
 
         return this.type(arg) === 'Number';
     };
@@ -1218,7 +1231,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.is_string = function (arg) {
+    this.is_string = function(arg) {
 
         return this.type(arg) === 'String';
     };
@@ -1230,7 +1243,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.is_function = function (arg) {
+    this.is_function = function(arg) {
 
         return this.type(arg) === 'Function';
     };
@@ -1242,7 +1255,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.is_date = function (arg) {
+    this.is_date = function(arg) {
         var s = new Date(arg);
         return (s === null || s.toString() === "NaN" || s.toString() === "Invalid Date") ? false : true;
     };
@@ -1253,7 +1266,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.is_regexp = function (arg) {
+    this.is_regexp = function(arg) {
 
         return this.type(arg) === 'Regexp';
     };
@@ -1265,7 +1278,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.is_boolean = function (arg) {
+    this.is_boolean = function(arg) {
 
         return this.type(arg) === 'Boolean';
     };
@@ -1276,7 +1289,7 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.is_object = function (arg) {
+    this.is_object = function(arg) {
 
         return this.type(arg) === 'Object';
     };
@@ -1287,11 +1300,11 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.is_enumerable = function (arg) {
+    this.is_enumerable = function(arg) {
 
 
-        return (T.type(arg) === 'Array' || T.type(arg) === 'Nodelist' || T.type(arg) === 'Object' || T.type(arg).
-                indexOf('Collection') !== -1);
+        return (T.type(arg) === 'Array' || T.type(arg) === 'Nodelist' || T.type(arg) === 'Object' || T.type(arg)
+            .indexOf('Collection') !== -1);
 
     };
 
@@ -1302,19 +1315,19 @@ var TigerJS = function () {
      * @type Boolean
      *
      */
-    this.isurl = function (arg) {
+    this.isurl = function(arg) {
 
         if (arg.indexOf('.') === -1)
             return false;
         var path,
-                query, host,
-                // Regexp for allowed characters in URL paths
-                pathRE = /^([-a-z0-9._~:@!$&'()*+,;=\/]|%[0-9a-f]{2})*$/i,
-                // Regexp for allowed characters in querystrings and URL fragments
-                qfRE = /^([-a-z0-9._~:@!$&'()*+,;=?\/]|%[0-9a-f]{2})*$/i,
-                //alloweg chars in host name
-                hRE = /^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$/i,
-                uri = T.Parser.parse_uri(arg); //parser returns an object with props[path query host anchor file relative [i.e relativepath] user password userInfo
+            query, host,
+            // Regexp for allowed characters in URL paths
+            pathRE = /^([-a-z0-9._~:@!$&'()*+,;=\/]|%[0-9a-f]{2})*$/i,
+            // Regexp for allowed characters in querystrings and URL fragments
+            qfRE = /^([-a-z0-9._~:@!$&'()*+,;=?\/]|%[0-9a-f]{2})*$/i,
+            //alloweg chars in host name
+            hRE = /^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$/i,
+            uri = T.Parser.parse_uri(arg); //parser returns an object with props[path query host anchor file relative [i.e relativepath] user password userInfo
         //authourity source port]
 
         path = uri.path;
@@ -1343,7 +1356,7 @@ var TigerJS = function () {
      * @type Boolean
      */
 
-    this.is_ip = function (arg) {
+    this.is_ip = function(arg) {
 
 
         if (/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/.test(arg)) { //detect general dotted IP4 format
@@ -1368,7 +1381,7 @@ var TigerJS = function () {
      * Handle IPv6 validation
      *@param {Number} ip
      */
-    this.ipv6 = function (ip) {
+    this.ipv6 = function(ip) {
         var lastcolon, match;
         // Test for empty address
         if (ip.length < 3) {
@@ -1433,9 +1446,10 @@ var TigerJS = function () {
      *@param {string} arg String to validate as email
      * @type Boolean
      */
-    this.is_email = function (arg) {
+    this.is_email = function(arg) {
 
-        return (T.Parser.parse_address("mail" | arg)).length > 0;
+        return (T.Parser.parse_address("mail" | arg))
+            .length > 0;
     };
 
 
@@ -1456,7 +1470,7 @@ var TigerJS = function () {
      console.log(obj.lol); // returns undefined, property was only set in cloned object
      *
      */
-    this.clone = function (obj) {
+    this.clone = function(obj) {
 
         return (this.aggregate({}, obj, true));
     };
@@ -1472,9 +1486,9 @@ var TigerJS = function () {
      * @type void
      */
 
-    this.register_startup_functions = function () {
+    this.register_startup_functions = function() {
 
-        T.each(arguments, function (x) {
+        T.each(arguments, function(x) {
 
             f_arr[f_arr.length] = x;
         }); //iteratively add argument functions to the list
@@ -1484,14 +1498,13 @@ var TigerJS = function () {
      * @ignore
      */
 
-    this.execute_startup_routines = function () {
+    this.execute_startup_routines = function() {
 
         try { //avoid -useless settimeout error- in  FF, those guys are wacko!!, love the nightly's
-            T.each(f_arr, function (x) {
+            T.each(f_arr, function(x) {
                 setTimeout(x, 10);
             }); //execute registered startup functions
-        } catch (e) {
-        }
+        } catch (e) {}
     };
     /**
      * Returns an object containing the visible dimensions of the view-port
@@ -1508,11 +1521,11 @@ var TigerJS = function () {
      * console.log("Viewport height :"+ viewPortDimensions.height);
      */
 
-    this.dim = function () {
+    this.dim = function() {
 
         //so much differences between browsers
         var iWidth = document.documentElement.clientWidth || win.innerWidth || document.documentElement.scrollWidth || 0,
-                iHeight = document.documentElement.clientHeight || win.innerHeight || document.documentElement.scrollHeight || 0;
+            iHeight = document.documentElement.clientHeight || win.innerHeight || document.documentElement.scrollHeight || 0;
         //scroll offsets
         //             iScrollX = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
         //            iScrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
@@ -1531,9 +1544,10 @@ var TigerJS = function () {
      * @return {Object} 
      */
 
-    this.parse_query = function (qstr) {
+    this.parse_query = function(qstr) {
         var query = {};
-        var a = (qstr[0] === '?' ? qstr.substr(1) : qstr).split('&');
+        var a = (qstr[0] === '?' ? qstr.substr(1) : qstr)
+            .split('&');
         for (var i = 0; i < a.length; i++) {
             var b = a[i].split('=');
             query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
@@ -1560,11 +1574,11 @@ var TigerJS = function () {
      @return {Object} Object Hash using the first object as keys and the second as values.
      
      */
-    this.hash = function (keys, val) {
+    this.hash = function(keys, val) {
         var i = T.Iterator(keys),
-                j = T.Iterator(val),
-                o = {};
-        i.foward_iterator(function (v) {
+            j = T.Iterator(val),
+            o = {};
+        i.foward_iterator(function(v) {
 
             o[v] = j.size() && j[i.key] ? j[i.key] : true; //put in the keys and values
 
@@ -1684,9 +1698,9 @@ var TigerJS = function () {
      *   </pre>
      */
 
-    this.chain = function (var_args) {
+    this.chain = function(var_args) {
         var _arg = arguments;
-        return new (function () {
+        return new(function() {
 
             this.fnIterator = T.Iterator();
             this.halt = false;
@@ -1701,7 +1715,7 @@ var TigerJS = function () {
 
 
 
-            this.setPauseEventCallBack = function (Func) { //stop and reset the queue
+            this.setPauseEventCallBack = function(Func) { //stop and reset the queue
                 this.pauseEventFunction = Func;
 
             };
@@ -1709,7 +1723,7 @@ var TigerJS = function () {
              *@ignore
              * Stop the execution of the queued function and resets the queue internal pointer to the top
              */
-            this.stop = function () { //stop and reset the queue
+            this.stop = function() { //stop and reset the queue
 
                 this.halt = false;
                 this.i = 0;
@@ -1719,7 +1733,7 @@ var TigerJS = function () {
              * Resume a paused queue
              */
 
-            this.resume = function () { //resume a paused queue
+            this.resume = function() { //resume a paused queue
 
                 if (this.i > 0) {
                     this.halt = false;
@@ -1730,7 +1744,7 @@ var TigerJS = function () {
             /** Temporarily pause the queue
              *@ignore
              */
-            this.pause = function () { //pause the queue
+            this.pause = function() { //pause the queue
                 this.halt = true;
             };
 
@@ -1744,7 +1758,7 @@ var TigerJS = function () {
              *@ignore
              */
 
-            this.run = function () { //run the queue
+            this.run = function() { //run the queue
 
                 if (this.halt) {
 
@@ -1756,11 +1770,11 @@ var TigerJS = function () {
 
                         //call each function reference in the object argument, passing arguments and bindng context as required
                         this.fnIterator[this.i].fn.apply(this.fnIterator[this.i].cn ?
-                                //set the execution context if provided or default to window
-                                this.fnIterator[this.i].cn :
-                                window,
-                                //pass extra arguments
-                                this.fnIterator[this.i].args);
+                            //set the execution context if provided or default to window
+                            this.fnIterator[this.i].cn :
+                            window,
+                            //pass extra arguments
+                            this.fnIterator[this.i].args);
 
                         if (T.has_key(this.fnIterator[this.i], "autoContinue") && this.fnIterator[this.i].autoContinue === false) {
                             // //if an object has an autoContinue  feild to false
@@ -1793,7 +1807,7 @@ var TigerJS = function () {
              * call with the next function index and the Chain Object
              *
              */
-            this.pausedCallbackCall = function () {
+            this.pausedCallbackCall = function() {
                 this.pauseEventFunction(this.i, this);
 
             };
@@ -1859,39 +1873,39 @@ var TigerJS = function () {
      //which is used in the executed method 'executeMe' to cancel the function call if it has been called upto four times
      
      */
-    this.delay = function (when, o, fn, data, periodic) {
+    this.delay = function(when, o, fn, data, periodic) {
 
         //ok a little idea from YUI here
         var cancelled = false,
-                method = fn,
-                o = o || window,
-                /**
-                 *@ignore
-                 */
+            method = fn,
+            o = o || window,
+            /**
+             *@ignore
+             */
 
-                wrapper = function () {
-                    if (!cancelled) {
+            wrapper = function() {
+                if (!cancelled) {
 
-                        if (T.type(method) === "String") { //string method name sent, check if it's an object property
+                    if (T.type(method) === "String") { //string method name sent, check if it's an object property
 
-                            if (!o[method])
-                                throw "" +
-                                        "InvalidMethodError <>  TigerJS.delay" +
-                                        "the execution context object doesn\'t contain a method named [\'" + method + "\']";
+                        if (!o[method])
+                            throw "" +
+                                "InvalidMethodError <>  TigerJS.delay" +
+                                "the execution context object doesn\'t contain a method named [\'" + method + "\']";
 
-                            o[method].apply(o, data);
-                        } else { // method wasn't string, asuume function
-                            method.apply(o, data);
-                        }
+                        o[method].apply(o, data);
+                    } else { // method wasn't string, asuume function
+                        method.apply(o, data);
                     }
-                },
-                time_id = (periodic) ? setInterval(wrapper, when) : setTimeout(wrapper, when);
+                }
+            },
+            time_id = (periodic) ? setInterval(wrapper, when) : setTimeout(wrapper, when);
 
-        return {// return object
+        return { // return object
             id: time_id, //timeout/interval id
             interval: periodic || false,
 
-            cancel: function () {
+            cancel: function() {
                 cancelled = true;
                 if (this.interval) {
                     clearInterval(this.time_id);
@@ -1911,10 +1925,13 @@ var TigerJS = function () {
      *  @return {DocumentFragnment} returns the created nodes in a DocumentFragment Object
      */
 
-    this.create = function (content) {
-        
-        return document.createRange().createContextualFragment? //return the created nodes
-         document.createRange().createContextualFragment(content): (new DOMParser()).parseFromString(content, 'text/html').body.firstChild; //return the created nodes
+    this.create = function(content) {
+        return document.createRange()
+            .createContextualFragment ? //return the created nodes
+            document.createRange()
+            .createContextualFragment(content) : (new DOMParser())
+            .parseFromString(content, 'text/html')
+            .body.firstChild; //return the created nodes
 
 
     };
@@ -1941,7 +1958,7 @@ var TigerJS = function () {
      * //The returned nodelist is an instance of TigerJS.nodes
      * var nodes = T.$c("class_a class_b class_c", anElementReference;)
      */
-    this.$c = function (classes, pivotNode) {
+    this.$c = function(classes, pivotNode) {
 
         if (pivotNode && pivotNode.nodeType) { //we should have a valid reference
 
@@ -1961,15 +1978,15 @@ var TigerJS = function () {
     };
 
     /* hasOwnPropertyEmulation */
-    this.addHasOwnProperty = (function () {
-        var hop = function (prop) {
+    this.addHasOwnProperty = (function() {
+        var hop = function(prop) {
             if (typeof this === 'undefined' || typeof prop === 'undefined' ||
-                    typeof this[prop] === 'undefined') {
+                typeof this[prop] === 'undefined') {
                 return false;
             }
             return this[prop] !== this.constructor.prototype[prop];
         };
-        return function (obj) {
+        return function(obj) {
             try {
                 obj.prototype.hasOwnProperty = hop;
                 if (typeof obj.hasOwnProperty !== 'function') {
@@ -1982,7 +1999,7 @@ var TigerJS = function () {
     }());
 
 
-    this.__to_string = function () {
+    this.__to_string = function() {
         return "[object TigerJS]";
 
     };
@@ -2009,7 +2026,7 @@ T.ERROR_REPORTING = window.location.href.indexOf("localhost") > -1 || window.loc
 /**
  *@ignore
  */
-window.onerror = function (err, file, line) {
+window.onerror = function(err, file, line) {
     //error messages, format should be something like this
     //Error_type <> Error_Description
     if (T.ERROR_REPORTING) {
@@ -2053,7 +2070,7 @@ window.onerror = function (err, file, line) {
  XMLDoc.appendChild(newEle)
  */
 
-TigerJS.create_xml = function () {
+TigerJS.create_xml = function() {
     return document.implementation.createDocument("", "", null);
 };
 
@@ -2082,8 +2099,9 @@ TigerJS.create_xml = function () {
  
  */
 
-TigerJS.save_xml = function (node) {
-    var nodedata = ((new XMLSerializer()).serializeToString(node));
+TigerJS.save_xml = function(node) {
+    var nodedata = ((new XMLSerializer())
+        .serializeToString(node));
 
     //if its an XML document and not just a node
     //append the XML prolog
@@ -2101,7 +2119,7 @@ TigerJS.save_xml = function (node) {
  * @function
  * @return XML Document
  */
-TigerJS.parse_xml = function (data) {
+TigerJS.parse_xml = function(data) {
     try {
 
         var parser = new DOMParser();
@@ -2126,11 +2144,11 @@ TigerJS.parse_xml = function (data) {
  *
  *    T.add_css_rules(CssSelector, rules);
  */
-TigerJS.add_css_rules = function (selector, rules) {
+TigerJS.add_css_rules = function(selector, rules) {
 
     //get our tiger stylesheet
     var sheet = document.styleSheets,
-            i;
+        i;
     for (i = 0; i < sheet.length; i++) {
 
         if (sheet[i].href && sheet[i].href.indexOf("tiger.min") > 1) {
@@ -2166,7 +2184,7 @@ TigerJS.add_css_rules = function (selector, rules) {
  
  *
  */
-TigerJS.add_css_blob = function (CSSBlob) {
+TigerJS.add_css_blob = function(CSSBlob) {
 
     //>Dump a blob of style declarations to the document
     var style = document.createElement('style');

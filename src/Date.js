@@ -77,6 +77,7 @@ TigerJS.Date = function (date) {
         this.getLocale = function () {
             return current_locale;
         };
+        
         /**
          * Set the current locale identifier, future releases of this library would support many more locales
          * @param {String} [locale_id] The locale to set one of: 

@@ -34,95 +34,6 @@
     </div>
     <ul class="list">
     
-        <li class="item" data-name="String">
-            <span class="title">
-                <a href="String.html">String</a>
-                
-                <span class="static">static</span>
-                
-            </span>
-            <ul class="members itemMembers">
-            
-            </ul>
-            <ul class="typedefs itemMembers">
-            
-            </ul>
-            <ul class="methods itemMembers">
-            
-            <span class="subtitle">Methods</span>
-            
-                <li data-name="String#count_ch"><a href="String.html#count_ch">count_ch</a></li>
-            
-                <li data-name="String#delete_ch"><a href="String.html#delete_ch">delete_ch</a></li>
-            
-                <li data-name="String#drizzle"><a href="String.html#drizzle">drizzle</a></li>
-            
-                <li data-name="String#ends_with"><a href="String.html#ends_with">ends_with</a></li>
-            
-                <li data-name="String#escQuote"><a href="String.html#escQuote">escQuote</a></li>
-            
-                <li data-name="String#explode"><a href="String.html#explode">explode</a></li>
-            
-                <li data-name="String#find_first_not_of"><a href="String.html#find_first_not_of">find_first_not_of</a></li>
-            
-                <li data-name="String#find_first_of"><a href="String.html#find_first_of">find_first_of</a></li>
-            
-                <li data-name="String#find_last_not_of"><a href="String.html#find_last_not_of">find_last_not_of</a></li>
-            
-                <li data-name="String#find_last_of"><a href="String.html#find_last_of">find_last_of</a></li>
-            
-                <li data-name="String#html_chars"><a href="String.html#html_chars">html_chars</a></li>
-            
-                <li data-name="String#implode"><a href="String.html#implode">implode</a></li>
-            
-                <li data-name="String#insert_ch"><a href="String.html#insert_ch">insert_ch</a></li>
-            
-                <li data-name="String#insert_n"><a href="String.html#insert_n">insert_n</a></li>
-            
-                <li data-name="String#interpolate"><a href="String.html#interpolate">interpolate</a></li>
-            
-                <li data-name="String#quotemeta"><a href="String.html#quotemeta">quotemeta</a></li>
-            
-                <li data-name="String#rotX"><a href="String.html#rotX">rotX</a></li>
-            
-                <li data-name="String#sprintf"><a href="String.html#sprintf">sprintf</a></li>
-            
-                <li data-name="String#startsWith"><a href="String.html#startsWith">startsWith</a></li>
-            
-                <li data-name="String#str_pad"><a href="String.html#str_pad">str_pad</a></li>
-            
-                <li data-name="String#str_repeat"><a href="String.html#str_repeat">str_repeat</a></li>
-            
-                <li data-name="String#str_replace"><a href="String.html#str_replace">str_replace</a></li>
-            
-                <li data-name="String#stripos"><a href="String.html#stripos">stripos</a></li>
-            
-                <li data-name="String#stristr"><a href="String.html#stristr">stristr</a></li>
-            
-                <li data-name="String#strpos"><a href="String.html#strpos">strpos</a></li>
-            
-                <li data-name="String#strripos"><a href="String.html#strripos">strripos</a></li>
-            
-                <li data-name="String#strrpos"><a href="String.html#strrpos">strrpos</a></li>
-            
-                <li data-name="String#strstr"><a href="String.html#strstr">strstr</a></li>
-            
-                <li data-name="String#substr_count"><a href="String.html#substr_count">substr_count</a></li>
-            
-                <li data-name="String#to_case"><a href="String.html#to_case">to_case</a></li>
-            
-                <li data-name="String#trim"><a href="String.html#trim">trim</a></li>
-            
-                <li data-name="String#truncate"><a href="String.html#truncate">truncate</a></li>
-            
-                <li data-name="String#unEscQuote"><a href="String.html#unEscQuote">unEscQuote</a></li>
-            
-            </ul>
-            <ul class="events itemMembers">
-            
-            </ul>
-        </li>
-    
         <li class="item" data-name="T">
             <span class="title">
                 <a href="T.html">T</a>
@@ -1657,30 +1568,30 @@
  *
  */
 
-TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
+TigerJS.UI.Widget.FileUploadWidget = function(configurationOptions) {
 
     function __fileUploadWidget(configurationOptions) {
 
         var fileCategory = configurationOptions &amp;&amp; configurationOptions.accept ?
-                configurationOptions.accept : "all",
-                progBarColor = configurationOptions &amp;&amp; configurationOptions.progressColor ?
-                configurationOptions.progressColor : "#00008B",
-                isDropZoneAllowed = configurationOptions &amp;&amp; configurationOptions.noDropZone ?
-                !configurationOptions.noDropZone : true,
-                actionURL = configurationOptions &amp;&amp; configurationOptions.action ?
-                configurationOptions.action : false,
-                successCB = configurationOptions &amp;&amp; configurationOptions.onsuccess ?
-                configurationOptions.onsuccess : false,
-                uploadStartCallback = configurationOptions &amp;&amp; configurationOptions.onuploadStart ?
-                configurationOptions.onuploadStart : false,
-                onuploadComplete = configurationOptions &amp;&amp; configurationOptions.onuploadComplete ?
-                configurationOptions.onuploadComplete : false,
-                errorCallback = configurationOptions &amp;&amp; configurationOptions.onerror ?
-                configurationOptions.onerror : false,
-                uploadArgs = configurationOptions &amp;&amp; configurationOptions.args ?
-                configurationOptions.args : false,
-                uploadLimit = configurationOptions.uploadLimit &amp;&amp; parseInt(configurationOptions.uploadLimit) &lt;= 300 ?
-                configurationOptions.uploadLimit : 300;
+            configurationOptions.accept : "all",
+            progBarColor = configurationOptions &amp;&amp; configurationOptions.progressColor ?
+            configurationOptions.progressColor : "#00008B",
+            isDropZoneAllowed = configurationOptions &amp;&amp; configurationOptions.noDropZone ?
+            !configurationOptions.noDropZone : true,
+            actionURL = configurationOptions &amp;&amp; configurationOptions.action ?
+            configurationOptions.action : false,
+            successCB = configurationOptions &amp;&amp; configurationOptions.onsuccess ?
+            configurationOptions.onsuccess : false,
+            uploadStartCallback = configurationOptions &amp;&amp; configurationOptions.onuploadStart ?
+            configurationOptions.onuploadStart : false,
+            onuploadComplete = configurationOptions &amp;&amp; configurationOptions.onuploadComplete ?
+            configurationOptions.onuploadComplete : false,
+            errorCallback = configurationOptions &amp;&amp; configurationOptions.onerror ?
+            configurationOptions.onerror : false,
+            uploadArgs = configurationOptions &amp;&amp; configurationOptions.args ?
+            configurationOptions.args : false,
+            uploadLimit = configurationOptions.uploadLimit &amp;&amp; parseInt(configurationOptions.uploadLimit) &lt;= 300 ?
+            configurationOptions.uploadLimit : 300;
         //
         if (T.ua.isMOBILE)
             isDropZoneAllowed = false; //no drop zone needed on phone
@@ -1703,11 +1614,11 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
         //create the main element  container for the slider(s)
         var baseWidget = T.UI.Widget(),
-                fileFormats = {
-                    audio: [".mp3", ".ogg", ".wav", ".wma", ".amr"],
-                    video: [".mp4", ".ogg", ".webm", ".wmv", "3gp"],
-                    image: [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff"]
-                };
+            fileFormats = {
+                audio: [".mp3", ".ogg", ".wav", ".wma", ".amr"],
+                video: [".mp4", ".ogg", ".webm", ".wmv", "3gp"],
+                image: [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff"]
+            };
         ///////////////////////////////////////////////////////////////////////////
         //reset The familyId and instance Id for this Widget
         ///All Widgets in this library should have a family and instance ID
@@ -1715,14 +1626,14 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         baseWidget.FamilyID = "FileUploadWidget";
         if (T.globalWidgetCache[baseWidget.FamilyID]) {
             T.globalWidgetCache[baseWidget.FamilyID] =
-                    T.globalWidgetCache[baseWidget.FamilyID] += 1;
+                T.globalWidgetCache[baseWidget.FamilyID] += 1;
         } else {
             T.globalWidgetCache[baseWidget.FamilyID] = 1;
         }
 
         //Set the Instance Id for this  Widget Instance
         baseWidget.InstanceID = baseWidget.FamilyID +
-                ("%02X".sprintf(T.globalWidgetCache[baseWidget.FamilyID]));
+            ("%02X".sprintf(T.globalWidgetCache[baseWidget.FamilyID]));
 
         //set the widget's id to the instance id
         baseWidget._widgetElement.id = baseWidget.InstanceID;
@@ -1730,7 +1641,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
         baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
-        baseWidget._widgetElement.set_style({//style the container
+        baseWidget._widgetElement.set_style({ //style the container
             width: isDropZoneAllowed ? "95%" : "90%",
             backgroundColor: "#fff",
             textAlign: "center",
@@ -1761,13 +1672,13 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         });
         if (isDropZoneAllowed &amp;&amp; !T.ua.isMOBILE) {
             dz.innerHTML = "DROP FILES HERE OR";
-            dz.addEventListener("dragover", function (e) {
+            dz.addEventListener("dragover", function(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 e.dataTransfer.dropEffect = "link";
                 e.target.style.borderColor = "red";
             });
-            dz.addEventListener("drop", function (e) {
+            dz.addEventListener("drop", function(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 e.target.style.borderColor = "#ccc";
@@ -1791,7 +1702,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             cursor: "pointer",
             transition: "all .5s"
         });
-        uButton.on("mouseover touchstart", function () {
+        uButton.on("mouseover touchstart", function() {
             this.target.set_style({
                 backgroundColor: "#fff",
                 color: "#666"
@@ -1799,7 +1710,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         });
         //
 
-        uButton.on("mouseout touchend touchcancel", function () {
+        uButton.on("mouseout touchend touchcancel", function() {
             this.target.set_style({
                 backgroundColor: "#666",
                 color: "#ccc"
@@ -1807,7 +1718,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         });
         //
 
-        uButton.on("click", function () { //create the file selection dialog when we click the button
+        uButton.on("click", function() { //create the file selection dialog when we click the button
             if (filePreparationInProgress)
                 return; //still working on previous files
 
@@ -1824,7 +1735,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             //IE 10 sometimes doesnt fire the change event as at when due soo..
             if (fSelector.attachEvent)
                 fSelector.addEventListener("input",
-                        preProcessFiles, false);
+                    preProcessFiles, false);
             else
                 fSelector.addEventListener("change", preProcessFiles, false);
         });
@@ -1834,9 +1745,9 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         //
         //
         var filePreparationInProgress = false,
-                noOfFilesToUpload = 0, //total number of files for upload in the current session
-                preProcessingCount = 0, // how many files have been succesfully preprocessed
-                compositeFileStructure = {}; //would contain all the file properties after filtering
+            noOfFilesToUpload = 0, //total number of files for upload in the current session
+            preProcessingCount = 0, // how many files have been succesfully preprocessed
+            compositeFileStructure = {}; //would contain all the file properties after filtering
         var currentFilesForUploadIndex = 0;
         var fileUploadInProgress = null;
         var fileId = []; //global fileID for tracking purposes
@@ -1846,9 +1757,8 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         var fileReaderInstances = T.Iterator();
         var timeout;
         var uploadErrorFlag = 0,
-                upload_session_id = [], //unique session id
-                sizeLimit = 0;
-        ;
+            upload_session_id = [], //unique session id
+            sizeLimit = 0;;
 
 
         var preparing__ = T.$(document.createElement("SPAN"));
@@ -1870,7 +1780,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                         style: "scale-lt",
                         timer: "3"
 
-                                //
+                        //
                     });
                     notifyW.append_to_element(document.body);
                     notifyW.Node.innerHTML = "Upload in progress!!";
@@ -1994,9 +1904,9 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                     //hair pulling days /=
 
                     var chunk1 = [0, Math.floor(compositeFileStructure[i].buffer.byteLength / 4)],
-                            chunk2 = [(chunk1[1]), chunk1[1] * 2],
-                            chunk3 = [(chunk2[1]), chunk2[1] + (chunk2[1] * .5)],
-                            chunk4 = [(chunk3[1]), compositeFileStructure[i].buffer.byteLength];
+                        chunk2 = [(chunk1[1]), chunk1[1] * 2],
+                        chunk3 = [(chunk2[1]), chunk2[1] + (chunk2[1] * .5)],
+                        chunk4 = [(chunk3[1]), compositeFileStructure[i].buffer.byteLength];
 
                     //seperate the current ArrayBuffer into chunks based on the calulated offsets
                     fileBufferChunks[fileBufferChunks.length] = [
@@ -2142,7 +2052,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                 });
 
                 worker_array[j].onmessage = updateProgressBar;
-                worker_array[j].onerror = function (e) {
+                worker_array[j].onerror = function(e) {
                     showErrorAndReset();
 
                 };
@@ -2184,7 +2094,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             progText.className += " __smartProgressText";
             progText.id = compositeFileStructure[fileIndex].name; //set the id to the file its representing
             progText.innerHTML = compositeFileStructure[fileIndex].name.truncate(60) + " &amp;nbsp; &amp;nbsp;&lt;b>" +
-                    "%.1f".sprintf((compositeFileStructure[fileIndex].size / 1024) / 1024) + "MB&lt;/b>";
+                "%.1f".sprintf((compositeFileStructure[fileIndex].size / 1024) / 1024) + "MB&lt;/b>";
 
             var progLevel = T.$(document.createElement("SPAN"));
             progLevel.set_style({
@@ -2297,13 +2207,15 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             for (var i = 0; i &lt; progress_bar.childNodes.length; i++)
                 p += parseFloat(progress_bar.childNodes[i].style.width);
 
-            var progress_percent_text = T.$(compositeFileStructure[currentFilesForUploadIndex].name).first_element_child()._nextElementSibling();
+            var progress_percent_text = T.$(compositeFileStructure[currentFilesForUploadIndex].name)
+                .first_element_child()
+                ._nextElementSibling();
             progress_percent_text.innerHTML = (p / 4) + "%";
 
             if (p &lt; 100)
-                setTimeout(arguments.callee, 100);
-//            else
-//                progress_percent_text.innerHTML = "100%";
+                setTimeout(progress_text_updater, 100);
+            //            else
+            //                progress_percent_text.innerHTML = "100%";
 
 
 
@@ -2323,7 +2235,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                     style: "scale-lt",
                     timer: "7"
 
-                            //
+                    //
                 });
                 notifyW.append_to_element(document.body);
                 notifyW.Node.innerHTML = error_string || "File upload interrupted!!";
@@ -2341,9 +2253,10 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                 for (var i = 0; i &lt; fileBufferChunks.length; i++) {
 
                     baseWidget._widgetElement.
-                            removeChild(document.getElementById(compositeFileStructure[i]["id"]));
+                    removeChild(document.getElementById(compositeFileStructure[i]["id"]));
                 }
-                T.$c("__smartProgressText")._destroy(); //destroy the text nodes next to the bars
+                T.$c("__smartProgressText")
+                    ._destroy(); //destroy the text nodes next to the bars
 
                 //reset all variables
                 fileUploadInProgress = null; //reset all variables for a fresh upload list
@@ -2395,7 +2308,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                     xhr.open('POST', T.library_installation_path + "/asset/php/postUploadedFilesToUserScript.php?" + userScript + "&amp;sess_id=" + upload_session_id, true);
                 }
 
-                xhr.onload = function (e) { //well that went well
+                xhr.onload = function(e) { //well that went well
 
                     if (this.responseText.indexOf("Curl error:") === -1) { //call user success func
                         if (successCB)
@@ -2410,7 +2323,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
                 };
 
-                xhr.onerror = function (e) {
+                xhr.onerror = function(e) {
                     showErrorAndReset();
                 };
 
@@ -2422,7 +2335,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         }
 
         //->       //ovveride toString
-        baseWidget._widgetElement.__to_string = function () {
+        baseWidget._widgetElement.__to_string = function() {
             return "[object TigerJS.FileUploadWidget]";
         };
 
@@ -2444,7 +2357,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Fri Jun 16 2017 04:12:14 GMT+0100 (W. Central Africa Standard Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Sat Aug 05 2017 18:24:35 GMT+0100 (WAT)
         </footer>
     </div>
 </div>

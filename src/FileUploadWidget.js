@@ -62,30 +62,30 @@
  *
  */
 
-TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
+TigerJS.UI.Widget.FileUploadWidget = function(configurationOptions) {
 
     function __fileUploadWidget(configurationOptions) {
 
         var fileCategory = configurationOptions && configurationOptions.accept ?
-                configurationOptions.accept : "all",
-                progBarColor = configurationOptions && configurationOptions.progressColor ?
-                configurationOptions.progressColor : "#00008B",
-                isDropZoneAllowed = configurationOptions && configurationOptions.noDropZone ?
-                !configurationOptions.noDropZone : true,
-                actionURL = configurationOptions && configurationOptions.action ?
-                configurationOptions.action : false,
-                successCB = configurationOptions && configurationOptions.onsuccess ?
-                configurationOptions.onsuccess : false,
-                uploadStartCallback = configurationOptions && configurationOptions.onuploadStart ?
-                configurationOptions.onuploadStart : false,
-                onuploadComplete = configurationOptions && configurationOptions.onuploadComplete ?
-                configurationOptions.onuploadComplete : false,
-                errorCallback = configurationOptions && configurationOptions.onerror ?
-                configurationOptions.onerror : false,
-                uploadArgs = configurationOptions && configurationOptions.args ?
-                configurationOptions.args : false,
-                uploadLimit = configurationOptions.uploadLimit && parseInt(configurationOptions.uploadLimit) <= 300 ?
-                configurationOptions.uploadLimit : 300;
+            configurationOptions.accept : "all",
+            progBarColor = configurationOptions && configurationOptions.progressColor ?
+            configurationOptions.progressColor : "#00008B",
+            isDropZoneAllowed = configurationOptions && configurationOptions.noDropZone ?
+            !configurationOptions.noDropZone : true,
+            actionURL = configurationOptions && configurationOptions.action ?
+            configurationOptions.action : false,
+            successCB = configurationOptions && configurationOptions.onsuccess ?
+            configurationOptions.onsuccess : false,
+            uploadStartCallback = configurationOptions && configurationOptions.onuploadStart ?
+            configurationOptions.onuploadStart : false,
+            onuploadComplete = configurationOptions && configurationOptions.onuploadComplete ?
+            configurationOptions.onuploadComplete : false,
+            errorCallback = configurationOptions && configurationOptions.onerror ?
+            configurationOptions.onerror : false,
+            uploadArgs = configurationOptions && configurationOptions.args ?
+            configurationOptions.args : false,
+            uploadLimit = configurationOptions.uploadLimit && parseInt(configurationOptions.uploadLimit) <= 300 ?
+            configurationOptions.uploadLimit : 300;
         //
         if (T.ua.isMOBILE)
             isDropZoneAllowed = false; //no drop zone needed on phone
@@ -108,11 +108,11 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
         //create the main element  container for the slider(s)
         var baseWidget = T.UI.Widget(),
-                fileFormats = {
-                    audio: [".mp3", ".ogg", ".wav", ".wma", ".amr"],
-                    video: [".mp4", ".ogg", ".webm", ".wmv", "3gp"],
-                    image: [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff"]
-                };
+            fileFormats = {
+                audio: [".mp3", ".ogg", ".wav", ".wma", ".amr"],
+                video: [".mp4", ".ogg", ".webm", ".wmv", "3gp"],
+                image: [".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff"]
+            };
         ///////////////////////////////////////////////////////////////////////////
         //reset The familyId and instance Id for this Widget
         ///All Widgets in this library should have a family and instance ID
@@ -120,14 +120,14 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         baseWidget.FamilyID = "FileUploadWidget";
         if (T.globalWidgetCache[baseWidget.FamilyID]) {
             T.globalWidgetCache[baseWidget.FamilyID] =
-                    T.globalWidgetCache[baseWidget.FamilyID] += 1;
+                T.globalWidgetCache[baseWidget.FamilyID] += 1;
         } else {
             T.globalWidgetCache[baseWidget.FamilyID] = 1;
         }
 
         //Set the Instance Id for this  Widget Instance
         baseWidget.InstanceID = baseWidget.FamilyID +
-                ("%02X".sprintf(T.globalWidgetCache[baseWidget.FamilyID]));
+            ("%02X".sprintf(T.globalWidgetCache[baseWidget.FamilyID]));
 
         //set the widget's id to the instance id
         baseWidget._widgetElement.id = baseWidget.InstanceID;
@@ -135,7 +135,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////
         //the _widgetElement is the actual DOM Element so..
         baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);
-        baseWidget._widgetElement.set_style({//style the container
+        baseWidget._widgetElement.set_style({ //style the container
             width: isDropZoneAllowed ? "95%" : "90%",
             backgroundColor: "#fff",
             textAlign: "center",
@@ -166,13 +166,13 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         });
         if (isDropZoneAllowed && !T.ua.isMOBILE) {
             dz.innerHTML = "DROP FILES HERE OR";
-            dz.addEventListener("dragover", function (e) {
+            dz.addEventListener("dragover", function(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 e.dataTransfer.dropEffect = "link";
                 e.target.style.borderColor = "red";
             });
-            dz.addEventListener("drop", function (e) {
+            dz.addEventListener("drop", function(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 e.target.style.borderColor = "#ccc";
@@ -196,7 +196,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             cursor: "pointer",
             transition: "all .5s"
         });
-        uButton.on("mouseover touchstart", function () {
+        uButton.on("mouseover touchstart", function() {
             this.target.set_style({
                 backgroundColor: "#fff",
                 color: "#666"
@@ -204,7 +204,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         });
         //
 
-        uButton.on("mouseout touchend touchcancel", function () {
+        uButton.on("mouseout touchend touchcancel", function() {
             this.target.set_style({
                 backgroundColor: "#666",
                 color: "#ccc"
@@ -212,7 +212,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         });
         //
 
-        uButton.on("click", function () { //create the file selection dialog when we click the button
+        uButton.on("click", function() { //create the file selection dialog when we click the button
             if (filePreparationInProgress)
                 return; //still working on previous files
 
@@ -229,7 +229,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             //IE 10 sometimes doesnt fire the change event as at when due soo..
             if (fSelector.attachEvent)
                 fSelector.addEventListener("input",
-                        preProcessFiles, false);
+                    preProcessFiles, false);
             else
                 fSelector.addEventListener("change", preProcessFiles, false);
         });
@@ -239,9 +239,9 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         //
         //
         var filePreparationInProgress = false,
-                noOfFilesToUpload = 0, //total number of files for upload in the current session
-                preProcessingCount = 0, // how many files have been succesfully preprocessed
-                compositeFileStructure = {}; //would contain all the file properties after filtering
+            noOfFilesToUpload = 0, //total number of files for upload in the current session
+            preProcessingCount = 0, // how many files have been succesfully preprocessed
+            compositeFileStructure = {}; //would contain all the file properties after filtering
         var currentFilesForUploadIndex = 0;
         var fileUploadInProgress = null;
         var fileId = []; //global fileID for tracking purposes
@@ -251,9 +251,8 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         var fileReaderInstances = T.Iterator();
         var timeout;
         var uploadErrorFlag = 0,
-                upload_session_id = [], //unique session id
-                sizeLimit = 0;
-        ;
+            upload_session_id = [], //unique session id
+            sizeLimit = 0;;
 
 
         var preparing__ = T.$(document.createElement("SPAN"));
@@ -275,7 +274,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                         style: "scale-lt",
                         timer: "3"
 
-                                //
+                        //
                     });
                     notifyW.append_to_element(document.body);
                     notifyW.Node.innerHTML = "Upload in progress!!";
@@ -399,9 +398,9 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                     //hair pulling days /=
 
                     var chunk1 = [0, Math.floor(compositeFileStructure[i].buffer.byteLength / 4)],
-                            chunk2 = [(chunk1[1]), chunk1[1] * 2],
-                            chunk3 = [(chunk2[1]), chunk2[1] + (chunk2[1] * .5)],
-                            chunk4 = [(chunk3[1]), compositeFileStructure[i].buffer.byteLength];
+                        chunk2 = [(chunk1[1]), chunk1[1] * 2],
+                        chunk3 = [(chunk2[1]), chunk2[1] + (chunk2[1] * .5)],
+                        chunk4 = [(chunk3[1]), compositeFileStructure[i].buffer.byteLength];
 
                     //seperate the current ArrayBuffer into chunks based on the calulated offsets
                     fileBufferChunks[fileBufferChunks.length] = [
@@ -547,7 +546,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                 });
 
                 worker_array[j].onmessage = updateProgressBar;
-                worker_array[j].onerror = function (e) {
+                worker_array[j].onerror = function(e) {
                     showErrorAndReset();
 
                 };
@@ -589,7 +588,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             progText.className += " __smartProgressText";
             progText.id = compositeFileStructure[fileIndex].name; //set the id to the file its representing
             progText.innerHTML = compositeFileStructure[fileIndex].name.truncate(60) + " &nbsp; &nbsp;<b>" +
-                    "%.1f".sprintf((compositeFileStructure[fileIndex].size / 1024) / 1024) + "MB</b>";
+                "%.1f".sprintf((compositeFileStructure[fileIndex].size / 1024) / 1024) + "MB</b>";
 
             var progLevel = T.$(document.createElement("SPAN"));
             progLevel.set_style({
@@ -702,13 +701,15 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
             for (var i = 0; i < progress_bar.childNodes.length; i++)
                 p += parseFloat(progress_bar.childNodes[i].style.width);
 
-            var progress_percent_text = T.$(compositeFileStructure[currentFilesForUploadIndex].name).first_element_child()._nextElementSibling();
+            var progress_percent_text = T.$(compositeFileStructure[currentFilesForUploadIndex].name)
+                .first_element_child()
+                ._nextElementSibling();
             progress_percent_text.innerHTML = (p / 4) + "%";
 
             if (p < 100)
-                setTimeout(arguments.callee, 100);
-//            else
-//                progress_percent_text.innerHTML = "100%";
+                setTimeout(progress_text_updater, 100);
+            //            else
+            //                progress_percent_text.innerHTML = "100%";
 
 
 
@@ -728,7 +729,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                     style: "scale-lt",
                     timer: "7"
 
-                            //
+                    //
                 });
                 notifyW.append_to_element(document.body);
                 notifyW.Node.innerHTML = error_string || "File upload interrupted!!";
@@ -746,9 +747,10 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                 for (var i = 0; i < fileBufferChunks.length; i++) {
 
                     baseWidget._widgetElement.
-                            removeChild(document.getElementById(compositeFileStructure[i]["id"]));
+                    removeChild(document.getElementById(compositeFileStructure[i]["id"]));
                 }
-                T.$c("__smartProgressText")._destroy(); //destroy the text nodes next to the bars
+                T.$c("__smartProgressText")
+                    ._destroy(); //destroy the text nodes next to the bars
 
                 //reset all variables
                 fileUploadInProgress = null; //reset all variables for a fresh upload list
@@ -800,7 +802,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
                     xhr.open('POST', T.library_installation_path + "/asset/php/postUploadedFilesToUserScript.php?" + userScript + "&sess_id=" + upload_session_id, true);
                 }
 
-                xhr.onload = function (e) { //well that went well
+                xhr.onload = function(e) { //well that went well
 
                     if (this.responseText.indexOf("Curl error:") === -1) { //call user success func
                         if (successCB)
@@ -815,7 +817,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
 
                 };
 
-                xhr.onerror = function (e) {
+                xhr.onerror = function(e) {
                     showErrorAndReset();
                 };
 
@@ -827,7 +829,7 @@ TigerJS.UI.Widget.FileUploadWidget = function (configurationOptions) {
         }
 
         //->       //ovveride toString
-        baseWidget._widgetElement.__to_string = function () {
+        baseWidget._widgetElement.__to_string = function() {
             return "[object TigerJS.FileUploadWidget]";
         };
 

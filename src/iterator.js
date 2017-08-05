@@ -1,4 +1,4 @@
-/* global TigerJS, T */
+ /* global TigerJS, T */
 
 /*   This file is part of the TigerJS Javascript Library @@https://sourceforge.net/p/tigerjs> */
 /**
@@ -649,7 +649,7 @@ TigerJS.Iterator = function (elements) {
          *  This function resets the Iterator pointer, back to the top.
          *  @param {Number} offset Integer Offset to begin extraction
          *  If <i>offset</i> is non-negative, the sequence will start at that offset in the Iterator.
-         *  @param {Number] [length} length If <i>length</i> is given and is positive, then the sequence will have that many elements in it.
+         *  @param {Number} {length} length If <i>length</i> is given and is positive, then the sequence will have that many elements in it.
          *                        If <i>length</i> is given and is negative then the sequence will stop that many elements from the end of the Iterator. If it is omitted,
          *                        then the sequence will have everything from offset up until the end of the array.
          *  @function
@@ -1477,7 +1477,7 @@ TigerJS.Iterator = function (elements) {
                         re.push(dt[i]);
                     }
                 }
-            } while (indx_arr.next())
+            } while (indx_arr.next());
 
             return re;
         };
