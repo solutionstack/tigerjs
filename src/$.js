@@ -723,14 +723,15 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      */
     this.el.set_text = function(content) {
-
         if ('textContent' in this) {
             this.textContent = content;
         } else if ('innerText' in this) {
             this.innerText = content;
         } else if ('nodeValue' in this) {
             this.nodeValue = content;
-        } else if ('value' in this) {
+        } 
+        
+        if ('value' in this  && 'type' in this) { //a seperate condition for form elements
             this.value = content;
         }
         return this;
@@ -953,12 +954,12 @@ TigerJS.$ = function(el_) {
 
     this.el.set_attr = function(attrMap) {
         for (var i in attrMap) {
+            
             if (i === 'style') // CSS style declarations found
             {
 
-                var s = attrMap[i].trim('BOTH')
-                    .
-                split(/\s*(?::|;)\s*/); //parse out each style rule, this would parse out the
+                var s = attrMap[i].trim('BOTH').split(/\s*(?::|;)\s*/); 
+                ////parse out each style rule, this would parse out the
                 //rules in such a way that the first index of the array
                 //would contain the first css rule name e.g. color
                 //the next index would contain the rule value e.g. #ffffff
@@ -1092,15 +1093,16 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#destroy
      * @function
      * @type TigerJS.$
-     * @return The removed child node, which could be later re-inserted later
+     * @return The removed child node, which could be later re-inserted later, or $this object if the node could not be emoved
      */
     this.el.destroy = function() {
         this.remove_child_nodes();
         try {
-            return T.$((this.parentNode.removeChild(this)));
+            var r =  T.$((this.parentNode.removeChild(this)));
         } catch (e) {
 
         }
+        return r || this;
     };
     /**
      * Togggles the visibility of the Element,if its visible it renders it invisible

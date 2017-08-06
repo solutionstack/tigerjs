@@ -1,4 +1,4 @@
- /* global TigerJS, T */
+/* global TigerJS, T */
 
 /*   This file is part of the TigerJS Javascript Library @@https://sourceforge.net/p/tigerjs> */
 /**
@@ -789,13 +789,13 @@ TigerJS.Iterator = function (elements) {
         /**
          * Alias of TigerJS.Iterator#indexOf
          * @name TigerJS.Iterator#index_of
-          * @param {Mixed} x The item to serach for
+         * @param {Mixed} x The item to serach for
          * @function
          */
-        this.obj.index_of = function(x){
+        this.obj.index_of = function (x) {
             return this.indexOf(x);
         } //migrating;
-        
+
         /**
          * Assuming this Iterator is made up of strings, this method returns the first index
          * that contains the argument as a substring
@@ -1525,13 +1525,14 @@ TigerJS.Iterator = function (elements) {
          * to use manual loops, the Iterator instance is passed as an execution context to the call-back
          * @param {Function} cb function to accept each element
          * @param {Number} jump Optional argument if given indicates the number of junps to take while moving foward
+         * @param {Array} extra_args An array of extra arguments to send to the callback
          *  @type TigerJS.Iterator
          *  @name TigerJS.Iterator#foward_iterator
          *  @function
          */
 
 
-        this.obj.foward_iterator = function (cb, jump) {
+        this.obj.foward_iterator = function (cb, jump, extra_args) {
             if (this.is_empty())
                 return this;
 
@@ -1548,7 +1549,7 @@ TigerJS.Iterator = function (elements) {
                 if (jump) {
                     this.key += jump - 1; //if we're incementing by a specific size
                 }
-                cb.call(this, this.current());
+                cb.apply(this, [this.current()].concat(extra_args || []));
                 ++this.key;
 
             } while (this.key < this.size());
@@ -1562,13 +1563,14 @@ TigerJS.Iterator = function (elements) {
          * to use manual loops,  the Iterator instance is passed as an execution context to the call-back
          * @param {Function} cb function to accept each element
          * @param {Number} jump Optional argument if given indicates the number of junps to take while moving backward
+         * @param {Array} extra_args An array of extra arguments to send to the callback
          *  @type TigerJS.Iterator
          *  @name TigerJS.Iterator#reverse_iterator
          *  @function
          */
 
 
-        this.obj.reverse_iterator = function (cb, jump) {
+        this.obj.reverse_iterator = function (cb, jump, extra_args) {
             if (this.is_empty())
                 return this;
 
@@ -1581,8 +1583,8 @@ TigerJS.Iterator = function (elements) {
             var _key = this.key;
             this.key = this.size() - 1;
             do {
+                cb.apply(this, [this.current()].concat(extra_args || []));
 
-                cb.call(this, this.current());
                 if (jump) {
                     this.key -= (jump - 1);
                 }
@@ -1599,13 +1601,14 @@ TigerJS.Iterator = function (elements) {
          *  Send each element of the iterator to a callback function, transversing the iterator in a random order.
          *  The Iterator instance is passed as an execution context to the call-back
          * @param {Function} cb function to accept each random element
+         * @param {Array} extra_args An array of extra arguments to send to the callback
          *  @type TigerJS.Iterator
          *  @name TigerJS.Iterator#random_access_iterator
          *  @function
          */
 
 
-        this.obj.random_access_iterator = function (cb) {
+        this.obj.random_access_iterator = function (cb, extra_args) {
             if (this.is_empty())
                 return this;
 
@@ -1619,7 +1622,9 @@ TigerJS.Iterator = function (elements) {
                     r;
             do {
                 r = i.rand(); //get a random element
-                cb.call(this, r);
+                
+              
+                cb.apply(this, [r].concat(extra_args || [] ));
 
                 i.unset(i.indexOf(r));
             } while (i.size())

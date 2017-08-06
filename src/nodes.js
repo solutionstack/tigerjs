@@ -393,21 +393,23 @@ TigerJS.nodes = function(config, strictMatch) {
              *
              
              *  @name TigerJS.nodes#_attr
-             *@type String | null
+             *@type String | this
              */
             this.n._attr = function(name, value) {
-                var r = null;
+                var r ;
                 if (value) {
-                    this.foward_iterator(function(x) {
-
-                        x.set_attr({
-                            name: value
-                        });
-                    });
+                    this.foward_iterator(function(x, name, value) {
+                        
+                      var _arg = {};
+                      
+                      _arg[name] = value; //set the object key to the argument coming in
+                        x.set_attr( _arg);
+                        
+                    }, null, T.Iterator(arguments).to_array());
                 } else {
                     r = this[0].get_attr(name);
                 }
-                return r;
+                return r || this;;
             };
 
             /**
