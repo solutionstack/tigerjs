@@ -159,6 +159,15 @@ TigerJS.$ = function(el_) {
         return n;
     };
     /**
+     * Returns the parent node of thios element
+     * @function
+     * @return {TigerJS.$} The elements parent
+     */
+    this.el.parent = function() {
+
+        return T.$(this.parentNode);
+    };
+    /**
      * Returns Boolean 'true' if this element contains the argument element,
      * @function
      * else returns false
@@ -1216,7 +1225,7 @@ TigerJS.$ = function(el_) {
 
     this.el.get_data = function(name) {
 
-        if (this.attributes(("data-tigerjs-" + name)))
+        if (this.attributes["data-tigerjs-" + name])
             return this.getAttribute(("data-tigerjs-" + name));
         else return this.getAttribute(name);
     };
