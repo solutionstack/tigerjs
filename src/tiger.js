@@ -180,7 +180,7 @@ var TigerJS = function() {
                 "HTMLFontElement", "HTMLHRElement", "HTMLModElement", "HTMLAnchorElement", "HTMLImageElement", "HTMLObjectElement", "HTMLParamElement",
                 "HTMLAppletElement", "HTMLMapElement", "HTMLAreaElement", "HTMLScriptElement", "HTMLTableElement", "HTMLTableCaptionElement",
                 "HTMLTableColElement", "HTMLTableSectionElement", "HTMLTableRowElement", "HTMLTableCellElement", "HTMLFrameSetElement", "HTMLFrameElement",
-                "HTMLIFrameElement", "HTMLAudioElement", "HTMLCommandElement", "HTMLDetailsElement", "HTMLInputElement", "HTMLMeterElement", "HTMLLegendElement", "HTMLLIElement", "HTMLOutputElement", "HTMLSpanElement", "XMLDocument"
+                "HTMLIFrameElement", "HTMLAudioElement", "HTMLCommandElement", "HTMLDetailsElement", "HTMLInputElement", "HTMLMeterElement", "HTMLLegendElement", "HTMLLIElement", "HTMLOutputElement", "HTMLSpanElement", "XMLDocument", "HTMLDocument"
             ];
 
             var reg_exp = Object.prototype.toString.call(o)

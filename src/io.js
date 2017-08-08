@@ -72,8 +72,8 @@ TigerJS.io = function (configObj) {
                 default_uri_parts,
                 socket_timeout = 0, //time out for this instance: default, ->browser defaults
                 socket_timeout_counter = 0,
-                socket_timeout_counter_id; //setTimeoutId variable to timeout the connection
-
+                socket_timeout_counter_id, //setTimeoutId variable to timeout the connection
+                postDocumentDataCount = 0;
 
 
         if (!_object) {
@@ -425,7 +425,7 @@ TigerJS.io = function (configObj) {
                 throw new Error(err_str);
             }
             var dataType = T.type(data),
-                    i, j, postDocumentDataCount = 1;
+                    i, j;
 
 
             switch (dataType) {
@@ -437,12 +437,22 @@ TigerJS.io = function (configObj) {
 
 
                     break;
+                case "XMLDocument":
+
+                    this.postDataFeilds.append(postDocumentDataCount++, T.save_xml(data));
+
+
+                    break;
+
+                case "HTMLDocument":
+
+                    this.postDataFeilds.append(postDocumentDataCount++, data.documentElement.textContent);
+
+
+                    break;
 
                 case "Object":
-                    if (data.documentElement) { //its a document
-                        this.postDataFeilds.append(postDocumentDataCount++, data.documentElement.textContent);
 
-                    }
                     //else its a native object
                     for (i in data) {
                         if (data[i].nodeType) // a node refrenced in the object
@@ -454,7 +464,7 @@ TigerJS.io = function (configObj) {
                     }
 
                     break;
-                    
+
                 case "HTMLFormElement":
 
                     for (i = 0; i < data.elements.length; i++) {
@@ -527,6 +537,8 @@ TigerJS.io = function (configObj) {
                     i, j;
             this.postDataFeilds = new FormData();
 
+            if (data.nodeType && data.nodeType === 9)
+                this.postDataFeilds.append("serialized_canvas", data);
 
             switch (dataType) {
                 case "TigerJS.Map":
@@ -538,11 +550,22 @@ TigerJS.io = function (configObj) {
 
                     break;
 
-                case "Object":
-                    if (data.documentElement) { //its a document
-                        this.postDataFeilds.append("0", data.documentElement.textContent);
+                case "XMLDocument":
 
-                    }
+                    this.postDataFeilds.append(postDocumentDataCount++, T.save_xml(data));
+
+
+                    break;
+
+                case "HTMLDocument":
+
+                    this.postDataFeilds.append(postDocumentDataCount++, data.documentElement.textContent);
+
+
+                    break;
+
+                case "Object":
+
                     //else its a native object
                     for (i in data) {
                         if (data[i].nodeType) // a node refrenced in the object
@@ -579,7 +602,8 @@ TigerJS.io = function (configObj) {
                             }
                         }
 
-                    };
+                    }
+                    ;
                     break;
                 case "HTMLInputElement":
                     if (data.getAttribute("type") === "file") { //if its a file element
@@ -608,468 +632,468 @@ TigerJS.io = function (configObj) {
             }
             return this;
         }
-            ;
-            //see if we have any initial request data to append
-            if (configObj.postData) {
-                this.set_data_feilds(configObj.postData);
-            }
-            if (configObj.queryData) {
-                this.set_query_data(configObj.queryData);
-            }
+        ;
+        //see if we have any initial request data to append
+        if (configObj.postData) {
+            this.set_data_feilds(configObj.postData);
+        }
+        if (configObj.queryData) {
+            this.set_query_data(configObj.queryData);
+        }
 
-            /**
-             
-             *Abort the request
-             *@return {TigerJS.io}
-             */
-            this.abort = function () {
-                _object.abort();
-                return this;
-            };
-            ////////etag and if not match stuff, and last modified stuff
-            ///////////////////////////////////
-
-
-            /*
-             * @ignore
-             */
-            this.toString = function () {
-                return "[object TigerJS.io]";
-            };
-
+        /**
+         
+         *Abort the request
+         *@return {TigerJS.io}
+         */
+        this.abort = function () {
+            _object.abort();
+            return this;
         };
-        return new rval(configObj); // strictly no need for new keyword by user
+        ////////etag and if not match stuff, and last modified stuff
+        ///////////////////////////////////
+
+
+        /*
+         * @ignore
+         */
+        this.toString = function () {
+            return "[object TigerJS.io]";
+        };
+
     };
+    return new rval(configObj); // strictly no need for new keyword by user
+};
 
-    /**
-     *
-     * @class
-     * The Serial request objects enables, the execution of multiple
-     * request that are guranted to Run in sequence, each subsequent request are only executed on completion of the previous.
-     * An operationComplete event is fired as each request is completed, and a complete event is fired
-     * when all requests are completed, each request also has full XHR2 event support so you could
-     * subscribe to all standard events
-     * @param {Function} load This function is called with two arguments, each time
-     * a Request in the list completes, the first argument is the text (load), and the second
-     * is the numerical index of the request on the queue stating from 0 (zero),
-     * <p/> When the queue runs to completion this function is called with the arguments
-     *  load("loadcomplete", -1)
-     *  @param {Function} error This function is called whenever an error occurs in the queue
-     *  It is called with three parameters
-     *  <br/>1. The error type This could be any of NETWORK_ERROR SERVER_ERROR or ObjectError
-     *  <br/>2. An Error code
-     *  <br/>3. The zero based index of the request that caused the error on the queue
-     *
-     *  @param {Function} progress This function would be called each time an upload progress
-     *  event occurs during a request, it would be called with the the percentage data uploaded,
-     *  and the index of the request
-     
-     *   @name TigerJS.io.SerialRequestQueue
-     */
-    TigerJS.io.SerialRequestQueue = function (load, error, progress) {
+/**
+ *
+ * @class
+ * The Serial request objects enables, the execution of multiple
+ * request that are guranted to Run in sequence, each subsequent request are only executed on completion of the previous.
+ * An operationComplete event is fired as each request is completed, and a complete event is fired
+ * when all requests are completed, each request also has full XHR2 event support so you could
+ * subscribe to all standard events
+ * @param {Function} load This function is called with two arguments, each time
+ * a Request in the list completes, the first argument is the text (load), and the second
+ * is the numerical index of the request on the queue stating from 0 (zero),
+ * <p/> When the queue runs to completion this function is called with the arguments
+ *  load("loadcomplete", -1)
+ *  @param {Function} error This function is called whenever an error occurs in the queue
+ *  It is called with three parameters
+ *  <br/>1. The error type This could be any of NETWORK_ERROR SERVER_ERROR or ObjectError
+ *  <br/>2. An Error code
+ *  <br/>3. The zero based index of the request that caused the error on the queue
+ *
+ *  @param {Function} progress This function would be called each time an upload progress
+ *  event occurs during a request, it would be called with the the percentage data uploaded,
+ *  and the index of the request
+ 
+ *   @name TigerJS.io.SerialRequestQueue
+ */
+TigerJS.io.SerialRequestQueue = function (load, error, progress) {
 
-        return new function () {
-            //this array would hold all request instances
-            var _io_queue = T.Iterator(),
-                    err_str,
-                    QUEUE_RUNNING = 0, //if the queue is in progress
-                    ERROR_STATE = 0, //an error occured on one of the request
-                    QUEUE_DONE = 0, // all said and done
-                    CURRENT_REQUEST_INDEX = null; //index of the current running request
+    return new function () {
+        //this array would hold all request instances
+        var _io_queue = T.Iterator(),
+                err_str,
+                QUEUE_RUNNING = 0, //if the queue is in progress
+                ERROR_STATE = 0, //an error occured on one of the request
+                QUEUE_DONE = 0, // all said and done
+                CURRENT_REQUEST_INDEX = null; //index of the current running request
 
-            /**
-             * Append data for a new request to the queue
-             * @param {Object} configObj A confugiration object containing parameters
-             * for this request, see the {@link TigerJS.io} documentation for details
-             * @type TigerJS.io.SerialRequestQueue
-             * @name TigerJS.io.SerialRequestQueue#appendRequest
-             */
+        /**
+         * Append data for a new request to the queue
+         * @param {Object} configObj A confugiration object containing parameters
+         * for this request, see the {@link TigerJS.io} documentation for details
+         * @type TigerJS.io.SerialRequestQueue
+         * @name TigerJS.io.SerialRequestQueue#appendRequest
+         */
 
-            this.appendRequest = function (configObj) {
+        this.appendRequest = function (configObj) {
 
-                _io_queue[(_io_queue.size())] = configObj;
+            _io_queue[(_io_queue.size())] = configObj;
 
-                //intercept standard events sending them to our internal callback
-                //intercept error and complete events on thie current object
-                if (_io_queue[_io_queue.size() - 1].subscribe.onload) {
-                    _io_queue[_io_queue.size() - 1].subscribe.deferedLoadEventHandler = _io_queue[_io_queue.size() - 1].subscribe.onload;
-                }
-                //add our own method to get the standard onload event
-                _io_queue[_io_queue.size() - 1].subscribe.onload = this.registeredEvents.onload;
+            //intercept standard events sending them to our internal callback
+            //intercept error and complete events on thie current object
+            if (_io_queue[_io_queue.size() - 1].subscribe.onload) {
+                _io_queue[_io_queue.size() - 1].subscribe.deferedLoadEventHandler = _io_queue[_io_queue.size() - 1].subscribe.onload;
+            }
+            //add our own method to get the standard onload event
+            _io_queue[_io_queue.size() - 1].subscribe.onload = this.registeredEvents.onload;
 
-                if (_io_queue[_io_queue.size() - 1].subscribe.onerror) {
-                    _io_queue[_io_queue.size() - 1].subscribe.deferedErrorEventHandler = _io_queue[_io_queue.size() - 1].subscribe.onerror;
-                }
-                //add our own method to get the standard onerror event
-                _io_queue[_io_queue.size() - 1].subscribe.onerror = this.registeredEvents.onerror;
+            if (_io_queue[_io_queue.size() - 1].subscribe.onerror) {
+                _io_queue[_io_queue.size() - 1].subscribe.deferedErrorEventHandler = _io_queue[_io_queue.size() - 1].subscribe.onerror;
+            }
+            //add our own method to get the standard onerror event
+            _io_queue[_io_queue.size() - 1].subscribe.onerror = this.registeredEvents.onerror;
 
 
-                //also intercept the standard upload progress event
-                if (_io_queue[_io_queue.size() - 1].subscribe.uploadprogress) {
-                    _io_queue[_io_queue.size() - 1].subscribe.deferedProgressEventHandler = _io_queue[_io_queue.size() - 1].subscribe.uploadprogress;
-                }
-                //add our own method to get the standard uploadprogress event
-                _io_queue[_io_queue.size() - 1].subscribe.uploadprogress = this.registeredEvents.uploadprogress;
+            //also intercept the standard upload progress event
+            if (_io_queue[_io_queue.size() - 1].subscribe.uploadprogress) {
+                _io_queue[_io_queue.size() - 1].subscribe.deferedProgressEventHandler = _io_queue[_io_queue.size() - 1].subscribe.uploadprogress;
+            }
+            //add our own method to get the standard uploadprogress event
+            _io_queue[_io_queue.size() - 1].subscribe.uploadprogress = this.registeredEvents.uploadprogress;
 
-                _io_queue[_io_queue.size() - 1] = T.io(configObj);
+            _io_queue[_io_queue.size() - 1] = T.io(configObj);
 
-                return this;
-            };
+            return this;
+        };
 
-            /**
-             * Sends the requests in the queue
-             
-             * @name TigerJS.io.SerialRequestQueue#send
-             *  @type TigerJS.io.SerialRequestQueue
-             */
+        /**
+         * Sends the requests in the queue
+         
+         * @name TigerJS.io.SerialRequestQueue#send
+         *  @type TigerJS.io.SerialRequestQueue
+         */
 
-            this.send = function () {
-                _io_queue.current().send();
-                CURRENT_REQUEST_INDEX = _io_queue.key;
-                QUEUE_RUNNING = 1;
+        this.send = function () {
+            _io_queue.current().send();
+            CURRENT_REQUEST_INDEX = _io_queue.key;
+            QUEUE_RUNNING = 1;
 
-                return this;
-            };
-            var send = this.send;
+            return this;
+        };
+        var send = this.send;
 
-            /**
-             * Abort the Queue cancelling any running requests, and deleteing
-             * all attached requests
-             * @type TigerJS.io.SerialRequestQueue
-             * @name TigerJS.io.SerialRequestQueue#abortQueue
-             
-             */
-            this.abortQueue = function () {
+        /**
+         * Abort the Queue cancelling any running requests, and deleteing
+         * all attached requests
+         * @type TigerJS.io.SerialRequestQueue
+         * @name TigerJS.io.SerialRequestQueue#abortQueue
+         
+         */
+        this.abortQueue = function () {
 
-                _io_queue.current().abort();
-                QUEUE_DONE = 0;
+            _io_queue.current().abort();
+            QUEUE_DONE = 0;
 
-                CURRENT_REQUEST_INDEX = null;
-                _io_queue = T.Iterator(); //reset to an empty queue
-                return this;
-            };
-            var abortQueue = this.abortQueue;
-            /*
-             * We intercept xhr events here
-             * @ignore
-             */
-            this.registeredEvents = {};
+            CURRENT_REQUEST_INDEX = null;
+            _io_queue = T.Iterator(); //reset to an empty queue
+            return this;
+        };
+        var abortQueue = this.abortQueue;
+        /*
+         * We intercept xhr events here
+         * @ignore
+         */
+        this.registeredEvents = {};
 
-            /*
-             *
-             * @ignore
-             */
-            this.registeredEvents.onload = function () {
-                //first see if we have  server error
-                var error_codes = T.Iterator(["400", '401', "403", "404", '410', "501", "502", "503", "504", "505", "500", "302", "303"]);
-                if (error_codes.indexOf(this.status.toString())) {
-                    abortQueue();
-
-                    if (error) //call general error handler
-                        error("SERVER_ERROR", this.status, _io_queue.key);
-
-                    //call the on error handler for this request
-                    if (_io_queue.current().configObj.subscribe.deferedErrorEventHandler)
-                        _io_queue.current().configObj.subscribe.deferedErrorEventHandler.apply(this, ["SERVER_ERROR", this.status]);
-                    ERROR_STATE = 1;
-                } else {
-
-                    if (load)
-                        load('load', _io_queue.key); //call the global load handler, if there is one
-
-                    //call the onload handler for this request
-                    if (_io_queue.current().configObj.subscribe.deferedLoadEventHandler)
-                        _io_queue.current().configObj.subscribe.deferedLoadEventHandler.apply(this);
-
-                    if (_io_queue.next()) { //if there are more request's, send them
-                        send();
-                    } else {
-                        if (load) //wrap up
-                            load('loadcomplete', -1);
-                        QUEUE_DONE = 1;
-                    }
-                }
-            };
-
-            /*
-             *
-             * @ignore
-             */
-            this.registeredEvents.onerror = function () {
-
-                //check to see if we're offline
-                if (T.NETWORK_STATE === "OFFLINE") {
-                    if (error)
-                        error("NETWORK_ERROR", 0, _io_queue.key);
-
-                    if (_io_queue.current().configObj.subscribe.deferedErrorEventHandler)
-                        _io_queue.current().configObj.subscribe.deferedErrorEventHandler.apply(this, ["NETWORK_ERROR", 0]);
-                } else {
-
-                    if (error)
-                        error(this.status ? "SERVER_ERROR" : "NETWORK_ERROR", this.status || 0, _io_queue.key);
-
-                    if (_io_queue.current().configObj.subscribe.deferedErrorEventHandler)
-                        _io_queue.current().configObj.subscribe.deferedErrorEventHandler.apply(this, [this.status ? "SERVER_ERROR" : "NETWORK_ERROR", this.status || 1]);
-
-                }
+        /*
+         *
+         * @ignore
+         */
+        this.registeredEvents.onload = function () {
+            //first see if we have  server error
+            var error_codes = T.Iterator(["400", '401', "403", "404", '410', "501", "502", "503", "504", "505", "500", "302", "303"]);
+            if (error_codes.indexOf(this.status.toString())) {
                 abortQueue();
+
+                if (error) //call general error handler
+                    error("SERVER_ERROR", this.status, _io_queue.key);
+
+                //call the on error handler for this request
+                if (_io_queue.current().configObj.subscribe.deferedErrorEventHandler)
+                    _io_queue.current().configObj.subscribe.deferedErrorEventHandler.apply(this, ["SERVER_ERROR", this.status]);
                 ERROR_STATE = 1;
-            };
+            } else {
 
-            this.registeredEvents.uploadprogress = function (percentComplete) {
+                if (load)
+                    load('load', _io_queue.key); //call the global load handler, if there is one
 
-                if (progress) //if we have a progress function
-                    progress(percentComplete, _io_queue.key);
-                if (_io_queue.current().configObj.subscribe.deferedProgressEventHandler)
-                    _io_queue.current().configObj.subscribe.deferedProgressEventHandler
-                            .apply(this, [percentComplete, [CURRENT_REQUEST_INDEX]]); //
+                //call the onload handler for this request
+                if (_io_queue.current().configObj.subscribe.deferedLoadEventHandler)
+                    _io_queue.current().configObj.subscribe.deferedLoadEventHandler.apply(this);
+
+                if (_io_queue.next()) { //if there are more request's, send them
+                    send();
+                } else {
+                    if (load) //wrap up
+                        load('loadcomplete', -1);
+                    QUEUE_DONE = 1;
+                }
+            }
+        };
+
+        /*
+         *
+         * @ignore
+         */
+        this.registeredEvents.onerror = function () {
+
+            //check to see if we're offline
+            if (T.NETWORK_STATE === "OFFLINE") {
+                if (error)
+                    error("NETWORK_ERROR", 0, _io_queue.key);
+
+                if (_io_queue.current().configObj.subscribe.deferedErrorEventHandler)
+                    _io_queue.current().configObj.subscribe.deferedErrorEventHandler.apply(this, ["NETWORK_ERROR", 0]);
+            } else {
+
+                if (error)
+                    error(this.status ? "SERVER_ERROR" : "NETWORK_ERROR", this.status || 0, _io_queue.key);
+
+                if (_io_queue.current().configObj.subscribe.deferedErrorEventHandler)
+                    _io_queue.current().configObj.subscribe.deferedErrorEventHandler.apply(this, [this.status ? "SERVER_ERROR" : "NETWORK_ERROR", this.status || 1]);
+
+            }
+            abortQueue();
+            ERROR_STATE = 1;
+        };
+
+        this.registeredEvents.uploadprogress = function (percentComplete) {
+
+            if (progress) //if we have a progress function
+                progress(percentComplete, _io_queue.key);
+            if (_io_queue.current().configObj.subscribe.deferedProgressEventHandler)
+                _io_queue.current().configObj.subscribe.deferedProgressEventHandler
+                        .apply(this, [percentComplete, [CURRENT_REQUEST_INDEX]]); //
 
 
 
-            };
         };
     };
-    /**
-     *
-     * @class
-     * The {@link TigerJS.io}.CompositeRequest object, allows multiple request to be sent
-     * using a single XMLHttpRequest Object, and should be used when  when multiple resources needs
-     * to be refreshed from the server possibly continously.
-     * @param {...Object} configObjArgs A variable list configuration object(s) that specifies parameters
-     * for request instances
-     *  @param {String} [configObjArgs.uri = DOCUMENT URI] Each configObjArgs object must contain a uri for that request instance
-     *  @param {Object | DOMDocument | HTMLFormElement | HTMLInputELement }  configObjArgs.postData  
-     *  Post data for the particular request instance
-     
-     *
-     * @param {Function} callback A function to be sent the result of the request
-     * @param {String} configObjArgs.tag A string to tag or refer to this request instance
-     * @param {Boolean} [configObjArgs.uniqueID = false] In cases where each configuration object could have identical tags, force a random value to be appended to each tag to make it unique
-     * @return {Object} An object containing the result of all the request's sent, the properties would be named according to the tags used in the configuration objects
-     * if the response contains an error and cant be converted to JSON the callback doesnt get called 
-     *
-     *
-     *<pre>
-     *Also note that in your server script the useragent would be set to TigerJS_Curl
-     *</pre>
-     *
-     *
-     * @requires PHP-ENABLED-WEB-SERVER
-     * @name TigerJS.io.CompositeRequest
-     *
-     * @example
-     *  //Assuming you have three scripts on the server, that recive XHR request, you can use thet T.io.CompositeRequest Object, to send a request to ALL three in just one request
-     *
-     *  //first create three objects that would hold properties (configurationdata) for each request
-     *  
-     *
-     *  var configObj1 = {
-     *    uri :"proccessor1.php", //the first server script,
-     *    postData : {a: "hi", b:"bye"}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
-     *    tag : "request_1"  // a tag to represent this request
-     *  }
-     *  
-     var configObj2 = {
-     *    uri :"proccessor2.php", //the first server script,
-     *    postData : {a: "hee", b:"hoo"}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
-     *    tag : "request_2"  // a tag to represent this request
-     *  }
-     *  
-     var configObj3 = {
-     *    uri :"proccessor2.php", //the first server script,
-     *    postData : {a: 22, b:44}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
-     *    tag : "request_3",  // a tag to represent this request
-     *    
-     *  }
-     *  
-     
-     //put the three config objects in an array
-     var req_data = [configObj1, configObj2, configObj3];
-     
-     //add a function to be called with the response when the request completes
-     req_data[req_data.length] = function(resultObj){
-     
-     //the result object would contain properties corresponding to the tags used in each configObj above
-     //so we would have three properties
-     resultObj[request_1] ; //holding the output of the first request i.e from proccessor1.php
-     resultObj[request_2] ; //holding the output of the second request i.e from proccessor2.php
-     resultObj[request_3] ; //holding the output of the third request i.e from proccessor3.php
-     }
-     
-     //next create the T.io.CompositeRequest Object
-     //and send the  config-data
-     var rq = T.io.CompositeRequest.apply(null, req_data );
-     *  rq.send();
-     *
-     *
-     *  //what has happened here is that the three server scipts has been called with one request (instead of three, which you would normally use manually)
-     *
-     * //they could be cases where the tags used in each configObj could be identical, in cases like this add a uniqueID property to each configObj
-     * // when you do a value generated with Math.random(), would be concantated with the tag, so as to make it unique
-     * //so for instance, configObj1 above could be created as thus
-     *  var configObj1 = {
-     *    uri :"proccessor1.php", //the first server script,
-     *    postData : {a: "hi", b:"bye"}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
-     *    tag : "request_1"  ,// a tag to represent this request
-     *    uniqueID : true// force the tag to be unique
-     *    
-     *  }
-     *
-     * //After which in the call-back function
-     * //the returned result-object might have a property like
-     * resultObj[request_10.09897869868];// with random values appnded to the tag
-     *  
-     */
-    TigerJS.io.CompositeRequest = function () {
+};
+/**
+ *
+ * @class
+ * The {@link TigerJS.io}.CompositeRequest object, allows multiple request to be sent
+ * using a single XMLHttpRequest Object, and should be used when  when multiple resources needs
+ * to be refreshed from the server possibly continously.
+ * @param {...Object} configObjArgs A variable list configuration object(s) that specifies parameters
+ * for request instances
+ *  @param {String} [configObjArgs.uri = DOCUMENT URI] Each configObjArgs object must contain a uri for that request instance
+ *  @param {Object | DOMDocument | HTMLFormElement | HTMLInputELement }  configObjArgs.postData  
+ *  Post data for the particular request instance
+ 
+ *
+ * @param {Function} callback A function to be sent the result of the request
+ * @param {String} configObjArgs.tag A string to tag or refer to this request instance
+ * @param {Boolean} [configObjArgs.uniqueID = false] In cases where each configuration object could have identical tags, force a random value to be appended to each tag to make it unique
+ * @return {Object} An object containing the result of all the request's sent, the properties would be named according to the tags used in the configuration objects
+ * if the response contains an error and cant be converted to JSON the callback doesnt get called 
+ *
+ *
+ *<pre>
+ *Also note that in your server script the useragent would be set to TigerJS_Curl
+ *</pre>
+ *
+ *
+ * @requires PHP-ENABLED-WEB-SERVER
+ * @name TigerJS.io.CompositeRequest
+ *
+ * @example
+ *  //Assuming you have three scripts on the server, that recive XHR request, you can use thet T.io.CompositeRequest Object, to send a request to ALL three in just one request
+ *
+ *  //first create three objects that would hold properties (configurationdata) for each request
+ *  
+ *
+ *  var configObj1 = {
+ *    uri :"proccessor1.php", //the first server script,
+ *    postData : {a: "hi", b:"bye"}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
+ *    tag : "request_1"  // a tag to represent this request
+ *  }
+ *  
+ var configObj2 = {
+ *    uri :"proccessor2.php", //the first server script,
+ *    postData : {a: "hee", b:"hoo"}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
+ *    tag : "request_2"  // a tag to represent this request
+ *  }
+ *  
+ var configObj3 = {
+ *    uri :"proccessor2.php", //the first server script,
+ *    postData : {a: 22, b:44}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
+ *    tag : "request_3",  // a tag to represent this request
+ *    
+ *  }
+ *  
+ 
+ //put the three config objects in an array
+ var req_data = [configObj1, configObj2, configObj3];
+ 
+ //add a function to be called with the response when the request completes
+ req_data[req_data.length] = function(resultObj){
+ 
+ //the result object would contain properties corresponding to the tags used in each configObj above
+ //so we would have three properties
+ resultObj[request_1] ; //holding the output of the first request i.e from proccessor1.php
+ resultObj[request_2] ; //holding the output of the second request i.e from proccessor2.php
+ resultObj[request_3] ; //holding the output of the third request i.e from proccessor3.php
+ }
+ 
+ //next create the T.io.CompositeRequest Object
+ //and send the  config-data
+ var rq = T.io.CompositeRequest.apply(null, req_data );
+ *  rq.send();
+ *
+ *
+ *  //what has happened here is that the three server scipts has been called with one request (instead of three, which you would normally use manually)
+ *
+ * //they could be cases where the tags used in each configObj could be identical, in cases like this add a uniqueID property to each configObj
+ * // when you do a value generated with Math.random(), would be concantated with the tag, so as to make it unique
+ * //so for instance, configObj1 above could be created as thus
+ *  var configObj1 = {
+ *    uri :"proccessor1.php", //the first server script,
+ *    postData : {a: "hi", b:"bye"}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
+ *    tag : "request_1"  ,// a tag to represent this request
+ *    uniqueID : true// force the tag to be unique
+ *    
+ *  }
+ *
+ * //After which in the call-back function
+ * //the returned result-object might have a property like
+ * resultObj[request_10.09897869868];// with random values appnded to the tag
+ *  
+ */
+TigerJS.io.CompositeRequest = function () {
 
-        var arguments_ = T.Iterator(arguments),
-                arg = arguments; //save a reference to the request args.
+    var arguments_ = T.Iterator(arguments),
+            arg = arguments; //save a reference to the request args.
 
-        arguments_ = arguments_.slice(0, arguments_.length - 1); // pop d call back from the list as we dont need it here
+    arguments_ = arguments_.slice(0, arguments_.length - 1); // pop d call back from the list as we dont need it here
 
-        return new function () {
-            var loopRequest, rePoll_timeout, xhr, cancelRequest = false,
-                    loopRequestCounter = 1, //default, perform the request only once
-                    postDataFeilds;
-
-
-            /**
-             * Should the rquest be looped, takes a positive numerical value or
-             * -1 to loop forever
-             *  @name TigerJS.io.CompositeRequest#loopRequest
-             *  @function
-             *  @param {Number] [val = 0}
-             *  @type TigerJS.io.CompositeRequest
-             *  
-             */
-            this.loopRequest = function (val) {
-                loopRequest = val;
-                return this;
-            };
+    return new function () {
+        var loopRequest, rePoll_timeout, xhr, cancelRequest = false,
+                loopRequestCounter = 1, //default, perform the request only once
+                postDataFeilds;
 
 
-
-            var request_container = (T.Iterator()).
-                    add_all(arguments_), // hold references to all requests arguments to be sent
-                    globalConfigObj = {}, // a mashup-up of all configObj's for each request
-                    request_index_counter = 0;
-            //get the details out of each config obj
-            request_container.foward_iterator(
-                    function (x) {
-
-
-                        //set the tag for the current request args as a pointer to a sub object,
-                        //that would hold the details for that request
-
-
-                        globalConfigObj[request_index_counter + "_" + x.tag + "_uri"] = x.uri || location.href; //save the uri for this virtual request instance
-                        globalConfigObj[request_index_counter + "_" + x.tag + "_postData"] = x.postData ?
-                                T.http_build_query(x.postData) : ""; //save the post-data for this virtual request instance
-                        globalConfigObj[request_index_counter + "_" + x.tag] = x.tag || request_index_counter + "_tag_";
+        /**
+         * Should the rquest be looped, takes a positive numerical value or
+         * -1 to loop forever
+         *  @name TigerJS.io.CompositeRequest#loopRequest
+         *  @function
+         *  @param {Number] [val = 0}
+         *  @type TigerJS.io.CompositeRequest
+         *  
+         */
+        this.loopRequest = function (val) {
+            loopRequest = val;
+            return this;
+        };
 
 
-                        //add some randomness to the tags as various request instances could have similar tags   
-                        globalConfigObj[request_index_counter + "_" + x.tag] += x.uniqueID === true ? Math.random().
-                                toString() : "";
-                        request_index_counter++;
 
-                    });
-            //The number of rquests we're processing
-            globalConfigObj.request_count = request_index_counter;
+        var request_container = (T.Iterator()).
+                add_all(arguments_), // hold references to all requests arguments to be sent
+                globalConfigObj = {}, // a mashup-up of all configObj's for each request
+                request_index_counter = 0;
+        //get the details out of each config obj
+        request_container.foward_iterator(
+                function (x) {
 
-            //create the request object
-            xhr = new XMLHttpRequest(),
-                    // add the data
-                    postDataFeilds = new FormData();
+
+                    //set the tag for the current request args as a pointer to a sub object,
+                    //that would hold the details for that request
+
+
+                    globalConfigObj[request_index_counter + "_" + x.tag + "_uri"] = x.uri || location.href; //save the uri for this virtual request instance
+                    globalConfigObj[request_index_counter + "_" + x.tag + "_postData"] = x.postData ?
+                            T.http_build_query(x.postData) : ""; //save the post-data for this virtual request instance
+                    globalConfigObj[request_index_counter + "_" + x.tag] = x.tag || request_index_counter + "_tag_";
+
+
+                    //add some randomness to the tags as various request instances could have similar tags   
+                    globalConfigObj[request_index_counter + "_" + x.tag] += x.uniqueID === true ? Math.random().
+                            toString() : "";
+                    request_index_counter++;
+
+                });
+        //The number of rquests we're processing
+        globalConfigObj.request_count = request_index_counter;
+
+        //create the request object
+        xhr = new XMLHttpRequest(),
+                // add the data
+                postDataFeilds = new FormData();
+
+
+        for (var i in globalConfigObj) {
+            postDataFeilds.append(i, globalConfigObj[i]);
+        }
+        xhr.open("POST", T.library_installation_path + "/asset/php/compositeRequestClass.php", true);
+
+        xhr.addEventListener("load", function () { // parse the response and send to the cb
+
+            //send the result object to the call back
+            try {
+                if (T.is_function(arg[arg.length - 1]))
+                    arg[arg.length - 1](JSON.parse(this.responseText));//send the result to the user call-back function
+            } catch (e) {
+
+                xhr.abort();
+                return;
+            }
+
+        });
+
+
+        xhr.addEventListener("loadend", function () { // see if we are to iterate (poll)  the request several times
+            if ((loopRequest && loopRequestCounter < loopRequest) || loopRequest === -1) {
+
+                if (!cancelRequest) {
+                    rePoll_timeout = setTimeout(rePoll, 5000); //leave a little delay
+                } else {
+                    if (rePoll_timeout) {
+                        clearTimeout(rePoll_timeout);
+                    }
+
+                }
+
+
+
+            } else {
+                return; //end polling
+            }
+        });
+
+        function rePoll() {
+            var postDataFeilds = new FormData();
 
 
             for (var i in globalConfigObj) {
                 postDataFeilds.append(i, globalConfigObj[i]);
             }
             xhr.open("POST", T.library_installation_path + "/asset/php/compositeRequestClass.php", true);
+            xhr.send(postDataFeilds);
 
-            xhr.addEventListener("load", function () { // parse the response and send to the cb
+            ++loopRequestCounter; // increment this to reflect the num of request's made
 
-                //send the result object to the call back
-                try {
-                    if (T.is_function(arg[arg.length - 1]))
-                        arg[arg.length - 1](JSON.parse(this.responseText));//send the result to the user call-back function
-                } catch (e) {
+        }
 
-                    xhr.abort();
-                    return;
-                }
-
+        xhr.addEventListener("error", function () { // parse the response and send to the cb
+            //call the call back function
+            (arg[arg.length - 1])({
+                ERROR: "NET_ERR"
             });
 
+        });
 
-            xhr.addEventListener("loadend", function () { // see if we are to iterate (poll)  the request several times
-                if ((loopRequest && loopRequestCounter < loopRequest) || loopRequest === -1) {
+        /**
+         *  Send the request
+         *  @name TigerJS.io.CompositeRequest#send
+         *  @function
+         *  @type {TigerJS.io.CompositeRequest}
+         */
 
-                    if (!cancelRequest) {
-                        rePoll_timeout = setTimeout(rePoll, 5000); //leave a little delay
-                    } else {
-                        if (rePoll_timeout) {
-                            clearTimeout(rePoll_timeout);
-                        }
+        this.send = function () {
+            xhr.send(postDataFeilds);
+            return this;
+        };
+        /** 
+         * 
+         * Kill the object
+         */
+        this.abort = function () {
 
-                    }
+            xhr.abort();
+            cancelRequest = true;
 
-
-
-                } else {
-                    return; //end polling
-                }
-            });
-
-            function rePoll() {
-                var postDataFeilds = new FormData();
-
-
-                for (var i in globalConfigObj) {
-                    postDataFeilds.append(i, globalConfigObj[i]);
-                }
-                xhr.open("POST", T.library_installation_path + "/asset/php/compositeRequestClass.php", true);
-                xhr.send(postDataFeilds);
-
-                ++loopRequestCounter; // increment this to reflect the num of request's made
-
-            }
-
-            xhr.addEventListener("error", function () { // parse the response and send to the cb
-                //call the call back function
-                (arg[arg.length - 1])({
-                    ERROR: "NET_ERR"
-                });
-
-            });
-
-            /**
-             *  Send the request
-             *  @name TigerJS.io.CompositeRequest#send
-             *  @function
-             *  @type {TigerJS.io.CompositeRequest}
-             */
-
-            this.send = function () {
-                xhr.send(postDataFeilds);
-                return this;
-            };
-            /** 
-             * 
-             * Kill the object
-             */
-            this.abort = function () {
-
-                xhr.abort();
-                cancelRequest = true;
-
-                return;
-
-            };
+            return;
 
         };
 
     };
-    
+
+};
+

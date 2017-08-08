@@ -275,8 +275,7 @@ TigerJS.$ = function(el_) {
      * requested rules
      * @function
      * @name TigerJS.$#get_style
-     * @param {Array} ruleMap An array containing style rules to get,
-     * if u specify an empty array all style values are returned
+     * @param {Array} ruleMap An array containing style rules to get, leave blank to return all style properties
      * @type Object
      *
      * @example
