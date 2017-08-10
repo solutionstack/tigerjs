@@ -534,7 +534,7 @@ TigerJS.nodes = function (config, strictMatch) {
          * @param {String} classList Space delimited list of CSS classes to check for
          * @function
          *  @type Boolean
-         * @name TigerJS.nodes#has_class
+         * @name TigerJS.nodes#_has_class
          */
         this.n._has_class = function (classList) {
             var r = true;
@@ -557,7 +557,7 @@ TigerJS.nodes = function (config, strictMatch) {
          * @param {String} classList Space delimited list of CSS classes to remove
          * @function
          *  @type TigerJS.nodes
-         * @name TigerJS.nodes#remove_class
+         * @name TigerJS.nodes#_remove_class
          */
         this.n._remove_class = function (classList) {
             if (this.length) {
@@ -575,7 +575,7 @@ TigerJS.nodes = function (config, strictMatch) {
          * @function
          *  @type TigerJS.nodes
          * @name TigerJS.nodes#replace_class
-         * @see  TigerJS.$#replace_class 
+         * @see  TigerJS.$#_replace_class 
          */
         this.n._replace_class = function (classNames, withClassNames) {
 
@@ -591,7 +591,7 @@ TigerJS.nodes = function (config, strictMatch) {
          * @param {String} classList Space delimited list of CSS classes to toggle
          * @function
          *   @type TigerJS._nodes
-         * @name TigerJS.nodes#toggle_class
+         * @name TigerJS.nodes#_toggle_class
          * @function
          */
         this.n._toggle_class = function (classList) {

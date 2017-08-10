@@ -1226,6 +1226,8 @@ TigerJS.$ = function(el_) {
 
         if (this.attributes["data-tigerjs-" + name])
             return this.getAttribute(("data-tigerjs-" + name));
+        if (this.attributes["data-" + name])
+            return this.getAttribute(("data-" + name));
         else return this.getAttribute(name);
     };
     /**

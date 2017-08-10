@@ -1539,12 +1539,13 @@ var TigerJS = function() {
     /**
      * Parses the argument as a query string and retuns an Object conaining individual query values/name properties
      * 
-     * @param {String = location.search} query string with GET parameters in the form name=val&name=val%&....
+     * @param {String} [query = location.search}  string with GET parameters in the form name=val&name=val%&....
      * 
      * @return {Object} 
      */
 
     this.parse_query = function(qstr) {
+        var qstr = qstr || location.search;
         var query = {};
         var a = (qstr[0] === '?' ? qstr.substr(1) : qstr)
             .split('&');
@@ -1553,7 +1554,7 @@ var TigerJS = function() {
             query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
         }
         return query;
-    }
+    };
 
 
     /**
