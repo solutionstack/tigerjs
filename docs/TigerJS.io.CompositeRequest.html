@@ -671,7 +671,7 @@
             
                 <li data-name="TigerJS.Iterator#flatten"><a href="TigerJS.Iterator.html#flatten">flatten</a></li>
             
-                <li data-name="TigerJS.Iterator#foward_iterator"><a href="TigerJS.Iterator.html#foward_iterator">foward_iterator</a></li>
+                <li data-name="TigerJS.Iterator#forward_iterator"><a href="TigerJS.Iterator.html#forward_iterator">forward_iterator</a></li>
             
                 <li data-name="TigerJS.Iterator#index_of"><a href="TigerJS.Iterator.html#index_of">index_of</a></li>
             
@@ -869,6 +869,8 @@
             
                 <li data-name="TigerJS.nodes#_fire"><a href="TigerJS.nodes.html#_fire">_fire</a></li>
             
+                <li data-name="TigerJS.nodes#_has_class"><a href="TigerJS.nodes.html#_has_class">_has_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_height"><a href="TigerJS.nodes.html#_height">_height</a></li>
             
                 <li data-name="TigerJS.nodes#_html"><a href="TigerJS.nodes.html#_html">_html</a></li>
@@ -879,25 +881,23 @@
             
                 <li data-name="TigerJS.nodes#_on"><a href="TigerJS.nodes.html#_on">_on</a></li>
             
+                <li data-name="TigerJS.nodes#_remove_class"><a href="TigerJS.nodes.html#_remove_class">_remove_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_remove_data"><a href="TigerJS.nodes.html#_remove_data">_remove_data</a></li>
             
                 <li data-name="TigerJS.nodes#_style"><a href="TigerJS.nodes.html#_style">_style</a></li>
             
                 <li data-name="TigerJS.nodes#_text"><a href="TigerJS.nodes.html#_text">_text</a></li>
             
+                <li data-name="TigerJS.nodes#_toggle_class"><a href="TigerJS.nodes.html#_toggle_class">_toggle_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_width"><a href="TigerJS.nodes.html#_width">_width</a></li>
             
                 <li data-name="TigerJS.nodes#add_class"><a href="TigerJS.nodes.html#add_class">add_class</a></li>
             
-                <li data-name="TigerJS.nodes#has_class"><a href="TigerJS.nodes.html#has_class">has_class</a></li>
-            
                 <li data-name="TigerJS.nodes#remove_attr"><a href="TigerJS.nodes.html#remove_attr">remove_attr</a></li>
             
-                <li data-name="TigerJS.nodes#remove_class"><a href="TigerJS.nodes.html#remove_class">remove_class</a></li>
-            
                 <li data-name="TigerJS.nodes#replace_class"><a href="TigerJS.nodes.html#replace_class">replace_class</a></li>
-            
-                <li data-name="TigerJS.nodes#toggle_class"><a href="TigerJS.nodes.html#toggle_class">toggle_class</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1532,7 +1532,7 @@ to be refreshed from the server possibly continously.</div>
     
         
         <div class="tag-source">
-            <a href="io.js.html">io.js</a>, <a href="io.js.html#line833">line 833</a>
+            <a href="io.js.html">io.js</a>, <a href="io.js.html#line857">line 857</a>
         </div>
         
     </div>
@@ -1896,36 +1896,36 @@ Also note that in your server script the useragent would be set to TigerJS_Curl
    tag : "request_1"  // a tag to represent this request
  }
  
-     var configObj2 = {
+ var configObj2 = {
    uri :"proccessor2.php", //the first server script,
    postData : {a: "hee", b:"hoo"}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
    tag : "request_2"  // a tag to represent this request
  }
  
-     var configObj3 = {
+ var configObj3 = {
    uri :"proccessor2.php", //the first server script,
    postData : {a: 22, b:44}, // the server script would see the post data with the keys a and b, so assuming in PHP u might use $_POST['a]' and $_POST['b']
    tag : "request_3",  // a tag to represent this request
    
  }
  
-     
-     //put the three config objects in an array
-     var req_data = [configObj1, configObj2, configObj3];
-     
-     //add a function to be called with the response when the request completes
-     req_data[req_data.length] = function(resultObj){
-     
-     //the result object would contain properties corresponding to the tags used in each configObj above
-     //so we would have three properties
-     resultObj[request_1] ; //holding the output of the first request i.e from proccessor1.php
-     resultObj[request_2] ; //holding the output of the second request i.e from proccessor2.php
-     resultObj[request_3] ; //holding the output of the third request i.e from proccessor3.php
-     }
-     
-     //next create the T.io.CompositeRequest Object
-     //and send the  config-data
-     var rq = T.io.CompositeRequest.apply(null, req_data );
+ 
+ //put the three config objects in an array
+ var req_data = [configObj1, configObj2, configObj3];
+ 
+ //add a function to be called with the response when the request completes
+ req_data[req_data.length] = function(resultObj){
+ 
+ //the result object would contain properties corresponding to the tags used in each configObj above
+ //so we would have three properties
+ resultObj[request_1] ; //holding the output of the first request i.e from proccessor1.php
+ resultObj[request_2] ; //holding the output of the second request i.e from proccessor2.php
+ resultObj[request_3] ; //holding the output of the third request i.e from proccessor3.php
+ }
+ 
+ //next create the T.io.CompositeRequest Object
+ //and send the  config-data
+ var rq = T.io.CompositeRequest.apply(null, req_data );
  rq.send();
 
 
@@ -1986,7 +1986,7 @@ resultObj[request_10.09897869868];// with random values appnded to the tag
     
         
         <div class="tag-source">
-            <a href="io.js.html">io.js</a>, <a href="io.js.html#line1063">line 1063</a>
+            <a href="io.js.html">io.js</a>, <a href="io.js.html#line1087">line 1087</a>
         </div>
         
     </div>
@@ -2057,7 +2057,7 @@ resultObj[request_10.09897869868];// with random values appnded to the tag
     
         
         <div class="tag-source">
-            <a href="io.js.html">io.js</a>, <a href="io.js.html#line937">line 937</a>
+            <a href="io.js.html">io.js</a>, <a href="io.js.html#line961">line 961</a>
         </div>
         
     </div>
@@ -2194,7 +2194,7 @@ resultObj[request_10.09897869868];// with random values appnded to the tag
     
         
         <div class="tag-source">
-            <a href="io.js.html">io.js</a>, <a href="io.js.html#line1048">line 1048</a>
+            <a href="io.js.html">io.js</a>, <a href="io.js.html#line1072">line 1072</a>
         </div>
         
     </div>
@@ -2300,7 +2300,7 @@ resultObj[request_10.09897869868];// with random values appnded to the tag
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Mon Aug 07 2017 23:03:14 GMT+0100 (WAT)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Fri Aug 11 2017 15:30:09 GMT+0100 (WAT)
         </footer>
     </div>
 </div>

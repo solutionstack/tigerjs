@@ -671,7 +671,7 @@
             
                 <li data-name="TigerJS.Iterator#flatten"><a href="TigerJS.Iterator.html#flatten">flatten</a></li>
             
-                <li data-name="TigerJS.Iterator#foward_iterator"><a href="TigerJS.Iterator.html#foward_iterator">foward_iterator</a></li>
+                <li data-name="TigerJS.Iterator#forward_iterator"><a href="TigerJS.Iterator.html#forward_iterator">forward_iterator</a></li>
             
                 <li data-name="TigerJS.Iterator#index_of"><a href="TigerJS.Iterator.html#index_of">index_of</a></li>
             
@@ -869,6 +869,8 @@
             
                 <li data-name="TigerJS.nodes#_fire"><a href="TigerJS.nodes.html#_fire">_fire</a></li>
             
+                <li data-name="TigerJS.nodes#_has_class"><a href="TigerJS.nodes.html#_has_class">_has_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_height"><a href="TigerJS.nodes.html#_height">_height</a></li>
             
                 <li data-name="TigerJS.nodes#_html"><a href="TigerJS.nodes.html#_html">_html</a></li>
@@ -879,25 +881,23 @@
             
                 <li data-name="TigerJS.nodes#_on"><a href="TigerJS.nodes.html#_on">_on</a></li>
             
+                <li data-name="TigerJS.nodes#_remove_class"><a href="TigerJS.nodes.html#_remove_class">_remove_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_remove_data"><a href="TigerJS.nodes.html#_remove_data">_remove_data</a></li>
             
                 <li data-name="TigerJS.nodes#_style"><a href="TigerJS.nodes.html#_style">_style</a></li>
             
                 <li data-name="TigerJS.nodes#_text"><a href="TigerJS.nodes.html#_text">_text</a></li>
             
+                <li data-name="TigerJS.nodes#_toggle_class"><a href="TigerJS.nodes.html#_toggle_class">_toggle_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_width"><a href="TigerJS.nodes.html#_width">_width</a></li>
             
                 <li data-name="TigerJS.nodes#add_class"><a href="TigerJS.nodes.html#add_class">add_class</a></li>
             
-                <li data-name="TigerJS.nodes#has_class"><a href="TigerJS.nodes.html#has_class">has_class</a></li>
-            
                 <li data-name="TigerJS.nodes#remove_attr"><a href="TigerJS.nodes.html#remove_attr">remove_attr</a></li>
             
-                <li data-name="TigerJS.nodes#remove_class"><a href="TigerJS.nodes.html#remove_class">remove_class</a></li>
-            
                 <li data-name="TigerJS.nodes#replace_class"><a href="TigerJS.nodes.html#replace_class">replace_class</a></li>
-            
-                <li data-name="TigerJS.nodes#toggle_class"><a href="TigerJS.nodes.html#toggle_class">toggle_class</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -2816,6 +2816,151 @@ see documentation for <a href="TigerJS.$.html#fire">TigerJS.$#fire</a>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="_has_class">
+            
+            _has_class<span class="signature">(classList)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line532">line 532</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Checks if the elements have the given CSS classes
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>classList</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Space delimited list of CSS classes to check for</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        Boolean
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="_height">
             
             _height<span class="signature">(size)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.nodes.html">TigerJS.nodes</a>}</span>
@@ -3553,6 +3698,151 @@ see documentation for <a href="TigerJS.$.html#on">TigerJS.$#on</a>
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="_remove_class">
+            
+            _remove_class<span class="signature">(classList)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.nodes.html">TigerJS.nodes</a>}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line555">line 555</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Removes the specified CSS classes from the elements in the List
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>classList</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Space delimited list of CSS classes to remove</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        <a href="TigerJS.nodes.html">TigerJS.nodes</a>
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="_remove_data">
             
             _remove_data<span class="signature">(name)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.nodes.html">TigerJS.nodes</a>}</span>
@@ -4003,6 +4293,151 @@ for multi-word properties.
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="_toggle_class">
+            
+            _toggle_class<span class="signature">(classList)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{TigerJS._nodes}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line589">line 589</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Toggles the CSS classes on the elements in the list
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>classList</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="String.html">String</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                Space delimited list of CSS classes to toggle</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Type</th>
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            
+            <td class="type">
+            
+                        TigerJS._nodes
+                        
+                    
+            </td>
+            <td class="description last"></td>
+        </tr>
+    
+    </tbody>
+</table>
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="_width">
             
             _width<span class="signature">(size)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.nodes.html">TigerJS.nodes</a>}</span>
@@ -4333,151 +4768,6 @@ for multi-word properties.
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="has_class">
-            
-            has_class<span class="signature">(classList)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line532">line 532</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Checks if the elements have the given CSS classes
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>classList</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="String.html">String</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                Space delimited list of CSS classes to check for</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        Boolean
-                        
-                    
-            </td>
-            <td class="description last"></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
         <h4 class="name" id="remove_attr">
             
             remove_attr<span class="signature">(name)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.nodes.html">TigerJS.nodes</a>}</span>
@@ -4623,151 +4913,6 @@ for multi-word properties.
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="remove_class">
-            
-            remove_class<span class="signature">(classList)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.nodes.html">TigerJS.nodes</a>}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line555">line 555</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Removes the specified CSS classes from the elements in the List
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>classList</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="String.html">String</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                Space delimited list of CSS classes to remove</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        <a href="TigerJS.nodes.html">TigerJS.nodes</a>
-                        
-                    
-            </td>
-            <td class="description last"></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
         <h4 class="name" id="replace_class">
             
             replace_class<span class="signature">()</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="TigerJS.nodes.html">TigerJS.nodes</a>}</span>
@@ -4821,7 +4966,7 @@ see documentation for <a href="TigerJS.$.html#replace_class">TigerJS.$#replace_c
     <dt class="tag-see">See:</dt>
     <dd class="tag-see">
         <ul>
-            <li><a href="TigerJS.$.html#replace_class">TigerJS.$#replace_class</a></li>
+            <li>TigerJS.$#_replace_class</li>
         </ul>
     </dd>
     
@@ -4872,151 +5017,6 @@ see documentation for <a href="TigerJS.$.html#replace_class">TigerJS.$#replace_c
     
 </dd>
 
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="toggle_class">
-            
-            toggle_class<span class="signature">(classList)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{TigerJS._nodes}</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="nodes.js.html">nodes.js</a>, <a href="nodes.js.html#line589">line 589</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        Toggles the CSS classes on the elements in the list
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>classList</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="String.html">String</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                Space delimited list of CSS classes to toggle</td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    <h5>Returns:</h5>
-    
-
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Type</th>
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    
-        <tr>
-            
-            <td class="type">
-            
-                        TigerJS._nodes
-                        
-                    
-            </td>
-            <td class="description last"></td>
-        </tr>
-    
-    </tbody>
-</table>
-
-    
-    
-    
-</dd>
-
         </dl>
     
     
@@ -5034,7 +5034,7 @@ see documentation for <a href="TigerJS.$.html#replace_class">TigerJS.$#replace_c
         
 
         <footer>
-            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Mon Aug 07 2017 23:03:14 GMT+0100 (WAT)
+            Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Fri Aug 11 2017 15:30:09 GMT+0100 (WAT)
         </footer>
     </div>
 </div>

@@ -1579,7 +1579,7 @@ var TigerJS = function() {
         var i = T.Iterator(keys),
             j = T.Iterator(val),
             o = {};
-        i.foward_iterator(function(v) {
+        i.forward_iterator(function(v) {
 
             o[v] = j.size() && j[i.key] ? j[i.key] : true; //put in the keys and values
 

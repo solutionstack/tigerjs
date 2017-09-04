@@ -471,7 +471,7 @@ String.prototype.to_case = function (flag)
     {
 
         case '-d':
-            var l = T.Iterator(str_).foward_iterator(function (x)
+            var l = T.Iterator(str_).forward_iterator(function (x)
             {
 
                 if (x.toLowerCase() !== x)
@@ -499,7 +499,7 @@ String.prototype.to_case = function (flag)
             break;
             //first char in string to upper case, other characters to lower case
         case '-ufl':
-            _t = T.Iterator(str_).foward_iterator(function (x)
+            _t = T.Iterator(str_).forward_iterator(function (x)
             {
 
                 this[this.key] = x.toLowerCase();
@@ -515,7 +515,7 @@ String.prototype.to_case = function (flag)
             break;
             //last char in string to upper case, other characters to lower case
         case '-ull':
-            _t = T.Iterator(str_).foward_iterator(function (x)
+            _t = T.Iterator(str_).forward_iterator(function (x)
             {
 
                 this[this.key] = x.toLowerCase();

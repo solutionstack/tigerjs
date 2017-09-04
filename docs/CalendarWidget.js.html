@@ -671,7 +671,7 @@
             
                 <li data-name="TigerJS.Iterator#flatten"><a href="TigerJS.Iterator.html#flatten">flatten</a></li>
             
-                <li data-name="TigerJS.Iterator#foward_iterator"><a href="TigerJS.Iterator.html#foward_iterator">foward_iterator</a></li>
+                <li data-name="TigerJS.Iterator#forward_iterator"><a href="TigerJS.Iterator.html#forward_iterator">forward_iterator</a></li>
             
                 <li data-name="TigerJS.Iterator#index_of"><a href="TigerJS.Iterator.html#index_of">index_of</a></li>
             
@@ -869,6 +869,8 @@
             
                 <li data-name="TigerJS.nodes#_fire"><a href="TigerJS.nodes.html#_fire">_fire</a></li>
             
+                <li data-name="TigerJS.nodes#_has_class"><a href="TigerJS.nodes.html#_has_class">_has_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_height"><a href="TigerJS.nodes.html#_height">_height</a></li>
             
                 <li data-name="TigerJS.nodes#_html"><a href="TigerJS.nodes.html#_html">_html</a></li>
@@ -879,25 +881,23 @@
             
                 <li data-name="TigerJS.nodes#_on"><a href="TigerJS.nodes.html#_on">_on</a></li>
             
+                <li data-name="TigerJS.nodes#_remove_class"><a href="TigerJS.nodes.html#_remove_class">_remove_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_remove_data"><a href="TigerJS.nodes.html#_remove_data">_remove_data</a></li>
             
                 <li data-name="TigerJS.nodes#_style"><a href="TigerJS.nodes.html#_style">_style</a></li>
             
                 <li data-name="TigerJS.nodes#_text"><a href="TigerJS.nodes.html#_text">_text</a></li>
             
+                <li data-name="TigerJS.nodes#_toggle_class"><a href="TigerJS.nodes.html#_toggle_class">_toggle_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_width"><a href="TigerJS.nodes.html#_width">_width</a></li>
             
                 <li data-name="TigerJS.nodes#add_class"><a href="TigerJS.nodes.html#add_class">add_class</a></li>
             
-                <li data-name="TigerJS.nodes#has_class"><a href="TigerJS.nodes.html#has_class">has_class</a></li>
-            
                 <li data-name="TigerJS.nodes#remove_attr"><a href="TigerJS.nodes.html#remove_attr">remove_attr</a></li>
             
-                <li data-name="TigerJS.nodes#remove_class"><a href="TigerJS.nodes.html#remove_class">remove_class</a></li>
-            
                 <li data-name="TigerJS.nodes#replace_class"><a href="TigerJS.nodes.html#replace_class">replace_class</a></li>
-            
-                <li data-name="TigerJS.nodes#toggle_class"><a href="TigerJS.nodes.html#toggle_class">toggle_class</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1857,7 +1857,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                 if (selectedDateColor) {
 
                     //unset the styling from any previous cliked cell, 
-                    dateCellIterator.foward_iterator(function (x) {
+                    dateCellIterator.forward_iterator(function (x) {
                         x.style.backgroundColor = "transparent";
                     });
                     this.target.style.backgroundColor = selectedDateColor;
@@ -1887,7 +1887,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                     add_all(dateCellsBoxTableElement.rows[6].cells);
 
             //initally fill the cells with blanks
-            dateCellIterator.foward_iterator(function (x) {
+            dateCellIterator.forward_iterator(function (x) {
                 if (T.type(x) !== "HTMLTableCellElement")//some boogey slipped in.. :)
                     return;
 
@@ -2122,7 +2122,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                     .add_all(yearCellsBoxTableElement.rows[3].cells)
                     .add_all(yearCellsBoxTableElement.rows[4].cells);
             //now insert the dates into the table cells
-            yearsToDisplay.foward_iterator(function (x) {
+            yearsToDisplay.forward_iterator(function (x) {
                 yearCellsIterator[this.key].innerHTML = x;
                 yearCellsIterator[this.key].style.cursor = "pointer";
                 yearCellsIterator[this.key].className += " t-no-drag"; // dont drag on the year numbers
@@ -2276,7 +2276,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                 //set it to the current locale, so we get month name in the right language
                 temp_date_object.setLocale(calendarDate.getLocale());
                 //get and insert the month names
-                mntCellsIterator.foward_iterator(function (x) {
+                mntCellsIterator.forward_iterator(function (x) {
 
                     x.innerHTML = temp_date_object.getMonth(true, true); //get short names, and insert in cells
 
@@ -2398,7 +2398,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Mon Aug 07 2017 23:03:14 GMT+0100 (WAT)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Fri Aug 11 2017 15:30:08 GMT+0100 (WAT)
         </footer>
     </div>
 </div>

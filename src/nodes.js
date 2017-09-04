@@ -268,13 +268,13 @@ TigerJS.nodes = function (config, strictMatch) {
                 return this;
             }
             if (!filter) { // just add to all
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
 
                     x.add_class(classlist);
                 });
             } else {
                 if (filter === "even") { //set even nodes
-                    this.foward_iterator(function (x) {
+                    this.forward_iterator(function (x) {
 
                         x.add_class(classlist);
                     }, 2); // jump by 2
@@ -282,7 +282,7 @@ TigerJS.nodes = function (config, strictMatch) {
                 } else
                 if (filter === "odd") { // set odd nodes
                     var re = this.odd()
-                            .foward_iterator(function (x) {
+                            .forward_iterator(function (x) {
 
                                 x.add_class(classlist);
                             });
@@ -291,7 +291,7 @@ TigerJS.nodes = function (config, strictMatch) {
                 } else {
                     for (i = 0; i < this.length; i++) {
 
-                        this.foward_iterator(function (x) {
+                        this.forward_iterator(function (x) {
                             if (filter(x)) {
                                 x.add_class(classlist);
                             }
@@ -335,25 +335,25 @@ TigerJS.nodes = function (config, strictMatch) {
             switch (position) {
 
                 case 'before':
-                    this.foward_iterator(function (x) {
+                    this.forward_iterator(function (x) {
 
                         x.add_html(content, "before");
                     });
                     break;
                 case 'after':
-                    this.foward_iterator(function (x) {
+                    this.forward_iterator(function (x) {
 
                         x.add_html(content, "after");
                     });
                     break;
                 case 'append':
-                    this.foward_iterator(function (x) {
+                    this.forward_iterator(function (x) {
 
                         x.add_html(content, "last");
                     });
                     break;
                 case 'prepend':
-                    this.foward_iterator(function (x) {
+                    this.forward_iterator(function (x) {
 
                         x.add_html(content, "first");
                     });
@@ -372,7 +372,7 @@ TigerJS.nodes = function (config, strictMatch) {
 
         this.n._destroy = function () {
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
                     try {
                         x.destroy(); //kill the returned node reference,
                         //yeeeaaah!!, memory management, right!!:)
@@ -399,7 +399,7 @@ TigerJS.nodes = function (config, strictMatch) {
         this.n._attr = function (name, value) {
             var r;
             if (value) {
-                this.foward_iterator(function (x, name, value) {
+                this.forward_iterator(function (x, name, value) {
 
                     var _arg = {};
 
@@ -426,7 +426,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
         this.n._each = function (func, context) {
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
                     func.call(context ? context : window, x);
                 });
                 return this;
@@ -470,7 +470,7 @@ TigerJS.nodes = function (config, strictMatch) {
         this.n._html = function (htmlString) {
             if (this.length) {
                 if (htmlString) {
-                    this.foward_iterator(function (x) {
+                    this.forward_iterator(function (x) {
 
                         x.set_html(htmlString);
                     });
@@ -519,7 +519,7 @@ TigerJS.nodes = function (config, strictMatch) {
 
                 return this[0].get_style();
             } else {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
 
                     for (i in styleMap) {
                         x.style[i.to_case("-cm")] = styleMap[i];
@@ -539,7 +539,7 @@ TigerJS.nodes = function (config, strictMatch) {
         this.n._has_class = function (classList) {
             var r = true;
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
 
                     //match all classes , not single
                     if (!x.has_class(classList, false))
@@ -561,7 +561,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
         this.n._remove_class = function (classList) {
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
 
                     x.remove_class(classList);
                 });
@@ -579,7 +579,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
         this.n._replace_class = function (classNames, withClassNames) {
 
-            this.foward_iterator(function (x) {
+            this.forward_iterator(function (x) {
 
                 x.replace_class(classNames, withClassNames);
             });
@@ -596,7 +596,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
         this.n._toggle_class = function (classList) {
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
 
                     x.toggle_class(classList);
                 });
@@ -616,7 +616,7 @@ TigerJS.nodes = function (config, strictMatch) {
         this.n._on = function (eventName, listener, bubble, defAction, once) {
 
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
 
                     x.on(eventName, listener, bubble, defAction, once);
                 });
@@ -636,7 +636,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
         this.n._off = function (eventName, listener) {
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
                     x.off(eventName, listener);
                 });
             }
@@ -653,7 +653,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
         this.n._fire = function (eventName) {
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
                     x.fire(eventName);
                 });
             }
@@ -667,7 +667,7 @@ TigerJS.nodes = function (config, strictMatch) {
          * @type TigerJS.nodes
          */
         this.n._remove_attr = function (name) {
-            this.foward_iterator(function (x) {
+            this.forward_iterator(function (x) {
                 x.remove_attr(name);
             });
             return this;
@@ -687,7 +687,7 @@ TigerJS.nodes = function (config, strictMatch) {
                 if (undefined === content)
                     return this[0].get_text();
 
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
                     x.set_text(content);
                 });
             }
@@ -703,7 +703,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
         this.n._children = function () {
             var c = T.Iterator;
-            this.foward_iterator(function (x) {
+            this.forward_iterator(function (x) {
                 c.merge(x.element_children());
             });
             return T.nodes(c);
@@ -718,7 +718,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
 
         this.n._width = function (size) {
-            this.foward_iterator(function (x) {
+            this.forward_iterator(function (x) {
                 x.set_width(size);
             });
             return this;
@@ -733,7 +733,7 @@ TigerJS.nodes = function (config, strictMatch) {
 
         this.n._height = function (size) {
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
                     x.set_height(size);
                 });
             }
@@ -757,7 +757,7 @@ TigerJS.nodes = function (config, strictMatch) {
             if (this.length) {
                 if (!val)
                     return this[0].get_data(name);
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
                     x.set_data(name, val);
                 });
             }
@@ -775,7 +775,7 @@ TigerJS.nodes = function (config, strictMatch) {
          */
         this.n._remove_data = function (name) {
             if (this.length) {
-                this.foward_iterator(function (x) {
+                this.forward_iterator(function (x) {
                     x.removeAttribute(("data-lick" + name));
                 });
             }

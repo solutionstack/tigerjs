@@ -351,7 +351,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                 if (selectedDateColor) {
 
                     //unset the styling from any previous cliked cell, 
-                    dateCellIterator.foward_iterator(function (x) {
+                    dateCellIterator.forward_iterator(function (x) {
                         x.style.backgroundColor = "transparent";
                     });
                     this.target.style.backgroundColor = selectedDateColor;
@@ -381,7 +381,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                     add_all(dateCellsBoxTableElement.rows[6].cells);
 
             //initally fill the cells with blanks
-            dateCellIterator.foward_iterator(function (x) {
+            dateCellIterator.forward_iterator(function (x) {
                 if (T.type(x) !== "HTMLTableCellElement")//some boogey slipped in.. :)
                     return;
 
@@ -616,7 +616,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                     .add_all(yearCellsBoxTableElement.rows[3].cells)
                     .add_all(yearCellsBoxTableElement.rows[4].cells);
             //now insert the dates into the table cells
-            yearsToDisplay.foward_iterator(function (x) {
+            yearsToDisplay.forward_iterator(function (x) {
                 yearCellsIterator[this.key].innerHTML = x;
                 yearCellsIterator[this.key].style.cursor = "pointer";
                 yearCellsIterator[this.key].className += " t-no-drag"; // dont drag on the year numbers
@@ -770,7 +770,7 @@ TigerJS.UI.Widget.CalendarWidget = function (configurationOptions) {
                 //set it to the current locale, so we get month name in the right language
                 temp_date_object.setLocale(calendarDate.getLocale());
                 //get and insert the month names
-                mntCellsIterator.foward_iterator(function (x) {
+                mntCellsIterator.forward_iterator(function (x) {
 
                     x.innerHTML = temp_date_object.getMonth(true, true); //get short names, and insert in cells
 

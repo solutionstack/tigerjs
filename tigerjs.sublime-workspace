@@ -8,60 +8,11 @@
 	"buffers":
 	[
 		{
-			"file": "src/$.js",
+			"file": "/root/Desktop/x.html",
 			"settings":
 			{
-				"buffer_size": 74372,
+				"buffer_size": 10228,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "    /* global TigerJS, T */\n\n    /*   This file is part of the TigerJS Javascript Library \n     * <https://sourceforge.net/p/tigerjs> <https://github.com/solutionstack/tigerjs> */\n    /* copyright 2014-2016 Olubodun Agbalaya. <s.stackng@gmail.com>, <agbalaya@users.sourceforge.net> */\n\n    /**\n     * @class\n     * This class repreents a basic text input, that can be customized with a plethora of options,\n     * The Input can be created as a plain text input an email input,\n     * a date input , a url input feild or a password feild by passing the appriopriate type\n     * <pre>\n     * Note**\n     * \n     * If adjusting the style properties, using CSS, you may need to use the (!important keyword to ovveride some values)\n     \n     * </pre>\n     * @param {Object} configurationOptions  An object contaning configuration parameters for this widget\n     * @param {String} [configurationOptions.type = text]  The input type, currently supported types are:\n     * <pre>\n     * text | number | password | date | email | url;\n     * </pre>\n     * @param {CSSColor} [configurationOptions.backgroundColor = transparent]  background color for this widget, \n     * @param {CSSColor} [configurationOptions.textColor = #000] text color for this widget \n     * @param {CSSColor} [configurationOptions.borderColor = \"#ccc\"] border color for this widget \n     * @param {CSSColor} [configurationOptions.hoverBorderColor] border color on hover/focus/active state \n     * @param {String} [configurationOptions.textAlign = left] Text Alignment value, could be one of left | right | center\n     * @param {String} [configurationOptions.placeHolder] PlaceHolderText\n     * @param {CSSColor} [configurationOptions.placeHolderColor] PlaceHolderText color\n     * @param {String} [configurationOptions.placeHolderImg] A place holder image, pass the name\n     * one of the SVG images budled with the library, and dont forget to call T.insertS* @param {String} [configurationOptions.placeHolderImg] A place holder image, pass the name\n     * one of the SVG images budled with the library, and dont forget to call T.insertSCGIcons after adding the wiget to the DOM`.\n     * GIcons after adding the wiget to the DOM`.\n     * \n     * @param {Boolean} [configurationOptions.required = false] Specifies if the input is required and cannot be sent empty\n     * @param {CSSColor} [configurationOptions.requiredTagColor = red] The value of the required indicator\n     * @param {Boolean} [configurationOptions.disabled = false] Should the control be disabled\n     * @param {Boolean} [configurationOptions.read_only = false] Should the control be rendered read_only. \n     * @param {String} [configurationOptions.value] The default value of the input element\n     * @param {String} [configurationOptions.name] The name property sets or returns the value of the name attribute of an input field.\n     * Remember only form elements with a name attribute will have their values passed when submitting a form.\n     * @param {String} [configurationOptions.validateAs] The type of String to validate the text feild as currently Supports either of \n     * <pre>\n     * email | url | number\n     * </pre>\n     * @param {String | HTMLFormElement } [configurationOptions.attachToForm] Associate this input with a form element, \n     *                                                   you could specify a DOM Node referencing the Form or the Form's id\n     * \n     \n     *  @param {String} [configurationOptions.label] The label for this control\n     * @param {String} [configurationOptions.errorColor = red] The color of the error icon\n     * @param {Number} [configurationOptions.step = 0] specifies the legal intervals, valid only if this feild is designated as a number feild\n     * @param {Number} [configurationOptions.min] minimum value of this feild, valid only if this feild is designated as a number feild\n     * @param {Number} [configurationOptions.max] maximum value of this feild, valid only if this feild is designated as a number feild\n     * \n     * @param {String} [configurationOptions.pattern] Custom RegExp pattern to use for validating the input\n     * @param {Object} [configurationOptions.datePickConfig]  if creating an input of type date use this object to create configuration options\n     * for the date picker, possible values and properties can be found in the documentation of {@link TigerJS.UI.Widget.CalendarWidget}\n     * \n     * \n     * @extends TigerJS.UI.Widget\n     * \n     */\n\n\n    TigerJS.UI.Widget.TextInputWidget = function(configurationOptions) {\n\n        function __inputWidget(configurationOptions) {\n            //cretae a new T.UI.Widget instance\n            var baseWidget = T.UI.Widget({ elementType: \"input\" }),\n                type = configurationOptions && configurationOptions.type ?\n                configurationOptions.type : \"text\",\n                bgColor = configurationOptions && configurationOptions.backgroundColor ?\n                configurationOptions.backgroundColor : \"transparent\",\n                bdColor = configurationOptions && configurationOptions.borderColor ?\n                configurationOptions.borderColor : \"#ccc\",\n                tColor = configurationOptions && configurationOptions.textColor ?\n                configurationOptions.textColor : \"#000\",\n                hColor = configurationOptions && configurationOptions.hoverBorderColor ?\n                configurationOptions.hoverBorderColor : null,\n                tAlign = configurationOptions && configurationOptions.textAlign ?\n                configurationOptions.textAlign : null,\n                pHolder = configurationOptions && configurationOptions.placeHolder ?\n                configurationOptions.placeHolder : null,\n                pHolderColor = configurationOptions && configurationOptions.placeHolderColor ?\n                configurationOptions.placeHolderColor : \"#ccc\",\n                pHolderImg = configurationOptions && configurationOptions.placeHolderImg ?\n                configurationOptions.placeHolderImg : null,\n                val_req = configurationOptions && configurationOptions.required ?\n                configurationOptions.required : false,\n                val_req_color = configurationOptions && configurationOptions.requiredTagColor ?\n                configurationOptions.requiredTagColor : \"red\",\n                disable = configurationOptions && configurationOptions.disabled ?\n                configurationOptions.disabled : false,\n                read_only = configurationOptions && configurationOptions.read_only ?\n                configurationOptions.read_only : false,\n                name = configurationOptions && configurationOptions.name ?\n                configurationOptions.name.toString()\n                .trim() : false,\n                value = configurationOptions && configurationOptions.value ?\n                configurationOptions.value.toString()\n                .trim() : false,\n                validate_as = configurationOptions && configurationOptions.validateAs ?\n                configurationOptions.validateAs.toString()\n                .trim() : false,\n                pattern = configurationOptions && configurationOptions.pattern ?\n                configurationOptions.pattern.toString()\n                .trim() : false,\n                err_col = configurationOptions && configurationOptions.errorColor ?\n                configurationOptions.errorColor.toString()\n                .trim() : \"red\",\n                label = configurationOptions && configurationOptions.label ?\n                configurationOptions.label.toString()\n                .trim() : false,\n                step = configurationOptions && configurationOptions.step ?\n                parseInt(configurationOptions.step) : 0,\n                min = configurationOptions && configurationOptions.min ?\n                parseInt(configurationOptions.min) : false,\n                max = configurationOptions && configurationOptions.max ?\n                parseInt(configurationOptions.max) : false,\n                datePickConfig = configurationOptions && configurationOptions.datePickConfig ?\n                configurationOptions.datePickConfig : false,\n                attachToForm = configurationOptions && configurationOptions.attachToForm ?\n                T.$(configurationOptions.attachToForm) : false;\n\n\n            //reset the type && validation scheme based on the input type\n            //put the input element into a div container, so we can add placeholder images beside the input\n            var textContainer = T.$(document.createElement(\"div\"));\n\n            switch (type) {\n                case \"password\":\n                    pHolderImg = pHolderImg || \"T-icons-lock\";\n                    break;\n                case \"date\":\n                    pHolderImg = \"T-icons-calendar-check-o\";\n                    validate_as = false;\n                    break;\n                case \"number\": //you cant input any other value in the number type anyway..\n                    validate_as = \"number\";\n                    break;\n                case \"url\":\n                    pHolderImg = \"T-icons-globe-2\";\n                    validate_as = \"url\";\n                    break;\n\n                case \"email\":\n                    validate_as = \"email\";\n\n                    break;\n\n            } //we do not have a case for the text type as that can be validated as anything\n            textContainer.appendChild(baseWidget._widgetElement);\n\n            textContainer.on(\"click\", function() {\n                baseWidget._widgetElement.focus(); //focus the actual input element\n            }, false);\n            ///////////////////////////////////////////////////////////////////////////\n            //reset The familyId and instance Id for this Widget\n            ///All Widgets in this library should have a family and instance ID\n\n            baseWidget.FamilyID = \"TextInputWidget\";\n            if (T.globalWidgetCache[baseWidget.FamilyID]) {\n                T.globalWidgetCache[baseWidget.FamilyID] =\n                    T.globalWidgetCache[baseWidget.FamilyID] += 1;\n            } else {\n                T.globalWidgetCache[baseWidget.FamilyID] = 1;\n            }\n            //Set the Instance Id for this  Widget Instance\n            baseWidget.InstanceID = baseWidget.FamilyID +\n                (\"%02X\".sprintf(T.globalWidgetCache[baseWidget.FamilyID]));\n            //set the widget's id to the instance id\n            baseWidget._widgetElement.id = baseWidget.InstanceID;\n            //give the parent div an id\n            textContainer.id = baseWidget._widgetElement.id + \"ContainerNode\";\n            //give the parent div a class\n            textContainer.className += \" TSIContainer\";\n\n\n            /////////////////////////////////////////////////////////////////////////////////\n\n\n            /////////////////////////// //set some HTML5 data, just for fun.. ////////////////////////////\n            //the _widgetElement is the actual DOM Element so..\n            baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);\n            baseWidget._widgetElement.setAttribute(\"type\", \"text\");\n            var inputType = baseWidget._widgetElement.getAttribute(\"type\")\n                .trim();\n            //\n            //                  \n            baseWidget._widgetElement.className += \" TigerSmartInput\";\n\n\n            //////////////////////////// //////////////////END SOME ATTR FOR THEWIDGET//////////////////////       \n\n\n            ///////////// //////////////////SPARSE CONFIGURATION PARAMETERS//////////////////////\n            if (attachToForm) {\n                baseWidget._widgetElement.form = attachToForm;\n            }\n            if (tColor) {\n                baseWidget._widgetElement.style.color = tColor;\n                baseWidget._widgetElement.parentNode.style.color = tColor;\n            }\n            if (pHolder) {\n\n                baseWidget._widgetElement.setAttribute(\"placeholder\", pHolder);\n            }\n            if (pHolderColor) {\n\n                //This dynamically creates a new stylesheet element for the placeholder texts\n                T.add_css_blob(\"#\" + baseWidget._widgetElement.id + \"[type='\" + inputType + \"']:-ms-input-placeholder\" +\n                    \"{color:\" + pHolderColor + \" !important;opacity:.5 !important}\" +\n                    \"#\" + baseWidget._widgetElement.id + \"[type='\" + inputType + \"']::-webkit-input-placeholder\" +\n                    \"{color:\" + pHolderColor + \" !important;opacity:.5 !important}\" +\n                    \"#\" + baseWidget._widgetElement.id + \"[type='\" + inputType + \"']::-moz-placeholder\" +\n                    \"{color:\" + pHolderColor + \" !important;opacity:.5 !important}\" +\n                    \"#\" + baseWidget._widgetElement.id + \"[type='\" + inputType + \"']:-moz-placeholder\" +\n                    \"{color:\" + pHolderColor + \" !important;opacity:.5 !important}\");\n            }\n            if (pHolderImg) {\n                //create the placeholder-image element\n                var pHolderImgElement = T.$(document.createElement(\"span\"));\n                pHolderImgElement.className += ' ' + pHolderImg;\n                pHolderImgElement.set_style({ fill: (pHolderColor ? pHolderColor : \"#ccc\") });\n\n                //insert into the input elements container\n                baseWidget._widgetElement.parentNode.insertBefore(pHolderImgElement, baseWidget._widgetElement);\n\n            }\n            if (bgColor) { //background color\n                //the input is in a container div so set styles on the container also\n\n                baseWidget._widgetElement.style.setProperty(\"background-color\", bgColor, \"important\");\n                baseWidget._widgetElement.parentNode.style.setProperty(\"background-color\", bgColor, \"important\");\n            }\n            if (bdColor) { //border colors\n                baseWidget._widgetElement.parentNode.style.borderColor = bdColor;\n                baseWidget._widgetElement.parentNode.style.borderStyle = \"solid\";\n                baseWidget._widgetElement.parentNode.style.borderWidth = \"1px\";\n                baseWidget._widgetElement.style.borderColor = \"none\";\n            }\n\n            if (hColor) { //hover/active/focus border color\n                var borderDefaultColor = baseWidget._widgetElement.parentNode.style.borderColor ?\n                    baseWidget._widgetElement.parentNode.style.borderColor :\n                    baseWidget._widgetElement.parentNode.get_style()[\"borderColor\"];\n\n                //use CSS to control hover states (more effective than from JS)\n                T.add_css_blob(\" #\" + baseWidget._widgetElement.parentNode.id + \":hover\" +\n                    \" { border-color:\" + hColor + \" !important}\");\n                baseWidget._widgetElement.oninput = function() { //remain in the hover state while recieving input\n                    this.parentNode.style.borderColor = hColor;\n                };\n                baseWidget._widgetElement.onfocus = function() { //remain in the hover state while recieving focus\n                    this.parentNode.style.borderColor = hColor;\n                };\n                baseWidget._widgetElement.onblur = function() {\n                    this.parentNode.style.borderColor = borderDefaultColor;\n                };\n            }\n            if (tAlign) {\n                baseWidget._widgetElement.style.textAlign = tAlign;\n            }\n            if (val_req) { //the input is required\n                //Create the required span\n                var reqEl = T.$(document.createElement(\"span\"));\n                reqEl.className += \" T-icons-svg\";\n                reqEl.set_style({\n                    color: val_req_color,\n                    fill: val_req_color,\n                    fontSize: \".6em\",\n                    width: \"1em\",\n                    textAlign: \"center\",\n                    cssFloat: \"right\"\n                });\n\n                baseWidget._widgetElement.parentNode.appendChild(reqEl);\n\n            }\n\n            /**\n             * Sets or returns whether a input Widget is read-only\n             * @param {Boolean} read_only Boolean to specify whether the input widget is read only \n             * @function\n             * @return {TigerJS.UI.Widget.TextInputWidget | Boolean}\n             * @name TigerJS.UI.Widget.TextInputWidget#read_only\n             */\n            baseWidget.read_only = function(read_only) {\n                if (read_only && T.is_boolean(read_only)) {\n                    baseWidget._widgetElement.read_only = read_only;\n                    return this;\n                }\n                return baseWidget._widgetElement.read_only || false;\n            };\n            if (read_only) { //they sent a read_only attribute value\n                baseWidget.read_only(read_only);\n            }\n\n            /**\n             * Sets or returns whether the widget is disabled or not\n             * @param {Boolean} _disable Boolean to denote if we should disable the conrol or not\n             * @function\n             * @type TigerJS.UI.Widget.TextInputWidget | Boolean\n             * @name TigerJS.UI.Widget.TextInputWidget#is_disabled\n             */\n            baseWidget.is_disabled = function(_disable) {\n\n                if (Boolean(_disable) === true) {\n\n                    this._widgetElement.disabled = _disable;\n                    this._widgetElement.style.setProperty(\"color\", \"#ccc\", \"important\");\n                    return this;\n\n                } else if (Boolean(_disable) === false) {\n                    this._widgetElement.disabled = _disable;\n                    this._widgetElement.style.setProperty(\"color\", tColor, \"important\");\n\n                    return this;\n                }\n\n                return baseWidget._widgetElement.disabled;\n            };\n            if (disable) {\n                baseWidget.is_disabled(disable);\n            }\n\n            /**\n             * Sets or returns the name of the Input Widget\n             * @param {String} name Specifies the name of the Input Widget\n             * @function\n             * @name TigerJS.UI.Widget.TextInputWidget#name\n             * @return {TigerJS.UI.Widget.TextInputWidget | String}\n             */\n            baseWidget.name = function(name) {\n                if (name) {\n                    baseWidget._widgetElement.name = name;\n                    return this;\n                }\n                return baseWidget._widgetElement.name;\n            };\n            if (name) {\n                baseWidget.name(name);\n            }\n\n            /**\n             * Sets or returns the value attribute of the Input Widget\n             * @param {String} value Specifies the value of the Input Widget\n             * @function\n             * @return {TigerJS.UI.Widget.TextInputWidget | String}\n             * @name TigerJS.UI.Widget.TextInputWidget#value\n             */\n            baseWidget.value = function(value) {\n                if (value) {\n                    baseWidget._widgetElement.value = value;\n                    return this;\n                }\n                return baseWidget._widgetElement.value;\n            };\n            if (value) {\n                baseWidget.value(value);\n            }\n\n            baseWidget.validated = false;\n\n            //>\n            //set the visual error state if validation fails\n            baseWidget.set_visual_error_state = function() {\n                //show color the forom feild red to indicate an error state\n\n                this._widgetElement.parentNode.set_style({\n                    borderColor: \"red\",\n                    borderWidth: \"2px\"\n                });\n\n                this._widgetElement.on(\"input change\", function() { //when the resumes typing clear the error state\n\n\n                    this.target.parentNode.set_style({\n                        borderColor: \" rgb(204, 204, 204)\",\n                        borderWidth: \"1px\"\n                    });\n                });\n\n\n            };\n\n            //>\n            baseWidget.validate_on_form_submit = function(_pattern, BAD_PATTERN_FLAG) {\n\n                if (!val_req) {\n                    return true; //no validation needed\n                }\n\n                this.validated = false; //always reset the global var, so we dont get the previous validated value\n                var vt = validate_as,\n                    val = baseWidget._widgetElement.value.trim();\n\n                if (!validate_as && _pattern && val !== \"\") { //they sent their own regex\n\n                    if (_pattern.test(val)) { //user pattern to validate\n\n                        //see if we are to coerce a truthy validation as false\n\n                        if (BAD_PATTERN_FLAG) {\n                            //this.validated = false; //no need, already false from above\n\n                            this.set_visual_error_state();\n                        } else\n                            this.validated = true;\n\n                        return this.validated;\n\n                    } else { //pattern did not validate\n\n                        //so set validated flag to false, except we where validating on a BAD_PATTERN, in which case set to true\n                        if (BAD_PATTERN_FLAG) {\n                            this.validated = true;\n\n                        } else {\n                            //no BAD_PATTERN flag just return the real validation status\n                            this.validated = false;\n                            this.set_visual_error_state();\n                        }\n\n                        return this.validated;\n\n                    }\n\n                }\n\n                if (validate_as && !_pattern && val !== \"\") {\n\n                    //validate\n                    switch (vt) {\n                        case \"url\":\n                            val = val.indexOf(\"://\") > -1 ? val : \"http://\" + val; //append a fake protocol to play nice with the parser's regex\n\n                            var parser = TigerJS.Parser.parse_address(\"web\", val);\n                            if (parser && parser.length === 1)\n                                this.validated = true; //we need just a match\n\n\n                            break;\n                        case \"email\":\n\n\n                            var parser = TigerJS.Parser.parse_address(\"mail\", val); //we need just a match\n                            if (parser && parser.length === 1)\n                                this.validated = true;\n                            break;\n                        case \"number\":\n\n                            var parser = TigerJS.Parser.parse_number(val);\n                            if (parser && parser.length === 1) //we need just a match\n                                this.validated = true;\n\n                            //check the number range\n                            if (min && val < min)\n                                this.validated = false;\n                            if (max && val > max)\n                                this.validated = false;\n\n                            break;\n                        default:\n                            break;\n                    }\n\n                }\n                boots\n\n                //set validation to true for certain types, if we have valid values\n                if (!validate_as && !_pattern && val !== \"\") {\n                    switch (type) {\n                        case \"password\":\n                        case \"text\":\n                            this.validated = true;\n                            break;\n                        case \"date\":\n\n                            if (val !== \"mm dd yyyy\" && val !== pHolder) //if the date widget's value isnt one of the defaults\n                                this.validated = true;\n\n                            break;\n                    }\n                }\n\n                //check state and report error if we didnt validate\n                if (this.validated) {\n\n                    return true;\n                } else {\n\n                    this.set_visual_error_state();\n\n                    return false; //\n\n                }\n            };\n            /**\n             * Force validation\n             * @function\n             * @type Boolean  \n             * @name TigerJS.UI.Widget.TextInputWidget#validate\n             * @argument {RegExp} [pattern] A regexp object to use for validation\n             * @argument {Boolean} [reverse_validate] If a pattern argument is given and it validates,\n             *                     set return value to false and set all error state, else if it doesnt\n             *                     validate set return value to true\n             * @return {Boolean} returns true if the validation is successful else returns false\n             */\n            baseWidget.validate = function(pattern, reverse_validate) {\n\n                return this.validate_on_form_submit(pattern ? pattern : null,\n                    reverse_validate && Boolean(reverse_validate) === true ? true : false);\n            };\n            //\n            //->       //ovveride toString\n            baseWidget._widgetElement.__to_string = function() {\n                return \"[object TigerJS.TextInputWidget]\";\n            };\n            //\n            //\n            //->   //overide appendTo Element\n            baseWidget.append_to_element = function(parEl) {\n                var p, __formNode = false;\n\n                if (parEl.nodeType && parEl.nodeType === 1) {\n\n                    parEl.appendChild(baseWidget._widgetElement.parentNode);\n                    p = T.$(parEl);\n                } else\n                if (T.is_string(parEl)) {\n                    p = T.$(parEl);\n                    p.appendChild(baseWidget._widgetElement.parentNode);\n\n                }\n\n                document.createElement(\"SPAN\"); /** Workaround for firefox Heirachy request Error BUG!! -- Just MAKE A  call that accesses the dom after your insertion**/ ;\n                //see if we are been attached to a form so we can validate before submission\n\n                if ((T.type(p) === \"HTMLFormElement\") || (p = attachToForm))\n                    __formNode = true;\n\n\n                //attach a validation handler to the form\n                if (__formNode && !p.onsubmit) {\n                    p.onsubmit = function() {\n                        var el = this.elements,\n                            i;\n                        for (i = el.length - 1; i >= 0; i--) { //we loop in reverse so the validation starts from the last filled element\n\n                            //see if the Widget Object of this input has a validation interface\n                            if (el[i].WidgetObj && el[i].WidgetObj.validate_on_form_submit) {\n\n                                //if validation fails, stop the form submision, (errors would be displayed from the validation method)\n                                if (!el[i].WidgetObj.validate())\n                                    return false; //attempt to validate\n                            }\n                        }\n\n\n                    };\n                }\n\n\n                //>handle labels\n                if (label) {\n                    var l = T.$(document.createElement(\"div\"));\n                    l.className += \" TSILabel\";\n                    l.innerHTML = label;\n                    this._widgetElement.parentNode.insertBefore(l, baseWidget._widgetElement.parentNode.first_element_child());\n                    //how its supposed to happen with real labels\n                    l.on(\"click\", function() {\n                        baseWidget._widgetElement.focus();\n                    });\n                }\n\n\n\n                return this;\n            };\n            //> More public API methods\n\n            /*\n             *  \n             */\n\n            //\n            //\n            //->       //ovveride toString\n            baseWidget._widgetElement.__to_string = function() {\n                return \"[object TigerJS.TextInputWidget]\";\n            };\n\n            /*\n             * After all said and done we now modify the widget depending on the type the user sent, we are basically\n             * ovveriding all browser handling of the type attribute, or at least as much as we can\n             * \n             */\n            switch (type) {\n                case \"password\":\n                    baseWidget._widgetElement.type = type;\n                    break;\n                case \"date\":\n\n                    baseWidget._widgetElement.read_only = true; //make the feild read only\n                    baseWidget._widgetElement.value = pHolder || \"mm dd yyyy\"; //our date format\n                    baseWidget._widgetElement.style.opacity = \".5\";\n                    //show a date picker on click\n\n                    baseWidget._widgetElement.parentNode.on(\"click\", function(e) {\n\n                        //remove any error tooltip in view\n                        var errTip = document.querySelector(\"#\" + baseWidget._widgetElement.parentNode.id + \" > .TigerFormErrorIcon\");\n                        if (errTip)\n                            errTip.parentNode.removeChild(errTip);\n\n                        var calenderConfig = datePickConfig || {};\n\n                        //get the last date value\n                        var val = baseWidget._widgetElement.get_data(\"dateVal\"),\n                            currentDateVal = isNaN(new Date(val)) ? new Date() : (new Date(val || \"\"));\n\n                        if (!calenderConfig.hoverColor) //minimum style to be set for the calendar\n                            calenderConfig.hoverColor = \"#DC143C\";\n\n                        //set the callback when a date is selected\n                        calenderConfig.dateClickCB = function(date, calObj) {\n\n                            var _date = \"%02s\".sprintf((date.getDate())); //get the date padded to 2 characters minimum\n\n                            //get the short month name\n                            var month = date.getMonth(true, true); //display as per set locale\n                            var year = date.getFullYear();\n\n                            //set the date value on the input\n                            baseWidget._widgetElement.value = month + \" \" + _date + \" \" + year;\n                            baseWidget._widgetElement.style.opacity = \"1\";\n\n                            //IE 10 doesnt support new Date(mm dd yyyy) string, so we have to use slashes\n                            //cuz this would be used to build up the dates on next call\n                            baseWidget._widgetElement.set_data(\"dateVal\", (date.getMonth() + 1) + \"/\" + _date + \"/\" + year);\n                            baseWidget._widgetElement.set_data(\"lastLocaleUsed\", date.getLocale()); //save the locale\n\n                            //destroy....\n                            calObj.destroy();\n\n                            baseWidget._widgetElement.fire(\"change\"); //atimes the change event just doen't fire\n                        };\n\n                        //make sure a date picker is not already in view\n                        var prevDatePckr = document.querySelector(\"#\" + baseWidget._widgetElement.parentNode.id + \" > .TigerSmartCalendar\");\n                        if (prevDatePckr) {\n                            return;\n                        }\n                        //create a new calendar\n                        var cal = T.UI.Widget.CalendarWidget(calenderConfig);\n\n                        cal.Node.style.top = parseInt(baseWidget._widgetElement.parentNode.offsetHeight) + \"px\";\n\n                        cal.Node.style.zIndex = \"1001\";\n\n                        var lastUsedLocale = baseWidget._widgetElement.get_data(\"lastLocaleUsed\");\n                        //persist locales\n                        if (lastUsedLocale)\n                            cal.setLocaleID(lastUsedLocale);\n                        cal.append_to_element(baseWidget._widgetElement.parentNode);\n\n                        cal.Node.style.left = (baseWidget._widgetElement.parentNode.offsetWidth - cal.Node.offsetWidth) / 2 + \"px\";\n\n\n                        //set the date\n                        cal.setView(currentDateVal.getFullYear(), currentDateVal.getMonth());\n\n                        T.$(document.body)\n                            .on(\"click\", function() {\n                                var calInView = document.querySelector(\"#\" + baseWidget._widgetElement.parentNode.id + \" > .TigerSmartCalendar\");\n                                if (calInView) {\n                                    calInView.WidgetObj.destroy();\n                                }\n                            });\n\n\n                    });\n\n                    break;\n                case \"number\": // number type we'll put elements to manually increase or decrease\n\n                    //>set the initial value of the widget\n                    baseWidget._widgetElement.value = value || 0;\n                    var numberControlsContainer = T.$(document.createElement(\"div\"));\n                    numberControlsContainer.className += \" numberControlsContainer\";\n                    numberControlsContainer.set_style({\n                        display: \"inline-block\",\n                        width: \"8%\",\n                        height: \"1.5em\",\n                        position: \"relative\",\n                        cssFloat: \"right\",\n                        marginRight: \"3%\",\n                        textAlign: \"center\",\n                        marginTop: \"-.2em\"\n                    });\n\n                    //insert the controls box, into the input widget container\n                    if (val_req) {\n                        baseWidget._widgetElement.parentNode.appendChild(numberControlsContainer); //, baseWidget._widgetElement.parentNode.last_element_child());\n\n                        //reduce the input with to allow for space for the controls\n                        baseWidget._widgetElement.style.setProperty(\"width\", \"70%\", \"important\");\n                    } else {\n                        baseWidget._widgetElement.parentNode.appendChild(numberControlsContainer);\n                    }\n\n                    //create the increase element\n                    var incButton = T.$(document.createElement(\"span\")); //\n                    incButton.set_style({\n                        cssFloat: \"left\",\n                        width: \"97%\",\n                        height: \"45%\",\n                        textAlign: \"center\",\n                        fontSize: \".8em \",\n                        color: tColor\n                    });\n                    incButton.innerHTML = \"&#9650;\";\n                    incButton.className += \" NumberfeildIncreaseElement\";\n                    incButton.selectable(false);\n\n                    //create the decrease element\n                    var decButton = T.$(document.createElement(\"span\")); //\n                    decButton.set_style({\n                        cssFloat: \"left\",\n                        width: \"97%\",\n                        height: \"45%\",\n                        textAlign: \"center\",\n                        fontSize: \".8em \",\n                        color: tColor\n                    });\n                    decButton.innerHTML = \"&#9660;\";\n                    decButton.className += \" NumberfeildDecreaseElement\";\n                    decButton.selectable(false);\n\n                    //set styles for hover state of buttons\n                    T.add_css_blob(\"#\" + baseWidget._widgetElement.parentNode.id + \" > .numberControlsContainer > .NumberfeildIncreaseElement:hover, \" +\n                        \"#\" + baseWidget._widgetElement.parentNode.id + \" > .numberControlsContainer > .NumberfeildDecreaseElement:hover{ \" +\n                        \"color:\" + (hColor && (hColor !== tColor) ? hColor : \"#ccc\") + \" !important; cursor: default}\");\n\n                    //insert buttons into DOM \n                    numberControlsContainer.appendChild(incButton);\n                    numberControlsContainer.appendChild(decButton);\n\n                    //onclick handler's for incrementing/decreamenting actions\n                    incButton.on(\"click\", function() {\n\n\n                        var errTip = document.querySelector(\"#\" + baseWidget._widgetElement.parentNode.id + \" > .TigerFormErrorIcon\");\n                        if (errTip)\n                            errTip.parentNode.removeChild(errTip);\n\n                        var val = parseInt(baseWidget._widgetElement.value);\n\n\n                        if (step)\n                            val += step;\n                        else\n                            val += 1;\n                        if (!max || (max && val <= max))\n                            baseWidget._widgetElement.value = val;\n                    });\n\n                    decButton.on(\"click\", function() {\n\n                        var errTip = document.querySelector(\"#\" + baseWidget._widgetElement.parentNode.id + \" > .TigerFormErrorIcon\");\n                        if (errTip)\n                            errTip.parentNode.removeChild(errTip);\n\n                        var val = parseInt(baseWidget._widgetElement.value);\n                        if (isNaN(val))\n                            val = 0;\n\n                        if (step)\n                            val -= step;\n                        else\n                            val -= 1;\n                        if (!min || (min && val >= min))\n                            baseWidget._widgetElement.value = val;\n                    });\n                    break;\n            }\n            //return the input widget Object\n            return baseWidget;\n        }\n\n        return new __inputWidget(configurationOptions);\n    };",
-			"file": "src/TextInputWidget.js",
-			"file_size": 37465,
-			"file_write_time": 131462750393249383,
-			"settings":
-			{
-				"buffer_size": 37655,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/tiger.js",
-			"settings":
-			{
-				"buffer_size": 75491,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/nodes.js",
-			"settings":
-			{
-				"buffer_size": 29322,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/FileUploadWidget.js",
-			"settings":
-			{
-				"buffer_size": 33662,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "/* global TigerJS, T */\n\n/*   This file is part of the TigerJS Javascript Library @@https://sourceforge.net/p/tigerjs> */\n\n/**\n * @class\n * Custom Notificatiom widget, This class produces a blank notification widget with a close button,\n * so its your job to fill in child nodes, and postion its top left using css.\n * it has a CSS class of TNotifyWidget, or you can access the 'Node' Object to modify it in the DOM\n * @param {Object} configurationOptions  An object contaning configuration parameters for this widget\n \n * @param {CSSColor} [configurationOptions.backgroundColor = #fff176] The background Color for the Widget\n * @param {String} [configurationOptions.closeButtonColor=transparent] The color for the close button\n \n * @param {CSSlength} configurationOptions.width Width for this widget\n * @param {CSSlength} configurationOptions.height Width for this widget\n \n * @param {String} configurationOptions.style The Notification style, one of\n * <pre>\n * \n * slide-top | slide-bottom, enter-lt, ebter-lb, enter-rt, enter-rb\n * thumb-slider, scale-lt, scale-lb, scale-rt, scale-rb\n * \n * </pre>\n *  \n *  @param {Number} [configurationOptions.timer]  Specifies the time in seconds which the NotificationWidget would be visible\n \n * \n * @extends TigerJS.UI.Widget\n * \n */\n\n\nTigerJS.UI.Widget.NotifyWidget = function(configurationOptions) {\n\n    function __notifyWidget(configurationOptions) {\n\n        var bgColor = configurationOptions && configurationOptions.backgroundColor ?\n            configurationOptions.backgroundColor : \"#fff176\",\n            cbColor = configurationOptions && configurationOptions.closeButtonColor ?\n            configurationOptions.closeButtonColor : \"transparent\",\n            width = configurationOptions && configurationOptions.width ?\n            configurationOptions.width : false,\n            height = configurationOptions && configurationOptions.height ?\n            configurationOptions.height : false,\n            style = configurationOptions && configurationOptions.style ?\n            configurationOptions.style.toString()\n            .trim() : false,\n            timer = configurationOptions && configurationOptions.timer ?\n            configurationOptions.timer : false;\n\n        //create the main element  container for the slider(s)\n        var baseWidget = T.UI.Widget();\n\n        ///////////////////////////////////////////////////////////////////////////\n        //reset The familyId and instance Id for this Widget\n        ///All Widgets in this library should have a family and instance ID\n\n        baseWidget.FamilyID = \"NotifyWidget\";\n        if (T.globalWidgetCache[baseWidget.FamilyID]) {\n            T.globalWidgetCache[baseWidget.FamilyID] =\n                T.globalWidgetCache[baseWidget.FamilyID] += 1;\n        } else {\n            T.globalWidgetCache[baseWidget.FamilyID] = 1;\n        }\n        //Set the Instance Id for this  Widget Instance\n        baseWidget.InstanceID = baseWidget.FamilyID +\n            (\"%02X\".sprintf(T.globalWidgetCache[baseWidget.FamilyID]));\n\n        //set the widget's id to the instance id\n        baseWidget._widgetElement.id = baseWidget.InstanceID;\n\n        /////////////////// //set some HTML5 data, just for fun.. ////////////////////////////\n        //the _widgetElement is the actual DOM Element so..\n        baseWidget._widgetElement.set_data(baseWidget.FamilyID, baseWidget.InstanceID);\n\n        baseWidget._widgetElement.add_class(\"TNotifyWidget w3-padding-4 w3-card-4\");\n\n        //validate arguments\n        if (!width)\n            throw \" ConfigurationPropertyError<> Constructor TigerJS.UI.Widget.NotifyWidget#constructor - A width property is expected\";\n        if (!height)\n            throw \" ConfigurationPropertyError<> Constructor TigerJS.UI.Widget.NotifyWidget#constructor - A height property is expected\";\n        if (!style)\n            throw \" ConfigurationPropertyError<> Constructor TigerJS.UI.Widget.NotifyWidget#constructor - A style property is expected\";\n\n\n        baseWidget._widgetElement.set_style({\n            width: width,\n            height: height,\n            backgroundColor: bgColor ? bgColor : baseWidget._widgetElement.style.backgroundColor,\n            position: \"absolute\",\n            msTransition: \"-ms-transform .3s\",\n            borderRadius: \"0px\",\n            MozTransition: \"-moz-transform .3s\",\n            WebkitTransition: \"-webkit-transform .3s\",\n            transition: \"transform .3s\",\n            minWidth: \"0px\",\n            minHeight: \"0px\",\n            textAlign: \"center\",\n            whiteSpace: \"nowrap\",\n            padding: \"3px\"\n\n        });\n\n\n        function setDefaultStytle() {\n            //prepare the element\n            switch (style) {\n                case \"slide-top\":\n                    baseWidget._widgetElement.style.transform = \"translateY(-200%)\";\n\n                    break;\n                case \"slide-bottom\":\n                    baseWidget._widgetElement.style.transform = \"translateY(\" + document.body.clientHeight * 1.5 + \"px)\";\n                    break;\n                case \"enter-lt\":\n                    baseWidget._widgetElement.style.transform = \"translateX(-151%)\";\n                    baseWidget._widgetElement.style.top = \"3%\";\n                    break;\n                case \"enter-lb\":\n                    baseWidget._widgetElement.style.transform = \"translateX(-151%)\";\n\n                    break;\n                case \"enter-rt\":\n\n                    baseWidget._widgetElement.style.top = \"3%\";\n\n                case \"enter-rb\":\n                    baseWidget._widgetElement.style.transform = \"translateX(\" + document.body.clientWidth + \"px)\";\n                    break;\n                case \"scale-lt\":\n                    baseWidget._widgetElement.style.left = baseWidget._widgetElement.get_style()\n                        .left || \"3%\";\n                    baseWidget._widgetElement.style.top = baseWidget._widgetElement.get_style()\n                        .top || \"3%\";\n\n                    break;\n                case \"scale-lb\":\n                    baseWidget._widgetElement.style.left = baseWidget._widgetElement.get_style()\n                        .left || \"3%\";\n\n                    break;\n                case \"scale-rt\":\n\n                    baseWidget._widgetElement.style.top = baseWidget._widgetElement.get_style()\n                        .top || \"3%\";\n                    break;\n                case \"scale-rb\":\n\n                    break;\n                case \"dialog\":\n                    break;\n                default:\n                    baseWidget._widgetElement.style.display = \"none\";\n\n            }\n\n            if (style.strpos(\"scale\") > -1) {\n\n                if (baseWidget._widgetElement.parentNode) { //it means the widget has previously been added to the DOM and is probably just hidden\n                    // so use an animation to unshow\n                    function displayNone() {\n                        if (this.target.style.animationName === \"fadeOut\") {\n                            this.target.style.display = \"none\";\n                            baseWidget._widgetElement.style.opacity = 0;\n                        }\n                        this.target.off(\"animationend webkitAnimationEnd MSAnimationEnd mozAnimationEnd\", displayNone);\n                    }\n\n                    baseWidget._widgetElement.on(\"animationend webkitAnimationEnd MSAnimationEnd mozAnimationEnd\", displayNone); //tht last true means this callback should be called only once\n\n                    baseWidget._widgetElement.style.opacity = 1; //need to be explicit as the opacity is controlled by animations\n                    baseWidget._widgetElement.style.animation = \"fadeOut .3s 0s ease-in forwards\";\n\n\n                } else { //we havent previously been shown, hide till we are asked to show\n\n                    baseWidget._widgetElement.style.opacity = 0;\n                    baseWidget._widgetElement.style.display = \"none\";\n                }\n            }\n        }\n\n        //call the above func to set default styling\n        setDefaultStytle();\n\n        //>override public API\n        /**\n         *\n         */\n        baseWidget.show = function() {\n            if (!baseWidget._widgetElement.parentNode) { //it hasnt been appended to an element, do not proceed\n                throw \" ConfigurationPropertyError<> Constructor TigerJS.UI.Widget.NotifyWidget#show - The widget is not inserted in the DOM\";\n\n            }\n            ///create caancel button, only once\n            if (!document.querySelector(\"#\" + baseWidget._widgetElement.id + \" > .icon-cross\")) {\n                var _closeBut = T.$(document.createElement(\"span\"));\n                _closeBut.add_class(\"icon-cross\");\n                _closeBut.set_style({\n                    position: \"absolute\",\n                    fontSize: \"75%\",\n                    right: \"2%\",\n                    cursor: \"pointer\",\n                    color: cbColor,\n                    display: \"inline-block\",\n                    paddingTop: \".1em\"\n                });\n                _closeBut.on(\"click\", function() {\n\n                    setDefaultStytle();\n                });\n\n                baseWidget._widgetElement.appendChild(_closeBut);\n                _closeBut.style.top = (baseWidget._widgetElement.clientHeight / 2) - _closeBut.offsetHeight + \"px\";\n            }\n\n\n\n            switch (style) {\n                case \"slide-top\":\n\n                    baseWidget._widgetElement.style.borderRadius = \"1px\";\n                    baseWidget._widgetElement.style.top = \"0px\";\n                    baseWidget._widgetElement.style.left = (baseWidget._widgetElement.parentNode.clientWidth - baseWidget._widgetElement.clientWidth) / 2 + \"px\";\n                    baseWidget._widgetElement.style.transform = \"translateY(0%)\";\n\n\n                    break;\n                case \"slide-bottom\":\n\n\n                    baseWidget._widgetElement.style.borderRadius = \"1px\";\n                    baseWidget._widgetElement.style.top = \"0px\";\n                    baseWidget._widgetElement.style.left = (baseWidget._widgetElement.parentNode.clientWidth - baseWidget._widgetElement.clientWidth) / 2 + \"px\";\n                    baseWidget._widgetElement.style.transform = \"translateY(\" + (\n                        baseWidget._widgetElement.parentNode.clientHeight - baseWidget._widgetElement.clientHeight) + \"px)\";\n\n\n\n\n                    break;\n                case \"enter-lt\":\n                    baseWidget._widgetElement.style.transform = \"translateX(5%)\";\n                    baseWidget._widgetElement.style.top = \"3%\";\n                    break;\n                case \"enter-lb\":\n                    baseWidget._widgetElement.style.transform = \"translateX(5%)\";\n                    baseWidget._widgetElement.style.top = (baseWidget._widgetElement.parentNode.clientHeight -\n                        baseWidget._widgetElement.offsetHeight - 30) + \"px\";\n                    break;\n                case \"enter-rt\":\n                    baseWidget._widgetElement.style.transform = \"translateX(\" + (\n                        baseWidget._widgetElement.parentNode.clientWidth - baseWidget._widgetElement.clientWidth - 50) + \"px)\";\n                    baseWidget._widgetElement.style.top = \"3%\";\n\n                    break;\n                case \"enter-rb\":\n                    baseWidget._widgetElement.style.transform = \"translateX(\" + (\n                        baseWidget._widgetElement.parentNode.clientWidth - baseWidget._widgetElement.clientWidth - 50) + \"px)\";\n\n                    baseWidget._widgetElement.style.top = (baseWidget._widgetElement.parentNode.clientHeight -\n                        baseWidget._widgetElement.offsetHeight - 30) + \"px\";\n                    break;\n                case \"scale-lt\":\n                case \"scale-lb\":\n                case \"scale-rt\":\n                case \"scale-rb\":\n                    baseWidget._widgetElement.style.display = \"block\";\n\n                    if (style.strpos(\"scale-lb\") > -1 || style.strpos(\"scale-rb\") > -1) {\n                        baseWidget._widgetElement.style.top =\n                            (baseWidget._widgetElement.parentNode.clientHeight - baseWidget._widgetElement.clientHeight - 30) + \"px\";\n\n                    }\n\n                    if (style.strpos(\"scale-rt\") > -1 || style.strpos(\"scale-rb\") > -1) {\n                        baseWidget._widgetElement.style.left =\n                            (baseWidget._widgetElement.parentNode.clientWidth - baseWidget._widgetElement.clientWidth - 30) + \"px\";\n\n                    }\n                    baseWidget._widgetElement.style.animation = \"fadeIn .3s 0s ease-in forwards\";\n                    break\n\n            }\n            if (timer) {\n                window.setTimeout(setDefaultStytle, timer * 1000);\n            }\n        };\n\n\n        //\n        //\n        //->       //ovveride toString\n        baseWidget._widgetElement.__to_string = function() {\n            return \"[object TigerJS.NotifyWidget]\";\n        };\n\n\n\n        return baseWidget;\n    }\n    return new __notifyWidget(configurationOptions);\n};",
-			"file": "src/NotifyWidget.js",
-			"file_size": 12906,
-			"file_write_time": 131450628699476110,
-			"settings":
-			{
-				"buffer_size": 13093,
 				"line_ending": "Unix"
 			}
 		}
@@ -119,11 +70,22 @@
 	},
 	"expanded_folders":
 	[
-		"/var/www/html/tigerjs",
+		"/var/www/html/tigerjs/asset",
+		"/var/www/html/tigerjs/asset/css",
+		"/var/www/html/tigerjs/dist",
+		"/var/www/html/tigerjs/dist/tigerjs",
+		"/var/www/html/tigerjs/dist/tigerjs/asset",
 		"/var/www/html/tigerjs/src"
 	],
 	"file_history":
 	[
+		"/var/www/html/tigerjs/src/$.js",
+		"/var/www/html/tigerjs/src/TextInputWidget.js",
+		"/var/www/html/tigerjs/src/tiger.js",
+		"/var/www/html/tigerjs/asset/css/tiger.css",
+		"/var/www/html/tigerjs/src/nodes.js",
+		"/var/www/html/tigerjs/src/FileUploadWidget.js",
+		"/var/www/html/tigerjs/src/NotifyWidget.js",
 		"/root/.config/sublime-text-3/Cache/CodeMap/CodeMap.Data/11/Code - Map",
 		"/var/www/html/tigerjs/src/eventManager.js",
 		"/var/www/html/tigerjs/src/T.$(configurationOptions.attachToForm): false; / Line 118, Pos 19",
@@ -146,7 +108,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
@@ -177,24 +139,24 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/$.js",
+					"file": "/root/Desktop/x.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 74372,
+						"buffer_size": 10228,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								26101,
-								26101
+								10228,
+								10228
 							]
 						],
 						"settings":
@@ -205,30 +167,20 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										26100,
-										26101
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										25753,
-										25754
-									]
 								},
 								"unmatched":
 								{
+									"1":
+									[
+										10223,
+										10227
+									]
 								}
 							},
 							"bracket_highlighter.regions":
@@ -238,46 +190,46 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -289,602 +241,16 @@
 								"bh_single_quote_close",
 								"bh_single_quote_content"
 							],
-							"function_name_status_row": 736,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"function_name_status_row": 212,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 13102.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/TextInputWidget.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 37655,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19631,
-								19631
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										19967,
-										19968
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										19395,
-										19396
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"function_name_status_row": 373,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 6550.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/tiger.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 75491,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								68075,
-								68075
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										70231,
-										70232
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"function_name_status_row": 1938,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 34486.0,
+						"translation.y": 1092.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/nodes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 29322,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								25701,
-								25701
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										25822,
-										25823
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										25581,
-										25582
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"function_name_status_row": 683,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 11968.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/FileUploadWidget.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 33662,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								29066,
-								29066
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										29071,
-										29072
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										29044,
-										29045
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"function_name_status_row": 709,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 12328.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/NotifyWidget.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13093,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								980,
-								980
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"function_name_status_row": 20,
-							"git_gutter_is_enabled": true,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 324.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
 					"type": "text"
 				}
 			]

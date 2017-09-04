@@ -465,7 +465,7 @@ TigerJS.Date = function (date) {
 
                 //now we have extracted all Individual tokens 
                 // perform actual addition
-                tokenSet.foward_iterator(function (index) {
+                tokenSet.forward_iterator(function (index) {
                     var val_to_add;
                     switch (index.charAt(index.length - 1)) { //poke at the last character, which would contain our specifier
                         case "s": //seconds

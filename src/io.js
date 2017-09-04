@@ -979,7 +979,7 @@ TigerJS.io.CompositeRequest = function () {
                 globalConfigObj = {}, // a mashup-up of all configObj's for each request
                 request_index_counter = 0;
         //get the details out of each config obj
-        request_container.foward_iterator(
+        request_container.forward_iterator(
                 function (x) {
 
 

@@ -49,7 +49,7 @@ TigerJS.Iterator = function (elements) {
         try {
             for (i in el) {
 
-                // for Arrays an array Likes, that is Collections and nodeLists
+                // Arrays an array Likes, that is Collections and nodeLists
                 if (el.length && !T.is_object(el)) {
 
                     if (T.is_number(parseInt(i)) || i === "0") { //retrive only numeric indexes, leaving any Object property, lyk item nameditem e.t.c.
@@ -1527,17 +1527,17 @@ TigerJS.Iterator = function (elements) {
          * @param {Number} jump Optional argument if given indicates the number of junps to take while moving foward
          * @param {Array} extra_args An array of extra arguments to send to the callback
          *  @type TigerJS.Iterator
-         *  @name TigerJS.Iterator#foward_iterator
+         *  @name TigerJS.Iterator#forward_iterator
          *  @function
          */
 
 
-        this.obj.foward_iterator = function (cb, jump, extra_args) {
+        this.obj.forward_iterator = function (cb, jump, extra_args) {
             if (this.is_empty())
                 return this;
 
             if (!T.is_function(cb)) {
-                err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#foward_iterator" +
+                err_str = " WrongArgumentTypeError<> Method TigerJS.Iterator#forward_iterator" +
                         "Expects a function as its first argument, * " + T.type(cb) + " * given";
                 throw new Error(err_str);
             }

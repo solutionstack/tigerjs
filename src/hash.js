@@ -37,6 +37,7 @@ var SUPPORTED_ALGS = 4 | 2 | 1;
         this.highOrder = msint_32;
         this.lowOrder = lsint_32;
     }
+    - 3 - 
 
     /**
      * Convert a string to an array of big-endian words

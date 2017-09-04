@@ -671,7 +671,7 @@
             
                 <li data-name="TigerJS.Iterator#flatten"><a href="TigerJS.Iterator.html#flatten">flatten</a></li>
             
-                <li data-name="TigerJS.Iterator#foward_iterator"><a href="TigerJS.Iterator.html#foward_iterator">foward_iterator</a></li>
+                <li data-name="TigerJS.Iterator#forward_iterator"><a href="TigerJS.Iterator.html#forward_iterator">forward_iterator</a></li>
             
                 <li data-name="TigerJS.Iterator#index_of"><a href="TigerJS.Iterator.html#index_of">index_of</a></li>
             
@@ -869,6 +869,8 @@
             
                 <li data-name="TigerJS.nodes#_fire"><a href="TigerJS.nodes.html#_fire">_fire</a></li>
             
+                <li data-name="TigerJS.nodes#_has_class"><a href="TigerJS.nodes.html#_has_class">_has_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_height"><a href="TigerJS.nodes.html#_height">_height</a></li>
             
                 <li data-name="TigerJS.nodes#_html"><a href="TigerJS.nodes.html#_html">_html</a></li>
@@ -879,25 +881,23 @@
             
                 <li data-name="TigerJS.nodes#_on"><a href="TigerJS.nodes.html#_on">_on</a></li>
             
+                <li data-name="TigerJS.nodes#_remove_class"><a href="TigerJS.nodes.html#_remove_class">_remove_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_remove_data"><a href="TigerJS.nodes.html#_remove_data">_remove_data</a></li>
             
                 <li data-name="TigerJS.nodes#_style"><a href="TigerJS.nodes.html#_style">_style</a></li>
             
                 <li data-name="TigerJS.nodes#_text"><a href="TigerJS.nodes.html#_text">_text</a></li>
             
+                <li data-name="TigerJS.nodes#_toggle_class"><a href="TigerJS.nodes.html#_toggle_class">_toggle_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_width"><a href="TigerJS.nodes.html#_width">_width</a></li>
             
                 <li data-name="TigerJS.nodes#add_class"><a href="TigerJS.nodes.html#add_class">add_class</a></li>
             
-                <li data-name="TigerJS.nodes#has_class"><a href="TigerJS.nodes.html#has_class">has_class</a></li>
-            
                 <li data-name="TigerJS.nodes#remove_attr"><a href="TigerJS.nodes.html#remove_attr">remove_attr</a></li>
             
-                <li data-name="TigerJS.nodes#remove_class"><a href="TigerJS.nodes.html#remove_class">remove_class</a></li>
-            
                 <li data-name="TigerJS.nodes#replace_class"><a href="TigerJS.nodes.html#replace_class">replace_class</a></li>
-            
-                <li data-name="TigerJS.nodes#toggle_class"><a href="TigerJS.nodes.html#toggle_class">toggle_class</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1671,7 +1671,7 @@ TigerJS.$ = function(el_) {
      */
     this.el.parent = function() {
 
-        T.$(this.parentNode);
+        return T.$(this.parentNode);
     };
     /**
      * Returns Boolean 'true' if this element contains the argument element,
@@ -1781,8 +1781,7 @@ TigerJS.$ = function(el_) {
      * requested rules
      * @function
      * @name TigerJS.$#get_style
-     * @param {Array} ruleMap An array containing style rules to get,
-     * if u specify an empty array all style values are returned
+     * @param {Array} ruleMap An array containing style rules to get, leave blank to return all style properties
      * @type Object
      *
      * @example
@@ -1828,7 +1827,7 @@ TigerJS.$ = function(el_) {
             //        document.write(T.dump(T.clone(map)));
             for (i in map) { //go through the computed style object
 
-                ruleMap.foward_iterator( //loop through the ruleMap, checking if a requested rule is found
+                ruleMap.forward_iterator( //loop through the ruleMap, checking if a requested rule is found
 
                     function(x) {
 
@@ -1840,7 +1839,7 @@ TigerJS.$ = function(el_) {
                         if (i === "cssText") {
                             var cssText = T.Iterator(map[i].split(";")); //split out each individual rule and its value
 
-                            cssText.foward_iterator(
+                            cssText.forward_iterator(
                                 function(y) { //now this func gets each style rule plus value in the format e.g. 'border-left-color : blue'
 
                                     if (y) { //i put these here cuz we could be sent undefined i think the last one
@@ -2733,6 +2732,8 @@ TigerJS.$ = function(el_) {
 
         if (this.attributes["data-tigerjs-" + name])
             return this.getAttribute(("data-tigerjs-" + name));
+        if (this.attributes["data-" + name])
+            return this.getAttribute(("data-" + name));
         else return this.getAttribute(name);
     };
     /**
@@ -3261,7 +3262,7 @@ TigerJS.$ = function(el_) {
             //loop through the cache of handlers saved for this event and call them
             if (this[("event_cache_" + eventName)]) {
 
-                this[("event_cache_" + eventName)].foward_iterator(
+                this[("event_cache_" + eventName)].forward_iterator(
                     function(x) {
                         var ev_Obj = { //create simple event object
                             type: eventName,
@@ -3583,7 +3584,7 @@ TigerJS.$ = function(el_) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Mon Aug 07 2017 23:03:14 GMT+0100 (WAT)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Fri Aug 11 2017 15:30:08 GMT+0100 (WAT)
         </footer>
     </div>
 </div>

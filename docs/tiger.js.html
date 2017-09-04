@@ -671,7 +671,7 @@
             
                 <li data-name="TigerJS.Iterator#flatten"><a href="TigerJS.Iterator.html#flatten">flatten</a></li>
             
-                <li data-name="TigerJS.Iterator#foward_iterator"><a href="TigerJS.Iterator.html#foward_iterator">foward_iterator</a></li>
+                <li data-name="TigerJS.Iterator#forward_iterator"><a href="TigerJS.Iterator.html#forward_iterator">forward_iterator</a></li>
             
                 <li data-name="TigerJS.Iterator#index_of"><a href="TigerJS.Iterator.html#index_of">index_of</a></li>
             
@@ -869,6 +869,8 @@
             
                 <li data-name="TigerJS.nodes#_fire"><a href="TigerJS.nodes.html#_fire">_fire</a></li>
             
+                <li data-name="TigerJS.nodes#_has_class"><a href="TigerJS.nodes.html#_has_class">_has_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_height"><a href="TigerJS.nodes.html#_height">_height</a></li>
             
                 <li data-name="TigerJS.nodes#_html"><a href="TigerJS.nodes.html#_html">_html</a></li>
@@ -879,25 +881,23 @@
             
                 <li data-name="TigerJS.nodes#_on"><a href="TigerJS.nodes.html#_on">_on</a></li>
             
+                <li data-name="TigerJS.nodes#_remove_class"><a href="TigerJS.nodes.html#_remove_class">_remove_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_remove_data"><a href="TigerJS.nodes.html#_remove_data">_remove_data</a></li>
             
                 <li data-name="TigerJS.nodes#_style"><a href="TigerJS.nodes.html#_style">_style</a></li>
             
                 <li data-name="TigerJS.nodes#_text"><a href="TigerJS.nodes.html#_text">_text</a></li>
             
+                <li data-name="TigerJS.nodes#_toggle_class"><a href="TigerJS.nodes.html#_toggle_class">_toggle_class</a></li>
+            
                 <li data-name="TigerJS.nodes#_width"><a href="TigerJS.nodes.html#_width">_width</a></li>
             
                 <li data-name="TigerJS.nodes#add_class"><a href="TigerJS.nodes.html#add_class">add_class</a></li>
             
-                <li data-name="TigerJS.nodes#has_class"><a href="TigerJS.nodes.html#has_class">has_class</a></li>
-            
                 <li data-name="TigerJS.nodes#remove_attr"><a href="TigerJS.nodes.html#remove_attr">remove_attr</a></li>
             
-                <li data-name="TigerJS.nodes#remove_class"><a href="TigerJS.nodes.html#remove_class">remove_class</a></li>
-            
                 <li data-name="TigerJS.nodes#replace_class"><a href="TigerJS.nodes.html#replace_class">replace_class</a></li>
-            
-                <li data-name="TigerJS.nodes#toggle_class"><a href="TigerJS.nodes.html#toggle_class">toggle_class</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1686,7 +1686,7 @@ var TigerJS = function() {
                 "HTMLFontElement", "HTMLHRElement", "HTMLModElement", "HTMLAnchorElement", "HTMLImageElement", "HTMLObjectElement", "HTMLParamElement",
                 "HTMLAppletElement", "HTMLMapElement", "HTMLAreaElement", "HTMLScriptElement", "HTMLTableElement", "HTMLTableCaptionElement",
                 "HTMLTableColElement", "HTMLTableSectionElement", "HTMLTableRowElement", "HTMLTableCellElement", "HTMLFrameSetElement", "HTMLFrameElement",
-                "HTMLIFrameElement", "HTMLAudioElement", "HTMLCommandElement", "HTMLDetailsElement", "HTMLInputElement", "HTMLMeterElement", "HTMLLegendElement", "HTMLLIElement", "HTMLOutputElement", "HTMLSpanElement", "XMLDocument"
+                "HTMLIFrameElement", "HTMLAudioElement", "HTMLCommandElement", "HTMLDetailsElement", "HTMLInputElement", "HTMLMeterElement", "HTMLLegendElement", "HTMLLIElement", "HTMLOutputElement", "HTMLSpanElement", "XMLDocument", "HTMLDocument"
             ];
 
             var reg_exp = Object.prototype.toString.call(o)
@@ -3045,12 +3045,13 @@ var TigerJS = function() {
     /**
      * Parses the argument as a query string and retuns an Object conaining individual query values/name properties
      * 
-     * @param {String = location.search} query string with GET parameters in the form name=val&amp;name=val%&amp;....
+     * @param {String} [query = location.search}  string with GET parameters in the form name=val&amp;name=val%&amp;....
      * 
      * @return {Object} 
      */
 
     this.parse_query = function(qstr) {
+        var qstr = qstr || location.search;
         var query = {};
         var a = (qstr[0] === '?' ? qstr.substr(1) : qstr)
             .split('&amp;');
@@ -3059,7 +3060,7 @@ var TigerJS = function() {
             query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
         }
         return query;
-    }
+    };
 
 
     /**
@@ -3084,7 +3085,7 @@ var TigerJS = function() {
         var i = T.Iterator(keys),
             j = T.Iterator(val),
             o = {};
-        i.foward_iterator(function(v) {
+        i.forward_iterator(function(v) {
 
             o[v] = j.size() &amp;&amp; j[i.key] ? j[i.key] : true; //put in the keys and values
 
@@ -3714,7 +3715,7 @@ TigerJS.add_css_blob = function(CSSBlob) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Mon Aug 07 2017 23:03:14 GMT+0100 (WAT)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.3</a> on Fri Aug 11 2017 15:30:08 GMT+0100 (WAT)
         </footer>
     </div>
 </div>

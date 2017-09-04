@@ -31,7 +31,7 @@ TigerJS.$ = function(el_) {
 
     // extended Element Traversal Specification
     /**
-     * Returns a {@link TigerJS.nodes} object containing the Element siblings of this element
+     * Returns a {@link TigerJS.nodes | null} object containing the Element siblings of this element, or null
      * @function
      *@type TigerJS.nodes
      * @name TigerJS.$#element_siblings
@@ -41,7 +41,7 @@ TigerJS.$ = function(el_) {
 
         return T.nodes({
             siblings: this
-        });
+        }, true) || null;
     };
     /**
      * Append Child and return this Object
@@ -58,9 +58,9 @@ TigerJS.$ = function(el_) {
     /**
      * Returns a {@link TigerJS.nodes} object containing the Element siblings before this element
      * @function
-     * @type TigerJS.nodes | Boolean
+     * @type TigerJS.nodes | null
      * @name TigerJS.$#prev_element_siblings
-     * @return {TigerJS.nodes | Boolean} The elements found or false
+     * @return {TigerJS.nodes | null} The elements found or false
      */
 
     this.el.prev_element_siblings = function() {
@@ -69,14 +69,14 @@ TigerJS.$ = function(el_) {
         }, true);
         if (n)
             return n;
-        return false;
+        return null;
     };
     /**
      * Returns a {@link TigerJS.nodes} object containing the Element siblings after this element
      * @function
-     *  @type TigerJS.nodes | Boolean
+     *  @type TigerJS.nodes | null
      * @name TigerJS.$#next_element_siblings
-     *  @return {TigerJS.nodes | Boolean} The elements found or false
+     *  @return {TigerJS.nodes | null} The elements found or false
      */
 
     this.el.next_element_siblings = function() {
@@ -85,15 +85,15 @@ TigerJS.$ = function(el_) {
         }, true);
         if (n)
             return n;
-        return false;
+        return null;
     };
     /**
      * Returns a {@link TigerJS.$} object containing this Elements previous element-sibling in document order
      * @function
-     *@type TigerJS.$ | Boolean
+     *@type TigerJS.$ | null
      *
      * @name TigerJS.$#prev_element_sibling
-     * @return {HTMLELement | Boolean} The elements found or false
+     * @return {TigerJS.$ | null} The elements found or false
      */
 
     this.el.prev_element_sibling = function() {
@@ -109,14 +109,14 @@ TigerJS.$ = function(el_) {
 
         if (n)
             return n[0];
-        return false;
+        return null ;
     };
     /**
      * Returns a {@link TigerJS.$} object containing this Elements next-sibling in document order
      * @function
-     *@type TigerJS.$ | Boolean
+     *@type TigerJS.$ | null
      * @name TigerJS.$#next_element_sibling
-     * @return {HTMLELement | Boolean} The elements found or false
+     * @return {TigerJS.$ | null} The elements found or false
      */
 
     this.el.next_element_sibling = function() {
@@ -130,7 +130,7 @@ TigerJS.$ = function(el_) {
         }, true);
         if (n)
             return n[0];
-        return false;
+        return null;
     };
     /**
      * Removes all cildren of thie Element
@@ -142,21 +142,23 @@ TigerJS.$ = function(el_) {
         while (this.firstChild) {
             this.removeChild(this.firstChild);
         }
+        
+        return this;
     };
     //Element.
     /**
      * Return on object of type {@link TigerJS.nodes} that contain all ELement children of this element
      * @function
-     * @type TigerJS.nodes | false
+     * @type TigerJS.nodes | null
      * @name TigerJS.$#element_children
-     * @return {TigerJS.nodes | Boolean} The elements found or false
+     * @return {TigerJS.nodes | null} The elements found or false
      */
     this.el.element_children = function() {
 
-        var n = T.nodes({
+        return T.nodes({
             childNodes: this
-        }, true);
-        return n;
+        }, true) || null;
+        
     };
     /**
      * Returns the parent node of thios element
@@ -321,7 +323,7 @@ TigerJS.$ = function(el_) {
             //        document.write(T.dump(T.clone(map)));
             for (i in map) { //go through the computed style object
 
-                ruleMap.foward_iterator( //loop through the ruleMap, checking if a requested rule is found
+                ruleMap.forward_iterator( //loop through the ruleMap, checking if a requested rule is found
 
                     function(x) {
 
@@ -333,7 +335,7 @@ TigerJS.$ = function(el_) {
                         if (i === "cssText") {
                             var cssText = T.Iterator(map[i].split(";")); //split out each individual rule and its value
 
-                            cssText.foward_iterator(
+                            cssText.forward_iterator(
                                 function(y) { //now this func gets each style rule plus value in the format e.g. 'border-left-color : blue'
 
                                     if (y) { //i put these here cuz we could be sent undefined i think the last one
@@ -1756,7 +1758,7 @@ TigerJS.$ = function(el_) {
             //loop through the cache of handlers saved for this event and call them
             if (this[("event_cache_" + eventName)]) {
 
-                this[("event_cache_" + eventName)].foward_iterator(
+                this[("event_cache_" + eventName)].forward_iterator(
                     function(x) {
                         var ev_Obj = { //create simple event object
                             type: eventName,
