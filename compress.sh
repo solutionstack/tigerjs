@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 java -jar ../tools/compiler.jar --js_output_file=tiger_min.js src/tiger.js\
       src/parser.js\
       src/map.js\

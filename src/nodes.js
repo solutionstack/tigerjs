@@ -6,17 +6,17 @@
  
  * @description Returns an Object for manipulating  a collection of HTMLElements.  This object resembles a DOMNodeList
  * but only contains HTMLElements are contained and not text-nodes etc
- * 
- * @param {Object | Array} config If <b>config</b> is an Array it shouuld contain valid references to HTMLElements, that you
- * wish to make up the elements of the node-list. And if you pass an object it should have a feild matching any ONE of the
+ *
+ * @param {Object | Array} config If <b>config</b> is an Array it should contain valid references to HTMLElements, that you
+ * wish to make up the elements of the node-list. And if you pass an object it should have a field matching any ONE of the
  * following
  * <pre>
  *   childNodes
  *   siblings
  *   previousSiblings
  *   nextSiblings
- *   </pre> Any of the above feilds could be references to HTMLElement(s) or an Element id, The <b>config</b> parameter could also
- *   contain ONE or MORE of the foloiwing feilds.
+ *   </pre> Any of the above fields could be references to HTMLElement(s) or an Element id, The <b>config</b> parameter could also
+ *   contain ONE or MORE of the following fields.
  *   <pre>
  *
  *   tagName
@@ -38,19 +38,19 @@
  *
  *     And the evaluation would be done as follows
  *
- *   1- If the config Object parameter has either the childNodes feild, or the siblings feild or any of the Xsiblings feilds
+ *   1- If the config Object parameter has either the childNodes field, or the siblings field or any of the Xsiblings fields
  *     Get the corresponding child-nodes, or siblings of this Element and store them as the Elements of this collection.
  *
- *   2- If the config Object parameter has tagName as one of it feilds, filter out the stored Elements, leaving only those
- *      with tag-names matching any of the space delimited names, as specified in the tagName feild.
+ *   2- If the config Object parameter has tagName as one of it fields, filter out the stored Elements, leaving only those
+ *      with tag-names matching any of the space delimited names, as specified in the tagName field.
  *
- *   3- If the config Object parameter has attributes as one of its feilds, further filter the stored elements to those with
+ *   3- If the config Object parameter has attributes as one of its fields, further filter the stored elements to those with
  *       attributes matching any of the name/value pair of attributes as specified in the attribute parameter
  *
- *   4- If the config Object parameter has _class as on of its feilds, further filter the srtored elements to those having
+ *   4- If the config Object parameter has _class as on of its fields, further filter the srtored elements to those having
  *       one or more of the CSS classes as specified in the _class parameter.
  *
- *        *In all feilds were HTMLElements are required, the ID of the element can be passed instead of a reference
+ *        *In all fields were HTMLElements are required, the ID of the element can be passed instead of a reference
  *        <br/><br/>
  *   Each Node in a {@link TigerJS.nodes} object is actually an instance of {@link TigerJS.$}, so you can run the normal DOM
  *   methods on them, All methods of this class should be chainable except for those
@@ -64,7 +64,7 @@ TigerJS.nodes = function (config, strictMatch) {
         if (!strictMatch_)
             strictMatch_ = false;
 
-        var pred = config_; //ok it was initally pred, but now config
+        var pred = config_; //ok it was initially pred, but now config
         /***** VERY IMPORTANT DONT EDIT BELOW THIS LINE ****/
         var _n = [],
                 _temp = null,
@@ -86,14 +86,14 @@ TigerJS.nodes = function (config, strictMatch) {
             childNodes = []; // empty
 
             sib = T.$(pred['childNodes'])
-                    .firstChild; //we are wrapping the index in T.$ in case it came in as a string ID
+                    .firstElementChild; //we are wrapping the index in T.$ in case it came in as a string ID
 
             while ((sib)) {
                 if (sib.tagName) {
 
                     childNodes.push(sib);
                 }
-                sib = sib.nextSibling;
+                sib = sib.nextElementSibling;
             }
         }
 
@@ -101,13 +101,13 @@ TigerJS.nodes = function (config, strictMatch) {
             childNodes = []; // empty'
 
             sib = T.$(pred['siblings']);
-            while (!!(sib = sib.previousSibling)) {
+            while (!!(sib = sib.previousElementSibling)) {
                 if (sib.tagName) {
                     childNodes.unshift(sib);
                 }
             }
             sib = T.$(pred['siblings']);
-            while (!!(sib = sib.nextSibling)) {
+            while (!!(sib = sib.nextElementSibling)) {
                 if (sib.tagName) {
                     childNodes.push(sib);
                 }
@@ -153,7 +153,7 @@ TigerJS.nodes = function (config, strictMatch) {
         }
 
         if (pred && pred.tagName) { //filter-out whatever nodes we have by tagname
-            //this is very cool as we can match diffrerent multiple tags
+            //this is very cool as we can match different multiple tags
             _temp1 = T.Iterator(pred['tagName'].split(" ")); //split the tagnames by space
 
             for (i = 0; i < childNodes.length; i++) {
@@ -214,7 +214,7 @@ TigerJS.nodes = function (config, strictMatch) {
                         arg = T.Iterator(childNodes[i].attributes.getNamedItem("class")
                                 .nodeValue.trim()
                                 .split(" ")); //get the classes on each element
-                        //culd also use element.className in the above, guess am just flexin ma DOM muscle
+                        //could also use element.className in the above, guess am just flexin ma DOM muscle
 
                         if (arg.intersect(cls)
                                 .length) { //if the two class array intersects, that is if the have a matching CSS class-name
@@ -741,7 +741,7 @@ TigerJS.nodes = function (config, strictMatch) {
         };
         /**
          * Set arbitrary data attributes on all elements in the list
-         * The HTML5-data attribute is prefixed with (data-tscript-)<br/>
+         * The HTML5-data attribute is prefixed with (data-)<br/>
          * This is to comply with the HTML5 specs recommendation advice to
          * library authors. If you omit the <i>val</i> argument this method
          * returns the data value on the first element in the list
@@ -776,7 +776,7 @@ TigerJS.nodes = function (config, strictMatch) {
         this.n._remove_data = function (name) {
             if (this.length) {
                 this.forward_iterator(function (x) {
-                    x.removeAttribute(("data-lick" + name));
+                    x.removeAttribute(("data-" + name));
                 });
             }
             return this;

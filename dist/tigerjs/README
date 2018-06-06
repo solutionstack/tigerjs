@@ -1,7 +1,7 @@
-                               README FILE
+ README FILE
                               ------------
 
-                        TigerJS Javascript Library 1.2.2
+                        TigerJS Javascript Library 1.3
                     -------------------------------------------
 
     INTRODUCTION
@@ -9,7 +9,7 @@
 
     The TigerJS JavaScript Library is an advanced, cross-browser, feature-rich and highly optimized 
     JavaScript/DOM library, that is built to reduce the time and effort you need to put in building 
-    todays web 2.0/3.0 Applications, it has built to deliver high runtime performance and has low memory
+    Javascript heavy Applications, it has being built to deliver high runtime performance and has low memory
     overhead, it includes lot of reusable utilities and language enhancement's / functional programming modules, DOM management modules, Basic Animations,
     Events, Ajax communication, data structures and much more.
 
@@ -22,7 +22,8 @@
     ----------
 
     TigerJS Javascript Library  (C) Agbalaya Olubodun (  , Nigeria)
-                            2014-2017, GNU LGPL v3
+                             2014-2018, GNU LGPL v3,
+                             agbalaya@users.sourceforge.net, 
                              https://github.com/solutionstack/tigerjs
                              s.stackng@gmail.com
                              and CONTRIBUTORS  
@@ -48,6 +49,7 @@
     -------------------
 
     Details of the latest version can be found on the TigerJS Project pages(s)
+    @sourceforge <https://sourceforge.net/p/tigerjs>
     @github <https://github.com/solutionstack/tigerjs>
 
 
@@ -77,11 +79,14 @@
 
     * If you want freely available support for using TigerJS, please join the
         TigerJS Library user community by subscribing to any of the following
+        https://sourceforge.net/p/tigerjs/blog/
+        https://sourceforge.net/p/tigerjs/discussion/
         https://github.com/solutionstack/tigerjs/wiki
 
         
     * If you have a concrete bug report for the TigerJS Library,
         please go here
+          https://sourceforge.net/p/tigerjs/tickets/
           https://github.com/solutionstack/tigerjs/issues
     Acknowledgments
     ----------------
@@ -100,4 +105,3 @@
     Changes
     --------
     For complete changes and history for this release see the CHANGES file
-

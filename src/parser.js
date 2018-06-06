@@ -414,7 +414,7 @@ TigerJS.Parser = {
 
             if (exec)
             { //ie we're to execute the css
-                document.documentElement.firstChild.appendChild(_s);
+                document.querySelector("head").appendChild(_s);
             }
 
         }

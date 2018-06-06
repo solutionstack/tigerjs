@@ -83,7 +83,7 @@ TigerJS.EventManager = function () {
                 cb = callBack;
 
                 x_target = target;
-                _bubble_action = _bubble == false ? false : true; // default action
+                _bubble_action = _bubble === false ? false : true;
 
                 x_once = !!once;
                 x_type = type;
@@ -160,7 +160,8 @@ TigerJS.EventManager = function () {
                     
                     e.relatedTarget = getRT(e);
                     e.timeStamp = (new Date).getTime();
-                    e.target = T.$(e.currentTarget || e.srcElement || e.target);
+                    e.target = T.$(e.target);
+                    e.currentTarget = T.$(e.currentTarget);
                     e.clientX = e.clientX || e.Y || this.changedTouches[0].pageY;
                     e.clientY = e.clientY || e.X || this.changedTouches[0].pageX;
                     e.defaultPrevented = e.defaultPrevented || e.returnValue;

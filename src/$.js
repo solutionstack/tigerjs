@@ -16,7 +16,7 @@
  *
  */
 
-TigerJS.$ = function(el_) {
+TigerJS.$ = function (el_) {
     //see if we are already an instance of T.$
 
     if (el_ && el_["set_xy"])
@@ -37,7 +37,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#element_siblings
      */
 
-    this.el.element_siblings = function() {
+    this.el.element_siblings = function () {
 
         return T.nodes({
             siblings: this
@@ -50,7 +50,7 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      * @name TigerJS.$#appendChild
      */
-    this.el.append_child = function(x) {
+    this.el.append_child = function (x) {
         if (x && x.nodeType)
             this.appendChild(x);
         return this;
@@ -63,7 +63,7 @@ TigerJS.$ = function(el_) {
      * @return {TigerJS.nodes | null} The elements found or false
      */
 
-    this.el.prev_element_siblings = function() {
+    this.el.prev_element_siblings = function () {
         var n = T.nodes({
             prevSiblings: this
         }, true);
@@ -79,9 +79,9 @@ TigerJS.$ = function(el_) {
      *  @return {TigerJS.nodes | null} The elements found or false
      */
 
-    this.el.next_element_siblings = function() {
+    this.el.next_element_siblings = function () {
         var n = T.nodes({
-            extSiblings: this
+            nextSiblings: this
         }, true);
         if (n)
             return n;
@@ -96,7 +96,7 @@ TigerJS.$ = function(el_) {
      * @return {TigerJS.$ | null} The elements found or false
      */
 
-    this.el.prev_element_sibling = function() {
+    this.el.prev_element_sibling = function () {
         //if browser supports Element transversal use that..
         var n = this.previousElementSibling;
         if (n)
@@ -109,7 +109,7 @@ TigerJS.$ = function(el_) {
 
         if (n)
             return n[0];
-        return null ;
+        return null;
     };
     /**
      * Returns a {@link TigerJS.$} object containing this Elements next-sibling in document order
@@ -119,7 +119,7 @@ TigerJS.$ = function(el_) {
      * @return {TigerJS.$ | null} The elements found or false
      */
 
-    this.el.next_element_sibling = function() {
+    this.el.next_element_sibling = function () {
         //if browser supports Element transversal use that..
         var n = this.nextElementSibling;
         if (n)
@@ -138,11 +138,11 @@ TigerJS.$ = function(el_) {
      *@type TigerJS.$
      * @name TigerJS.$#remove_child_nodes
      */
-    this.el.remove_child_nodes = function() {
+    this.el.remove_child_nodes = function () {
         while (this.firstChild) {
             this.removeChild(this.firstChild);
         }
-        
+
         return this;
     };
     //Element.
@@ -153,19 +153,19 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#element_children
      * @return {TigerJS.nodes | null} The elements found or false
      */
-    this.el.element_children = function() {
+    this.el.element_children = function () {
 
-        return T.nodes({
+        return  T.nodes({
             childNodes: this
         }, true) || null;
-        
+
     };
     /**
-     * Returns the parent node of thios element
+     * Returns the parent node of this element
      * @function
      * @return {TigerJS.$} The elements parent
      */
-    this.el.parent = function() {
+    this.el.parent = function () {
 
         return T.$(this.parentNode);
     };
@@ -177,7 +177,7 @@ TigerJS.$ = function(el_) {
      * @type Boolean
      * @name TigerJS.$#contains_node
      */
-    this.el.contains_node = function(needle) {
+    this.el.contains_node = function (needle) {
 
         var n = T.nodes({
             childNodes: this
@@ -193,17 +193,9 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#first_element_child
      */
 
-    this.el.first_element_child = function() {
+    this.el.first_element_child = function () {
         //if browser supports Element transversal use that..
         var n = this.firstElementChild;
-        if (!n) {
-            n = T.nodes({
-                childNodes: this
-            }, true);
-            if (n && n.length) //nodes where retuned
-                n = n[0]; //i.e the first element
-
-        }
         if (n) {
             return T.$(n);
 
@@ -218,15 +210,8 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#last_element_child
      *
      */
-    this.el.last_element_child = function() {
+    this.el.last_element_child = function () {
         var n = this.lastElementChild;
-        if (!n) {
-            n = T.nodes({
-                childNodes: this
-            }, true); //set strict match to true
-            if (n && n.length) //nodes where retuned
-                n = n[n.length - 1]; //i.e the last element
-        }
         if (n)
             return T.$(n);
         return false; //false if no last elements
@@ -241,7 +226,7 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      */
 
-    this.el.set_xy = function(xy) {
+    this.el.set_xy = function (xy) {
 
         if (xy[0])
             this.style.left = parseInt(xy[0], 10) + "px";
@@ -257,7 +242,7 @@ TigerJS.$ = function(el_) {
      * @param {Number} x The X values for new position (coordinates are page-based)
      * @type TigerJS.$
      */
-    this.el.set_x = function(x) {
+    this.el.set_x = function (x) {
         return this.set_xy([x, null]);
     };
     /**
@@ -268,7 +253,7 @@ TigerJS.$ = function(el_) {
      * @param {Number} y The Y value for new position (coordinates are page-based)
      * @type TigerJS.$
      */
-    this.el.set_y = function(y) {
+    this.el.set_y = function (y) {
         return this.set_xy([null, y]);
     };
     /**
@@ -292,7 +277,7 @@ TigerJS.$ = function(el_) {
      *     'top' => "300px"
      * @return return an object containing all requested style rules
      */
-    this.el.get_style = function(ruleMap) {
+    this.el.get_style = function (ruleMap) {
         var map, r = {},
             i;
         ruleMap = T.Iterator(ruleMap || []);
@@ -309,7 +294,7 @@ TigerJS.$ = function(el_) {
             for (i in map) {
                 //capture only proper CSS rules
                 if (i.toString()
-                    .search(/[0-9]/) === -1) {
+                        .search(/[0-9]/) === -1) {
                     r[i] = map[i];
                 }
             }
@@ -325,7 +310,7 @@ TigerJS.$ = function(el_) {
 
                 ruleMap.forward_iterator( //loop through the ruleMap, checking if a requested rule is found
 
-                    function(x) {
+                    function (x) {
 
                         if (i === x.to_case("-cm")) { //usually elements in ruleMap come in standard CSS dasherized form,
                             //so we camelize to match that in the computedStyle object
@@ -336,7 +321,7 @@ TigerJS.$ = function(el_) {
                             var cssText = T.Iterator(map[i].split(";")); //split out each individual rule and its value
 
                             cssText.forward_iterator(
-                                function(y) { //now this func gets each style rule plus value in the format e.g. 'border-left-color : blue'
+                                function (y) { //now this func gets each style rule plus value in the format e.g. 'border-left-color : blue'
 
                                     if (y) { //i put these here cuz we could be sent undefined i think the last one
 
@@ -373,7 +358,7 @@ TigerJS.$ = function(el_) {
      *@name TigerJS.$#get_pad_extents
      */
 
-    this.el.get_pad_extents = function() {
+    this.el.get_pad_extents = function () {
         var s = this.get_style();
         //dojo-lized
         return {
@@ -399,7 +384,7 @@ TigerJS.$ = function(el_) {
      *@return {Object} Returns object with special values specifically useful for node fitting
      */
 
-    this.el.get_border_extents = function() {
+    this.el.get_border_extents = function () {
         var s = this.get_style();
         //normalize object felds for cases where some styles are not defined, if a border doesnt have a style
         //then set its width to 0px, computedStyle sometimes set this to some defaults like auto, medium e.t.c.
@@ -434,7 +419,7 @@ TigerJS.$ = function(el_) {
      *@type Object
      *@name TigerJS.$#get_pad_border_extents
      */
-    this.el.get_pad_border_extents = function() {
+    this.el.get_pad_border_extents = function () {
         var pe = this.get_pad_extents(),
             be = this.get_border_extents();
         return {
@@ -463,7 +448,7 @@ TigerJS.$ = function(el_) {
      *@name TigerJS.$#get_margin_extents
      *@type Object
      */
-    this.el.get_margin_extents = function() {
+    this.el.get_margin_extents = function () {
 
         var s = this.get_style();
         //dojo-lized
@@ -490,13 +475,14 @@ TigerJS.$ = function(el_) {
      *          var ob = T.$('id').set_style({top:"20px",borderRightColor :"#eeffaa", marginTop :"10px"}
      *
      */
-    this.el.set_style = function(styleMap) {
+    this.el.set_style = function (styleMap) {
         try {
             for (var i in styleMap) {
 
                 this.style[i.to_case("-cm")] = styleMap[i];
             }
-        } catch (e) {}
+        } catch (e) {
+        }
         return this;
     };
     /**
@@ -507,7 +493,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#set_opacity
      * @type TigerJS.$
      */
-    this.el.set_opacity = function(val) {
+    this.el.set_opacity = function (val) {
         if (this["filters"]) {
             this.style['filter'] = "alpha(opacity=" + val * 100 + ")"; //MIGHTY IE,!!
             // well the DxImageTransform is quite useful
@@ -523,7 +509,7 @@ TigerJS.$ = function(el_) {
      * @type Number
      * @name TigerJS.$#get_opacity
      */
-    this.el.get_opacity = function() {
+    this.el.get_opacity = function () {
         if (this["filters"]) {
             return this["filters"]('alpha')["opacity"] / 100;
         } else {
@@ -542,7 +528,7 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      * @name TigerJS.$#swap_xy
      */
-    this.el.swap_xy = function(node) {
+    this.el.swap_xy = function (node) {
         //get the left and top co-ordinates of each element and swap them
         var xy = this.get_style(),
             o = T.$(node),
@@ -559,7 +545,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#region
      * @return {Object} Object literal containing the following about this element: (top, right, bottom, left)
      */
-    this.el.region = function(node) {
+    this.el.region = function (node) {
         var reg = this.get_style();
         return {
             //firefox calculates values that  are no explicitly set, so we compare with explicit values
@@ -583,7 +569,7 @@ TigerJS.$ = function(el_) {
      *                                               which we would get its region to compare, or its id
      * @return True if in region, false if not.
      */
-    this.el.in_region = function(region) {
+    this.el.in_region = function (region) {
 
         region = T.$(region)
             .region();
@@ -607,7 +593,7 @@ TigerJS.$ = function(el_) {
      *  @type TigerJS.$
      *  @param classNames {string} The list of space seperated CSS classes to remove.
      */
-    this.el.remove_class = function(classNames) {
+    this.el.remove_class = function (classNames) {
 
         classNames = classNames.split(" ")
             .join(",");
@@ -623,7 +609,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#add_class
      */
 
-    this.el.add_class = function(classNames) {
+    this.el.add_class = function (classNames) {
 
         classNames = classNames.split(" ")
             .join(",");
@@ -641,7 +627,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#has_class
      *
      */
-    this.el.has_class = function(classNames, single) {
+    this.el.has_class = function (classNames, single) {
         var cls = T.Iterator(this.className.split(" ")), //get the classes currently on the element
             arg = T.Iterator(classNames.split(" ")),
             i; //get the argument
@@ -666,7 +652,7 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      *
      */
-    this.el.toggle_class = function(className) {
+    this.el.toggle_class = function (className) {
 
         this.classList.toggle(className);
         return this;
@@ -676,10 +662,10 @@ TigerJS.$ = function(el_) {
      * @param {string} classNames the class(es) to replace seperated by a space.
      * @param {string} withClassNames the class(es) to replace with, seperate each with a space.
      * @function
-     * @name TigerJS.$#replace_class 
+     * @name TigerJS.$#replace_class
      * @type TigerJS.$
      */
-    this.el.replace_class = function(classNames, withClassNames) {
+    this.el.replace_class = function (classNames, withClassNames) {
 
         //this one line incantation calls str_replace on the elements class name
         // since str_replace can work with arrays, we first convert each space seperated string of classes
@@ -695,7 +681,7 @@ TigerJS.$ = function(el_) {
      *  @name TigerJS.$#class_off
      *  @type TigerJS.$
      */
-    this.el.class_off = function() {
+    this.el.class_off = function () {
         var temp = this.getAttribute('class'); //get the value of the class attribute
         this.setAttribute("l_closed_class", temp); //set a custom attribute with the class content
         this.setAttribute("class", ""); //set the class attribute itself to an empty string
@@ -708,7 +694,7 @@ TigerJS.$ = function(el_) {
      *  @name TigerJS.$#class_on
      *  @type TigerJS.$
      */
-    this.el.class_on = function() {
+    this.el.class_on = function () {
         var temp = this.getAttribute('l_closed_class'); //get the value of the custom class attribute
         this.setAttribute("class", temp); //set the class attribute to its original content
         this.removeAttribute("l_closed_class"); //delete the custom class attribute
@@ -721,7 +707,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#get_text
      * @type String
      */
-    this.el.get_text = function() {
+    this.el.get_text = function () {
         return this.textContent || this.innerText || this.nodeValue || this.text || this.value || "";
     };
     /**
@@ -732,16 +718,16 @@ TigerJS.$ = function(el_) {
      *
      * @type TigerJS.$
      */
-    this.el.set_text = function(content) {
+    this.el.set_text = function (content) {
         if ('textContent' in this) {
             this.textContent = content;
         } else if ('innerText' in this) {
             this.innerText = content;
         } else if ('nodeValue' in this) {
             this.nodeValue = content;
-        } 
-        
-        if ('value' in this  && 'type' in this) { //a seperate condition for form elements
+        }
+
+        if ('value' in this && 'type' in this) { //a seperate condition for form elements
             this.value = content;
         }
         return this;
@@ -757,9 +743,10 @@ TigerJS.$ = function(el_) {
      *  @name TigerJS.$#set_html
      *  @type TigerJS.$
      */
-    this.el.set_html = function(content) {
+    this.el.set_html = function (content) {
         var html = "",
-            item, i = 0;;
+            item, i = 0;
+        ;
         //match non empty tags
         if (T.is_string(content)) { //hopefully WE'RE SENT valid (x)html markup
             html = T.create(content); //get the contents as HTMLFragment
@@ -768,7 +755,7 @@ TigerJS.$ = function(el_) {
 
             html = content;
         } else if (content.item(0) && content.item(0)
-            .nodeType) { //html collection
+                .nodeType) { //html collection
 
             html = document.createDocumentFragment();
             while (!!(item = content[i++])) {
@@ -793,7 +780,7 @@ TigerJS.$ = function(el_) {
      *  @name TigerJS.$#get_html
      *
      */
-    this.el.get_html = function() {
+    this.el.get_html = function () {
 
         return this.innerHTML;
     };
@@ -805,7 +792,7 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      * @name TigerJS.$#set_width
      */
-    this.el.set_width = function(size) {
+    this.el.set_width = function (size) {
 
         this.set_size('width', size);
         return this;
@@ -823,11 +810,11 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#set_height
      */
 
-    this.el.set_height = function(size) {
+    this.el.set_height = function (size) {
         this.set_size('height', size);
         return this;
     };
-    this.el.set_size = function(prop, val) {
+    this.el.set_size = function (prop, val) {
         val = (val > 0) ? val : 0;
         var size = 0;
         this.style[prop] = val + 'px';
@@ -847,17 +834,21 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#scrollX
      * @feild
      */
-    this.el.scrollX = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+    this.el.scrollX = function(){
+        return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+    }
     /**
      * Amount page has been scroll vertically
      * @return {Number} The current amount the screen is scrolled vertically.
      * @name TigerJS.$#scrollY
      * @feild
      */
-    this.el.scrollY = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    this.el.scrollY = function(){
+            return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    }
     /**
      * Gets the current position and dimensions of the bounding box of an element based on page coordinates.
-     * and takes scroll offsets into consideration so values are bound to cahnge as you scroll , to
+     * and takes scroll offsets into consideration so values are bound to change as you scroll , to
      * get dimensions independent of veiw port coordinates use {@link #region}
      * Margins paddings and scroll offsets are taken into consideration
      * Element must be part of the DOM tree to have page coordinates
@@ -875,7 +866,7 @@ TigerJS.$ = function(el_) {
      *   @name TigerJS.$#rect
      */
 
-    this.el.rect = function() {
+    this.el.rect = function () {
 
         //IE 8+ chrome 10+ safri 5+ opera 10+ mozilla 4+
         var rect = T.clone(this.getBoundingClientRect()); //am cloning this to be able to add properties later
@@ -907,7 +898,7 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      */
 
-    this.el.add_html = function(content, where) {
+    this.el.add_html = function (content, where) {
         where = T.is_string(where) ? where : "last";
         //get the appriopriate content, as HTMLFragment
 
@@ -962,13 +953,13 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      */
 
-    this.el.set_attr = function(attrMap) {
+    this.el.set_attr = function (attrMap) {
         for (var i in attrMap) {
-            
+
             if (i === 'style') // CSS style declarations found
             {
 
-                var s = attrMap[i].trim('BOTH').split(/\s*(?::|;)\s*/); 
+                var s = attrMap[i].trim('BOTH').split(/\s*(?::|;)\s*/);
                 ////parse out each style rule, this would parse out the
                 //rules in such a way that the first index of the array
                 //would contain the first css rule name e.g. color
@@ -979,7 +970,8 @@ TigerJS.$ = function(el_) {
                     try {
                         this.style[s[j++].to_case('-cm')] = s[j++]; //iteratively set each individual style rule, camelizing CSS
                         //names where necesarry
-                    } catch (e) {}
+                    } catch (e) {
+                    }
 
                 }
             } else if (i === 'class') {
@@ -1000,7 +992,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#get_attr
      * @type DOMString
      */
-    this.el.get_attr = function(name) {
+    this.el.get_attr = function (name) {
 
         return this.getAttribute(name);
     };
@@ -1011,7 +1003,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#selectable
      * @type TigerJS.$
      */
-    this.el.selectable = function(canSelect) {
+    this.el.selectable = function (canSelect) {
         var n;
         ///Hopefully these works for all cases
         ////////////////////////////////////////////////////
@@ -1020,7 +1012,8 @@ TigerJS.$ = function(el_) {
             this.on("select", disableSelection);
         } else {
             this.off("select", disableSelection);
-        };
+        }
+        ;
 
         function disableSelection(e) {
 
@@ -1029,7 +1022,7 @@ TigerJS.$ = function(el_) {
             }
             if ("getSelection" in window)
                 window.getSelection()
-                .removeAllRanges();
+                    .removeAllRanges();
             if ("selectionEnd" in this.target)
                 this.target.selectionEnd = 0;
             this.preventDefault();
@@ -1064,21 +1057,21 @@ TigerJS.$ = function(el_) {
         return this;
     };
     /**
-     * Returns the descendants of this Element as an instance of (@link TigerJS.nodes}. In this content a descendant
-     * refers to any element child which is a child node of any direct Child node of this ELement, or in other terms
+     * Returns the descendants of this Element as an instance of (@link TigerJS.nodes}. In this context, a descendant
+     * refers to any element child which is a child node of any direct Child node of this ELement, i.e
      * any grand-child of this element
      * @function
      * @name  TigerJS.$#descendants
      * @type TigerJS.nodes
      */
-    this.el.descendants = function() {
+    this.el.descendants = function () {
         var c = this.childNodes,
             n = [];
         for (var i = 0; i < c.length; i++) {
             if (c[i].nodeType === 1) {
 
                 n = n.concat(T.$(c[i])
-                    .elementChildren()); //get all grand Children, that is children of each ChildNode (Elements only)
+                    .element_children()); //get all grand Children,(Elements only)
                 //this could be resource intensive, <<<TODO : OPTIMIZE ME
             }
         }
@@ -1094,21 +1087,21 @@ TigerJS.$ = function(el_) {
      * @function
      * @type TigerJS.$
      */
-    this.el._clone = function(deep) {
+    this.el._clone = function (deep) {
         deep = deep || true;
         return (T.$(this.cloneNode(deep)));
     };
     /**
-     * Destroys a node removing it from the DOM hieriachy
+     * Destroys a node, removing it from the DOM hierarchy
      * @name TigerJS.$#destroy
      * @function
      * @type TigerJS.$
      * @return The removed child node, which could be later re-inserted later, or $this object if the node could not be emoved
      */
-    this.el.destroy = function() {
+    this.el.destroy = function () {
         this.remove_child_nodes();
         try {
-            var r =  T.$((this.parentNode.removeChild(this)));
+            var r = T.$((this.parentNode.removeChild(this)));
         } catch (e) {
 
         }
@@ -1122,7 +1115,7 @@ TigerJS.$ = function(el_) {
      * @function
      * @type TigerJS.$
      */
-    this.el.toggle_visibility = function() {
+    this.el.toggle_visibility = function () {
 
         if (this.style.visibility === "hidden") {
             this.style.visibility = "";
@@ -1132,33 +1125,31 @@ TigerJS.$ = function(el_) {
 
     };
     /**
-     * Toggles the Elements Enabled/Diable state
+     * Toggles the Elements Enabled/Disabled state
      * @function
      * @type TigerJS.$
      * @name TigerJS.$#toggle_disabled
      */
-    this.el.toggle_disabled = function() {
+    this.el.toggle_disabled = function () {
 
-        if (this.disabled) {
-            this.disabled = false;
-        } else {
-            this.disabled = true;
-        }
+        this.disabled = !this.disabled ;
+
+        return this;
     };
     /**
      * Returns an Object Map of all HTML 5 'data-*' attributes on the Element
      * The data attribute must have been previously created by {@link TigerJS.$#set_data},
      * or manually create as an sttribute using the format.<pre>
-     *     data-tscript-*=datavalue
+     *     data-*=datavalue
      *     e.g A div element
-     *     <div data-tscript-temperture="23deg"></pre><br/>
+     *     <div data-temperture="23deg"></pre><br/>
      *  The returned object has one method (<b>.namedItem</b>), which would be used to
      *  retrieve an arbitrary data value by name.<br/>
      *  Arbitrary data can also be retrieved using the {@link get_data} method
      *  @example
      *
      *  //some div element
-     *   <div style=""  id="mydiv" data-tscript-temperture="23deg"></div>
+     *   <div style=""  id="mydiv" data-temperture="23deg"></div>
      *   //or set the data by script
      *
      *     var el = T.$("mydiv").set_data("temperature","23deg"),
@@ -1174,8 +1165,8 @@ TigerJS.$ = function(el_) {
      *  @type Object
      *  @name TigerJS.$#_dataset
      */
-    this.el._dataset = function() {
-        //get All attributes with a data-tscript-* pattern
+    this.el._dataset = function () {
+        //get All attributes with a data-* pattern
         var attr = this.attributes,
             set = [];
         for (var i = 0; i < attr.length; i++) {
@@ -1189,7 +1180,7 @@ TigerJS.$ = function(el_) {
         //create the return object interface
         return {
             _set: set, //assign the array to our return object
-            namedItem: function(name) { //function to get a named data attribute
+            namedItem: function (name) { //function to get a named data attribute
                 for (var i = 0; i < this._set.length; i++) {
                     if (this._set[i][0] === ("data-tigerjs-" + name)) {
                         return this._set[i][1]; //if the name exists return the value
@@ -1211,9 +1202,9 @@ TigerJS.$ = function(el_) {
      * @see TigerJS.$#_dataset
      */
 
-    this.el.set_data = function(name, val) {
+    this.el.set_data = function (name, val) {
 
-        this.setAttribute(("data-tigerjs-" + name), val);
+        this.setAttribute(("data-" + name), val);
         return this;
     };
     /**
@@ -1224,10 +1215,8 @@ TigerJS.$ = function(el_) {
      * @function
      */
 
-    this.el.get_data = function(name) {
+    this.el.get_data = function (name) {
 
-        if (this.attributes["data-tigerjs-" + name])
-            return this.getAttribute(("data-tigerjs-" + name));
         if (this.attributes["data-" + name])
             return this.getAttribute(("data-" + name));
         else return this.getAttribute(name);
@@ -1238,7 +1227,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#outer_html
      * @type String
      */
-    this.el.outer_html = function() {
+    this.el.outer_html = function () {
         if (this.outerHTML) {
             return this.outerHTML;
         }
@@ -1260,7 +1249,7 @@ TigerJS.$ = function(el_) {
      * @function
      * @type TigerJS.$
      */
-    this.el.swap_sibling_positions = function() {
+    this.el.swap_sibling_positions = function () {
         var pre_s = [],
             ne_s = [],
             sib = this,
@@ -1301,7 +1290,7 @@ TigerJS.$ = function(el_) {
         return this;
     };
     /**
-     * 
+     *
      * Modify the arrangement of elementChildNodes. This method accepts three arguments
      * a 'start' point indicating the child node where to start extracting nodes to rearrange
      * and an 'end' point indicating the child node where extractin stops, the third argument
@@ -1316,12 +1305,12 @@ TigerJS.$ = function(el_) {
      *
      */
 
-    this.el.move_element_child_nodes = function(start, end, dest) {
+    this.el.move_element_child_nodes = function (start, end, dest) {
 
         if (start === 0 && dest === "top")
-            return this; //cant move to top when alread at top
+            return this; // already at top
         if (end === this.childNodes.length - 1 && dest === "bottom")
-            return this; //cant move to bottom already at bottom
+            return this; //already at bottom
 
         var cn = T.Iterator(this.elementChildren()),
             n = [];
@@ -1348,7 +1337,7 @@ TigerJS.$ = function(el_) {
      *@name TigerJS.$#reverse_child_nodes
      *@type TigerJS.$
      */
-    this.el.reverse_child_nodes = function() {
+    this.el.reverse_child_nodes = function () {
         var n = T.Iterator(this.childNodes)
             .reverse();
         //get the child nodes and reverse them
@@ -1371,7 +1360,7 @@ TigerJS.$ = function(el_) {
      *  @type TigerJS.$
      */
 
-    this.el.copy_attributes = function(target) {
+    this.el.copy_attributes = function (target) {
         target = T.is_string(target) ? T.$(target) : target;
         try { //errors accesing non-existent attributes
             var this_atr = this.attributes,
@@ -1408,7 +1397,7 @@ TigerJS.$ = function(el_) {
      *  @function
      *  @type TigerJS.$
      */
-    this.el.swap_attributes = function(target) {
+    this.el.swap_attributes = function (target) {
         target = T.is_string(target) ? T.$(target) : target;
         try {
             //errors accesing non-existent attributes
@@ -1416,11 +1405,11 @@ TigerJS.$ = function(el_) {
             var this_atr = this.attributes,
                 target_atr = target.attributes,
                 s = window.attachEvent && !window.addEventListener ?
-                this.getAttribute("style")
-                .cssText : this.getAttribute("style"), //get a copy of the style text or cssText for IE
+                    this.getAttribute("style")
+                        .cssText : this.getAttribute("style"), //get a copy of the style text or cssText for IE
                 s2 = window.attachEvent && !window.addEventListener ?
-                target.getAttribute("style")
-                .cssText : target.getAttribute("style"); //get a copy of the style text or cssText for IE
+                    target.getAttribute("style")
+                        .cssText : target.getAttribute("style"); //get a copy of the style text or cssText for IE
 
             //Browsers doesnt expose the inline Style attribute in its attribute collection, so we gat to do these manually
             if (window.attachEvent && !window.addEventListener && s && s2) {
@@ -1463,7 +1452,7 @@ TigerJS.$ = function(el_) {
      *  @type TigerJS.$
      *  @param {String} name Attribute name to remove
      */
-    this.el.remove_attr = function(name) {
+    this.el.remove_attr = function (name) {
         if (name === "style") {
             if (window.attachEvent && !window.addEventListener) {
 
@@ -1482,7 +1471,7 @@ TigerJS.$ = function(el_) {
      *  @function
      *  @type TigerJS.$
      */
-    this.el._remove_attributes = function() {
+    this.el._remove_attributes = function () {
         var this_atr = this.attributes;
         try { //errors happen here when we have no attribute to remove
 
@@ -1516,7 +1505,7 @@ TigerJS.$ = function(el_) {
      * @type TigerJS.$
      * @return returns the removed ELement
      */
-    this.el.replace_node = function(content) {
+    this.el.replace_node = function (content) {
 
         if (content && T.is_string(content)) {
             content = T.create(content);
@@ -1535,7 +1524,7 @@ TigerJS.$ = function(el_) {
      *  @param {HTMLElement | String} wrapper HTMLElement or an HTML tag-name to be used as the wrapper element
      *  @returns Returns the wrapper Element as an instance of {@link TigerJS.$}
      */
-    this.el.wrap_node = function(wrapper) {
+    this.el.wrap_node = function (wrapper) {
         if (wrapper && T.is_string(wrapper)) {
 
             wrapper = document.createElement(wrapper);
@@ -1553,10 +1542,10 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#each_child
      * @type TigerJS.$
      */
-    this.el.each_child = function(cb) {
+    this.el.each_child = function (cb) {
         T.nodes({
-                childNodes: this
-            })
+            childNodes: this
+        })
             ._each(cb);
         return this;
     };
@@ -1567,10 +1556,10 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#each_sibling
      * @type TigerJS.$
      */
-    this.el.each_sibling = function(cb) {
+    this.el.each_sibling = function (cb) {
         T.nodes({
-                siblings: this
-            })
+            siblings: this
+        })
             ._each(cb);
         return this;
     };
@@ -1648,8 +1637,8 @@ TigerJS.$ = function(el_) {
      ///...
      
      }
-     
-     
+
+
      Control and  modifier keys should however be compared using the 'key' property
      e.g
      if(event.key === "F12"){
@@ -1658,13 +1647,13 @@ TigerJS.$ = function(el_) {
      if(event.key === 'SpaceBar"){
      //do stuff
      }
-     
-     
-     
+
+
+
      For safe cross-browser compatibility, the following list are the recommended events
      to listen for , while many more exists and are constantly been added, their support
      cant be guaranteed
-     
+
      SAFE CROSS BROWSER EVENTS
      -mouseover
      -mouseout
@@ -1692,22 +1681,22 @@ TigerJS.$ = function(el_) {
      -touchmove
      -touchend
      -touchcancel
-     
+
      animationstart, webkitAnimationStart, mozAnimationStart, MSAnimationStart
-     
+
      animationend, webkitAnimationEnd, mozAnimationEnd, MSAnimationEnd
-     
+
      animationiteration, webkitAnimationIteration, mozAnimationIteration, MSAnimationIteration
-     
+
      transitionend webkitTransitionEnd mozTransitionEnd oTransitionEnd
      </pre>
-     
+
      * @param {String} eventName The event name to register. <br/>
      This would take any standard or custom name, miltiple events can be regsitered by seperating with a space
      * @param {Function} listener The user function to call when the event occurs
-     
+
      * @param {Boolean} [bubble_action = TRUE ] Boolean indicating if bubbling is allowed,
-     
+
      * @param {Boolean} [once = FALSE] Boolean indicating if the listener should be triggered only once
      Defaults to false
      * @param {Array} extra_arg An array containing extra arguments to be passed to the listener
@@ -1715,7 +1704,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#on
      * @type TigerJS.$
      */
-    this.el.on = function(eventName, listener, bubble_action, once, extra_arg) {
+    this.el.on = function (eventName, listener, bubble_action, once, extra_arg) {
 
         var man = new T.EventManager();
         man.init(this, eventName, listener, bubble_action, once, extra_arg);
@@ -1732,7 +1721,7 @@ TigerJS.$ = function(el_) {
      * @name TigerJS.$#fire
      * @type TigerJS.$
      */
-    this.el.fire = function(eventName, /** internal use only **/ alterNateTarget) {
+    this.el.fire = function (eventName, /** internal use only **/ alterNateTarget) {
         var o = this,
             type = eventName,
             evt;
@@ -1759,7 +1748,7 @@ TigerJS.$ = function(el_) {
             if (this[("event_cache_" + eventName)]) {
 
                 this[("event_cache_" + eventName)].forward_iterator(
-                    function(x) {
+                    function (x) {
                         var ev_Obj = { //create simple event object
                             type: eventName,
                             target: alterNateTarget || o,
@@ -1787,7 +1776,7 @@ TigerJS.$ = function(el_) {
 
 
 
-    this.el.off = function(_event, _listener) {
+    this.el.off = function (_event, _listener) {
         var e = _event.replace("on", "");
         e = e.explode(" ");
 
@@ -1876,16 +1865,15 @@ TigerJS.$ = function(el_) {
      *  @type TigerJS.$
      *  @name TigerJS.$#on_key
      */
-    this.el.on_key = function(key_map, handler) {
+    this.el.on_key = function (key_map, handler) {
 
         var w, et; //some helper variables
         var mod_arr = T.Iterator();
-        var onPress = function() { //internal callback
+        var onPress = function () { //internal callback
 
             var eventObject = this;
             var internal_a = T.Iterator(mod_arr)
-                .
-            unique(), //we'll need this in here
+                    .unique(), //we'll need this in here
                 internal_b = T.Iterator(),
                 eventType = et,
                 assert = true;
@@ -1933,7 +1921,7 @@ TigerJS.$ = function(el_) {
 
         //check pageUp/Down Direction Keys Function keys
         //and also Home End Caps tab Insert Delete e.tc
-        if (!!(w = /\PageUp|PageDown\b/.exec(key_map)) || !!(w = /\b(Left|Up|Down|Right|Home|End|Insert|Delete|Enter|BackSpace|CapsLock|Tab|Escape|SpaceBar)\b/.exec(key_map)) ||
+        if (!!(w = /\b(PageUp|PageDown)\b/.exec(key_map)) || !!(w = /\b(Left|Up|Down|Right|Home|End|Insert|Delete|Enter|BackSpace|CapsLock|Tab|Escape|SpaceBar)\b/.exec(key_map)) ||
             //ok, only seen this in Firefox for now,...
             !!(w = /\b(ArrowLeft|ArrowUp|ArrowDown|ArrowRight)\b/.exec(key_map))
         ) {
@@ -1992,7 +1980,7 @@ TigerJS.$ = function(el_) {
      *  @type Boolean
      */
 
-    this.el.in_first = function() {
+    this.el.in_first = function () {
 
         return T.$(this.parentNode)
             .first_element_child() === this;
@@ -2004,7 +1992,7 @@ TigerJS.$ = function(el_) {
      *  @type Boolean
      */
 
-    this.el.in_last = function() {
+    this.el.in_last = function () {
         return T.$(this.parentNode)
             .last_element_child() === this;
     };
@@ -2017,7 +2005,7 @@ TigerJS.$ = function(el_) {
      *  @type Boolean
      */
 
-    this.el.in_child = function(node) {
+    this.el.in_child = function (node) {
         return T.Iterator(this.children)
             .contains(T.$(node));
     };
@@ -2030,7 +2018,7 @@ TigerJS.$ = function(el_) {
      *  @type Boolean
      */
 
-    this.el.in_child_of = function(node) {
+    this.el.in_child_of = function (node) {
         return T.Iterator(node.children)
             .contains(this);
     };
@@ -2044,8 +2032,8 @@ TigerJS.$ = function(el_) {
      *  @name TigerJS.$#on_wheel
      *
      */
-    this.el.on_wheel = function(callback) {
-        this.on("wheel", function() {
+    this.el.on_wheel = function (callback) {
+        this.on("wheel", function () {
             if (this.deltaY && this.deltaY < 0) {
                 if (callback)
                     callback(-1, this);
@@ -2059,7 +2047,7 @@ TigerJS.$ = function(el_) {
     /*
      * @ignore
      */
-    this.el.__to_string = function() {
+    this.el.__to_string = function () {
         try {
             return "[object TigerJS.$]/" + "HTML" + (this.tagName)
                 .to_case('-ufl') + "Element";

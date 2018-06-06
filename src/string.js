@@ -828,7 +828,7 @@ String.prototype.rotX = function (X)
  *                 unlike the native indexOf, which even if an offset is given the return val would still be relative
  *                 to the start of the string .
  *
- * @return {Number} The position, if found as an integer or -1
+ * @return {Number} The p   osition, if found as an integer or -1
  */
 
 String.prototype.strpos = function (needle, offset)
@@ -1160,7 +1160,7 @@ String.prototype.drizzle = function (data, node, alignTextNode) {
 
         }
 
-    }, 10);
+    }, 80);
 
 };
 

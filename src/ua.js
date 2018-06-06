@@ -3,10 +3,10 @@
 
 
 /**
- 
+
  * @class This Object contains information on the browsers enviroment.
  * Typically it should contain the following feilds
- 
+
  *
  * <pre>
  * 'OS' : The operating system in use //could be
@@ -22,11 +22,11 @@
  SEAMONKEY | SHIIRA | KKMAN |THEWORLD | BSALSA | SMART_BRO
  | SLEIPNIR | SLIMBROWSER | ACOO | DEEPNET | LUNASCAPE |
  MAXTHON | CRAZY_BROWSER | WYZO |  MINEFIELD| SHIRETOKO | MIDORI
- 
+
  * 'ENGINE' : The browser enfine
  *            TRIDENT | GECKO | PRESTO | WEBKIT
  * 'VERSION' : The browser version (float);
- 
+
  * 'HTML5_API ' : If HTML5 API's are fully supported
  * 'SVG' : Boolean true if SVG is supported
  * 'isMOBILE : Boolean ti indicate if we're in a mobile enviroment
@@ -42,65 +42,72 @@
  */
 
 TigerJS.ua = function () {
-//    //
-//....Quick and Dirty
+ //....Quick and Dirty
     var doc = document, wn = window;
     this.BROWSER = "";
     this.VERSION = "undefined";
     this.isMOBILE = false;
-   
+
     this.SelectorsAPI = false;
     this.HTML5_API = false;
-    
+
     //lets get the HTML5 stuff out of the way
     if (!!document.createElement('canvas').getContext && !!document.createElement('video').canPlayType &&
-            !!('localStorage' in window && window['localStorage']) && !!window.Worker && !!navigator.geolocation &&
-            !!(window.history && history.pushState)
-            ) {
+        !!('localStorage' in window && window['localStorage']) && !!window.Worker && !!navigator.geolocation &&
+        !!(window.history && history.pushState)
+    ) {
         this.HTML5_API = true;
     }
 
 //SVG
     !!(doc.createElementNS && !!doc.createElementNS("http:/" + "/www.w3.org/2000/svg", "svg").createSVGRect)
-            ? this.SVG = true
-            : this.SVG = false;
+        ? this.SVG = true
+        : this.SVG = false;
     this.SelectorsAPI = !!doc.querySelector;
     doc = null;
     /// detect OS
     //
     //
-    var ua = wn.userAgent;
-    if ((/windows|win32/i).test(ua) && !(/ce/i).test(ua)) {
+    var ua = navigator.userAgent;
+    if (/windows|win32/i.test(ua) && !/ce/i.test(ua)) {
 //ce stands for mobile , right???!!
         this.OS = 'WINDOWS';
-    } else if ((/macintosh|mac_powerpc|mac/i).test(ua)) {
+
+    }
+    if(/macintosh|mac_powerpc|mac/i.test(ua)) {
 
         this.OS = 'MAC';
-    } else if ((/android/i).test(ua)) {
+    }
+    if (/android/i.test(ua)) {
         this.isMOBILE = true;
         this.OS = 'ANDRIOD';
-    } else if ((/symbos|symbian/i).test(ua)) {
+    }
+    if (/symbos | symbian /i.test(ua)) {
         this.OS = 'SYMBIAN';
         this.isMOBILE = true;
-    } else if ((/linux/i).test(ua)) {
+    }
+     if (/linux/i.test(ua) && !/android/i.test(ua)) {
         this.OS = 'LINUX';
     }
-    if ((/iphone|ipod|ipad|silk|mobile safari/i).test(ua)) {
+
+     if (/iphone|ipod|ipad|silk|mobile safari/i.test(ua) && !/android/i.test(ua)) { //Android UA atimes have Safari in its string
         this.OS = 'IOS';
         this.isMOBILE = true;
     }
-    if ((/windows ce| wm\d\b| IEMobile|PIE/i).test(ua)) {
+    if (/windows ce | wm\d\b | IEMobile | PIE /i.test(ua))
+    {
         this.OS = 'WINDOWS_MOBILE';
         this.isMOBILE = true;
     }
-    if ((/webos/i).test(ua)) {
+    if (/webos/i.test(ua)) {
         this.OS = 'WEBOS';
         this.isMOBILE = true;
     }
-    if ((/rim|blackberry|playbook|BB/i).test(ua)) {
+    if (/rim|blackberry|playbook|BB/i.test(ua)) {
         this.OS = 'BLACKBERRY';
         this.isMOBILE = true;
-    } else if ((/bsd/i).test(ua)) {//free, open , blah!!
+    }
+    if (/bsd/i.test(ua)) {//free, open , blah!!
         this.OS = 'BSD';
     }
     if (/fennec/i.test(ua)) {
@@ -108,23 +115,19 @@ TigerJS.ua = function () {
         this.isMOBILE = true;
     }
 
-
-
-
-
     this.ENGINE = null;
     //DETECT ENGINE
     //we use presto for any opera version old or new
     if (/opera|opr/ig.test(ua))
-        this.ENGINE = "PRESTO";
+        this.ENGINE = "WEBKIT";
     //GECKO, webkits ususally come as (like gecko), and opera spooks atimes
-    if (/gecko/i.test(ua) && !(/like gecko/i).test(ua))
+    if (/gecko/i.test(ua) && !/like gecko/i.test(ua))
         this.ENGINE = "GECKO";
     //webkit
     //detect browser and browser version
     if (/webkit/i.test(ua) && !(this.ENGINE === "GECKO"))
         this.ENGINE = "WEBKIT";
-    if (/msie|trident/i.test(ua) && !(this.ENGINE === "PRESTO"))
+    if (/msie|trident|edge/i.test(ua) && !(this.ENGINE === "PRESTO"))
         this.ENGINE = "TRIDENT";
     //and finally get the browser, lots 'a' stuff
 
@@ -134,7 +137,7 @@ TigerJS.ua = function () {
     //IE could also match with any of its many clones, so we filter
     // as much as we can
     if (/msie/i.test(ua)
-            && !(/opera|theworld|bsalsa|smart bro|Sleipnir|SlimBrowser|acoo|america online|aol|deepnet|kkman|lunascape|maxthon|Crazy Browser/i.test(ua))) {
+        && !(/opera|theworld|bsalsa|smart bro|Sleipnir|SlimBrowser|acoo|america online|aol|deepnet|kkman|lunascape|maxthon|Crazy Browser/i.test(ua))) {
 
         this.VERSION = /MSIE (\d{1,}.\d{1,})\b/.exec(ua)[1];
         if (this.OS === "WINDOWS_MOBILE") {
@@ -209,7 +212,6 @@ TigerJS.ua = function () {
         }
         z = null;
     }//end gecko browsers/version detection
-
 
 
 //lastly detect webkit/khtml browsers and their versions

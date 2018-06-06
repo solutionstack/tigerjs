@@ -1,3 +1,10 @@
+---Changes history with TigerJS  1.3 [06/06/2018]
+        #removed w3.css files and svgfont files
+        #focus is now solely scripting
+
+
+
+
 ---Changes history with TigerJS  1.2.2 [22/06/2017]
         #major bug fixes and optimizations
         #removed all TigerjS.xui* modules from prod source
