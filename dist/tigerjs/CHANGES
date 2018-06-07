@@ -1,3 +1,13 @@
+---Changes history with TigerJS  1.3 [06/06/2018]
+        #removed font-files and w3.css support
+
+
+---Changes history with TigerJS  1.2.2 [22/06/2017]
+        #major bug fixes and optimizations
+        #removed all TigerjS.xui* modules from prod source
+
+
+
 ---Changes history with TigerJS  1.2.2 [17/02/2017]
         #This release represents a major release full of performance tweaks and bug fixes
 

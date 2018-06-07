@@ -15,10 +15,6 @@ java -jar ../tools/compiler.jar --js_output_file=tiger_min.js src/tiger.js\
       src/DateLocalizationInfo.js\
       src/Date.js\
       src/CalendarWidget.js\
-      src/TextInputWidget.js\
-      src/TooltipWidget.js\
-      src/CheckBoxWidget.js\
-      src/NotifyWidget.js\
       src/RangeWidget.js\
       src/FileUploadWidget.js\
       src/ArrayBufferShim.js\
