@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---Changes history with TigerJS  1.3 [06/06/2018]
         #removed w3.css files and svgfont files
         #focus is now solely scripting
@@ -167,3 +168,171 @@
 
 
 
+=======
+---Changes history with TigerJS  1.3 [06/06/2018]
+        #removed font-files and w3.css support
+
+
+---Changes history with TigerJS  1.2.2 [22/06/2017]
+        #major bug fixes and optimizations
+        #removed all TigerjS.xui* modules from prod source
+
+
+
+---Changes history with TigerJS  1.2.2 [17/02/2017]
+        #This release represents a major release full of performance tweaks and bug fixes
+
+        NEW_MODULE/OBJECT: Added TigerJS.xui The base for da futuristic HUD UI elements (Think -Minority report, -Iron man etc
+        NEW_MODULE/OBJECT: Added TigerJS.xuiLine A sub object of TigerJS.xui used for rendereing SVG based lines
+        NEW_MODULE/OBJECT: Added TigerJS.xuiText A sub object of TigerJS.xui that create's rectangular an SVG boxe for text
+        NEW_MODULE/OBJECT: Added TigerJS.xuiTextb A sub object of TigerJS.xui that create's an SVG polygon box for text
+        NEW_MODULE/OBJECT: Added TigerJS.xuiTextc A sub object of TigerJS.xui that create's an SVG text container, with borders only on one side
+        NEW_MODULE/OBJECT: Added TigerJS.xuiTextd A sub object of TigerJS.xui that create's an SVG text container, without border strokes 
+        NEW_MODULE/OBJECT: Added TigerJS.xuiCircle A sub object of TigerJS.xui that create's an SVG circle, that contain optionally hold an image
+        NEW_MODULE/OBJECT: Added TigerJS.xuiContainer A sub object of TigerJS.xui that create's a generic SVG based container that can be used
+                                                     to hold other TigerJS.xui sub objects including the various xuiText.. variants, images and 
+                                                     other DOM content
+        NEW_MODULE/OBJECT: Added TigerJS.xuiContainerb A sub object of TigerJS.xui that create's a generic SVG based container that can be used
+                                                     to hold other TigerJS.xui sub objects including the various xuiText.. variants, images and 
+                                                     other DOM content
+        NEW_MODULE/OBJECT: Added TigerJS.xuiCaptionedContainer A sub object of TigerJS.xui that create's a generic SVG based container that can be used
+                                                     to hold other TigerJS.xui sub objects including the various xuiText.. variants, images and 
+                                                     other DOM content, this container can also have an optional caption
+
+         *) MODULE: TigerJS.Iterator added new methods
+                            #timed_iterator
+         *) MODULE: String.prototype added new methods to the native string
+                            #drizzle
+         *) Performance tweaks and Bug/Security Fixes
+                           
+
+---Changes history with TigerJS  1.2 [10/01/2016]
+        #Yaay Its independence day today in Nigeria :)
+        #But we still don't have 24hrs power supply :(
+        #..anyway
+        
+        #Removed the dependency on the iconmoon font file(s), and added a whole bunch of SVG
+        #icons (mostly from the icon moon project), and a documentation
+        #on how to use them i.e how to dynamically insert them
+        
+        *) Bug Fixes as always
+
+---Changes history with TigerJS  1.1a [09/15/2016]
+        *) MODULE: TigerJS.$ added new methods
+                            #isChild
+                            #isChildOf
+        *) Numerous Bug-fixes and improvements
+
+
+---Changes history with TigerJS  1.01 [09/06/2016]
+         *) Refactored FileUploadWidget MODULE, increased total upload limit to 300MB per upload session, and also increased parallel
+            file chunk fragments to speed up the uploads
+         *) Fixed several Logical errors in TextInputWidget MODULE
+         *) Other misc. Bug-fixes and improvements
+
+
+---Changes history with TigerJS  1.0 [04/16/2016] (Finallly, out of Beta)
+
+
+---Changes history with TigerJS  1.1.6 Beta [04/16/2016]
+         *) Performance tweaks and Bug/Security Fixes
+         *) Added strictMatch flag to T.nodes
+
+---Changes history with TigerJS  1.1.5 Beta [04/04/2016]
+         *) Performance tweaks and Bug/Security Fixes
+
+---Changes history with TigerJS  1.1.3 Beta [01/05/2016]
+
+         *) NEW_MODULE/OBJECT: Added SelectWidget in TigerJS.UI.Widget
+         *) NEW_MODULE/OBJECT: Added RangeWidget in TigerJS.UI.Widget
+         *) NEW_MODULE/OBJECT: Added NotifyWidget in TigerJS.UI.Widget
+         *) NEW_MODULE/OBJECT: Added FileUploadWidget in TigerJS.UI.Widget
+         *) Bug fixes and Performance improvements  
+
+
+---Changes history with TigerJS  1.1.1 Beta [11/13/2015]
+
+         *) TigerJS.$#on now accepts multiple space separated events, in its 'on' parameter
+         *) TigerJS.UI.Widget.CalendarWidget fixed a bug with the disabled date parameter getting overwritten in the object
+                                                and thus gets corrupted
+
+         *) Bug fixes and Performance improvements 
+
+
+
+---Changes history with TigerJS  1.1 Beta [11/05/2015]
+
+         *) Lots of Bug fixes and Performance improvements 
+
+
+--------------------------------------------------------------------------------
+---Changes history with TigerJS 1.0 Beta [10/31/2015]
+ 
+         *) First public (beta) version of library released (wow after over a year of coding!!) 
+
+         *) NEW_MODULE/OBJECT: TigerJS, This is the main name-space of the library,
+                               it also contains essential utility functions, but
+                               you'll normally just want to use the shorthand T
+  
+
+         *) NEW_MODULE/OBJECT: TigerJS.Iterator, A highly optimized array-like generic
+                               iterator object for working with lists of any kind of data, contains
+                               a very large number of methods and can be adapted to
+                               function like different data-structures, including
+                               stacks, queues, deques e.t.c
+                               
+         *) NEW_MODULE/OBJECT: TigerJS.$, The DOM Castle of the Library
+         *) NEW_MODULE/OBJECT: TigerJS.nodes, DOM Operations on node Lists
+         *) NEW_MODULE/OBJECT: TigerJS.Map, A Cool Key/Value pair based Object
+         *) NEW_MODULE/OBJECT: TigerJS.Parser  uhm..., parses stuff: URL's Email's and stuff
+         *) NEW_MODULE/OBJECT: TigerJS.ua,      Info on your Browser
+         *) NEW_MODULE/OBJECT: TigerJS.Conn 
+         *) NEW_MODULE/OBJECT: TigerJS.io ,        Advanced XMLHttpRequest based I/O Operations
+         *) NEW_MODULE/OBJECT: TigerJS.io.CompositeRequest,   Advanced XMLHttpRequest based I/O Operations, that permits multiple requests
+                                                               on a single connection
+         *) NEW_MODULE/OBJECT: TigerJS.io.SerialRequest,   Advanced Serial  XMLHttpRequest based I/O Operations
+         *) NEW_MODULE/OBJECT: TigerJS.Crypto,   Cryptographic Functions
+         *) NEW_MODULE/OBJECT: TigerJS.Hash,    Hashing Functions     
+         *) NEW_MODULE/OBJECT: TigerJS.UI.FX,    CSS/DHTML Effects Module, and currently includes
+                                 TigerJS.UI.FX.Animation and  TigerJS.UI.FX.Draggable
+
+         *) NEW_MODULE/OBJECT: TigerJS.UI.Widget,    Widgets Framework Base
+                               Which includes...
+                                 InputFeild-Widgets, Overlay-Widgets, Tooltip-Widgets, Calendar-Widgets. 
+                                 See the doc's on how to initialize and use them
+
+         *) NEW_MODULE/OBJECT: TigerJS.UI.Color,   Color Manipulation Functions
+         *) NEW_MODULE/OBJECT: String.prototype, The following methods were added
+                               to the native string object
+                               -sprintf
+                               -count_ch
+                               -delete_ch
+                               -find_first_not_of
+                               -find_first_of
+                               -find_last_not_of
+                               -find_last_of
+                               -html_chars
+                               -explode
+                               -implode
+                               -insert_n
+                               -quotemeta
+                               -rotX
+                               -string_pad
+                               -string_repeat
+                               -string_replace
+                               -strpos
+                               -strrpos
+                               -stripos
+                               -strripos
+                               -strstr
+                               -stristr
+                               -substr_count
+                               -escQuote
+                               -unEscQuote
+                               -trim
+                               -toCase
+
+
+
+
+>>>>>>> dev
