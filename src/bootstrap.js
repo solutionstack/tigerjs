@@ -16,11 +16,11 @@
     }
 
 
-    //insert our css base-file before the dom is ready
+  /*  //insert our css base-file before the dom is ready
     var css_base = T.library_installation_path + "/asset/css/tiger.min.css";
     T.Parser.parse_css("<link rel='stylesheet' type='text/css' href='" + css_base + "' />", true);
 
-
+*/
 
     //subscribe to network state monitoring...
     T.Conn.subscribe(function (x) {

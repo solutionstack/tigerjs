@@ -697,9 +697,7 @@ var TigerJS = function() {
         if (arr_.constructor === undefined)
             return d(arr_);
 
-        var _ty = T.type(arr_)
-            .
-        replace(/^\s*((?:[\S\s]*\S)?)\s*$/, '$1'); //trimmmm
+        var _ty = T.type(arr_).replace(/^\s*((?:[\S\s]*\S)?)\s*$/, '$1'); //trimmmm
 
 
         //Handle regular types, trim to avoided any extra spaces (some browsers are SPACE CRAAAAZZYY!!

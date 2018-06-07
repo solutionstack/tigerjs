@@ -53,7 +53,7 @@ TigerJS.Date = function (date) {
                     dateObj.setMilliseconds(dateObj.getMilliseconds() + val);
                     return dateObj;
                 };
-        ;
+
         /**
          * Return the number of days in the month for the current year and month
          * @returns {Number}

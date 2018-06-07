@@ -38,7 +38,7 @@ void function (window) {
     }
 
 
-    var ArrayBuffer = window.ArrayBuffer = (function () {
+    var ArrayBuffer = window['ArrayBuffer'] = (function () {
         var min = Math.min,
                 max = Math.max,
                 __char = String.fromCharCode;
@@ -177,7 +177,7 @@ void function (window) {
 
 
 
-    window.DataView = (function () {
+    window['DataView'] = (function () {
         var log = Math.log,
                 pow = Math.pow,
                 LN2 = Math.LN2;
