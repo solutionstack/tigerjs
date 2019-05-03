@@ -1374,10 +1374,10 @@ TigerJS.Iterator = function (elements) {
         this.obj.shuffle = function () {
             var _t = T.Iterator([].concat(this));
             this.empty();
-            for (var i = 0, j = _t.length; i < j; i++) {
-                this[i] = _t.rand();
-                _t.unset(_t.indexOf(this[i]));
-            }
+           
+            _t = _t.sort((a, b) => .5 - Math.random());
+         
+            this.add_all(_t)
             return this;
 
 
